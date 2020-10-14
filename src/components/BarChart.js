@@ -1,16 +1,15 @@
 import React from "react";
+import styled from "styled-components";
 import Bar from "./Bar";
 
-const styles = {
-  mainContainer: {
-    height: "700px",
-    width: "1200px",
-    backgroundColor: "#ccc",
-    display: "flex",
-    justifyContent: "space-around",
-    alignItems: "flex-end",
-  },
-};
+const Container = styled.div`
+  height: 700px;
+  width: 1200px;
+  background-color: #ccc;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+`;
 
 const numbers = [
   32,
@@ -34,11 +33,11 @@ const numbers = [
 
 const BarChart = () => {
   return (
-    <div style={styles.mainContainer}>
+    <Container>
       {numbers.map((number) => (
         <Bar height={number} number={number} />
       ))}
-    </div>
+    </Container>
   );
 };
 

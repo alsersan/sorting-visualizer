@@ -1,19 +1,20 @@
 import React from "react";
+import styled from "styled-components";
 
-const Bar = ({ height, number }) => {
+const StyledBar = styled.div`
+  background-color: red;
+  height: ${(props) => props.height}%;
+  margin: 0 5px;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+`;
+
+const Bar = (props) => {
   return (
-    <div
-      style={{
-        backgroundColor: "red",
-        height: `${height}%`,
-        margin: "0 5px",
-        flexGrow: 1,
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
-      <span style={{ marginTop: "5px" }}>{`${number}`}</span>
-    </div>
+    <StyledBar {...props}>
+      <span style={{ marginTop: "5px" }}>{`${props.number}`}</span>
+    </StyledBar>
   );
 };
 
