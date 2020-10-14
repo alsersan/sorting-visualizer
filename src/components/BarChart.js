@@ -36,7 +36,7 @@ const BarChart = () => {
   return (
     <div style={styles.mainContainer}>
       {numbers.map((number) => (
-        <Bar height={number} />
+        <Bar height={number} number={number} />
       ))}
     </div>
   );
