@@ -34,8 +34,8 @@ const numbers = [
 const BarChart = () => {
   return (
     <Container>
-      {numbers.map((number) => (
-        <Bar height={number} number={number} />
+      {numbers.map((number, index) => (
+        <Bar height={number} number={number} key={index} />
       ))}
     </Container>
   );
