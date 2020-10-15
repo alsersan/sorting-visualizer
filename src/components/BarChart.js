@@ -31,12 +31,27 @@ const numbers = [
   34,
 ];
 
+const bubbleSort = (arr) => {
+  for (let i = arr.length - 1; i > 1; i--) {
+    let noSwaps = true;
+    for (let j = 0; j < i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+        noSwaps = false;
+      }
+    }
+    if (noSwaps) break;
+  }
+  return arr;
+};
+
 const BarChart = () => {
   return (
     <Container>
       {numbers.map((number, index) => (
         <Bar height={number} number={number} key={index} />
       ))}
+      {console.log(bubbleSort(numbers))}
     </Container>
   );
 };
