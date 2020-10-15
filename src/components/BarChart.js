@@ -31,19 +31,27 @@ const numbers = [
   34,
 ];
 
-const bubbleSort = (arr) => {
+const timer = (ms) => {
+  return new Promise((res) => setTimeout(res, ms));
+};
+
+const bubbleSort = async (arr) => {
   for (let i = arr.length - 1; i > 1; i--) {
     let noSwaps = true;
     for (let j = 0; j < i; j++) {
+      console.log(arr, arr[j], arr[j + 1]);
       if (arr[j] > arr[j + 1]) {
         [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
         noSwaps = false;
       }
+      await timer(200);
     }
     if (noSwaps) break;
   }
-  return arr;
+  // return arr;
 };
+
+bubbleSort(numbers);
 
 const BarChart = () => {
   return (
@@ -51,7 +59,6 @@ const BarChart = () => {
       {numbers.map((number, index) => (
         <Bar height={number} number={number} key={index} />
       ))}
-      {console.log(bubbleSort(numbers))}
     </Container>
   );
 };
