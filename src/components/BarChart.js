@@ -39,17 +39,24 @@ const bubbleSort = async (arr) => {
   for (let i = arr.length - 1; i > 1; i--) {
     let noSwaps = true;
     for (let j = 0; j < i; j++) {
-      await timer(400);
       console.log(arr, arr[j], arr[j + 1]);
       const bars = document.querySelectorAll(".bar");
       bars[j].style.backgroundColor = "blue";
       bars[j + 1].style.backgroundColor = "blue";
+      await timer(100);
+
       if (arr[j] > arr[j + 1]) {
         [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+        bars[j].style.height = `${bars[j + 1].textContent}%`;
+        bars[j + 1].style.height = `${bars[j].textContent}%`;
+        [bars[j].textContent, bars[j + 1].textContent] = [
+          bars[j + 1].textContent,
+          bars[j].textContent,
+        ];
         noSwaps = false;
+        await timer(100);
       }
 
-      await timer(400);
       bars[j].style.backgroundColor = "red";
       bars[j + 1].style.backgroundColor = "red";
     }
@@ -64,7 +71,7 @@ const BarChart = () => {
   return (
     <Container>
       {numbers.map((number, index) => (
-        <Bar height={number} number={number} key={index} className="bar" />
+        <Bar number={number} key={index} className="bar" />
       ))}
       <button onClick={() => bubbleSort(numbers)}>Click</button>
     </Container>

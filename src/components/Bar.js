@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const StyledBar = styled.div`
   background-color: red;
-  height: ${(props) => props.height}%;
   margin: 0 5px;
   flex-grow: 1;
   display: flex;
@@ -12,10 +11,15 @@ const StyledBar = styled.div`
 
 const Bar = (props) => {
   return (
-    <StyledBar {...props}>
-      <span style={{ marginTop: "5px" }}>{`${props.number}`}</span>
+    <StyledBar
+      className={props.className}
+      style={{ height: `${props.number}%` }}
+    >
+      <span style={{ marginTop: "5px" }}>{props.number}</span>
     </StyledBar>
   );
 };
 
 export default Bar;
+
+// height: ${(props) => props.height}%;
