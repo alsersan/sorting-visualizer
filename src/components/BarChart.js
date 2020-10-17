@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Bar from "./Bar";
+import { bubbleSort } from "../algorithms/sortingAlgorithms";
 
 const Container = styled.div`
   height: 700px;
@@ -61,43 +62,6 @@ const numbers = [
   87,
   45,
 ];
-
-const timer = (ms) => {
-  return new Promise((res) => setTimeout(res, ms));
-};
-
-const bubbleSort = async (arr) => {
-  for (let i = arr.length - 1; i > 1; i--) {
-    let noSwaps = true;
-    for (let j = 0; j < i; j++) {
-      console.log(arr, arr[j], arr[j + 1]);
-      const bars = document.querySelectorAll(".bar");
-      bars[j].style.backgroundColor = "blue";
-      bars[j + 1].style.backgroundColor = "blue";
-      await timer(5);
-
-      if (arr[j] > arr[j + 1]) {
-        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-        bars[j].style.height = `${bars[j + 1].textContent}%`;
-        bars[j + 1].style.height = `${bars[j].textContent}%`;
-        [
-          bars[j].firstElementChild.textContent,
-          bars[j + 1].firstElementChild.textContent,
-        ] = [
-          bars[j + 1].firstElementChild.textContent,
-          bars[j].firstElementChild.textContent,
-        ];
-        noSwaps = false;
-        await timer(5);
-      }
-
-      bars[j].style.backgroundColor = "red";
-      bars[j + 1].style.backgroundColor = "red";
-    }
-    if (noSwaps) break;
-  }
-  // return arr;
-};
 
 const BarChart = () => {
   return (
