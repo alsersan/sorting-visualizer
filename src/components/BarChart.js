@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Bar from "./Bar";
-import { bubbleSort } from "../algorithms/sortingAlgorithms";
+import { bubbleSort, selectionSort } from "../algorithms/sortingAlgorithms";
 
 const Container = styled.div`
   height: 700px;
@@ -69,7 +69,7 @@ const BarChart = () => {
       {numbers.map((number, index) => (
         <Bar number={number} key={index} className="bar" />
       ))}
-      <button onClick={() => bubbleSort(numbers)}>Click</button>
+      <button onClick={() => selectionSort(numbers)}>Click</button>
     </Container>
   );
 };

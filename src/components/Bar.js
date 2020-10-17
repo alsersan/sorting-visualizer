@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const StyledBar = styled.div`
   background-color: red;
-  margin: 0 5px;
+  margin: 0 3px;
   flex-grow: 1;
   display: flex;
   justify-content: center;
