@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Bar from "./Bar";
 
@@ -29,6 +29,37 @@ const numbers = [
   87,
   56,
   34,
+  34,
+  40,
+  23,
+  65,
+  76,
+  78,
+  34,
+  76,
+  98,
+  43,
+  67,
+  54,
+  98,
+  45,
+  76,
+  34,
+  87,
+  54,
+  98,
+  56,
+  87,
+  43,
+  12,
+  32,
+  15,
+  72,
+  48,
+  92,
+  46,
+  87,
+  45,
 ];
 
 const timer = (ms) => {
@@ -43,18 +74,21 @@ const bubbleSort = async (arr) => {
       const bars = document.querySelectorAll(".bar");
       bars[j].style.backgroundColor = "blue";
       bars[j + 1].style.backgroundColor = "blue";
-      await timer(100);
+      await timer(5);
 
       if (arr[j] > arr[j + 1]) {
         [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
         bars[j].style.height = `${bars[j + 1].textContent}%`;
         bars[j + 1].style.height = `${bars[j].textContent}%`;
-        [bars[j].textContent, bars[j + 1].textContent] = [
-          bars[j + 1].textContent,
-          bars[j].textContent,
+        [
+          bars[j].firstElementChild.textContent,
+          bars[j + 1].firstElementChild.textContent,
+        ] = [
+          bars[j + 1].firstElementChild.textContent,
+          bars[j].firstElementChild.textContent,
         ];
         noSwaps = false;
-        await timer(100);
+        await timer(5);
       }
 
       bars[j].style.backgroundColor = "red";
@@ -66,8 +100,6 @@ const bubbleSort = async (arr) => {
 };
 
 const BarChart = () => {
-  // const [bars, setBars] = useState([]);
-
   return (
     <Container>
       {numbers.map((number, index) => (

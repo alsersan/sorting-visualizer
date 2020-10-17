@@ -9,13 +9,18 @@ const StyledBar = styled.div`
   justify-content: center;
 `;
 
+const Text = styled.span`
+  margin-top: 5px;
+  display: none;
+`;
+
 const Bar = (props) => {
   return (
     <StyledBar
       className={props.className}
       style={{ height: `${props.number}%` }}
     >
-      <span style={{ marginTop: "5px" }}>{props.number}</span>
+      <Text>{props.number}</Text>
     </StyledBar>
   );
 };
