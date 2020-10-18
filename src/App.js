@@ -16,8 +16,7 @@ const App = () => {
 
   return (
     <React.Fragment>
-      {/* 500 - speed to get the correct position of the slider */}
-      <Header speed={500 - speed} setSpeed={setSpeed} />
+      <Header speed={speed} setSpeed={setSpeed} />
       <Container>
         <BarChart speed={speed} />
       </Container>
