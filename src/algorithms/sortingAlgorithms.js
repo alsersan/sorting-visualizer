@@ -1,26 +1,33 @@
-export const bubbleSort = async (arr) => {
+export const bubbleSort = async (arr, speed) => {
   const bars = document.querySelectorAll(".bar");
+
+  // First loop from back to front
   for (let i = arr.length - 1; i > 1; i--) {
     let noSwaps = true;
+
+    // second loop from front to back, until j<i (the numbers after that are already sorted)
     for (let j = 0; j < i; j++) {
       console.log(arr, arr[j], arr[j + 1]);
       changeBarColor("blue", bars[j], bars[j + 1]);
-      await timer(10);
+      await timer(speed);
 
+      // if first bar id bigger than second bar, swap them
       if (arr[j] > arr[j + 1]) {
         [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
         swapBars(bars[j], bars[j + 1]);
         noSwaps = false;
-        await timer(10);
+        await timer(speed);
       }
       changeBarColor("red", bars[j], bars[j + 1]);
     }
+
+    // if there have been no swaps in the last loop, then the array is already sorted
     if (noSwaps) break;
   }
   // return arr;
 };
 
-export const selectionSort = async (arr) => {
+export const selectionSort = async (arr, speed) => {
   const bars = document.querySelectorAll(".bar");
 
   // First loop, which sets which bar all others are being compared to
@@ -34,7 +41,7 @@ export const selectionSort = async (arr) => {
     for (let j = i + 1; j < arr.length; j++) {
       let smallest = false;
       changeBarColor("green", bars[j]);
-      await timer(10);
+      await timer(speed);
 
       // Only execute if the bar has the smallest value so far (stored in minValue)
       if (arr[j] < minValue) {
@@ -55,7 +62,7 @@ export const selectionSort = async (arr) => {
       [arr[i], arr[index]] = [arr[index], arr[i]];
       changeBarColor("blue", bars[index]);
       swapBars(bars[i], bars[index]);
-      await timer(10);
+      await timer(speed);
       changeBarColor("red", bars[index]);
     }
     // Always change color of the sorted bar

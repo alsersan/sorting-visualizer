@@ -63,13 +63,13 @@ const numbers = [
   45,
 ];
 
-const BarChart = () => {
+const BarChart = ({ speed }) => {
   return (
     <Container>
       {numbers.map((number, index) => (
         <Bar number={number} key={index} className="bar" />
       ))}
-      <button onClick={() => selectionSort(numbers)}>Click</button>
+      <button onClick={() => bubbleSort(numbers, speed)}>Click</button>
     </Container>
   );
 };
