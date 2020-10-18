@@ -69,7 +69,7 @@ const BarChart = ({ speed }) => {
       {numbers.map((number, index) => (
         <Bar number={number} key={index} className="bar" />
       ))}
-      <button onClick={() => bubbleSort(numbers, speed)}>Click</button>
+      <button onClick={() => selectionSort(numbers, speed)}>Click</button>
     </Container>
   );
 };

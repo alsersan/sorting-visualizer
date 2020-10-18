@@ -12,11 +12,12 @@ const Container = styled.div`
 `;
 
 const App = () => {
-  const [speed, setSpeed] = useState(50);
+  const [speed, setSpeed] = useState(400);
 
   return (
     <React.Fragment>
-      <Header speed={speed} setSpeed={setSpeed} />
+      {/* 500 - speed to get the correct position of the slider */}
+      <Header speed={500 - speed} setSpeed={setSpeed} />
       <Container>
         <BarChart speed={speed} />
       </Container>
