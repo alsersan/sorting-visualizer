@@ -8,8 +8,9 @@ const StyledHeader = styled.header`
 
 const Header = ({ speed, setSpeed, size, setSize }) => {
   const speedPercentage = (min, max) => {
-    const input = 500 - speed;
-    return ((input - min) * 100) / (max - min);
+    // 450 - speed to get the correct position of the slider
+    const input = 450 - speed;
+    return Math.round((((input - min) * 100) / (max - min)) * 10) / 10;
   };
   return (
     <StyledHeader>
@@ -18,18 +19,18 @@ const Header = ({ speed, setSpeed, size, setSize }) => {
         <input
           style={{ width: "500px", cursor: "pointer", display: "inline-block" }}
           type="range"
-          max="495"
+          max="449"
           min="0"
-          // 500 - speed to get the correct position of the slider
-          value={500 - speed}
-          // 1% step
-          step="5"
-          onChange={(e) => setSpeed(500 - e.target.value)}
+          // 450 - speed to get the correct position of the slider
+          value={450 - speed}
+          step="1"
+          // 450 - value to set the real speed (in ms)
+          onChange={(e) => setSpeed(450 - e.target.value)}
         />
         <div style={{ display: "inline-block" }}>{speed}</div>
-        {/* the min value must be 1/100 (of the total range) smaller, so that the min value is 1% and not 0% */}
+        {/* the min value was adjusted so that it's percentage is exactly 1% */}
         <div style={{ display: "inline-block", marginLeft: "10px" }}>
-          {speedPercentage(-5, 495)}%
+          {speedPercentage(-4.5, 449)}%
         </div>
       </div>
       <div>
@@ -37,8 +38,8 @@ const Header = ({ speed, setSpeed, size, setSize }) => {
         <input
           style={{ width: "500px", cursor: "pointer", display: "inline-block" }}
           type="range"
-          max="200"
-          min="10"
+          max="150"
+          min="12"
           value={size}
           step="1"
           onChange={(e) => {
