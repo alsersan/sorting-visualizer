@@ -2,7 +2,7 @@ export const bubbleSort = async (arr, speed) => {
   const bars = document.querySelectorAll(".bar");
 
   // First loop from back to front
-  for (let i = arr.length - 1; i > 1; i--) {
+  for (let i = arr.length - 1; i > 0; i--) {
     let noSwaps = true;
 
     // second loop from front to back, until j<i (the numbers after that are already sorted)
@@ -19,10 +19,17 @@ export const bubbleSort = async (arr, speed) => {
         await timer(speed);
       }
       changeBarColor("red", bars[j], bars[j + 1]);
+      // color the sorted bar orange
+      if (j + 1 === i) changeBarColor("orange", bars[j + 1]);
+      // if the loop run all the way until the end, color the first bar orange
+      if (i === 1) changeBarColor("orange", bars[j]);
     }
 
     // if there have been no swaps in the last loop, then the array is already sorted
-    if (noSwaps) break;
+    if (noSwaps) {
+      bars.forEach((bar) => changeBarColor("orange", bar));
+      break;
+    }
   }
   // return arr;
 };
