@@ -26,5 +26,3 @@ const Bar = (props) => {
 };
 
 export default Bar;
-
-// height: ${(props) => props.height}%;

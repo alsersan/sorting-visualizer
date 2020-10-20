@@ -12,64 +12,13 @@ const Container = styled.div`
   align-items: flex-end;
 `;
 
-const numbers = [
-  32,
-  43,
-  76,
-  45,
-  76,
-  23,
-  21,
-  56,
-  43,
-  23,
-  76,
-  56,
-  23,
-  45,
-  87,
-  56,
-  34,
-  34,
-  40,
-  23,
-  65,
-  76,
-  78,
-  34,
-  76,
-  98,
-  43,
-  67,
-  54,
-  98,
-  45,
-  76,
-  34,
-  87,
-  54,
-  98,
-  56,
-  87,
-  43,
-  12,
-  32,
-  15,
-  72,
-  48,
-  92,
-  46,
-  87,
-  45,
-];
-
-const BarChart = ({ speed }) => {
+const BarChart = ({ speed, array }) => {
   return (
     <Container>
-      {numbers.map((number, index) => (
+      {array.map((number, index) => (
         <Bar number={number} key={index} className="bar" />
       ))}
-      <button onClick={() => selectionSort(numbers, speed)}>Click</button>
+      <button onClick={() => bubbleSort(array, speed)}>Click</button>
     </Container>
   );
 };
