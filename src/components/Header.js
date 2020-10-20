@@ -38,7 +38,7 @@ const Header = ({ speed, setSpeed, size, setSize }) => {
         <input
           style={{ width: "500px", cursor: "pointer", display: "inline-block" }}
           type="range"
-          max="150"
+          max="110"
           min="12"
           value={size}
           step="1"
