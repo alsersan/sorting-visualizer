@@ -39,7 +39,7 @@ const Header = ({ speed, setSpeed, size, setSize }) => {
           style={{ width: "500px", cursor: "pointer", display: "inline-block" }}
           type="range"
           max="110"
-          min="12"
+          min="15"
           value={size}
           step="1"
           onChange={(e) => {

@@ -12,8 +12,8 @@ const Container = styled.div`
 `;
 
 const App = () => {
-  const [speed, setSpeed] = useState(400);
-  const [size, setSize] = useState(25);
+  const [speed, setSpeed] = useState(50);
+  const [size, setSize] = useState(50);
   const [array, setArray] = useState([]);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const App = () => {
     <React.Fragment>
       <Header speed={speed} setSpeed={setSpeed} size={size} setSize={setSize} />
       <Container>
-        <BarChart speed={speed} size={size} array={array} />
+        <BarChart speed={speed} array={array} />
       </Container>
     </React.Fragment>
   );
