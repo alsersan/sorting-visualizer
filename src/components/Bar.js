@@ -11,7 +11,7 @@ const StyledBar = styled.div`
 
 const Text = styled.span`
   margin-top: 5px;
-  display: none;
+  display: block;
 `;
 
 const Bar = (props) => {

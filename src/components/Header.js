@@ -25,7 +25,7 @@ const Header = ({ speed, setSpeed, size, setSize }) => {
           value={450 - speed}
           step="1"
           // 450 - value to set the real speed (in ms)
-          onChange={(e) => setSpeed(450 - e.target.value)}
+          onChange={(e) => setSpeed(450 - parseInt(e.target.value, 10))}
         />
         <div style={{ display: "inline-block" }}>{speed}</div>
         {/* the min value was adjusted so that it's percentage is exactly 1% */}
