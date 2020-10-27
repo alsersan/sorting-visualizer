@@ -44,6 +44,12 @@ const App = () => {
     }
   }, [speed]);
 
+  useEffect(() => {
+    if (isSorted) {
+      setIsRunning(false);
+    }
+  }, [isSorted]);
+
   return (
     <React.Fragment>
       <Header speed={speed} setSpeed={setSpeed} size={size} setSize={setSize} />
@@ -55,6 +61,7 @@ const App = () => {
           arr={arrayTest}
           isRunning={isRunning}
           setIsRunning={setIsRunning}
+          isSorted={isSorted}
           setIsSorted={setIsSorted}
         />
       </Container>

@@ -31,6 +31,7 @@ const ButtonRow = ({
   arr,
   isRunning,
   setIsRunning,
+  isSorted,
   setIsSorted,
 }) => {
   return (
@@ -50,8 +51,10 @@ const ButtonRow = ({
       ) : (
         <Button
           onClick={() => {
-            recursiveBubbleSort(speed, arr, setIsSorted);
-            setIsRunning(true);
+            if (!isSorted) {
+              recursiveBubbleSort(speed, arr, setIsSorted);
+              setIsRunning(true);
+            }
           }}
         >
           <FaPlay size={30} />
