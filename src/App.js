@@ -23,7 +23,7 @@ const App = () => {
   const [speed, setSpeed] = useState(50);
   const [size, setSize] = useState(50);
   const [array, setArray] = useState([]);
-  const [start, setStart] = useState(false);
+  const [isRunning, setIsRunning] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const App = () => {
   }, [size]);
 
   useEffect(() => {
-    if (start && !isSorted) {
+    if (isRunning && !isSorted) {
       stop();
       recursiveBubbleSort(speed, arrayTest, setIsSorted);
     }
@@ -53,7 +53,8 @@ const App = () => {
           speed={speed}
           array={array}
           arr={arrayTest}
-          setStart={setStart}
+          isRunning={isRunning}
+          setIsRunning={setIsRunning}
           setIsSorted={setIsSorted}
         />
       </Container>

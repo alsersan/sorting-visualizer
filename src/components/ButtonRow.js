@@ -25,29 +25,38 @@ const Button = styled.button`
   margin: 0 0.5rem;
 `;
 
-const ButtonRow = ({ speed, array, arr, setStart, setIsSorted }) => {
+const ButtonRow = ({
+  speed,
+  array,
+  arr,
+  isRunning,
+  setIsRunning,
+  setIsSorted,
+}) => {
   return (
     <StyledButtonRow>
       <Button>
         <FaStepBackward size={30} />
       </Button>
-      <Button
-        onClick={() => {
-          recursiveBubbleSort(speed, arr, setIsSorted);
-          setStart(true);
-        }}
-      >
-        <FaPlay size={30} />
-      </Button>
-      {console.log(speed)}
-      <Button
-        onClick={() => {
-          stop();
-          setStart(false);
-        }}
-      >
-        <FaPause size={30} />
-      </Button>
+      {isRunning ? (
+        <Button
+          onClick={() => {
+            stop();
+            setIsRunning(false);
+          }}
+        >
+          <FaPause size={30} />
+        </Button>
+      ) : (
+        <Button
+          onClick={() => {
+            recursiveBubbleSort(speed, arr, setIsSorted);
+            setIsRunning(true);
+          }}
+        >
+          <FaPlay size={30} />
+        </Button>
+      )}
       <Button>
         <FaStepForward size={30} />
       </Button>
