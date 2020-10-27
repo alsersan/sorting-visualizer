@@ -23,7 +23,7 @@ const Header = ({ speed, setSpeed, size, setSize }) => {
           min="0"
           // 450 - speed to get the correct position of the slider
           value={450 - speed}
-          step="1"
+          step="25"
           // 450 - value to set the real speed (in ms)
           onChange={(e) => setSpeed(450 - parseInt(e.target.value, 10))}
         />
