@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledHeader = styled.header`
-  height: 5vh;
+  height: 3rem;
   background-color: #ccc;
 `;
 

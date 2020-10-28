@@ -10,7 +10,7 @@ import {
 } from "./algorithms/recursiveSortingAlgorithms";
 
 const Container = styled.div`
-  height: 95vh;
+  height: calc(100vh - 3rem);
   display: flex;
   justify-content: center;
   align-items: center;

@@ -4,8 +4,8 @@ import Bar from "./Bar";
 import { bubbleSort, selectionSort } from "../algorithms/sortingAlgorithms";
 
 const Container = styled.div`
-  height: 700px;
-  width: 1200px;
+  height: 35rem;
+  width: 65rem;
   background-color: #ccc;
   display: flex;
   justify-content: space-around;
