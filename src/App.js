@@ -38,10 +38,14 @@ const App = () => {
   }, [size]);
 
   useEffect(() => {
+    let timeout;
     if (isRunning && !isSorted) {
-      stop();
-      recursiveBubbleSort(speed, arrayTest, setIsSorted);
+      timeout = setTimeout(() => {
+        stop();
+        recursiveBubbleSort(speed, arrayTest, setIsSorted);
+      }, 150);
     }
+    return () => clearTimeout(timeout);
   }, [speed]);
 
   useEffect(() => {
