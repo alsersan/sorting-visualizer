@@ -52,7 +52,7 @@ const ButtonRow = ({
         <Button
           onClick={() => {
             if (!isSorted) {
-              recursiveBubbleSort(speed, arr, setIsSorted);
+              recursiveBubbleSort(speed, speed, arr, setIsSorted);
               setIsRunning(true);
             }
           }}
@@ -60,7 +60,15 @@ const ButtonRow = ({
           <FaPlay size={30} />
         </Button>
       )}
-      <Button>
+      <Button
+        onClick={() => {
+          if (!isSorted) {
+            stop();
+            // Instant first execution but delayed the following (around 3h)
+            recursiveBubbleSort(1, 9999999, arr, setIsSorted);
+          }
+        }}
+      >
         <FaStepForward size={30} />
       </Button>
     </StyledButtonRow>

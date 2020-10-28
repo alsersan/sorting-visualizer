@@ -42,7 +42,7 @@ const App = () => {
     if (isRunning && !isSorted) {
       timeout = setTimeout(() => {
         stop();
-        recursiveBubbleSort(speed, arrayTest, setIsSorted);
+        recursiveBubbleSort(speed, speed, arrayTest, setIsSorted);
       }, 150);
     }
     return () => clearTimeout(timeout);

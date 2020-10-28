@@ -6,7 +6,7 @@ let unselectBars = false;
 let compareBars = true;
 let noSwap = true;
 
-export function recursiveBubbleSort(speed, arr, setIsSorted) {
+export function recursiveBubbleSort(initialSpeed, speed, arr, setIsSorted) {
   const bars = document.querySelectorAll(".bar");
   timer = setTimeout(() => {
     if (compareBars) {
@@ -17,13 +17,13 @@ export function recursiveBubbleSort(speed, arr, setIsSorted) {
         noSwap = false;
         compareBars = false;
         barSwap = true;
-        recursiveBubbleSort(speed, arr, setIsSorted);
+        recursiveBubbleSort(speed, speed, arr, setIsSorted);
         return;
       } else {
         // If not, execute unselectBars to color the bars red again
         compareBars = false;
         unselectBars = true;
-        recursiveBubbleSort(speed, arr, setIsSorted);
+        recursiveBubbleSort(speed, speed, arr, setIsSorted);
         return;
       }
     } else if (barSwap) {
@@ -32,7 +32,7 @@ export function recursiveBubbleSort(speed, arr, setIsSorted) {
       swapBars(bars[j], bars[j + 1]);
       barSwap = false;
       unselectBars = true;
-      recursiveBubbleSort(speed, arr, setIsSorted);
+      recursiveBubbleSort(speed, speed, arr, setIsSorted);
       return;
     } else if (unselectBars) {
       // After checking and/or swapping the bars, color them red again
@@ -45,16 +45,16 @@ export function recursiveBubbleSort(speed, arr, setIsSorted) {
     j++;
     if (j < i) {
       noSwap = true;
-      recursiveBubbleSort(speed, arr, setIsSorted);
+      recursiveBubbleSort(speed, speed, arr, setIsSorted);
     } else if (j === i && !noSwap) {
       j = 0;
       i--;
-      recursiveBubbleSort(speed, arr, setIsSorted);
+      recursiveBubbleSort(speed, speed, arr, setIsSorted);
     } else {
       setIsSorted(true);
       console.log("SORTED!!");
     }
-  }, speed);
+  }, initialSpeed);
 }
 
 export function stop() {
