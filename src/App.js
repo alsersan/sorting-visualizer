@@ -7,6 +7,7 @@ import ButtonRow from "./components/ButtonRow";
 import {
   recursiveBubbleSort,
   stop,
+  getArray,
 } from "./algorithms/recursiveSortingAlgorithms";
 
 const Container = styled.div`
@@ -17,11 +18,9 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const arrayTest = [23, 54, 34, 12, 43, 23, 65, 45, 34];
-
 const App = () => {
   const [speed, setSpeed] = useState(50);
-  const [size, setSize] = useState(50);
+  const [size, setSize] = useState(9);
   const [array, setArray] = useState([]);
   const [isRunning, setIsRunning] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
@@ -35,6 +34,7 @@ const App = () => {
       arr.push(num);
     }
     setArray(arr);
+    getArray(arr);
   }, [size]);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const App = () => {
     if (isRunning && !isSorted) {
       timeout = setTimeout(() => {
         stop();
-        recursiveBubbleSort(speed, speed, arrayTest, setIsSorted);
+        recursiveBubbleSort(speed, speed, setIsSorted);
       }, 150);
     }
     return () => clearTimeout(timeout);
@@ -58,11 +58,9 @@ const App = () => {
     <React.Fragment>
       <Header speed={speed} setSpeed={setSpeed} size={size} setSize={setSize} />
       <Container>
-        <BarChart speed={speed} array={array} arr={arrayTest} />
+        <BarChart speed={speed} array={array} />
         <ButtonRow
           speed={speed}
-          array={array}
-          arr={arrayTest}
           isRunning={isRunning}
           setIsRunning={setIsRunning}
           isSorted={isSorted}

@@ -12,10 +12,10 @@ const Container = styled.div`
   align-items: flex-end;
 `;
 
-const BarChart = ({ speed, array, arr }) => {
+const BarChart = ({ speed, array }) => {
   return (
     <Container>
-      {arr.map((number, index) => (
+      {array.map((number, index) => (
         <Bar number={number} key={index} className="bar" />
       ))}
     </Container>

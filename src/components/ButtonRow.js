@@ -27,8 +27,6 @@ const Button = styled.button`
 
 const ButtonRow = ({
   speed,
-  array,
-  arr,
   isRunning,
   setIsRunning,
   isSorted,
@@ -52,7 +50,7 @@ const ButtonRow = ({
         <Button
           onClick={() => {
             if (!isSorted) {
-              recursiveBubbleSort(speed, speed, arr, setIsSorted);
+              recursiveBubbleSort(speed, speed, setIsSorted);
               setIsRunning(true);
             }
           }}
@@ -65,7 +63,7 @@ const ButtonRow = ({
           if (!isSorted) {
             stop();
             // Instant first execution but delayed the following (around 3h)
-            recursiveBubbleSort(1, 9999999, arr, setIsSorted);
+            recursiveBubbleSort(1, 9999999, setIsSorted);
           }
         }}
       >
