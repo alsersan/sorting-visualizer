@@ -10,7 +10,9 @@ let record = [];
 
 export function recursiveBubbleSort(initialSpeed, speed, setIsSorted) {
   const bars = document.querySelectorAll(".bar");
+
   timer = setTimeout(() => {
+    saveStep();
     if (compareBars) {
       changeBarColor("blue", bars[j], bars[j + 1]);
 
@@ -18,14 +20,12 @@ export function recursiveBubbleSort(initialSpeed, speed, setIsSorted) {
         // If first bar id bigger than second bar, swap them
         compareBars = false;
         barSwap = true;
-        saveStep();
         recursiveBubbleSort(speed, speed, setIsSorted);
         return;
       } else {
         // If not, execute unselectBars to color the bars red again
         compareBars = false;
         unselectBars = true;
-        saveStep();
         recursiveBubbleSort(speed, speed, setIsSorted);
         return;
       }
@@ -36,7 +36,6 @@ export function recursiveBubbleSort(initialSpeed, speed, setIsSorted) {
       noSwap = false;
       barSwap = false;
       unselectBars = true;
-      saveStep();
       recursiveBubbleSort(speed, speed, setIsSorted);
       return;
     } else if (unselectBars) {
@@ -51,7 +50,6 @@ export function recursiveBubbleSort(initialSpeed, speed, setIsSorted) {
 
     // if j < i, the cycle has not been yet completed
     if (j < i) {
-      saveStep();
       recursiveBubbleSort(speed, speed, setIsSorted);
 
       // if j === i, the cycle  has been completed, but only execute again if there have been swaps in this cycle (otherwise the array is already sorted) and if i > 1 (making the last possible value of i 1)
@@ -59,7 +57,6 @@ export function recursiveBubbleSort(initialSpeed, speed, setIsSorted) {
       noSwap = true;
       j = 0;
       i--;
-      saveStep();
       recursiveBubbleSort(speed, speed, setIsSorted);
       // if the conditions above are not met, then the array is sorted
     } else {
@@ -98,7 +95,6 @@ function saveStep() {
     arr: [...arr],
   };
   record.push(step);
-  console.log(record);
 }
 
 // get the size of the array every time the size slider changes its value (imported in App component)
@@ -106,4 +102,41 @@ export function getArray(newArray) {
   arr = [...newArray];
   i = newArray.length - 1;
   console.log(arr, i);
+}
+
+export function oneStepForward(initialSpeed, speed, setIsSorted) {
+  stop();
+  recursiveBubbleSort(initialSpeed, speed, setIsSorted);
+  setTimeout(() => console.log(arr), 20);
+}
+
+export function oneStepBack() {
+  if (record.length !== 0) {
+    stop();
+    const lastElement = record[record.length - 1];
+
+    i = lastElement.i;
+    j = lastElement.j;
+    barSwap = lastElement.barSwap;
+    unselectBars = lastElement.unselectBars;
+    compareBars = lastElement.compareBars;
+    noSwap = lastElement.noSwap;
+    arr = [...lastElement.arr];
+
+    record.pop();
+    visualBubbleSort();
+    setTimeout(() => console.log(arr), 20);
+  }
+}
+
+function visualBubbleSort() {
+  // only DOM changes. All the real data comes from the record
+  const bars = document.querySelectorAll(".bar");
+  if (compareBars) {
+    changeBarColor("red", bars[j], bars[j + 1]);
+  } else if (barSwap) {
+    swapBars(bars[j], bars[j + 1]);
+  } else if (unselectBars) {
+    changeBarColor("blue", bars[j], bars[j + 1]);
+  }
 }

@@ -8,6 +8,8 @@ import { FaStepBackward } from "react-icons/fa";
 import {
   recursiveBubbleSort,
   stop,
+  oneStepBack,
+  oneStepForward,
 } from "../algorithms/recursiveSortingAlgorithms";
 
 const StyledButtonRow = styled.div`
@@ -34,7 +36,7 @@ const ButtonRow = ({
 }) => {
   return (
     <StyledButtonRow>
-      <Button>
+      <Button onClick={() => oneStepBack()}>
         <FaStepBackward size={30} />
       </Button>
       {isRunning ? (
@@ -61,9 +63,8 @@ const ButtonRow = ({
       <Button
         onClick={() => {
           if (!isSorted) {
-            stop();
             // Instant first execution but delayed the following (around 3h)
-            recursiveBubbleSort(1, 9999999, setIsSorted);
+            oneStepForward(1, 9999999, setIsSorted);
           }
         }}
       >
