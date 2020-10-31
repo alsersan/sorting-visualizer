@@ -21,9 +21,11 @@ const StyledButtonRow = styled.div`
 const Button = styled.button`
   padding: 1rem;
   border-radius: 50px;
-  cursor: pointer;
+  cursor: ${(props) => (props.isRunning ? "auto" : "pointer") || "pointer"};
   border: none;
   outline: none;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+  background-color: transparent;
   margin: 0 0.5rem;
 `;
 
@@ -36,7 +38,11 @@ const ButtonRow = ({
 }) => {
   return (
     <StyledButtonRow>
-      <Button onClick={() => oneStepBack()}>
+      <Button
+        isRunning={isRunning}
+        disabled={isRunning}
+        onClick={() => oneStepBack()}
+      >
         <FaStepBackward size={30} />
       </Button>
       {isRunning ? (
@@ -61,6 +67,8 @@ const ButtonRow = ({
         </Button>
       )}
       <Button
+        isRunning={isRunning}
+        disabled={isRunning}
         onClick={() => {
           if (!isSorted) {
             // Instant first execution but delayed the following (around 3h)
