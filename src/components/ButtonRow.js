@@ -24,10 +24,13 @@ const Button = styled.button`
   overflow: hidden;
   padding: 1rem;
   border-radius: 50%;
-  cursor: ${(props) => (props.disabled ? "auto" : "pointer") || "pointer"};
+  cursor: ${(props) => (props.disabled ? "auto" : "pointer")};
   border: none;
   outline: none;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+  box-shadow: ${(props) =>
+    props.disabled
+      ? "0 0 0.5rem rgba(0, 0, 0, 0.1)"
+      : "0 0 0.5rem rgba(0, 0, 0, 0.3)"};
   background-color: transparent;
   margin: 0 0.5rem;
 `;
