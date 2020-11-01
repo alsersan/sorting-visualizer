@@ -109,24 +109,22 @@ export function oneStepForward(initialSpeed, speed, setIsSorted) {
 }
 
 export function oneStepBack(setHasStarted) {
-  if (record.length !== 0) {
-    stop();
-    const lastElement = record[record.length - 1];
+  stop();
+  const lastElement = record[record.length - 1];
 
-    i = lastElement.i;
-    j = lastElement.j;
-    barSwap = lastElement.barSwap;
-    unselectBars = lastElement.unselectBars;
-    compareBars = lastElement.compareBars;
-    noSwap = lastElement.noSwap;
-    arr = [...lastElement.arr];
+  i = lastElement.i;
+  j = lastElement.j;
+  barSwap = lastElement.barSwap;
+  unselectBars = lastElement.unselectBars;
+  compareBars = lastElement.compareBars;
+  noSwap = lastElement.noSwap;
+  arr = [...lastElement.arr];
 
-    record.pop();
-    visualBubbleSort();
+  record.pop();
+  visualBubbleSort();
 
-    if (record.length === 0) {
-      setHasStarted(false);
-    }
+  if (record.length === 0) {
+    setHasStarted(false);
   }
 }
 
