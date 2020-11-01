@@ -5,6 +5,7 @@ import { FaPause } from "react-icons/fa";
 import { FaStepForward } from "react-icons/fa";
 import { FaStepBackward } from "react-icons/fa";
 
+import RippleEffect from "./RippleEffect";
 import {
   recursiveBubbleSort,
   stop,
@@ -19,8 +20,10 @@ const StyledButtonRow = styled.div`
 `;
 
 const Button = styled.button`
+  position: relative;
+  overflow: hidden;
   padding: 1rem;
-  border-radius: 50px;
+  border-radius: 50%;
   cursor: ${(props) => (props.isRunning ? "auto" : "pointer") || "pointer"};
   border: none;
   outline: none;
@@ -43,6 +46,7 @@ const ButtonRow = ({
         disabled={isRunning}
         onClick={() => oneStepBack()}
       >
+        <RippleEffect />
         <FaStepBackward size={30} />
       </Button>
       {isRunning ? (
@@ -52,6 +56,7 @@ const ButtonRow = ({
             setIsRunning(false);
           }}
         >
+          <RippleEffect />
           <FaPause size={30} />
         </Button>
       ) : (
@@ -63,6 +68,7 @@ const ButtonRow = ({
             }
           }}
         >
+          <RippleEffect />
           <FaPlay size={30} />
         </Button>
       )}
@@ -76,6 +82,7 @@ const ButtonRow = ({
           }
         }}
       >
+        <RippleEffect />
         <FaStepForward size={30} />
       </Button>
     </StyledButtonRow>

@@ -41,6 +41,7 @@ const App = () => {
     let timeout;
     if (isRunning && !isSorted) {
       timeout = setTimeout(() => {
+        console.log("HOLI");
         stop();
         recursiveBubbleSort(speed, speed, setIsSorted);
       }, 150);
