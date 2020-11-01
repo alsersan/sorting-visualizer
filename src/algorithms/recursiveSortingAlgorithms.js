@@ -101,13 +101,11 @@ function saveStep() {
 export function getArray(newArray) {
   arr = [...newArray];
   i = newArray.length - 1;
-  console.log(arr, i);
 }
 
 export function oneStepForward(initialSpeed, speed, setIsSorted) {
   stop();
   recursiveBubbleSort(initialSpeed, speed, setIsSorted);
-  setTimeout(() => console.log(arr), 20);
 }
 
 export function oneStepBack() {
@@ -125,7 +123,6 @@ export function oneStepBack() {
 
     record.pop();
     visualBubbleSort();
-    setTimeout(() => console.log(arr), 20);
   }
 }
 

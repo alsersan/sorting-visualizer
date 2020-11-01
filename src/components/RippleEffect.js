@@ -30,14 +30,10 @@ const useDebouncedRippleCleanUp = (rippleCount, duration, cleanUpFunction) => {
   useLayoutEffect(() => {
     let bounce = null;
     if (rippleCount > 0) {
-      // clearTimeout(bounce);
-
       bounce = setTimeout(() => {
         cleanUpFunction();
-        // clearTimeout(bounce);
-      }, duration * 4);
+      }, duration * 1.5);
     }
-
     return () => clearTimeout(bounce);
   }, [rippleCount, duration, cleanUpFunction]);
 };

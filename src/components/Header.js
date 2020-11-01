@@ -44,7 +44,6 @@ const Header = ({ speed, setSpeed, size, setSize }) => {
           step="1"
           onChange={(e) => {
             setSize(parseInt(e.target.value, 10));
-            console.log(parseInt(e.target.value, 10));
           }}
         />
         <div style={{ display: "inline-block" }}>{size}</div>

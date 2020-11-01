@@ -41,7 +41,6 @@ const App = () => {
     let timeout;
     if (isRunning && !isSorted) {
       timeout = setTimeout(() => {
-        console.log("HOLI");
         stop();
         recursiveBubbleSort(speed, speed, setIsSorted);
       }, 150);
@@ -59,7 +58,7 @@ const App = () => {
     <React.Fragment>
       <Header speed={speed} setSpeed={setSpeed} size={size} setSize={setSize} />
       <Container>
-        <BarChart speed={speed} array={array} />
+        <BarChart array={array} />
         <ButtonRow
           speed={speed}
           isRunning={isRunning}
