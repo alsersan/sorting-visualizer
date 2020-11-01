@@ -44,7 +44,10 @@ const ButtonRow = ({
       <Button
         isRunning={isRunning}
         disabled={isRunning}
-        onClick={() => oneStepBack()}
+        onClick={() => {
+          setIsSorted(false);
+          oneStepBack();
+        }}
       >
         <RippleEffect />
         <FaStepBackward size={30} />
