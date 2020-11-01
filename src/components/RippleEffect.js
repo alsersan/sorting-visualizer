@@ -32,13 +32,13 @@ const useDebouncedRippleCleanUp = (rippleCount, duration, cleanUpFunction) => {
     if (rippleCount > 0) {
       bounce = setTimeout(() => {
         cleanUpFunction();
-      }, duration * 1.5);
+      }, duration * 5);
     }
     return () => clearTimeout(bounce);
   }, [rippleCount, duration, cleanUpFunction]);
 };
 
-const RippleEffect = ({ duration = 850, color = "#e5e5e5" }) => {
+const RippleEffect = ({ duration = 850, color = "#e5e5e5", disabled }) => {
   const [rippleArray, setRippleArray] = useState([]);
 
   useDebouncedRippleCleanUp(rippleArray.length, duration, () => {
@@ -64,7 +64,11 @@ const RippleEffect = ({ duration = 850, color = "#e5e5e5" }) => {
   };
 
   return (
-    <RippleContainer color={color} duration={duration} onMouseDown={addRipple}>
+    <RippleContainer
+      color={color}
+      duration={duration}
+      onMouseDown={!disabled ? addRipple : null}
+    >
       {rippleArray.length > 0 &&
         rippleArray.map((ripple, index) => {
           return (

@@ -24,6 +24,7 @@ const App = () => {
   const [array, setArray] = useState([]);
   const [isRunning, setIsRunning] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
 
   useEffect(() => {
     const arr = [];
@@ -65,6 +66,8 @@ const App = () => {
           setIsRunning={setIsRunning}
           isSorted={isSorted}
           setIsSorted={setIsSorted}
+          hasStarted={hasStarted}
+          setHasStarted={setHasStarted}
         />
       </Container>
     </React.Fragment>

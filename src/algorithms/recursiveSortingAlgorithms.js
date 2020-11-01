@@ -108,7 +108,7 @@ export function oneStepForward(initialSpeed, speed, setIsSorted) {
   recursiveBubbleSort(initialSpeed, speed, setIsSorted);
 }
 
-export function oneStepBack() {
+export function oneStepBack(setHasStarted) {
   if (record.length !== 0) {
     stop();
     const lastElement = record[record.length - 1];
@@ -123,6 +123,10 @@ export function oneStepBack() {
 
     record.pop();
     visualBubbleSort();
+
+    if (record.length === 0) {
+      setHasStarted(false);
+    }
   }
 }
 

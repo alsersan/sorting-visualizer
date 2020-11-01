@@ -24,7 +24,7 @@ const Button = styled.button`
   overflow: hidden;
   padding: 1rem;
   border-radius: 50%;
-  cursor: ${(props) => (props.isRunning ? "auto" : "pointer") || "pointer"};
+  cursor: ${(props) => (props.disabled ? "auto" : "pointer") || "pointer"};
   border: none;
   outline: none;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
@@ -38,18 +38,20 @@ const ButtonRow = ({
   setIsRunning,
   isSorted,
   setIsSorted,
+  hasStarted,
+  setHasStarted,
 }) => {
   return (
     <StyledButtonRow>
       <Button
         isRunning={isRunning}
-        disabled={isRunning}
+        disabled={isRunning || !hasStarted}
         onClick={() => {
           setIsSorted(false);
-          oneStepBack();
+          oneStepBack(setHasStarted);
         }}
       >
-        <RippleEffect />
+        <RippleEffect disabled={isRunning || !hasStarted} />
         <FaStepBackward size={30} />
       </Button>
       {isRunning ? (
@@ -64,28 +66,31 @@ const ButtonRow = ({
         </Button>
       ) : (
         <Button
+          disabled={isSorted}
           onClick={() => {
             if (!isSorted) {
               recursiveBubbleSort(speed, speed, setIsSorted);
+              setHasStarted(true);
               setIsRunning(true);
             }
           }}
         >
-          <RippleEffect />
+          <RippleEffect disabled={isSorted} />
           <FaPlay size={30} />
         </Button>
       )}
       <Button
         isRunning={isRunning}
-        disabled={isRunning}
+        disabled={isRunning || isSorted}
         onClick={() => {
           if (!isSorted) {
             // Instant first execution but delayed the following (around 3h)
             oneStepForward(1, 9999999, setIsSorted);
+            setHasStarted(true);
           }
         }}
       >
-        <RippleEffect />
+        <RippleEffect disabled={isRunning || isSorted} />
         <FaStepForward size={30} />
       </Button>
     </StyledButtonRow>
