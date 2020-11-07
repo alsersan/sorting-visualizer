@@ -1,21 +1,29 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
-import Header from "./components/Header";
-import BarChart from "./components/BarChart";
-import ButtonRow from "./components/ButtonRow";
+import Sidebar from "./components/Sidebar";
 import {
   recursiveBubbleSort,
   stop,
   getArray,
 } from "./algorithms/recursiveSortingAlgorithms";
+import BarChartContainer from "./components/BarChartContainer";
 
-const Container = styled.div`
-  height: calc(100vh - 3rem);
+const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+`;
+
+const MainContainer = styled.div`
+  height: 100vh;
+  background-color: #d1cfc7;
+  padding: 0.6rem;
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
 `;
 
 const App = () => {
@@ -57,10 +65,10 @@ const App = () => {
 
   return (
     <React.Fragment>
-      <Header speed={speed} setSpeed={setSpeed} size={size} setSize={setSize} />
-      <Container>
-        <BarChart array={array} />
-        <ButtonRow
+      <GlobalStyle />
+      <MainContainer>
+        <BarChartContainer
+          array={array}
           speed={speed}
           isRunning={isRunning}
           setIsRunning={setIsRunning}
@@ -69,7 +77,13 @@ const App = () => {
           hasStarted={hasStarted}
           setHasStarted={setHasStarted}
         />
-      </Container>
+        <Sidebar
+          speed={speed}
+          setSpeed={setSpeed}
+          size={size}
+          setSize={setSize}
+        />
+      </MainContainer>
     </React.Fragment>
   );
 };

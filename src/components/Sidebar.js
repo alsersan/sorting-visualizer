@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-const StyledHeader = styled.header`
-  height: 3rem;
-  background-color: #ccc;
+const StyledSidebar = styled.div`
+  height: 100%;
+  width: 40rem;
+  background-color: #f6f6f6;
 `;
 
 const Header = ({ speed, setSpeed, size, setSize }) => {
@@ -13,7 +14,7 @@ const Header = ({ speed, setSpeed, size, setSize }) => {
     return Math.round((((input - min) * 100) / (max - min)) * 10) / 10;
   };
   return (
-    <StyledHeader>
+    <StyledSidebar>
       <div>
         Speed
         <input
@@ -48,7 +49,7 @@ const Header = ({ speed, setSpeed, size, setSize }) => {
         />
         <div style={{ display: "inline-block" }}>{size}</div>
       </div>
-    </StyledHeader>
+    </StyledSidebar>
   );
 };
 

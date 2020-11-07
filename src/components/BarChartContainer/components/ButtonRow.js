@@ -5,13 +5,13 @@ import { FaPause } from "react-icons/fa";
 import { FaStepForward } from "react-icons/fa";
 import { FaStepBackward } from "react-icons/fa";
 
-import RippleEffect from "./RippleEffect";
+import RippleEffect from "../../RippleEffect";
 import {
   recursiveBubbleSort,
   stop,
   oneStepBack,
   oneStepForward,
-} from "../algorithms/recursiveSortingAlgorithms";
+} from "../../../algorithms/recursiveSortingAlgorithms";
 
 const StyledButtonRow = styled.div`
   margin-top: 1.5rem;
