@@ -1,12 +1,17 @@
 import React from "react";
+import styled from "styled-components";
+import Slider from "./Slider";
+
+const Container = styled.div`
+  width: 90%;
+  margin: 2rem 0;
+`;
 
 const SizeSelector = ({ size, setSize }) => {
   return (
-    <div>
+    <Container>
       Size
-      <input
-        style={{ width: "500px", cursor: "pointer", display: "inline-block" }}
-        type="range"
+      <Slider
         max="110"
         min="9"
         value={size}
@@ -16,7 +21,7 @@ const SizeSelector = ({ size, setSize }) => {
         }}
       />
       <div style={{ display: "inline-block" }}>{size}</div>
-    </div>
+    </Container>
   );
 };
 

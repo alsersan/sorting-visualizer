@@ -1,5 +1,12 @@
 import React from "react";
 
+import styled from "styled-components";
+import Slider from "./Slider";
+
+const Container = styled.div`
+  width: 90%;
+  margin: 2rem 0;
+`;
 const SpeedSelector = ({ speed, setSpeed }) => {
   const speedPercentage = (min, max) => {
     // 450 - speed to get the correct position of the slider
@@ -7,11 +14,9 @@ const SpeedSelector = ({ speed, setSpeed }) => {
     return Math.round((((input - min) * 100) / (max - min)) * 10) / 10;
   };
   return (
-    <div>
+    <Container>
       Speed
-      <input
-        style={{ width: "500px", cursor: "pointer", display: "inline-block" }}
-        type="range"
+      <Slider
         max="449"
         min="0"
         // 450 - speed to get the correct position of the slider
@@ -25,7 +30,7 @@ const SpeedSelector = ({ speed, setSpeed }) => {
       <div style={{ display: "inline-block", marginLeft: "10px" }}>
         {speedPercentage(-4.5, 449)}%
       </div>
-    </div>
+    </Container>
   );
 };
 

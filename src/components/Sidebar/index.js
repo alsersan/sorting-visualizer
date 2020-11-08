@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+
 import SizeSelector from "./components/SizeSelector";
 import SpeedSelector from "./components/SpeedSelector";
 
@@ -10,6 +11,9 @@ const StyledSidebar = styled.div`
   width: 40rem;
   background-color: #f6f6f6;
   border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Header = ({ speed, setSpeed, size, setSize }) => {
