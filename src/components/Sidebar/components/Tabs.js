@@ -14,9 +14,9 @@ const Label = styled.label`
   align-items: center;
   padding: 0 15px;
   height: 100%;
-  background-color: ${(props) => (props.active ? `green` : `white`)};
+  background-color: ${(props) => (props.active ? "#f6f6f6" : "#e6e6e6")};
   border-radius: 10px 10px 0 0;
-  border: 1px black solid;
+
   cursor: pointer;
 `;
 

@@ -7,6 +7,7 @@ const StyledSidebar = styled.div`
   height: 100%;
   width: 40rem;
   background-color: #f6f6f6;
+  border-radius: 4px;
 `;
 
 const Header = ({ speed, setSpeed, size, setSize }) => {
