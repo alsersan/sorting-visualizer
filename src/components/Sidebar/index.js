@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import Tabs from "./components/Tabs";
+
 const StyledSidebar = styled.div`
   height: 100%;
   width: 40rem;
@@ -15,6 +17,7 @@ const Header = ({ speed, setSpeed, size, setSize }) => {
   };
   return (
     <StyledSidebar>
+      <Tabs />
       <div>
         Speed
         <input
