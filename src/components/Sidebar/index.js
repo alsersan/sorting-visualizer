@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 
-import SizeSelector from "./components/SizeSelector";
-import SpeedSelector from "./components/SpeedSelector";
+import PlaygroundMode from "./components/PlaygroundMode";
+import VisualMode from "./components/VisualMode";
 
 import Tabs from "./components/Tabs";
 
@@ -23,11 +23,23 @@ const Sidebar = ({ speed, setSpeed, size, setSize }) => {
     <StyledSidebar>
       {console.log(activeTab)}
       <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
-      <span>
-        {activeTab === 0 ? "tab1" : activeTab === 1 ? "tab2" : "tab3"}
-      </span>
-      <SpeedSelector speed={speed} setSpeed={setSpeed} />
-      <SizeSelector size={size} setSize={setSize} />
+      {activeTab === 0 ? (
+        <PlaygroundMode
+          speed={speed}
+          setSpeed={setSpeed}
+          size={size}
+          setSize={setSize}
+        />
+      ) : activeTab === 1 ? (
+        <VisualMode
+          speed={speed}
+          setSpeed={setSpeed}
+          size={size}
+          setSize={setSize}
+        />
+      ) : (
+        <span>Tab 3</span>
+      )}
     </StyledSidebar>
   );
 };
