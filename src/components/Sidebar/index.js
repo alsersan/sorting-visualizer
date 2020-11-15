@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import styled, { createGlobalStyle } from "styled-components";
 
 import SizeSelector from "./components/SizeSelector";
 import SpeedSelector from "./components/SpeedSelector";
@@ -17,9 +17,15 @@ const StyledSidebar = styled.div`
 `;
 
 const Sidebar = ({ speed, setSpeed, size, setSize }) => {
+  const [activeTab, setActiveTab] = useState(0);
+
   return (
     <StyledSidebar>
-      <Tabs />
+      {console.log(activeTab)}
+      <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
+      <span>
+        {activeTab === 0 ? "tab1" : activeTab === 1 ? "tab2" : "tab3"}
+      </span>
       <SpeedSelector speed={speed} setSpeed={setSpeed} />
       <SizeSelector size={size} setSize={setSize} />
     </StyledSidebar>

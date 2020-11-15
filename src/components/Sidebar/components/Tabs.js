@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const TabContainer = styled.div`
@@ -20,9 +20,7 @@ const Label = styled.label`
   cursor: pointer;
 `;
 
-const Tabs = () => {
-  const [activeTab, setActiveTab] = useState(0);
-  console.log(activeTab);
+const Tabs = ({ activeTab, setActiveTab }) => {
   return (
     <TabContainer>
       {["tab1", "tab2", "tab3"].map((tab, index) => (
