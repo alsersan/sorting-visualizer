@@ -16,7 +16,7 @@ const StyledSidebar = styled.div`
   align-items: center;
 `;
 
-const Header = ({ speed, setSpeed, size, setSize }) => {
+const Sidebar = ({ speed, setSpeed, size, setSize }) => {
   return (
     <StyledSidebar>
       <Tabs />
@@ -26,4 +26,4 @@ const Header = ({ speed, setSpeed, size, setSize }) => {
   );
 };
 
-export default Header;
+export default Sidebar;
