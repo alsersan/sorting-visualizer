@@ -3,8 +3,10 @@ import styled from "styled-components";
 import Bar from "./Bar";
 
 const Container = styled.div`
-  height: 35rem;
-  width: 65rem;
+  height: 70%;
+  max-height: 35rem;
+  width: 90%;
+  max-width: 60rem;
   background-color: #ccc;
   display: flex;
   justify-content: space-around;
