@@ -1,27 +1,20 @@
 import React from "react";
-import styled from "styled-components";
-import Slider from "./Slider";
 
-const Container = styled.div`
-  width: 90%;
-  margin: 2rem 0;
-`;
+import Selector from "./Selector";
 
 const SizeSelector = ({ size, setSize }) => {
   return (
-    <Container>
-      Size
-      <Slider
-        max="110"
-        min="9"
-        value={size}
-        step="1"
-        onChange={(e) => {
-          setSize(parseInt(e.target.value, 10));
-        }}
-      />
-      <div style={{ display: "inline-block" }}>{size}</div>
-    </Container>
+    <Selector
+      mainText="Size"
+      secondaryText={size}
+      max="110"
+      min="9"
+      value={size}
+      step="1"
+      onChange={(e) => {
+        setSize(parseInt(e.target.value, 10));
+      }}
+    />
   );
 };
 
