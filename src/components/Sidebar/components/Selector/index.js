@@ -20,7 +20,6 @@ const Selector = (props) => {
         <span>{props.mainText}</span>
         <span>{props.secondaryText}</span>
       </TextWrapper>
-
       <Slider {...props} />
     </Container>
   );

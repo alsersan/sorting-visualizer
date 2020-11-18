@@ -1,0 +1,56 @@
+import React, { useState } from "react";
+import styled from "styled-components";
+
+const Container = styled.div`
+  width: 90%;
+  margin: 3rem 0;
+`;
+
+const FlexWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
+const Label = styled.label`
+  display: flex;
+  flex-grow: 1;
+  padding: 2px;
+  height: 2rem;
+  width: 8rem;
+  max-width: 8rem;
+  margin: 0.5rem;
+  background-color: ${(props) => (props.active ? "blue" : "red")};
+  cursor: pointer;
+`;
+
+const AlgorithmOptions = () => {
+  const [activeOption, setActiveOption] = useState(0);
+
+  return (
+    <Container>
+      <div>Sorting Algorithm</div>
+      <FlexWrapper>
+        {["option1", "option2", "option3", "option4", "option5", "option6"].map(
+          (option, index) => (
+            <React.Fragment key={index}>
+              <input
+                style={{ display: "none" }}
+                hide="hide"
+                type="radio"
+                id={option}
+                name="option"
+                onClick={() => setActiveOption(index)}
+              />
+              <Label active={index === activeOption} htmlFor={option}>
+                <span>{option}</span>
+              </Label>
+            </React.Fragment>
+          )
+        )}
+      </FlexWrapper>
+    </Container>
+  );
+};
+
+export default AlgorithmOptions;
