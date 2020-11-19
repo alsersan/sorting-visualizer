@@ -78,6 +78,7 @@ const App = () => {
           setHasStarted={setHasStarted}
         />
         <Sidebar
+          hasStarted={hasStarted}
           speed={speed}
           setSpeed={setSpeed}
           size={size}

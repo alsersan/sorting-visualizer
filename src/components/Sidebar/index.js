@@ -16,7 +16,7 @@ const StyledSidebar = styled.div`
   align-items: center;
 `;
 
-const Sidebar = ({ speed, setSpeed, size, setSize }) => {
+const Sidebar = (props) => {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
@@ -24,19 +24,9 @@ const Sidebar = ({ speed, setSpeed, size, setSize }) => {
       {console.log(activeTab)}
       <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
       {activeTab === 0 ? (
-        <PlaygroundMode
-          speed={speed}
-          setSpeed={setSpeed}
-          size={size}
-          setSize={setSize}
-        />
+        <PlaygroundMode {...props} />
       ) : activeTab === 1 ? (
-        <VisualMode
-          speed={speed}
-          setSpeed={setSpeed}
-          size={size}
-          setSize={setSize}
-        />
+        <VisualMode {...props} />
       ) : (
         <span>Tab 3</span>
       )}

@@ -4,6 +4,8 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 90%;
   margin: 3rem 0;
+  opacity: ${(props) => (props.hasStarted ? "0.4" : "1")};
+  pointer-events: ${(props) => (props.hasStarted ? "none" : "auto")};
 `;
 
 const FlexWrapper = styled.div`
@@ -24,11 +26,11 @@ const Label = styled.label`
   cursor: pointer;
 `;
 
-const AlgorithmOptions = () => {
+const AlgorithmOptions = ({ hasStarted }) => {
   const [activeOption, setActiveOption] = useState(0);
 
   return (
-    <Container>
+    <Container hasStarted={hasStarted}>
       <div>Sorting Algorithm</div>
       <FlexWrapper>
         {["option1", "option2", "option3", "option4", "option5", "option6"].map(

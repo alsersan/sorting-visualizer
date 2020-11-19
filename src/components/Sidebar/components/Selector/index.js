@@ -6,6 +6,8 @@ import Slider from "./components/Slider";
 const Container = styled.div`
   width: 90%;
   margin: 2rem 0;
+  opacity: ${(props) => (props.hasStarted ? "0.4" : "1")};
+  pointer-events: ${(props) => (props.hasStarted ? "none" : "auto")};
 `;
 
 const TextWrapper = styled.div`
@@ -15,7 +17,7 @@ const TextWrapper = styled.div`
 
 const Selector = (props) => {
   return (
-    <Container>
+    <Container hasStarted={props.hasStarted}>
       <TextWrapper>
         <span>{props.mainText}</span>
         <span>{props.secondaryText}</span>

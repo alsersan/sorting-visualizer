@@ -2,9 +2,10 @@ import React from "react";
 
 import Selector from "./Selector";
 
-const SizeSelector = ({ size, setSize }) => {
+const SizeSelector = ({ size, setSize, hasStarted }) => {
   return (
     <Selector
+      hasStarted={hasStarted}
       mainText="Size"
       secondaryText={size}
       max="110"
