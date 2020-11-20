@@ -10,6 +10,8 @@ import {
 } from "./algorithms/recursiveSortingAlgorithms";
 import BarChartContainer from "./components/BarChartContainer";
 
+import { SortingOptionsProvider } from "./contexts/SortingOptionsContext";
+
 const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
@@ -66,25 +68,27 @@ const App = () => {
   return (
     <React.Fragment>
       <GlobalStyle />
-      <MainContainer>
-        <BarChartContainer
-          array={array}
-          speed={speed}
-          isRunning={isRunning}
-          setIsRunning={setIsRunning}
-          isSorted={isSorted}
-          setIsSorted={setIsSorted}
-          hasStarted={hasStarted}
-          setHasStarted={setHasStarted}
-        />
-        <Sidebar
-          hasStarted={hasStarted}
-          speed={speed}
-          setSpeed={setSpeed}
-          size={size}
-          setSize={setSize}
-        />
-      </MainContainer>
+      <SortingOptionsProvider>
+        <MainContainer>
+          <BarChartContainer
+            array={array}
+            speed={speed}
+            isRunning={isRunning}
+            setIsRunning={setIsRunning}
+            isSorted={isSorted}
+            setIsSorted={setIsSorted}
+            hasStarted={hasStarted}
+            setHasStarted={setHasStarted}
+          />
+          <Sidebar
+            hasStarted={hasStarted}
+            speed={speed}
+            setSpeed={setSpeed}
+            size={size}
+            setSize={setSize}
+          />
+        </MainContainer>
+      </SortingOptionsProvider>
     </React.Fragment>
   );
 };
