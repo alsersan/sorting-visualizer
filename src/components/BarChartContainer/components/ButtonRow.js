@@ -33,6 +33,14 @@ const Button = styled.button`
       : "0 0 0.5rem rgba(0, 0, 0, 0.3)"};
   background-color: transparent;
   margin: 0 0.5rem;
+  animation: ${({ hasStarted, disabled }) =>
+    !hasStarted && !disabled ? "bounce 0.8s ease 0.5s infinite" : "none"};
+
+  @keyframes bounce {
+    50% {
+      transform: scale(0.9, 1.1) translateY(-0.8rem);
+    }
+  }
 `;
 
 const ButtonRow = ({
@@ -47,6 +55,7 @@ const ButtonRow = ({
   return (
     <StyledButtonRow>
       <Button
+        hasStarted={hasStarted}
         isRunning={isRunning}
         disabled={isRunning || !hasStarted}
         onClick={() => {
@@ -59,6 +68,7 @@ const ButtonRow = ({
       </Button>
       {isRunning ? (
         <Button
+          hasStarted={hasStarted}
           onClick={() => {
             stop();
             setIsRunning(false);
@@ -69,6 +79,7 @@ const ButtonRow = ({
         </Button>
       ) : (
         <Button
+          hasStarted={hasStarted}
           disabled={isSorted}
           onClick={() => {
             if (!isSorted) {
@@ -83,6 +94,7 @@ const ButtonRow = ({
         </Button>
       )}
       <Button
+        hasStarted={hasStarted}
         isRunning={isRunning}
         disabled={isRunning || isSorted}
         onClick={() => {
