@@ -2,7 +2,11 @@ import React from "react";
 
 import Selector from "./Selector";
 
-const SizeSelector = ({ size, setSize, hasStarted }) => {
+import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
+
+const SizeSelector = ({ hasStarted }) => {
+  const { size, setSize } = useSortingOptionsContext();
+
   return (
     <Selector
       hasStarted={hasStarted}

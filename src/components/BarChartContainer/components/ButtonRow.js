@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
@@ -12,6 +12,7 @@ import {
   oneStepBack,
   oneStepForward,
 } from "../../../algorithms/recursiveSortingAlgorithms";
+import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
 
 const StyledButtonRow = styled.div`
   margin-top: 1.5rem;
@@ -44,7 +45,6 @@ const Button = styled.button`
 `;
 
 const ButtonRow = ({
-  speed,
   isRunning,
   setIsRunning,
   isSorted,
@@ -52,6 +52,19 @@ const ButtonRow = ({
   hasStarted,
   setHasStarted,
 }) => {
+  const { speed } = useSortingOptionsContext();
+
+  useEffect(() => {
+    let timeout;
+    if (isRunning && !isSorted) {
+      timeout = setTimeout(() => {
+        stop();
+        recursiveBubbleSort(speed, speed, setIsSorted);
+      }, 150);
+    }
+    return () => clearTimeout(timeout);
+  }, [speed]);
+
   return (
     <StyledButtonRow>
       <Button

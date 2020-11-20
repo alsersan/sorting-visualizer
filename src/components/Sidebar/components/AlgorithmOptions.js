@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
+
+import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
 
 const Container = styled.div`
   width: 90%;
@@ -27,7 +29,7 @@ const Label = styled.label`
 `;
 
 const AlgorithmOptions = ({ hasStarted }) => {
-  const [activeOption, setActiveOption] = useState(0);
+  const { activeOption, setActiveOption } = useSortingOptionsContext();
 
   return (
     <Container hasStarted={hasStarted}>

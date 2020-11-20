@@ -2,7 +2,11 @@ import React from "react";
 
 import Selector from "./Selector";
 
-const SpeedSelector = ({ speed, setSpeed }) => {
+import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
+
+const SpeedSelector = () => {
+  const { speed, setSpeed } = useSortingOptionsContext();
+
   const speedPercentageCalculator = (min, max) => {
     // 450 - speed to get the correct position of the slider
     const input = 450 - speed;

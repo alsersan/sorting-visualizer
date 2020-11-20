@@ -5,13 +5,13 @@ import SpeedSelector from "./SpeedSelector";
 import AlgorithmOptions from "./AlgorithmOptions";
 import ColorSelection from "./ColorSelection";
 
-const PlaygroundMode = ({ size, setSize, speed, setSpeed, hasStarted }) => {
+const PlaygroundMode = ({ hasStarted }) => {
   return (
     <React.Fragment>
       <span>Playground Mode</span>
       <AlgorithmOptions hasStarted={hasStarted} />
-      <SizeSelector size={size} setSize={setSize} hasStarted={hasStarted} />
-      <SpeedSelector speed={speed} setSpeed={setSpeed} />
+      <SizeSelector hasStarted={hasStarted} />
+      <SpeedSelector />
       <ColorSelection />
     </React.Fragment>
   );

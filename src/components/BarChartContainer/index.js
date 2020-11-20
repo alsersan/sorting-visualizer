@@ -18,8 +18,6 @@ const Container = styled.div`
 `;
 
 const BarChartContainer = ({
-  array,
-  speed,
   isRunning,
   setIsRunning,
   isSorted,
@@ -29,9 +27,8 @@ const BarChartContainer = ({
 }) => {
   return (
     <Container>
-      <BarChart array={array} />
+      <BarChart />
       <ButtonRow
-        speed={speed}
         isRunning={isRunning}
         setIsRunning={setIsRunning}
         isSorted={isSorted}
