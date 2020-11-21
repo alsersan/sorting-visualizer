@@ -14,7 +14,7 @@ const StyledSlider = styled.input`
     height: 26px;
     width: 26px;
     border-radius: 50%;
-    background-color: #f6f6f6;
+    background-color: ${(props) => props.theme.backgroundColor.secondary};
     border: 2px solid #555;
 
     &:hover {
@@ -31,7 +31,7 @@ const StyledSlider = styled.input`
     height: 22px;
     width: 22px;
     border-radius: 50%;
-    background-color: #f6f6f6;
+    background-color: ${(props) => props.theme.backgroundColor.secondary};
     border: 2px solid #555;
 
     &:hover {

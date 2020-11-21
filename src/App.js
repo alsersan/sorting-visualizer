@@ -4,6 +4,7 @@ import { createGlobalStyle } from "styled-components";
 
 import Sidebar from "./components/Sidebar";
 import BarChartContainer from "./components/BarChartContainer";
+import StyledThemeProvider from "./StyledThemeProvider";
 
 import { SortingOptionsProvider } from "./contexts/SortingOptionsContext";
 import { AlgorithmProvider } from "./contexts/AlgorithmContext";
@@ -16,9 +17,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: ${(props) => props.theme.main.fontFamily};
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   }
@@ -26,8 +25,8 @@ const GlobalStyle = createGlobalStyle`
 
 const MainContainer = styled.div`
   height: 100vh;
-  background-color: #d1cfc7;
-  padding: 0.6rem;
+  background-color: ${(props) => props.theme.backgroundColor.primary};
+  padding: ${(props) => props.theme.main.spacing};
   display: flex;
   justify-content: center;
 `;
@@ -35,15 +34,17 @@ const MainContainer = styled.div`
 const App = () => {
   return (
     <React.Fragment>
-      <GlobalStyle />
-      <AlgorithmProvider>
-        <SortingOptionsProvider>
-          <MainContainer>
-            <BarChartContainer />
-            <Sidebar />
-          </MainContainer>
-        </SortingOptionsProvider>
-      </AlgorithmProvider>
+      <StyledThemeProvider>
+        <GlobalStyle />
+        <AlgorithmProvider>
+          <SortingOptionsProvider>
+            <MainContainer>
+              <BarChartContainer />
+              <Sidebar />
+            </MainContainer>
+          </SortingOptionsProvider>
+        </AlgorithmProvider>
+      </StyledThemeProvider>
     </React.Fragment>
   );
 };

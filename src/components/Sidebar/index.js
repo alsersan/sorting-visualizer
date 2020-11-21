@@ -9,8 +9,8 @@ import ColorSelection from "./components/ColorSelection";
 const StyledSidebar = styled.div`
   height: 100%;
   width: 40rem;
-  background-color: #f6f6f6;
-  border-radius: 4px;
+  background-color: ${(props) => props.theme.backgroundColor.secondary};
+  border-radius: ${(props) => props.theme.main.borderRadius};
   display: flex;
   flex-direction: column;
   align-items: center;

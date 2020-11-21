@@ -7,14 +7,14 @@ import ButtonRow from "./components/ButtonRow";
 const Container = styled.div`
   height: 100%;
   width: 70rem;
-  background-color: #f6f6f6;
-  margin-right: 0.6rem;
+  background-color: ${(props) => props.theme.backgroundColor.secondary};
+  margin-right: ${(props) => props.theme.main.spacing};
   flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border-radius: 4px;
+  border-radius: ${(props) => props.theme.main.borderRadius};
 `;
 
 const BarChartContainer = () => {
