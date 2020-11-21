@@ -3,14 +3,10 @@ import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 
 import Sidebar from "./components/Sidebar";
-// import {
-//   recursiveBubbleSort,
-//   stop,
-//   getArray,
-// } from "./algorithms/recursiveSortingAlgorithms";
 import BarChartContainer from "./components/BarChartContainer";
 
 import { SortingOptionsProvider } from "./contexts/SortingOptionsContext";
+import { AlgorithmProvider } from "./contexts/AlgorithmContext";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -29,32 +25,17 @@ const MainContainer = styled.div`
 `;
 
 const App = () => {
-  const [isRunning, setIsRunning] = useState(false);
-  const [isSorted, setIsSorted] = useState(false);
-  const [hasStarted, setHasStarted] = useState(false);
-
-  useEffect(() => {
-    if (isSorted) {
-      setIsRunning(false);
-    }
-  }, [isSorted]);
-
   return (
     <React.Fragment>
       <GlobalStyle />
-      <SortingOptionsProvider>
-        <MainContainer>
-          <BarChartContainer
-            isRunning={isRunning}
-            setIsRunning={setIsRunning}
-            isSorted={isSorted}
-            setIsSorted={setIsSorted}
-            hasStarted={hasStarted}
-            setHasStarted={setHasStarted}
-          />
-          <Sidebar hasStarted={hasStarted} />
-        </MainContainer>
-      </SortingOptionsProvider>
+      <AlgorithmProvider>
+        <SortingOptionsProvider>
+          <MainContainer>
+            <BarChartContainer />
+            <Sidebar />
+          </MainContainer>
+        </SortingOptionsProvider>
+      </AlgorithmProvider>
     </React.Fragment>
   );
 };

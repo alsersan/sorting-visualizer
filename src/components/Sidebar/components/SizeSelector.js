@@ -3,9 +3,11 @@ import React from "react";
 import Selector from "./Selector";
 
 import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
+import { useAlgorithmContext } from "../../../contexts/AlgorithmContext";
 
-const SizeSelector = ({ hasStarted }) => {
+const SizeSelector = () => {
   const { size, setSize } = useSortingOptionsContext();
+  const { hasStarted } = useAlgorithmContext();
 
   return (
     <Selector

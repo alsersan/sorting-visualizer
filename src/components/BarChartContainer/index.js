@@ -17,25 +17,11 @@ const Container = styled.div`
   border-radius: 4px;
 `;
 
-const BarChartContainer = ({
-  isRunning,
-  setIsRunning,
-  isSorted,
-  setIsSorted,
-  hasStarted,
-  setHasStarted,
-}) => {
+const BarChartContainer = () => {
   return (
     <Container>
       <BarChart />
-      <ButtonRow
-        isRunning={isRunning}
-        setIsRunning={setIsRunning}
-        isSorted={isSorted}
-        setIsSorted={setIsSorted}
-        hasStarted={hasStarted}
-        setHasStarted={setHasStarted}
-      />
+      <ButtonRow />
     </Container>
   );
 };

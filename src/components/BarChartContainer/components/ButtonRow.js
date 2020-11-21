@@ -12,7 +12,9 @@ import {
   oneStepBack,
   oneStepForward,
 } from "../../../algorithms/recursiveSortingAlgorithms";
+
 import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
+import { useAlgorithmContext } from "../../../contexts/AlgorithmContext";
 
 const StyledButtonRow = styled.div`
   margin-top: 1.5rem;
@@ -44,15 +46,16 @@ const Button = styled.button`
   }
 `;
 
-const ButtonRow = ({
-  isRunning,
-  setIsRunning,
-  isSorted,
-  setIsSorted,
-  hasStarted,
-  setHasStarted,
-}) => {
+const ButtonRow = () => {
   const { speed } = useSortingOptionsContext();
+  const {
+    isRunning,
+    setIsRunning,
+    isSorted,
+    setIsSorted,
+    hasStarted,
+    setHasStarted,
+  } = useAlgorithmContext();
 
   useEffect(() => {
     let timeout;

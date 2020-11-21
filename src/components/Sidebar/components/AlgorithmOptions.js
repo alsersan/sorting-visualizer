@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
+import { useAlgorithmContext } from "../../../contexts/AlgorithmContext";
 
 const Container = styled.div`
   width: 90%;
@@ -28,8 +29,9 @@ const Label = styled.label`
   cursor: pointer;
 `;
 
-const AlgorithmOptions = ({ hasStarted }) => {
+const AlgorithmOptions = () => {
   const { activeOption, setActiveOption } = useSortingOptionsContext();
+  const { hasStarted } = useAlgorithmContext();
 
   return (
     <Container hasStarted={hasStarted}>
