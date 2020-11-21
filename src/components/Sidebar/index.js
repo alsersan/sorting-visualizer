@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-import PlaygroundMode from "./components/PlaygroundMode";
+import SizeSelector from "./components/SizeSelector";
+import SpeedSelector from "./components/SpeedSelector";
+import AlgorithmOptions from "./components/AlgorithmOptions";
+import ColorSelection from "./components/ColorSelection";
 
 const StyledSidebar = styled.div`
   height: 100%;
@@ -16,7 +19,10 @@ const StyledSidebar = styled.div`
 const Sidebar = () => {
   return (
     <StyledSidebar>
-      <PlaygroundMode />
+      <AlgorithmOptions />
+      <SizeSelector />
+      <SpeedSelector />
+      <ColorSelection />
     </StyledSidebar>
   );
 };
