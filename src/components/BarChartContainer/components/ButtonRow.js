@@ -47,7 +47,7 @@ const Button = styled.button`
 `;
 
 const ButtonRow = () => {
-  const { speed } = useSortingOptionsContext();
+  const { speed, color1, color2, color3 } = useSortingOptionsContext();
   const {
     isRunning,
     setIsRunning,
@@ -62,7 +62,7 @@ const ButtonRow = () => {
     if (isRunning && !isSorted) {
       timeout = setTimeout(() => {
         stop();
-        recursiveBubbleSort(speed, speed, setIsSorted);
+        recursiveBubbleSort(speed, speed, setIsSorted, color1, color2, color3);
       }, 150);
     }
     return () => clearTimeout(timeout);
@@ -76,7 +76,7 @@ const ButtonRow = () => {
         disabled={isRunning || !hasStarted}
         onClick={() => {
           setIsSorted(false);
-          oneStepBack(setHasStarted);
+          oneStepBack(setHasStarted, color1, color2);
         }}
       >
         <RippleEffect disabled={isRunning || !hasStarted} />
@@ -99,7 +99,14 @@ const ButtonRow = () => {
           disabled={isSorted}
           onClick={() => {
             if (!isSorted) {
-              recursiveBubbleSort(speed, speed, setIsSorted);
+              recursiveBubbleSort(
+                speed,
+                speed,
+                setIsSorted,
+                color1,
+                color2,
+                color3
+              );
               setHasStarted(true);
               setIsRunning(true);
             }
@@ -116,7 +123,7 @@ const ButtonRow = () => {
         onClick={() => {
           if (!isSorted) {
             // Instant first execution but delayed the following (around 3h)
-            oneStepForward(1, 9999999, setIsSorted);
+            oneStepForward(1, 9999999, setIsSorted, color1, color2, color3);
             setHasStarted(true);
           }
         }}

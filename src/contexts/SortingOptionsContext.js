@@ -5,7 +5,7 @@ import { getArray } from "../algorithms/recursiveSortingAlgorithms";
 const SortingOptionsContext = React.createContext();
 
 const SortingOptionsProvider = ({ children }) => {
-  const [color1, setColor1] = useState("#cccccc");
+  const [color1, setColor1] = useState("#ec3232");
   const [color2, setColor2] = useState("#3226df");
   const [color3, setColor3] = useState("#216e3c");
 

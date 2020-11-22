@@ -21,7 +21,7 @@ const BarChart = () => {
   return (
     <Container>
       {array.map((number, index) => (
-        <Bar number={number} key={index} className="bar" />
+        <Bar number={number} key={index} className="bar unsorted" />
       ))}
     </Container>
   );
