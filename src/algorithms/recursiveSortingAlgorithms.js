@@ -13,29 +13,43 @@ export function recursiveBubbleSort(
   initialSpeed,
   speed,
   setIsSorted,
-  color1,
-  color2,
-  color3
+  unsortedColor,
+  selectedColor,
+  sortedColor
 ) {
   const bars = document.querySelectorAll(".bar");
 
   timer = setTimeout(() => {
     saveStep();
     if (compareBars) {
-      changeBarColor(color2, bars[j], bars[j + 1]);
+      changeBarColor(selectedColor, bars[j], bars[j + 1]);
       changeClass("unsorted", "selected", bars[j], bars[j + 1]);
 
       if (arr[j] > arr[j + 1]) {
-        // If first bar id bigger than second bar, swap them
+        // If first bar is bigger than second bar, swap them
         compareBars = false;
         barSwap = true;
-        recursiveBubbleSort(speed, speed, setIsSorted, color1, color2, color3);
+        recursiveBubbleSort(
+          speed,
+          speed,
+          setIsSorted,
+          unsortedColor,
+          selectedColor,
+          sortedColor
+        );
         return;
       } else {
-        // If not, execute unselectBars to color the bars red again
+        // If not, execute unselectBars to color them again with unselectedColor
         compareBars = false;
         unselectBars = true;
-        recursiveBubbleSort(speed, speed, setIsSorted, color1, color2, color3);
+        recursiveBubbleSort(
+          speed,
+          speed,
+          setIsSorted,
+          unsortedColor,
+          selectedColor,
+          sortedColor
+        );
         return;
       }
     } else if (barSwap) {
@@ -45,21 +59,25 @@ export function recursiveBubbleSort(
       noSwap = false;
       barSwap = false;
       unselectBars = true;
-      recursiveBubbleSort(speed, speed, setIsSorted, color1, color2, color3);
+      recursiveBubbleSort(
+        speed,
+        speed,
+        setIsSorted,
+        unsortedColor,
+        selectedColor,
+        sortedColor
+      );
       return;
     } else if (unselectBars) {
       if (j + 1 === i) {
-        // If the last bar is sorted, color it orange
-
-        changeBarColor(color1, bars[j]);
+        // If the last bar is sorted, color it with sortedColor
+        changeBarColor(unsortedColor, bars[j]);
         changeClass("selected", "unsorted", bars[j]);
-
-        changeBarColor(color3, bars[j + 1]);
+        changeBarColor(sortedColor, bars[j + 1]);
         changeClass("selected", "sorted", bars[j + 1]);
       } else {
-        // After checking and/or swapping the bars, color them red again
-
-        changeBarColor(color1, bars[j], bars[j + 1]);
+        // If the last bar is not sorted, after checking and/or swapping the bars, color them with unsortedColor
+        changeBarColor(unsortedColor, bars[j], bars[j + 1]);
         changeClass("selected", "unsorted", bars[j], bars[j + 1]);
       }
       unselectBars = false;
@@ -69,20 +87,33 @@ export function recursiveBubbleSort(
     // Each time, increase the value of j one unit and check if the function has to be executed again
     j++;
 
-    // if j < i, the cycle has not been yet completed
     if (j < i) {
-      recursiveBubbleSort(speed, speed, setIsSorted, color1, color2, color3);
-
-      // if j === i, the cycle  has been completed, but only execute again if there have been swaps in this cycle (otherwise the array is already sorted) and if i > 1 (making the last possible value of i 1)
+      // if j < i, the cycle has not been yet completed
+      recursiveBubbleSort(
+        speed,
+        speed,
+        setIsSorted,
+        unsortedColor,
+        selectedColor,
+        sortedColor
+      );
     } else if (j === i && i > 1 && !noSwap) {
+      // if j === i, the cycle  has been completed, but only execute again if there have been swaps in this cycle (otherwise the array is already sorted) and if i > 1 (making the last possible value of i 1)
       noSwap = true;
       j = 0;
       i--;
-      recursiveBubbleSort(speed, speed, setIsSorted, color1, color2, color3);
-      // if the conditions above are not met, then the array is sorted
+      recursiveBubbleSort(
+        speed,
+        speed,
+        setIsSorted,
+        unsortedColor,
+        selectedColor,
+        sortedColor
+      );
     } else {
+      // if the conditions above are not met, then the array is sorted
       bars.forEach((bar) => {
-        changeBarColor(color3, bar);
+        changeBarColor(sortedColor, bar);
         changeClass("unsorted", "sorted", bar);
       });
       sorted = true;
@@ -130,7 +161,7 @@ function changeClass(classRemove, classAdd, ...elements) {
   });
 }
 
-// get the size of the array every time the size slider changes its value (imported in App component)
+// get the size of the array every time the size slider changes its value (imported in SortingOptionsContext)
 export function getArray(newArray) {
   arr = [...newArray];
   i = newArray.length - 1;
@@ -140,15 +171,22 @@ export function oneStepForward(
   initialSpeed,
   speed,
   setIsSorted,
-  color1,
-  color2,
-  color3
+  unsortedColor,
+  selectedColor,
+  sortedColor
 ) {
   stop();
-  recursiveBubbleSort(initialSpeed, speed, setIsSorted, color1, color2, color3);
+  recursiveBubbleSort(
+    initialSpeed,
+    speed,
+    setIsSorted,
+    unsortedColor,
+    selectedColor,
+    sortedColor
+  );
 }
 
-export function oneStepBack(setHasStarted, color1, color2) {
+export function oneStepBack(setHasStarted, unsortedColor, selectedColor) {
   stop();
   const lastElement = record[record.length - 1];
 
@@ -161,31 +199,31 @@ export function oneStepBack(setHasStarted, color1, color2) {
   arr = [...lastElement.arr];
 
   record.pop();
-  visualBubbleSort(color1, color2);
+  visualBubbleSort(unsortedColor, selectedColor);
 
   if (record.length === 0) {
     setHasStarted(false);
   }
 }
 
-function visualBubbleSort(color1, color2) {
-  // If the array was already sorted, all the bars that were colored orange in the last step are colored red
+function visualBubbleSort(unsortedColor, selectedColor) {
+  // If the array was already sorted, all the bars that were colored with sortedColor in the last step are colored with unsortedColor
   const bars = document.querySelectorAll(".bar");
   if (sorted) {
     for (let x = 0; x < i; x++) {
-      changeBarColor(color1, bars[x]);
+      changeBarColor(unsortedColor, bars[x]);
     }
     sorted = false;
   }
 
   // only DOM changes. All the real data comes from the record
   if (compareBars) {
-    changeBarColor(color1, bars[j], bars[j + 1]);
+    changeBarColor(unsortedColor, bars[j], bars[j + 1]);
     changeClass("selected", "unsorted", bars[j], bars[j + 1]);
   } else if (barSwap) {
     swapBars(bars[j], bars[j + 1]);
   } else if (unselectBars) {
-    changeBarColor(color2, bars[j], bars[j + 1]);
+    changeBarColor(selectedColor, bars[j], bars[j + 1]);
     changeClass("sorted", "selected", bars[j], bars[j + 1]);
     changeClass("unsorted", "selected", bars[j], bars[j + 1]);
   }

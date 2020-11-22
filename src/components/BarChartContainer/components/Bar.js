@@ -38,7 +38,6 @@ const Bar = (props) => {
   return (
     <StyledBar
       ref={barEl}
-      background={color1}
       className={props.className}
       style={{
         height: `${props.number}%`,
