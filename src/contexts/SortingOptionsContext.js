@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 
-import { getArray } from "../algorithms/recursiveSortingAlgorithms";
+import { getArray } from "../algorithms/recursiveSelectionSort";
 
 const SortingOptionsContext = React.createContext();
 

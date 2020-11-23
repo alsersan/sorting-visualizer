@@ -13,6 +13,9 @@ import {
   oneStepForward,
 } from "../../../algorithms/recursiveSortingAlgorithms";
 
+import { selectionSort } from "../../../algorithms/sortingAlgorithms";
+import { recursiveSelectionSort } from "../../../algorithms/recursiveSelectionSort";
+
 import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
 import { useAlgorithmContext } from "../../../contexts/AlgorithmContext";
 
@@ -47,7 +50,7 @@ const Button = styled.button`
 `;
 
 const ButtonRow = () => {
-  const { speed, color1, color2, color3 } = useSortingOptionsContext();
+  const { speed, color1, color2, color3, array } = useSortingOptionsContext();
   const {
     isRunning,
     setIsRunning,
@@ -99,16 +102,17 @@ const ButtonRow = () => {
           disabled={isSorted}
           onClick={() => {
             if (!isSorted) {
-              recursiveBubbleSort(
-                speed,
-                speed,
-                setIsSorted,
-                color1,
-                color2,
-                color3
-              );
-              setHasStarted(true);
-              setIsRunning(true);
+              // recursiveBubbleSort(
+              //   speed,
+              //   speed,
+              //   setIsSorted,
+              //   color1,
+              //   color2,
+              //   color3
+              // );
+              // setHasStarted(true);
+              // setIsRunning(true);
+              recursiveSelectionSort(speed);
             }
           }}
         >
