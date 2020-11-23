@@ -6,15 +6,18 @@ import { FaStepForward } from "react-icons/fa";
 import { FaStepBackward } from "react-icons/fa";
 
 import RippleEffect from "../../RippleEffect";
-import {
-  recursiveBubbleSort,
-  stop,
-  oneStepBack,
-  oneStepForward,
-} from "../../../algorithms/recursiveSortingAlgorithms";
+// import {
+//   recursiveBubbleSort,
+//   stop,
+//   oneStepBack,
+//   oneStepForward,
+// } from "../../../algorithms/recursiveSortingAlgorithms";
 
-import { selectionSort } from "../../../algorithms/sortingAlgorithms";
-import { recursiveSelectionSort } from "../../../algorithms/recursiveSelectionSort";
+import {
+  recursiveSelectionSort,
+  stop,
+  selectionSortStepForward,
+} from "../../../algorithms/recursiveSelectionSort";
 
 import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
 import { useAlgorithmContext } from "../../../contexts/AlgorithmContext";
@@ -65,7 +68,7 @@ const ButtonRow = () => {
     if (isRunning && !isSorted) {
       timeout = setTimeout(() => {
         stop();
-        recursiveBubbleSort(speed, speed, setIsSorted, color1, color2, color3);
+        // recursiveBubbleSort(speed, speed, setIsSorted, color1, color2, color3);
       }, 150);
     }
     return () => clearTimeout(timeout);
@@ -79,7 +82,7 @@ const ButtonRow = () => {
         disabled={isRunning || !hasStarted}
         onClick={() => {
           setIsSorted(false);
-          oneStepBack(setHasStarted, color1, color2);
+          // oneStepBack(setHasStarted, color1, color2);
         }}
       >
         <RippleEffect disabled={isRunning || !hasStarted} />
@@ -110,9 +113,9 @@ const ButtonRow = () => {
               //   color2,
               //   color3
               // );
-              // setHasStarted(true);
-              // setIsRunning(true);
-              recursiveSelectionSort(speed);
+              setHasStarted(true);
+              setIsRunning(true);
+              recursiveSelectionSort(speed, speed, setIsSorted);
             }
           }}
         >
@@ -127,7 +130,8 @@ const ButtonRow = () => {
         onClick={() => {
           if (!isSorted) {
             // Instant first execution but delayed the following (around 3h)
-            oneStepForward(1, 9999999, setIsSorted, color1, color2, color3);
+            // oneStepForward(1, 9999999, setIsSorted, color1, color2, color3);
+            selectionSortStepForward(1, 9999999, setIsSorted);
             setHasStarted(true);
           }
         }}

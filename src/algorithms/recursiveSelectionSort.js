@@ -12,7 +12,7 @@ let unselectBar = false;
 let barSwap = false;
 let unselectBars = false;
 
-export function recursiveSelectionSort(speed) {
+export function recursiveSelectionSort(initialSpeed, speed, setIsSorted) {
   const bars = document.querySelectorAll(".bar");
 
   timer = setTimeout(() => {
@@ -21,7 +21,7 @@ export function recursiveSelectionSort(speed) {
       minValue = arr[i];
       referenceBar = false;
       selectBar = true;
-      recursiveSelectionSort(speed);
+      recursiveSelectionSort(speed, speed, setIsSorted);
       return;
     }
 
@@ -32,13 +32,13 @@ export function recursiveSelectionSort(speed) {
         // Only execute if the bar has the smallest value so far (stored in minValue)
         selectBar = false;
         selectNewMin = true;
-        recursiveSelectionSort(speed);
+        recursiveSelectionSort(speed, speed, setIsSorted);
         return;
       } else {
         // else, just go to unselectBar
         selectBar = false;
         unselectBar = true;
-        recursiveSelectionSort(speed);
+        recursiveSelectionSort(speed, speed, setIsSorted);
         return;
       }
     }
@@ -64,7 +64,7 @@ export function recursiveSelectionSort(speed) {
       swapBars(bars[i], bars[index]);
       barSwap = false;
       unselectBars = true;
-      recursiveSelectionSort(speed);
+      recursiveSelectionSort(speed, speed, setIsSorted);
       return;
     }
 
@@ -79,10 +79,12 @@ export function recursiveSelectionSort(speed) {
         index = 0;
         noSwap = true;
         j = i + 1;
-        recursiveSelectionSort(speed);
+        recursiveSelectionSort(speed, speed, setIsSorted);
         return;
       } else {
         changeBarColor("orange", bars[i], bars[i + 1]);
+        setIsSorted(true);
+        console.log("SORTED");
         return;
       }
     }
@@ -91,17 +93,17 @@ export function recursiveSelectionSort(speed) {
 
     if (j < arr.length) {
       selectBar = true;
-      recursiveSelectionSort(speed);
+      recursiveSelectionSort(speed, speed, setIsSorted);
     } else {
       if (!noSwap) {
         barSwap = true;
-        recursiveSelectionSort(speed);
+        recursiveSelectionSort(speed, speed, setIsSorted);
       } else {
         unselectBars = true;
-        recursiveSelectionSort(speed);
+        recursiveSelectionSort(speed, speed, setIsSorted);
       }
     }
-  }, speed);
+  }, initialSpeed);
 }
 
 export function stop() {
@@ -123,4 +125,9 @@ function swapBars(a, b) {
 
 function changeBarColor(color, ...elements) {
   elements.forEach((element) => (element.style.background = color));
+}
+
+export function selectionSortStepForward(initialSpeed, speed, setIsSorted) {
+  stop();
+  recursiveSelectionSort(initialSpeed, speed, setIsSorted);
 }
