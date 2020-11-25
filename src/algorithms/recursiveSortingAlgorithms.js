@@ -1,3 +1,5 @@
+import { swapBars, changeBarColor, changeClass } from "./generalUseFunctions";
+
 let timer;
 let i = 0;
 let j = 0;
@@ -127,19 +129,6 @@ export function bubbleSortStop() {
   clearTimeout(timer);
 }
 
-function swapBars(a, b) {
-  a.style.height = `${b.firstElementChild.textContent}%`;
-  b.style.height = `${a.firstElementChild.textContent}%`;
-  [a.firstElementChild.textContent, b.firstElementChild.textContent] = [
-    b.firstElementChild.textContent,
-    a.firstElementChild.textContent,
-  ];
-}
-
-function changeBarColor(color, ...elements) {
-  elements.forEach((element) => (element.style.background = color));
-}
-
 // save all variables of each step in an array, to be able to go back in time
 function saveStep() {
   const step = {
@@ -152,13 +141,6 @@ function saveStep() {
     arr: [...arr],
   };
   record.push(step);
-}
-
-function changeClass(classRemove, classAdd, ...elements) {
-  elements.forEach((element) => {
-    element.classList.remove(classRemove);
-    element.classList.add(classAdd);
-  });
 }
 
 // get the size of the array every time the size slider changes its value (imported in SortingOptionsContext)

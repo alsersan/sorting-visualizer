@@ -1,3 +1,5 @@
+import { swapBars, changeBarColor } from "./generalUseFunctions";
+
 let timer;
 let i = 0;
 let j = 1;
@@ -112,19 +114,6 @@ export function selectionSortStop() {
 
 export function selectionSortGetArray(newArray) {
   arr = [...newArray];
-}
-
-function swapBars(a, b) {
-  a.style.height = `${b.firstElementChild.textContent}%`;
-  b.style.height = `${a.firstElementChild.textContent}%`;
-  [a.firstElementChild.textContent, b.firstElementChild.textContent] = [
-    b.firstElementChild.textContent,
-    a.firstElementChild.textContent,
-  ];
-}
-
-function changeBarColor(color, ...elements) {
-  elements.forEach((element) => (element.style.background = color));
 }
 
 export function selectionSortStepForward(initialSpeed, speed, setIsSorted) {
