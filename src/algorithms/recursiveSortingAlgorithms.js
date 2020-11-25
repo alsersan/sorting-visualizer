@@ -123,7 +123,7 @@ export function recursiveBubbleSort(
   }, initialSpeed);
 }
 
-export function stop() {
+export function bubbleSortStop() {
   clearTimeout(timer);
 }
 
@@ -162,12 +162,12 @@ function changeClass(classRemove, classAdd, ...elements) {
 }
 
 // get the size of the array every time the size slider changes its value (imported in SortingOptionsContext)
-export function getArray(newArray) {
+export function bubbleSortGetArray(newArray) {
   arr = [...newArray];
   i = newArray.length - 1;
 }
 
-export function oneStepForward(
+export function bubbleSortStepForward(
   initialSpeed,
   speed,
   setIsSorted,
@@ -175,7 +175,7 @@ export function oneStepForward(
   selectedColor,
   sortedColor
 ) {
-  stop();
+  bubbleSortStop();
   recursiveBubbleSort(
     initialSpeed,
     speed,
@@ -186,8 +186,12 @@ export function oneStepForward(
   );
 }
 
-export function oneStepBack(setHasStarted, unsortedColor, selectedColor) {
-  stop();
+export function bubbleSortStepBack(
+  setHasStarted,
+  unsortedColor,
+  selectedColor
+) {
+  bubbleSortStop();
   const lastElement = record[record.length - 1];
 
   i = lastElement.i;

@@ -37,23 +37,28 @@ const AlgorithmOptions = () => {
     <Container hasStarted={hasStarted}>
       <div>Sorting Algorithm</div>
       <FlexWrapper>
-        {["option1", "option2", "option3", "option4", "option5", "option6"].map(
-          (option, index) => (
-            <React.Fragment key={index}>
-              <input
-                style={{ display: "none" }}
-                hide="hide"
-                type="radio"
-                id={option}
-                name="option"
-                onClick={() => setActiveOption(index)}
-              />
-              <Label active={index === activeOption} htmlFor={option}>
-                <span>{option}</span>
-              </Label>
-            </React.Fragment>
-          )
-        )}
+        {[
+          "BubbleSort",
+          "SelectionSort",
+          "option3",
+          "option4",
+          "option5",
+          "option6",
+        ].map((option, index) => (
+          <React.Fragment key={index}>
+            <input
+              style={{ display: "none" }}
+              hide="hide"
+              type="radio"
+              id={option}
+              name="option"
+              onClick={() => setActiveOption(index)}
+            />
+            <Label active={index === activeOption} htmlFor={option}>
+              <span>{option}</span>
+            </Label>
+          </React.Fragment>
+        ))}
       </FlexWrapper>
     </Container>
   );

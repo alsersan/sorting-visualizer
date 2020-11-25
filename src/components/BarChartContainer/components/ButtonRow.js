@@ -6,17 +6,17 @@ import { FaStepForward } from "react-icons/fa";
 import { FaStepBackward } from "react-icons/fa";
 
 import RippleEffect from "../../RippleEffect";
-// import {
-//   recursiveBubbleSort,
-//   stop,
-//   oneStepBack,
-//   oneStepForward,
-// } from "../../../algorithms/recursiveSortingAlgorithms";
+import {
+  recursiveBubbleSort,
+  bubbleSortStop,
+  bubbleSortStepBack,
+  bubbleSortStepForward,
+} from "../../../algorithms/recursiveSortingAlgorithms";
 
 import {
   recursiveSelectionSort,
-  stop,
   selectionSortStepForward,
+  selectionSortStop,
 } from "../../../algorithms/recursiveSelectionSort";
 
 import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
@@ -53,7 +53,13 @@ const Button = styled.button`
 `;
 
 const ButtonRow = () => {
-  const { speed, color1, color2, color3, array } = useSortingOptionsContext();
+  const {
+    speed,
+    color1,
+    color2,
+    color3,
+    activeOption,
+  } = useSortingOptionsContext();
   const {
     isRunning,
     setIsRunning,
@@ -67,8 +73,20 @@ const ButtonRow = () => {
     let timeout;
     if (isRunning && !isSorted) {
       timeout = setTimeout(() => {
-        stop();
-        // recursiveBubbleSort(speed, speed, setIsSorted, color1, color2, color3);
+        if (activeOption === 0) {
+          bubbleSortStop();
+          recursiveBubbleSort(
+            speed,
+            speed,
+            setIsSorted,
+            color1,
+            color2,
+            color3
+          );
+        } else if (activeOption === 1) {
+          selectionSortStop();
+          recursiveSelectionSort(speed, speed, setIsSorted);
+        }
       }, 150);
     }
     return () => clearTimeout(timeout);
@@ -92,7 +110,12 @@ const ButtonRow = () => {
         <Button
           hasStarted={hasStarted}
           onClick={() => {
-            stop();
+            if (activeOption === 0) {
+              bubbleSortStop();
+            } else if (activeOption === 1) {
+              selectionSortStop();
+            }
+
             setIsRunning(false);
           }}
         >
@@ -105,17 +128,20 @@ const ButtonRow = () => {
           disabled={isSorted}
           onClick={() => {
             if (!isSorted) {
-              // recursiveBubbleSort(
-              //   speed,
-              //   speed,
-              //   setIsSorted,
-              //   color1,
-              //   color2,
-              //   color3
-              // );
               setHasStarted(true);
               setIsRunning(true);
-              recursiveSelectionSort(speed, speed, setIsSorted);
+              if (activeOption === 0) {
+                recursiveBubbleSort(
+                  speed,
+                  speed,
+                  setIsSorted,
+                  color1,
+                  color2,
+                  color3
+                );
+              } else if (activeOption === 1) {
+                recursiveSelectionSort(speed, speed, setIsSorted);
+              }
             }
           }}
         >
@@ -130,9 +156,18 @@ const ButtonRow = () => {
         onClick={() => {
           if (!isSorted) {
             // Instant first execution but delayed the following (around 3h)
-            // oneStepForward(1, 9999999, setIsSorted, color1, color2, color3);
-            selectionSortStepForward(1, 9999999, setIsSorted);
-            setHasStarted(true);
+            if (activeOption === 0) {
+              bubbleSortStepForward(
+                1,
+                9999999,
+                setIsSorted,
+                color1,
+                color2,
+                color3
+              );
+            } else if (activeOption === 1) {
+              selectionSortStepForward(1, 9999999, setIsSorted);
+            }
           }
         }}
       >

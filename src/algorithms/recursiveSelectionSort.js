@@ -69,7 +69,7 @@ export function recursiveSelectionSort(initialSpeed, speed, setIsSorted) {
     }
 
     if (unselectBars) {
-      // only execute if the current value of i makes a new iteration posible. If i is already the previous to last value in the array, then it's already sorted, so color both bars orange.
+      // only execute if the current value of i makes a new iteration possible. If i is already the previous to last value in the array, then it's already sorted, so color both bars orange.
       if (i < arr.length - 2) {
         changeBarColor("orange", bars[i]);
         if (index !== 0) changeBarColor("red", bars[index]);
@@ -106,11 +106,11 @@ export function recursiveSelectionSort(initialSpeed, speed, setIsSorted) {
   }, initialSpeed);
 }
 
-export function stop() {
+export function selectionSortStop() {
   clearTimeout(timer);
 }
 
-export function getArray(newArray) {
+export function selectionSortGetArray(newArray) {
   arr = [...newArray];
 }
 
@@ -128,6 +128,6 @@ function changeBarColor(color, ...elements) {
 }
 
 export function selectionSortStepForward(initialSpeed, speed, setIsSorted) {
-  stop();
+  selectionSortStop();
   recursiveSelectionSort(initialSpeed, speed, setIsSorted);
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 
-import { getArray } from "../algorithms/recursiveSelectionSort";
+import { selectionSortGetArray } from "../algorithms/recursiveSelectionSort";
+import { bubbleSortGetArray } from "../algorithms/recursiveSortingAlgorithms";
 
 const SortingOptionsContext = React.createContext();
 
@@ -24,8 +25,13 @@ const SortingOptionsProvider = ({ children }) => {
       arr.push(num);
     }
     setArray(arr);
-    getArray(arr);
-  }, [size]);
+
+    if (activeOption === 0) {
+      bubbleSortGetArray(arr);
+    } else if (activeOption === 1) {
+      selectionSortGetArray(arr);
+    }
+  }, [size, activeOption]);
 
   return (
     <SortingOptionsContext.Provider
