@@ -25,13 +25,15 @@ const SortingOptionsProvider = ({ children }) => {
       arr.push(num);
     }
     setArray(arr);
+  }, [size]);
 
+  useEffect(() => {
     if (activeOption === 0) {
-      bubbleSortGetArray(arr);
+      bubbleSortGetArray(array);
     } else if (activeOption === 1) {
-      selectionSortGetArray(arr);
+      selectionSortGetArray(array);
     }
-  }, [size, activeOption]);
+  }, [array, activeOption]);
 
   return (
     <SortingOptionsContext.Provider
