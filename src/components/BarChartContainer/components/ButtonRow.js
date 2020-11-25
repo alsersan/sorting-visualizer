@@ -90,7 +90,7 @@ const ButtonRow = () => {
       }, 150);
     }
     return () => clearTimeout(timeout);
-  }, [speed]);
+  });
 
   return (
     <StyledButtonRow>
