@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 
 import { selectionSortGetArray } from "../algorithms/recursiveSelectionSort";
-import { bubbleSortGetArray } from "../algorithms/recursiveSortingAlgorithms";
+import { bubbleSortGetArray } from "../algorithms/recursiveBubbleSort";
 
 const SortingOptionsContext = React.createContext();
 

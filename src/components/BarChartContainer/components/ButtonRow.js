@@ -11,7 +11,7 @@ import {
   bubbleSortStop,
   bubbleSortStepBack,
   bubbleSortStepForward,
-} from "../../../algorithms/recursiveSortingAlgorithms";
+} from "../../../algorithms/recursiveBubbleSort";
 
 import {
   recursiveSelectionSort,
