@@ -100,7 +100,10 @@ const ButtonRow = () => {
         disabled={isRunning || !hasStarted}
         onClick={() => {
           setIsSorted(false);
-          // oneStepBack(setHasStarted, color1, color2);
+          if (activeOption === 0) {
+            bubbleSortStepBack(setHasStarted, color1, color2);
+          } else if (activeOption === 1) {
+          }
         }}
       >
         <RippleEffect disabled={isRunning || !hasStarted} />

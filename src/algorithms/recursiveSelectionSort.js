@@ -7,6 +7,7 @@ let index = 0;
 let minValue = 0;
 let noSwap = true;
 let arr = [];
+let record = [];
 let referenceBar = true;
 let selectBar = false;
 let selectNewMin = false;
@@ -18,6 +19,9 @@ export function recursiveSelectionSort(initialSpeed, speed, setIsSorted) {
   const bars = document.querySelectorAll(".bar");
 
   timer = setTimeout(() => {
+    saveStep();
+    console.log(record);
+
     if (referenceBar) {
       changeBarColor("blue", bars[i]);
       minValue = arr[i];
@@ -110,6 +114,24 @@ export function recursiveSelectionSort(initialSpeed, speed, setIsSorted) {
 
 export function selectionSortStop() {
   clearTimeout(timer);
+}
+
+function saveStep() {
+  const step = {
+    i,
+    j,
+    index,
+    minValue,
+    noSwap,
+    referenceBar,
+    selectBar,
+    selectNewMin,
+    unselectBar,
+    barSwap,
+    unselectBars,
+    arr: [...arr],
+  };
+  record.push(step);
 }
 
 export function selectionSortGetArray(newArray) {
