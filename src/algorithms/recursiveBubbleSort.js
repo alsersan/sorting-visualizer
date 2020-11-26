@@ -25,7 +25,7 @@ export function recursiveBubbleSort(
     saveStep();
     if (compareBars) {
       changeBarColor(selectedColor, bars[j], bars[j + 1]);
-      changeClass("unsorted", "selected", bars[j], bars[j + 1]);
+      changeClass("selected", bars[j], bars[j + 1]);
 
       if (arr[j] > arr[j + 1]) {
         // If first bar is bigger than second bar, swap them
@@ -74,13 +74,13 @@ export function recursiveBubbleSort(
       if (j + 1 === i) {
         // If the last bar is sorted, color it with sortedColor
         changeBarColor(unsortedColor, bars[j]);
-        changeClass("selected", "unsorted", bars[j]);
+        changeClass("unsorted", bars[j]);
         changeBarColor(sortedColor, bars[j + 1]);
-        changeClass("selected", "sorted", bars[j + 1]);
+        changeClass("sorted", bars[j + 1]);
       } else {
         // If the last bar is not sorted, after checking and/or swapping the bars, color them with unsortedColor
         changeBarColor(unsortedColor, bars[j], bars[j + 1]);
-        changeClass("selected", "unsorted", bars[j], bars[j + 1]);
+        changeClass("unsorted", bars[j], bars[j + 1]);
       }
       unselectBars = false;
       compareBars = true;
@@ -116,7 +116,7 @@ export function recursiveBubbleSort(
       // if the conditions above are not met, then the array is sorted
       bars.forEach((bar) => {
         changeBarColor(sortedColor, bar);
-        changeClass("unsorted", "sorted", bar);
+        changeClass("sorted", bar);
       });
       sorted = true;
       setIsSorted(true);
@@ -205,12 +205,12 @@ function visualBubbleSort(unsortedColor, selectedColor) {
   // only DOM changes. All the real data comes from the record
   if (compareBars) {
     changeBarColor(unsortedColor, bars[j], bars[j + 1]);
-    changeClass("selected", "unsorted", bars[j], bars[j + 1]);
+    changeClass("unsorted", bars[j], bars[j + 1]);
   } else if (barSwap) {
     swapBars(bars[j], bars[j + 1]);
   } else if (unselectBars) {
     changeBarColor(selectedColor, bars[j], bars[j + 1]);
-    changeClass("sorted", "selected", bars[j], bars[j + 1]);
-    changeClass("unsorted", "selected", bars[j], bars[j + 1]);
+    changeClass("selected", bars[j], bars[j + 1]);
+    changeClass("selected", bars[j], bars[j + 1]);
   }
 }

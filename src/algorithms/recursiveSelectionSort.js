@@ -1,4 +1,4 @@
-import { swapBars, changeBarColor } from "./generalUseFunctions";
+import { swapBars, changeBarColor, changeClass } from "./generalUseFunctions";
 
 let timer;
 let i = 0;
@@ -25,6 +25,7 @@ export function recursiveSelectionSort(initialSpeed, speed, setIsSorted) {
 
     if (referenceBar) {
       changeBarColor("blue", bars[i]);
+      changeClass("reference", bars[i]);
       minValue = arr[i];
       referenceBar = false;
       selectBar = true;
@@ -34,6 +35,7 @@ export function recursiveSelectionSort(initialSpeed, speed, setIsSorted) {
 
     if (selectBar) {
       changeBarColor("green", bars[j]);
+      changeClass("selected", bars[j]);
 
       if (arr[j] < minValue) {
         // Only execute if the bar has the smallest value so far (stored in minValue)
@@ -52,9 +54,13 @@ export function recursiveSelectionSort(initialSpeed, speed, setIsSorted) {
 
     if (selectNewMin) {
       // color the newMin bar blue and color the previous minBar red
-      if (index !== 0) changeBarColor("red", bars[index]);
+      if (index !== 0) {
+        changeBarColor("red", bars[index]);
+        changeClass("unsorted", bars[index]);
+      }
       index = j;
       minValue = arr[j];
+      changeClass("reference", bars[j]);
       noSwap = false;
       selectNewMin = false;
       changeBarColor("blue", bars[j]);
@@ -63,6 +69,7 @@ export function recursiveSelectionSort(initialSpeed, speed, setIsSorted) {
     if (unselectBar) {
       // Unselect the bar coloring it red again
       changeBarColor("red", bars[j]);
+      changeClass("unsorted", bars[j]);
       unselectBar = false;
     }
 
@@ -79,7 +86,11 @@ export function recursiveSelectionSort(initialSpeed, speed, setIsSorted) {
       // only execute if the current value of i makes a new iteration possible. If i is already the previous to last value in the array, then it's already sorted, so color both bars orange.
       if (i < arr.length - 2) {
         changeBarColor("orange", bars[i]);
-        if (index !== 0) changeBarColor("red", bars[index]);
+        changeClass("sorted", bars[i]);
+        if (index !== 0) {
+          changeBarColor("red", bars[index]);
+          changeClass("unsorted", bars[index]);
+        }
         unselectBars = false;
         referenceBar = true;
         i++;
@@ -90,6 +101,7 @@ export function recursiveSelectionSort(initialSpeed, speed, setIsSorted) {
         return;
       } else {
         changeBarColor("orange", bars[i], bars[i + 1]);
+        changeClass("sorted", bars[i], bars[i + 1]);
         setIsSorted(true);
         sorted = true;
         console.log("SORTED");

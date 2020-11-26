@@ -15,6 +15,8 @@ export const changeClass = (classAdd, ...elements) => {
   elements.forEach((element) => {
     if (element.classList.contains("unsorted")) {
       element.classList.remove("unsorted");
+    } else if (element.classList.contains("reference")) {
+      element.classList.remove("reference");
     } else if (element.classList.contains("selected")) {
       element.classList.remove("selected");
     } else if (element.classList.contains("sorted")) {
