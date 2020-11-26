@@ -196,7 +196,7 @@ function visualBubbleSort(unsortedColor, selectedColor) {
   // If the array was already sorted, all the bars that were colored with sortedColor in the last step are colored with unsortedColor
   const bars = document.querySelectorAll(".bar");
   if (sorted) {
-    for (let x = 0; x < i; x++) {
+    for (let x = 0; x <= i; x++) {
       changeBarColor(unsortedColor, bars[x]);
     }
     sorted = false;

@@ -14,6 +14,7 @@ let selectNewMin = false;
 let unselectBar = false;
 let barSwap = false;
 let unselectBars = false;
+let sorted = false;
 
 export function recursiveSelectionSort(initialSpeed, speed, setIsSorted) {
   const bars = document.querySelectorAll(".bar");
@@ -90,6 +91,7 @@ export function recursiveSelectionSort(initialSpeed, speed, setIsSorted) {
       } else {
         changeBarColor("orange", bars[i], bars[i + 1]);
         setIsSorted(true);
+        sorted = true;
         console.log("SORTED");
         return;
       }
@@ -141,4 +143,56 @@ export function selectionSortGetArray(newArray) {
 export function selectionSortStepForward(initialSpeed, speed, setIsSorted) {
   selectionSortStop();
   recursiveSelectionSort(initialSpeed, speed, setIsSorted);
+}
+
+export function selectionSortStepBack(setHasStarted) {
+  const lastElement = record[record.length - 1];
+
+  i = lastElement.i;
+  j = lastElement.j;
+  index = lastElement.index;
+  minValue = lastElement.minValue;
+  noSwap = lastElement.noSwap;
+  referenceBar = lastElement.referenceBar;
+  selectBar = lastElement.selectBar;
+  selectNewMin = lastElement.selectNewMin;
+  unselectBar = lastElement.unselectBar;
+  barSwap = lastElement.barSwap;
+  unselectBars = lastElement.unselectBars;
+  arr = [...lastElement.arr];
+
+  record.pop();
+  visualSelectionSort();
+
+  if (record.length === 0) {
+    setHasStarted(false);
+  }
+}
+
+// only DOM changes. All the real data comes from the record
+function visualSelectionSort() {
+  const bars = document.querySelectorAll(".bar");
+
+  if (sorted) {
+    for (let x = arr.length - 1; x >= i; x--) {
+      changeBarColor("red", bars[x]);
+    }
+    sorted = false;
+  }
+
+  if (referenceBar) {
+    changeBarColor("red", bars[i]);
+  } else if (selectBar) {
+    changeBarColor("red", bars[j]);
+  } else if (selectNewMin) {
+    if (index !== 0) changeBarColor("blue", bars[index]);
+    changeBarColor("green", bars[j]);
+  } else if (unselectBar) {
+    changeBarColor("green", bars[j]);
+  } else if (barSwap) {
+    swapBars(bars[i], bars[index]);
+  } else if (unselectBars) {
+    changeBarColor("blue", bars[i]);
+    if (index !== 0) changeBarColor("blue", bars[index]);
+  }
 }

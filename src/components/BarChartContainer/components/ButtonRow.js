@@ -16,6 +16,7 @@ import {
 import {
   recursiveSelectionSort,
   selectionSortStepForward,
+  selectionSortStepBack,
   selectionSortStop,
 } from "../../../algorithms/recursiveSelectionSort";
 
@@ -103,6 +104,7 @@ const ButtonRow = () => {
           if (activeOption === 0) {
             bubbleSortStepBack(setHasStarted, color1, color2);
           } else if (activeOption === 1) {
+            selectionSortStepBack(setHasStarted);
           }
         }}
       >
@@ -171,6 +173,7 @@ const ButtonRow = () => {
             } else if (activeOption === 1) {
               selectionSortStepForward(1, 9999999, setIsSorted);
             }
+            setHasStarted(true);
           }
         }}
       >
