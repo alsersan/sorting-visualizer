@@ -11,9 +11,16 @@ export const changeBarColor = (color, ...elements) => {
   elements.forEach((element) => (element.style.background = color));
 };
 
-export const changeClass = (classRemove, classAdd, ...elements) => {
+export const changeClass = (classAdd, ...elements) => {
   elements.forEach((element) => {
-    element.classList.remove(classRemove);
+    if (element.classList.contains("unsorted")) {
+      element.classList.remove("unsorted");
+    } else if (element.classList.contains("selected")) {
+      element.classList.remove("selected");
+    } else if (element.classList.contains("sorted")) {
+      element.classList.remove("sorted");
+    }
+
     element.classList.add(classAdd);
   });
 };
