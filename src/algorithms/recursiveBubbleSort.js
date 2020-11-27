@@ -198,6 +198,7 @@ function visualBubbleSort(unsortedColor, selectedColor) {
   if (sorted) {
     for (let x = 0; x <= i; x++) {
       changeBarColor(unsortedColor, bars[x]);
+      changeClass("unsorted", bars[x]);
     }
     sorted = false;
   }
