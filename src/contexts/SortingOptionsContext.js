@@ -9,6 +9,7 @@ const SortingOptionsProvider = ({ children }) => {
   const [color1, setColor1] = useState("#ec3232");
   const [color2, setColor2] = useState("#3226df");
   const [color3, setColor3] = useState("#216e3c");
+  const [color4, setColor4] = useState("#d6ec32");
 
   const [speed, setSpeed] = useState(50);
   const [size, setSize] = useState(9);
@@ -44,6 +45,8 @@ const SortingOptionsProvider = ({ children }) => {
         setColor2,
         color3,
         setColor3,
+        color4,
+        setColor4,
         speed,
         setSpeed,
         size,

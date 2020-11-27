@@ -17,7 +17,7 @@ const Text = styled.span`
 
 const Bar = (props) => {
   const barEl = useRef();
-  const { color1, color2, color3 } = useSortingOptionsContext();
+  const { color1, color2, color3, color4 } = useSortingOptionsContext();
   const [isMounted, setIsMounted] = useState(false);
 
   const checkClassName = (classList) => {
@@ -27,6 +27,8 @@ const Bar = (props) => {
       return color2;
     } else if (classList.contains("sorted")) {
       return color3;
+    } else if (classList.contains("reference")) {
+      return color4;
     }
   };
 

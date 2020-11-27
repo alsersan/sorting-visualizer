@@ -21,6 +21,8 @@ const ColorSelection = () => {
     setColor2,
     color3,
     setColor3,
+    color4,
+    setColor4,
   } = useSortingOptionsContext();
   const { isRunning } = useAlgorithmContext();
 
@@ -28,16 +30,18 @@ const ColorSelection = () => {
     <Container isRunning={isRunning}>
       <ColorPicker
         value={color1}
-        onChange={(e) => {
-          setColor1(e.target.value);
-          // changeColor1(e.target.value);
-        }}
+        onChange={(e) => setColor1(e.target.value)}
         description="Unsorted"
       />
       <ColorPicker
         value={color2}
         onChange={(e) => setColor2(e.target.value)}
         description="Selected"
+      />
+      <ColorPicker
+        value={color4}
+        onChange={(e) => setColor4(e.target.value)}
+        description="Reference"
       />
       <ColorPicker
         value={color3}
