@@ -11,16 +11,22 @@ const Container = styled.div`
 `;
 
 const TextWrapper = styled.div`
+  margin-bottom: 0.8rem;
   display: flex;
   justify-content: space-between;
+`;
+
+const Text = styled.span`
+  font-weight: ${(props) => (props.mainText ? "500" : "inherit")};
+  font-size: ${(props) => (props.mainText ? "1.2rem" : "0.9rem")};
 `;
 
 const Selector = (props) => {
   return (
     <Container hasStarted={props.hasStarted}>
       <TextWrapper>
-        <span>{props.mainText}</span>
-        <span>{props.secondaryText}</span>
+        <Text mainText>{props.mainText}</Text>
+        <Text secondaryText>{props.secondaryText}</Text>
       </TextWrapper>
       <Slider {...props} />
     </Container>
