@@ -13,7 +13,11 @@ const SpeedSelector = () => {
     const input = maxDelay - speed;
     return Math.round(((input - min) * 100) / (max - min));
   };
-  const speedPercentage = `${speedPercentageCalculator(-7, maxDelay)}%`;
+  // min value 1% smaller to make the showed min percentage 1% instead of 0%
+  const speedPercentage = `${speedPercentageCalculator(
+    -maxDelay / 100,
+    maxDelay
+  )}%`;
 
   return (
     <Selector
