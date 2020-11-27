@@ -13,7 +13,7 @@ const StyledBar = styled.div`
 
 const Text = styled.span`
   position: absolute;
-  margin-top: 5px;
+  margin-top: -1.5rem;
   display: block;
 `;
 
