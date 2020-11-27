@@ -6,25 +6,26 @@ import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContex
 
 const SpeedSelector = () => {
   const { speed, setSpeed } = useSortingOptionsContext();
+  const maxDelay = 700;
 
   const speedPercentageCalculator = (min, max) => {
-    // 450 - speed to get the correct position of the slider
-    const input = 450 - speed;
-    return Math.round((((input - min) * 100) / (max - min)) * 10) / 10;
+    // maxDelay - speed to get the correct position of the slider
+    const input = maxDelay - speed;
+    return Math.round(((input - min) * 100) / (max - min));
   };
-  const speedPercentage = `${speedPercentageCalculator(-4.5, 449)}%`;
+  const speedPercentage = `${speedPercentageCalculator(-7, maxDelay)}%`;
 
   return (
     <Selector
       mainText="Speed"
       secondaryText={speedPercentage}
-      max="449"
+      max={maxDelay}
       min="0"
-      // 450 - speed to get the correct position of the slider
-      value={450 - speed}
+      // maxDelay - speed to get the correct position of the slider
+      value={maxDelay - speed}
       step="25"
-      // 450 - value to set the real speed (in ms)
-      onChange={(e) => setSpeed(450 - parseInt(e.target.value, 10))}
+      // maxDelay - value to set the real speed (in ms)
+      onChange={(e) => setSpeed(maxDelay - parseInt(e.target.value, 10))}
     />
   );
 };
