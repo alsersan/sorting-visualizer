@@ -59,6 +59,7 @@ const ButtonRow = () => {
     color1,
     color2,
     color3,
+    color4,
     activeOption,
   } = useSortingOptionsContext();
   const {
@@ -86,7 +87,15 @@ const ButtonRow = () => {
           );
         } else if (activeOption === 1) {
           selectionSortStop();
-          recursiveSelectionSort(speed, speed, setIsSorted);
+          recursiveSelectionSort(
+            speed,
+            speed,
+            setIsSorted,
+            color1,
+            color4,
+            color2,
+            color3
+          );
         }
       }, 150);
     }
@@ -104,7 +113,7 @@ const ButtonRow = () => {
           if (activeOption === 0) {
             bubbleSortStepBack(setHasStarted, color1, color2);
           } else if (activeOption === 1) {
-            selectionSortStepBack(setHasStarted);
+            selectionSortStepBack(setHasStarted, color1, color4, color2);
           }
         }}
       >
@@ -145,7 +154,15 @@ const ButtonRow = () => {
                   color3
                 );
               } else if (activeOption === 1) {
-                recursiveSelectionSort(speed, speed, setIsSorted);
+                recursiveSelectionSort(
+                  speed,
+                  speed,
+                  setIsSorted,
+                  color1,
+                  color4,
+                  color2,
+                  color3
+                );
               }
             }
           }}
@@ -171,7 +188,15 @@ const ButtonRow = () => {
                 color3
               );
             } else if (activeOption === 1) {
-              selectionSortStepForward(1, 9999999, setIsSorted);
+              selectionSortStepForward(
+                1,
+                9999999,
+                setIsSorted,
+                color1,
+                color4,
+                color2,
+                color3
+              );
             }
             setHasStarted(true);
           }

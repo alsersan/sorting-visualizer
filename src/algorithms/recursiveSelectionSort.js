@@ -16,7 +16,15 @@ let barSwap = false;
 let unselectBars = false;
 let sorted = false;
 
-export function recursiveSelectionSort(initialSpeed, speed, setIsSorted) {
+export function recursiveSelectionSort(
+  initialSpeed,
+  speed,
+  setIsSorted,
+  unsortedColor,
+  referenceColor,
+  selectedColor,
+  sortedColor
+) {
   const bars = document.querySelectorAll(".bar");
 
   timer = setTimeout(() => {
@@ -24,30 +32,54 @@ export function recursiveSelectionSort(initialSpeed, speed, setIsSorted) {
     console.log(record);
 
     if (referenceBar) {
-      changeBarColor("blue", bars[i]);
+      changeBarColor(referenceColor, bars[i]);
       changeClass("reference", bars[i]);
       minValue = arr[i];
       referenceBar = false;
       selectBar = true;
-      recursiveSelectionSort(speed, speed, setIsSorted);
+      recursiveSelectionSort(
+        speed,
+        speed,
+        setIsSorted,
+        unsortedColor,
+        referenceColor,
+        selectedColor,
+        sortedColor
+      );
       return;
     }
 
     if (selectBar) {
-      changeBarColor("green", bars[j]);
+      changeBarColor(selectedColor, bars[j]);
       changeClass("selected", bars[j]);
 
       if (arr[j] < minValue) {
         // Only execute if the bar has the smallest value so far (stored in minValue)
         selectBar = false;
         selectNewMin = true;
-        recursiveSelectionSort(speed, speed, setIsSorted);
+        recursiveSelectionSort(
+          speed,
+          speed,
+          setIsSorted,
+          unsortedColor,
+          referenceColor,
+          selectedColor,
+          sortedColor
+        );
         return;
       } else {
         // else, just go to unselectBar
         selectBar = false;
         unselectBar = true;
-        recursiveSelectionSort(speed, speed, setIsSorted);
+        recursiveSelectionSort(
+          speed,
+          speed,
+          setIsSorted,
+          unsortedColor,
+          referenceColor,
+          selectedColor,
+          sortedColor
+        );
         return;
       }
     }
@@ -55,7 +87,7 @@ export function recursiveSelectionSort(initialSpeed, speed, setIsSorted) {
     if (selectNewMin) {
       // color the newMin bar blue and color the previous minBar red
       if (index !== 0) {
-        changeBarColor("red", bars[index]);
+        changeBarColor(unsortedColor, bars[index]);
         changeClass("unsorted", bars[index]);
       }
       index = j;
@@ -63,12 +95,12 @@ export function recursiveSelectionSort(initialSpeed, speed, setIsSorted) {
       changeClass("reference", bars[j]);
       noSwap = false;
       selectNewMin = false;
-      changeBarColor("blue", bars[j]);
+      changeBarColor(referenceColor, bars[j]);
     }
 
     if (unselectBar) {
       // Unselect the bar coloring it red again
-      changeBarColor("red", bars[j]);
+      changeBarColor(unsortedColor, bars[j]);
       changeClass("unsorted", bars[j]);
       unselectBar = false;
     }
@@ -78,17 +110,25 @@ export function recursiveSelectionSort(initialSpeed, speed, setIsSorted) {
       swapBars(bars[i], bars[index]);
       barSwap = false;
       unselectBars = true;
-      recursiveSelectionSort(speed, speed, setIsSorted);
+      recursiveSelectionSort(
+        speed,
+        speed,
+        setIsSorted,
+        unsortedColor,
+        referenceColor,
+        selectedColor,
+        sortedColor
+      );
       return;
     }
 
     if (unselectBars) {
       // only execute if the current value of i makes a new iteration possible. If i is already the previous to last value in the array, then it's already sorted, so color both bars orange.
       if (i < arr.length - 2) {
-        changeBarColor("orange", bars[i]);
+        changeBarColor(sortedColor, bars[i]);
         changeClass("sorted", bars[i]);
         if (index !== 0) {
-          changeBarColor("red", bars[index]);
+          changeBarColor(unsortedColor, bars[index]);
           changeClass("unsorted", bars[index]);
         }
         unselectBars = false;
@@ -97,10 +137,18 @@ export function recursiveSelectionSort(initialSpeed, speed, setIsSorted) {
         index = 0;
         noSwap = true;
         j = i + 1;
-        recursiveSelectionSort(speed, speed, setIsSorted);
+        recursiveSelectionSort(
+          speed,
+          speed,
+          setIsSorted,
+          unsortedColor,
+          referenceColor,
+          selectedColor,
+          sortedColor
+        );
         return;
       } else {
-        changeBarColor("orange", bars[i], bars[i + 1]);
+        changeBarColor(sortedColor, bars[i], bars[i + 1]);
         changeClass("sorted", bars[i], bars[i + 1]);
         setIsSorted(true);
         sorted = true;
@@ -113,14 +161,38 @@ export function recursiveSelectionSort(initialSpeed, speed, setIsSorted) {
 
     if (j < arr.length) {
       selectBar = true;
-      recursiveSelectionSort(speed, speed, setIsSorted);
+      recursiveSelectionSort(
+        speed,
+        speed,
+        setIsSorted,
+        unsortedColor,
+        referenceColor,
+        selectedColor,
+        sortedColor
+      );
     } else {
       if (!noSwap) {
         barSwap = true;
-        recursiveSelectionSort(speed, speed, setIsSorted);
+        recursiveSelectionSort(
+          speed,
+          speed,
+          setIsSorted,
+          unsortedColor,
+          referenceColor,
+          selectedColor,
+          sortedColor
+        );
       } else {
         unselectBars = true;
-        recursiveSelectionSort(speed, speed, setIsSorted);
+        recursiveSelectionSort(
+          speed,
+          speed,
+          setIsSorted,
+          unsortedColor,
+          referenceColor,
+          selectedColor,
+          sortedColor
+        );
       }
     }
   }, initialSpeed);
@@ -152,12 +224,33 @@ export function selectionSortGetArray(newArray) {
   arr = [...newArray];
 }
 
-export function selectionSortStepForward(initialSpeed, speed, setIsSorted) {
+export function selectionSortStepForward(
+  initialSpeed,
+  speed,
+  setIsSorted,
+  unsortedColor,
+  referenceColor,
+  selectedColor,
+  sortedColor
+) {
   selectionSortStop();
-  recursiveSelectionSort(initialSpeed, speed, setIsSorted);
+  recursiveSelectionSort(
+    initialSpeed,
+    speed,
+    setIsSorted,
+    unsortedColor,
+    referenceColor,
+    selectedColor,
+    sortedColor
+  );
 }
 
-export function selectionSortStepBack(setHasStarted) {
+export function selectionSortStepBack(
+  setHasStarted,
+  unsortedColor,
+  referenceColor,
+  selectedColor
+) {
   const lastElement = record[record.length - 1];
 
   i = lastElement.i;
@@ -174,7 +267,7 @@ export function selectionSortStepBack(setHasStarted) {
   arr = [...lastElement.arr];
 
   record.pop();
-  visualSelectionSort();
+  visualSelectionSort(unsortedColor, referenceColor, selectedColor);
 
   if (record.length === 0) {
     setHasStarted(false);
@@ -182,41 +275,40 @@ export function selectionSortStepBack(setHasStarted) {
 }
 
 // only DOM changes. All the real data comes from the record
-function visualSelectionSort() {
+function visualSelectionSort(unsortedColor, referenceColor, selectedColor) {
   const bars = document.querySelectorAll(".bar");
 
   if (sorted) {
     for (let x = arr.length - 1; x >= i; x--) {
-      changeBarColor("red", bars[x]);
+      changeBarColor(unsortedColor, bars[x]);
       changeClass("unsorted", bars[x]);
     }
     sorted = false;
   }
 
-  // AÑADIR CLASES
   if (referenceBar) {
-    changeBarColor("red", bars[i]);
+    changeBarColor(unsortedColor, bars[i]);
     changeClass("unsorted", bars[i]);
   } else if (selectBar) {
-    changeBarColor("red", bars[j]);
+    changeBarColor(unsortedColor, bars[j]);
     changeClass("unsorted", bars[j]);
   } else if (selectNewMin) {
     if (index !== 0) {
-      changeBarColor("blue", bars[index]);
+      changeBarColor(referenceColor, bars[index]);
       changeClass("reference", bars[index]);
     }
-    changeBarColor("green", bars[j]);
+    changeBarColor(selectedColor, bars[j]);
     changeClass("selected", bars[j]);
   } else if (unselectBar) {
-    changeBarColor("green", bars[j]);
+    changeBarColor(selectedColor, bars[j]);
     changeClass("selected", bars[j]);
   } else if (barSwap) {
     swapBars(bars[i], bars[index]);
   } else if (unselectBars) {
-    changeBarColor("blue", bars[i]);
+    changeBarColor(referenceColor, bars[i]);
     changeClass("reference", bars[i]);
     if (index !== 0) {
-      changeBarColor("blue", bars[index]);
+      changeBarColor(referenceColor, bars[index]);
       changeClass("reference", bars[index]);
     }
   }
