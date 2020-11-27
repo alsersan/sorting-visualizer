@@ -5,12 +5,14 @@ import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContex
 
 const StyledBar = styled.div`
   margin: 0 1px;
+  position: relative;
   flex-grow: 1;
   display: flex;
   justify-content: center;
 `;
 
 const Text = styled.span`
+  position: absolute;
   margin-top: 5px;
   display: block;
 `;
