@@ -7,22 +7,27 @@ export const swapBars = (a, b) => {
   ];
 };
 
-export const changeBarColor = (color, ...elements) => {
-  elements.forEach((element) => (element.style.background = color));
+const changeBarColor = (color, element) => {
+  element.style.background = color;
 };
 
-export const changeClass = (classAdd, ...elements) => {
-  elements.forEach((element) => {
-    if (element.classList.contains("unsorted")) {
-      element.classList.remove("unsorted");
-    } else if (element.classList.contains("reference")) {
-      element.classList.remove("reference");
-    } else if (element.classList.contains("selected")) {
-      element.classList.remove("selected");
-    } else if (element.classList.contains("sorted")) {
-      element.classList.remove("sorted");
-    }
+const changeClass = (classAdd, element) => {
+  if (element.classList.contains("unsorted")) {
+    element.classList.remove("unsorted");
+  } else if (element.classList.contains("reference")) {
+    element.classList.remove("reference");
+  } else if (element.classList.contains("selected")) {
+    element.classList.remove("selected");
+  } else if (element.classList.contains("sorted")) {
+    element.classList.remove("sorted");
+  }
 
-    element.classList.add(classAdd);
+  element.classList.add(classAdd);
+};
+
+export const modifyBar = (color, classAdd, ...elements) => {
+  elements.forEach((element) => {
+    changeBarColor(color, element);
+    changeClass(classAdd, element);
   });
 };

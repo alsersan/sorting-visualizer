@@ -1,4 +1,4 @@
-import { swapBars, changeBarColor, changeClass } from "./generalUseFunctions";
+import { swapBars, modifyBar } from "./generalUseFunctions";
 
 let timer;
 let i = 0;
@@ -24,8 +24,7 @@ export function recursiveBubbleSort(
   timer = setTimeout(() => {
     saveStep();
     if (compareBars) {
-      changeBarColor(selectedColor, bars[j], bars[j + 1]);
-      changeClass("selected", bars[j], bars[j + 1]);
+      modifyBar(selectedColor, "selected", bars[j], bars[j + 1]);
 
       if (arr[j] > arr[j + 1]) {
         // If first bar is bigger than second bar, swap them
@@ -73,14 +72,11 @@ export function recursiveBubbleSort(
     } else if (unselectBars) {
       if (j + 1 === i) {
         // If the last bar is sorted, color it with sortedColor
-        changeBarColor(unsortedColor, bars[j]);
-        changeClass("unsorted", bars[j]);
-        changeBarColor(sortedColor, bars[j + 1]);
-        changeClass("sorted", bars[j + 1]);
+        modifyBar(unsortedColor, "unsorted", bars[j]);
+        modifyBar(sortedColor, "sorted", bars[j + 1]);
       } else {
         // If the last bar is not sorted, after checking and/or swapping the bars, color them with unsortedColor
-        changeBarColor(unsortedColor, bars[j], bars[j + 1]);
-        changeClass("unsorted", bars[j], bars[j + 1]);
+        modifyBar(unsortedColor, "unsorted", bars[j], bars[j + 1]);
       }
       unselectBars = false;
       compareBars = true;
@@ -115,8 +111,7 @@ export function recursiveBubbleSort(
     } else {
       // if the conditions above are not met, then the array is sorted
       bars.forEach((bar) => {
-        changeBarColor(sortedColor, bar);
-        changeClass("sorted", bar);
+        modifyBar(sortedColor, "sorted", bar);
       });
       sorted = true;
       setIsSorted(true);
@@ -197,20 +192,17 @@ function visualBubbleSort(unsortedColor, selectedColor) {
   const bars = document.querySelectorAll(".bar");
   if (sorted) {
     for (let x = 0; x <= i; x++) {
-      changeBarColor(unsortedColor, bars[x]);
-      changeClass("unsorted", bars[x]);
+      modifyBar(unsortedColor, "unsorted", bars[x]);
     }
     sorted = false;
   }
 
   // only DOM changes. All the real data comes from the record
   if (compareBars) {
-    changeBarColor(unsortedColor, bars[j], bars[j + 1]);
-    changeClass("unsorted", bars[j], bars[j + 1]);
+    modifyBar(unsortedColor, "unsorted", bars[j], bars[j + 1]);
   } else if (barSwap) {
     swapBars(bars[j], bars[j + 1]);
   } else if (unselectBars) {
-    changeBarColor(selectedColor, bars[j], bars[j + 1]);
-    changeClass("selected", bars[j], bars[j + 1]);
+    modifyBar(selectedColor, "selected", bars[j], bars[j + 1]);
   }
 }

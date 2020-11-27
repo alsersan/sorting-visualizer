@@ -1,4 +1,4 @@
-import { swapBars, changeBarColor, changeClass } from "./generalUseFunctions";
+import { swapBars, modifyBar } from "./generalUseFunctions";
 
 let timer;
 let i = 0;
@@ -32,8 +32,8 @@ export function recursiveSelectionSort(
     console.log(record);
 
     if (referenceBar) {
-      changeBarColor(referenceColor, bars[i]);
-      changeClass("reference", bars[i]);
+      modifyBar(referenceColor, "reference", bars[i]);
+
       minValue = arr[i];
       referenceBar = false;
       selectBar = true;
@@ -50,8 +50,7 @@ export function recursiveSelectionSort(
     }
 
     if (selectBar) {
-      changeBarColor(selectedColor, bars[j]);
-      changeClass("selected", bars[j]);
+      modifyBar(selectedColor, "selected", bars[j]);
 
       if (arr[j] < minValue) {
         // Only execute if the bar has the smallest value so far (stored in minValue)
@@ -87,21 +86,20 @@ export function recursiveSelectionSort(
     if (selectNewMin) {
       // color the newMin bar blue and color the previous minBar red
       if (index !== 0) {
-        changeBarColor(unsortedColor, bars[index]);
-        changeClass("unsorted", bars[index]);
+        modifyBar(unsortedColor, "unsorted", bars[index]);
       }
       index = j;
       minValue = arr[j];
-      changeClass("reference", bars[j]);
+
       noSwap = false;
       selectNewMin = false;
-      changeBarColor(referenceColor, bars[j]);
+      modifyBar(referenceColor, "reference", bars[j]);
     }
 
     if (unselectBar) {
       // Unselect the bar coloring it red again
-      changeBarColor(unsortedColor, bars[j]);
-      changeClass("unsorted", bars[j]);
+      modifyBar(unsortedColor, "unsorted", bars[j]);
+
       unselectBar = false;
     }
 
@@ -125,11 +123,10 @@ export function recursiveSelectionSort(
     if (unselectBars) {
       // only execute if the current value of i makes a new iteration possible. If i is already the previous to last value in the array, then it's already sorted, so color both bars orange.
       if (i < arr.length - 2) {
-        changeBarColor(sortedColor, bars[i]);
-        changeClass("sorted", bars[i]);
+        modifyBar(sortedColor, "sorted", bars[i]);
+
         if (index !== 0) {
-          changeBarColor(unsortedColor, bars[index]);
-          changeClass("unsorted", bars[index]);
+          modifyBar(unsortedColor, "unsorted", bars[index]);
         }
         unselectBars = false;
         referenceBar = true;
@@ -148,8 +145,8 @@ export function recursiveSelectionSort(
         );
         return;
       } else {
-        changeBarColor(sortedColor, bars[i], bars[i + 1]);
-        changeClass("sorted", bars[i], bars[i + 1]);
+        modifyBar(sortedColor, "sorted", bars[i], bars[i + 1]);
+
         setIsSorted(true);
         sorted = true;
         console.log("SORTED");
@@ -280,36 +277,29 @@ function visualSelectionSort(unsortedColor, referenceColor, selectedColor) {
 
   if (sorted) {
     for (let x = arr.length - 1; x >= i; x--) {
-      changeBarColor(unsortedColor, bars[x]);
-      changeClass("unsorted", bars[x]);
+      modifyBar(unsortedColor, "unsorted", bars[x]);
     }
     sorted = false;
   }
 
   if (referenceBar) {
-    changeBarColor(unsortedColor, bars[i]);
-    changeClass("unsorted", bars[i]);
+    modifyBar(unsortedColor, "unsorted", bars[i]);
   } else if (selectBar) {
-    changeBarColor(unsortedColor, bars[j]);
-    changeClass("unsorted", bars[j]);
+    modifyBar(unsortedColor, "unsorted", bars[j]);
   } else if (selectNewMin) {
     if (index !== 0) {
-      changeBarColor(referenceColor, bars[index]);
-      changeClass("reference", bars[index]);
+      modifyBar(referenceColor, "reference", bars[index]);
     }
-    changeBarColor(selectedColor, bars[j]);
-    changeClass("selected", bars[j]);
+    modifyBar(selectedColor, "selected", bars[j]);
   } else if (unselectBar) {
-    changeBarColor(selectedColor, bars[j]);
-    changeClass("selected", bars[j]);
+    modifyBar(selectedColor, "selected", bars[j]);
   } else if (barSwap) {
     swapBars(bars[i], bars[index]);
   } else if (unselectBars) {
-    changeBarColor(referenceColor, bars[i]);
-    changeClass("reference", bars[i]);
+    modifyBar(referenceColor, "reference", bars[i]);
+
     if (index !== 0) {
-      changeBarColor(referenceColor, bars[index]);
-      changeClass("reference", bars[index]);
+      modifyBar(referenceColor, "reference", bars[index]);
     }
   }
 }
