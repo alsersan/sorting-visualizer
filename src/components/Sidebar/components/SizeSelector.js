@@ -14,8 +14,8 @@ const SizeSelector = () => {
       hasStarted={hasStarted}
       mainText="Size"
       secondaryText={size}
-      max="110"
-      min="9"
+      max="25"
+      min="5"
       value={size}
       step="1"
       onChange={(e) => {

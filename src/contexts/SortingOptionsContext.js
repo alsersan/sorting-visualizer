@@ -12,7 +12,7 @@ const SortingOptionsProvider = ({ children }) => {
   const [color4, setColor4] = useState("#d6ec32");
 
   const [speed, setSpeed] = useState(50);
-  const [size, setSize] = useState(9);
+  const [size, setSize] = useState(10);
   const [array, setArray] = useState([]);
 
   const [activeOption, setActiveOption] = useState(0);
