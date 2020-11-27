@@ -188,23 +188,36 @@ function visualSelectionSort() {
   if (sorted) {
     for (let x = arr.length - 1; x >= i; x--) {
       changeBarColor("red", bars[x]);
+      changeClass("unsorted", bars[x]);
     }
     sorted = false;
   }
 
+  // AÑADIR CLASES
   if (referenceBar) {
     changeBarColor("red", bars[i]);
+    changeClass("unsorted", bars[i]);
   } else if (selectBar) {
     changeBarColor("red", bars[j]);
+    changeClass("unsorted", bars[j]);
   } else if (selectNewMin) {
-    if (index !== 0) changeBarColor("blue", bars[index]);
+    if (index !== 0) {
+      changeBarColor("blue", bars[index]);
+      changeClass("reference", bars[index]);
+    }
     changeBarColor("green", bars[j]);
+    changeClass("selected", bars[j]);
   } else if (unselectBar) {
     changeBarColor("green", bars[j]);
+    changeClass("selected", bars[j]);
   } else if (barSwap) {
     swapBars(bars[i], bars[index]);
   } else if (unselectBars) {
     changeBarColor("blue", bars[i]);
-    if (index !== 0) changeBarColor("blue", bars[index]);
+    changeClass("reference", bars[i]);
+    if (index !== 0) {
+      changeBarColor("blue", bars[index]);
+      changeClass("reference", bars[index]);
+    }
   }
 }

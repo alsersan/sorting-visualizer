@@ -211,6 +211,5 @@ function visualBubbleSort(unsortedColor, selectedColor) {
   } else if (unselectBars) {
     changeBarColor(selectedColor, bars[j], bars[j + 1]);
     changeClass("selected", bars[j], bars[j + 1]);
-    changeClass("selected", bars[j], bars[j + 1]);
   }
 }
