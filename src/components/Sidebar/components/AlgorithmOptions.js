@@ -5,7 +5,7 @@ import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContex
 import { useAlgorithmContext } from "../../../contexts/AlgorithmContext";
 
 const Container = styled.div`
-  width: 90%;
+  width: 100%;
   margin: 3rem 0;
   opacity: ${(props) => (props.hasStarted ? "0.4" : "1")};
   pointer-events: ${(props) => (props.hasStarted ? "none" : "auto")};
