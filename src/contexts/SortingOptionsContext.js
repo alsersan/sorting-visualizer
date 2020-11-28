@@ -11,7 +11,7 @@ const SortingOptionsProvider = ({ children }) => {
   const [color3, setColor3] = useState("#216e3c");
   const [color4, setColor4] = useState("#d6ec32");
 
-  const [speed, setSpeed] = useState(50);
+  const [speed, setSpeed] = useState(500);
   const [size, setSize] = useState(10);
   const [array, setArray] = useState([]);
 
