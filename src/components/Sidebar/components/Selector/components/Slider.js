@@ -27,9 +27,10 @@ const StyledSlider = styled.input`
   }
 
   &::-moz-range-thumb {
+    box-sizing: border-box;
     appearance: none;
-    height: 22px;
-    width: 22px;
+    height: 26px;
+    width: 26px;
     border-radius: 50%;
     background-color: ${(props) => props.theme.backgroundColor.secondary};
     border: 2px solid #555;
