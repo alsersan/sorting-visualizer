@@ -9,7 +9,5 @@ export const GlobalStyle = createGlobalStyle`
 
 body {
 font-family: ${(props) => props.theme.main.fontFamily};
--webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
 }
 `;

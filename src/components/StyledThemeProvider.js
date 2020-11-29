@@ -3,7 +3,7 @@ import { ThemeProvider } from "styled-components";
 
 const theme = {
   main: {
-    fontFamily: `-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif`,
+    fontFamily: "Ubuntu, sans-serif",
     spacing: "0.6rem",
     borderRadius: "4px",
   },
