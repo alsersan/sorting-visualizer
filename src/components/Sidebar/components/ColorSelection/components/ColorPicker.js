@@ -2,19 +2,49 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  width: 100%;
-  margin: 0.5rem 0;
+  margin: 0.5rem;
+  display: flex;
+  flex-grow: 1;
+  width: 8rem;
+  max-width: 8rem;
+  align-items: center;
 `;
 
-const Span = styled.span`
+const ColorInput = styled.input`
+  border: none;
+  background-color: transparent;
+  height: 1.5rem;
+  width: 2.5rem;
+  outline: none;
+  cursor: pointer;
+
+  &::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+
+  &::-webkit-color-swatch {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #555;
+    border-radius: 4px;
+  }
+
+  &::-moz-color-swatch {
+    border: 1px solid #555;
+    border-radius: 4px;
+  }
+`;
+
+const Description = styled.span`
   margin-left: 0.5rem;
 `;
 
 const ColorPicker = ({ description, value, onChange }) => {
   return (
     <Container>
-      <input type="color" value={value} onChange={onChange} />
-      <Span>{description}</Span>
+      <ColorInput type="color" value={value} onChange={onChange} />
+      <Description>{description}</Description>
     </Container>
   );
 };

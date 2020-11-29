@@ -13,6 +13,18 @@ const Container = styled.div`
   pointer-events: ${(props) => (props.isRunning ? "none" : "auto")};
 `;
 
+const Title = styled.div`
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+`;
+
+const FlexWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
 const ColorSelection = () => {
   const {
     color1,
@@ -28,26 +40,29 @@ const ColorSelection = () => {
 
   return (
     <Container isRunning={isRunning}>
-      <ColorPicker
-        value={color1}
-        onChange={(e) => setColor1(e.target.value)}
-        description="Unsorted"
-      />
-      <ColorPicker
-        value={color2}
-        onChange={(e) => setColor2(e.target.value)}
-        description="Selected"
-      />
-      <ColorPicker
-        value={color4}
-        onChange={(e) => setColor4(e.target.value)}
-        description="Reference"
-      />
-      <ColorPicker
-        value={color3}
-        onChange={(e) => setColor3(e.target.value)}
-        description="Sorted"
-      />
+      <Title>Color Picker</Title>
+      <FlexWrapper>
+        <ColorPicker
+          value={color1}
+          onChange={(e) => setColor1(e.target.value)}
+          description="Unsorted"
+        />
+        <ColorPicker
+          value={color2}
+          onChange={(e) => setColor2(e.target.value)}
+          description="Selected"
+        />
+        <ColorPicker
+          value={color4}
+          onChange={(e) => setColor4(e.target.value)}
+          description="Reference"
+        />
+        <ColorPicker
+          value={color3}
+          onChange={(e) => setColor3(e.target.value)}
+          description="Sorted"
+        />
+      </FlexWrapper>
     </Container>
   );
 };
