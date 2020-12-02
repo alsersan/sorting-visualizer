@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import BarChart from "./components/BarChart";
 import ButtonRow from "./components/ButtonRow";
+import Logo from "./components/Logo";
 
 const Container = styled.div`
   height: 100%;
@@ -20,6 +21,7 @@ const Container = styled.div`
 const BarChartContainer = () => {
   return (
     <Container>
+      <Logo />
       <BarChart />
       <ButtonRow />
     </Container>
