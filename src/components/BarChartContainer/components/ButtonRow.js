@@ -24,7 +24,7 @@ import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContex
 import { useAlgorithmContext } from "../../../contexts/AlgorithmContext";
 
 const StyledButtonRow = styled.div`
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   display: flex;
   justify-content: center;
 `;
