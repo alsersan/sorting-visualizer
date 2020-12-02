@@ -6,9 +6,15 @@ import { useAlgorithmContext } from "../../../contexts/AlgorithmContext";
 
 const Container = styled.div`
   width: 100%;
-  margin: 3rem 0;
+  margin: 0 0 2rem;
   opacity: ${(props) => (props.hasStarted ? "0.4" : "1")};
   pointer-events: ${(props) => (props.hasStarted ? "none" : "auto")};
+`;
+
+const Title = styled.div`
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
 `;
 
 const FlexWrapper = styled.div`
@@ -17,15 +23,23 @@ const FlexWrapper = styled.div`
   justify-content: center;
 `;
 
-const Label = styled.label`
+const Button = styled.button`
   display: flex;
   flex-grow: 1;
-  padding: 2px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  font-size: 1rem;
+  font-family: inherit;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
   height: 2rem;
   width: 8rem;
   max-width: 8rem;
   margin: 0.5rem;
-  background-color: ${(props) => (props.active ? "blue" : "red")};
+  background-color: ${(props) =>
+    props.active ? "#ccc" : props.theme.backgroundColor.secondary};
   cursor: pointer;
 `;
 
@@ -35,29 +49,23 @@ const AlgorithmOptions = () => {
 
   return (
     <Container hasStarted={hasStarted}>
-      <div>Sorting Algorithm</div>
+      <Title>Sorting Algorithm</Title>
       <FlexWrapper>
         {[
-          "BubbleSort",
-          "SelectionSort",
+          "Bubble Sort",
+          "Selection Sort",
           "option3",
           "option4",
           "option5",
           "option6",
         ].map((option, index) => (
-          <React.Fragment key={index}>
-            <input
-              style={{ display: "none" }}
-              hide="hide"
-              type="radio"
-              id={option}
-              name="option"
-              onClick={() => setActiveOption(index)}
-            />
-            <Label active={index === activeOption} htmlFor={option}>
-              <span>{option}</span>
-            </Label>
-          </React.Fragment>
+          <Button
+            key={index}
+            active={index === activeOption}
+            onClick={() => setActiveOption(index)}
+          >
+            {option}
+          </Button>
         ))}
       </FlexWrapper>
     </Container>
