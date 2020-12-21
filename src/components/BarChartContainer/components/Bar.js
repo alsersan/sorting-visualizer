@@ -4,11 +4,20 @@ import styled from "styled-components";
 import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
 
 const StyledBar = styled.div`
-  margin: 0 1px;
+  margin: ${({ size }) => {
+    if (size < 10) {
+      return "0 3px";
+    } else if (size > 19) {
+      return "0 1px";
+    } else {
+      return "0 2px";
+    }
+  }};
   position: relative;
   flex-grow: 1;
   display: flex;
   justify-content: center;
+  border-radius: 5px 5px 0 0;
 `;
 
 const Text = styled.span`
@@ -19,7 +28,7 @@ const Text = styled.span`
 
 const Bar = (props) => {
   const barEl = useRef();
-  const { color1, color2, color3, color4 } = useSortingOptionsContext();
+  const { size, color1, color2, color3, color4 } = useSortingOptionsContext();
   const [isMounted, setIsMounted] = useState(false);
 
   const checkClassName = (classList) => {
@@ -43,6 +52,7 @@ const Bar = (props) => {
     <StyledBar
       ref={barEl}
       className={props.className}
+      size={size}
       style={{
         height: `${props.number}%`,
         backgroundColor: isMounted
