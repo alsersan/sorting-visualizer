@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import logoLight from "../../../images/logoLight.png";
 
 const Container = styled.div`
   display: flex;
@@ -9,7 +10,7 @@ const Container = styled.div`
 const Logo = () => {
   return (
     <Container>
-      <span style={{ fontSize: "45px", fontWeight: "bold" }}>Logo</span>
+      <img src={logoLight} alt="logo" style={{ height: "6rem" }} />
     </Container>
   );
 };
