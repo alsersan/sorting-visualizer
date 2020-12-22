@@ -11,7 +11,7 @@ const StyledSidebar = styled.div`
   width: 35rem;
   padding: 2rem;
   background-color: ${(props) => props.theme.backgroundColor.secondary};
-  border-radius: ${(props) => props.theme.main.borderRadius};
+  border-radius: ${(props) => props.theme.borderRadius};
   display: flex;
   flex-direction: column;
   align-items: center;

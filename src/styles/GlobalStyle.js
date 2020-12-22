@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 body {
-font-family: ${(props) => props.theme.main.fontFamily};
+font-family: ${(props) => props.theme.fontFamily};
+color: ${(props) => props.theme.color}
 }
 `;

@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { GlobalStyle } from "./components/GlobalStyle";
+import { GlobalStyle } from "./styles/GlobalStyle";
 
 import Sidebar from "./components/Sidebar";
 import BarChartContainer from "./components/BarChartContainer";
-import StyledThemeProvider from "./components/StyledThemeProvider";
+import StyledThemeProvider from "./styles/StyledThemeProvider";
 
 import { SortingOptionsProvider } from "./contexts/SortingOptionsContext";
 import { AlgorithmProvider } from "./contexts/AlgorithmContext";
@@ -12,19 +12,25 @@ import { AlgorithmProvider } from "./contexts/AlgorithmContext";
 const MainContainer = styled.div`
   height: 100vh;
   background-color: ${(props) => props.theme.backgroundColor.primary};
-  padding: ${(props) => props.theme.main.spacing};
+  padding: ${(props) => props.theme.spacing};
   display: flex;
   justify-content: center;
 `;
 
 const App = () => {
+  const [option, setOption] = useState("light");
   return (
     <React.Fragment>
-      <StyledThemeProvider>
+      <StyledThemeProvider option={option}>
         <GlobalStyle />
         <AlgorithmProvider>
           <SortingOptionsProvider>
             <MainContainer>
+              <button
+                onClick={() => setOption(option === "light" ? "dark" : "light")}
+              >
+                CHANGE THEME
+              </button>
               <BarChartContainer />
               <Sidebar />
             </MainContainer>
