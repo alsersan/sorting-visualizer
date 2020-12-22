@@ -18,10 +18,10 @@ const Container = styled.div`
   border-radius: ${(props) => props.theme.borderRadius};
 `;
 
-const BarChartContainer = () => {
+const BarChartContainer = ({ option }) => {
   return (
     <Container>
-      <Logo />
+      <Logo option={option} />
       <BarChart />
       <ButtonRow />
     </Container>

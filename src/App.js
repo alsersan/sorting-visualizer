@@ -31,7 +31,7 @@ const App = () => {
               >
                 CHANGE THEME
               </button>
-              <BarChartContainer />
+              <BarChartContainer option={option} />
               <Sidebar />
             </MainContainer>
           </SortingOptionsProvider>
