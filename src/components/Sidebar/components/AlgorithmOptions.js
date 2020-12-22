@@ -33,7 +33,8 @@ const Button = styled.button`
   outline: none;
   font-size: 1rem;
   font-family: inherit;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+  color: inherit;
+  box-shadow: ${(props) => props.theme.button.boxShadow};
   height: 2rem;
   width: 8rem;
   max-width: 8rem;

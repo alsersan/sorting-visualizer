@@ -39,8 +39,8 @@ const Button = styled.button`
   outline: none;
   box-shadow: ${(props) =>
     props.disabled
-      ? "0 0 0.5rem rgba(0, 0, 0, 0.1)"
-      : "0 0 0.5rem rgba(0, 0, 0, 0.3)"};
+      ? props.theme.button.disabledBoxShadow
+      : props.theme.button.boxShadow};
   background-color: transparent;
   margin: 0 0.5rem;
   animation: ${({ hasStarted, disabled }) =>
