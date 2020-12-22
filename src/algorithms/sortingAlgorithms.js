@@ -31,7 +31,6 @@ export const bubbleSort = async (arr, speed) => {
       break;
     }
   }
-  // return arr;
 };
 
 export const selectionSort = async (arr, speed) => {
@@ -75,6 +74,48 @@ export const selectionSort = async (arr, speed) => {
     // Always change color of the sorted bar
     changeBarColor("orange", bars[i]);
   }
+};
+
+export const insertionSort = async (arr, speed) => {
+  const bars = document.querySelectorAll(".bar");
+  console.log(arr);
+
+  // First loop. start from i = 0 since we need a i-1 element to compare to
+  for (let i = 1; i < arr.length; i++) {
+    const currentVal = arr[i];
+    changeBarColor("blue", bars[i]);
+    await timer(speed);
+
+    // Second loop from back to front
+    for (let j = i - 1; j >= 0; j--) {
+      changeBarColor("green", bars[j]);
+      await timer(speed);
+
+      // If the value at index j is smaller (or equal) than the reference number, break the loop
+      if (arr[j] <= currentVal) {
+        changeBarColor("red", bars[j], bars[j + 1]);
+        await timer(speed);
+        break;
+      }
+
+      // Swap the 2 bars being compared
+      swapBars(bars[j], bars[j + 1]);
+      changeBarColor("blue", bars[j]);
+      changeBarColor("green", bars[j + 1]);
+      [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      await timer(speed);
+
+      changeBarColor("red", bars[j + 1]);
+
+      // If index is 0, the current implementation will leave that bar colored blue. This way we make sure that it's red again
+      if (j === 0) {
+        changeBarColor("red", bars[j]);
+        await timer(speed);
+      }
+    }
+  }
+  // When the main loop ends, everything is sorted
+  bars.forEach((bar) => changeBarColor("orange", bar));
 };
 
 function timer(ms) {
