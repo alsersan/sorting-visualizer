@@ -5,6 +5,8 @@ import BarChart from "./components/BarChart";
 import ButtonRow from "./components/ButtonRow";
 import Logo from "./components/Logo";
 
+import { useThemeTogglerContext } from "../../contexts/ThemeTogglerContext";
+
 const Container = styled.div`
   height: 100%;
   width: 70rem;
@@ -18,10 +20,17 @@ const Container = styled.div`
   border-radius: ${(props) => props.theme.borderRadius};
 `;
 
-const BarChartContainer = ({ option }) => {
+const BarChartContainer = () => {
+  const { theme, setTheme } = useThemeTogglerContext();
   return (
     <Container>
-      <Logo option={option} />
+      <button
+        onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+        style={{ position: "absolute", top: 0, left: 0 }}
+      >
+        CHANGE THEME
+      </button>
+      <Logo />
       <BarChart />
       <ButtonRow />
     </Container>

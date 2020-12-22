@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { GlobalStyle } from "./styles/GlobalStyle";
 
@@ -8,6 +8,7 @@ import StyledThemeProvider from "./styles/StyledThemeProvider";
 
 import { SortingOptionsProvider } from "./contexts/SortingOptionsContext";
 import { AlgorithmProvider } from "./contexts/AlgorithmContext";
+import { ThemeTogglerProvider } from "./contexts/ThemeTogglerContext";
 
 const MainContainer = styled.div`
   height: 100vh;
@@ -18,25 +19,21 @@ const MainContainer = styled.div`
 `;
 
 const App = () => {
-  const [option, setOption] = useState("light");
   return (
     <React.Fragment>
-      <StyledThemeProvider option={option}>
-        <GlobalStyle />
-        <AlgorithmProvider>
-          <SortingOptionsProvider>
-            <MainContainer>
-              <button
-                onClick={() => setOption(option === "light" ? "dark" : "light")}
-              >
-                CHANGE THEME
-              </button>
-              <BarChartContainer option={option} />
-              <Sidebar />
-            </MainContainer>
-          </SortingOptionsProvider>
-        </AlgorithmProvider>
-      </StyledThemeProvider>
+      <ThemeTogglerProvider>
+        <StyledThemeProvider>
+          <GlobalStyle />
+          <AlgorithmProvider>
+            <SortingOptionsProvider>
+              <MainContainer>
+                <BarChartContainer />
+                <Sidebar />
+              </MainContainer>
+            </SortingOptionsProvider>
+          </AlgorithmProvider>
+        </StyledThemeProvider>
+      </ThemeTogglerProvider>
     </React.Fragment>
   );
 };
