@@ -17,22 +17,25 @@ const Checkbox = styled.input`
 `;
 
 const StyledLabel = styled.label`
-  background-color: blue;
+  background-color: ${(props) => props.theme.blue};
   width: 4rem;
   height: 2rem;
   border-radius: 3rem;
   display: inline-block;
   position: relative;
+  cursor: pointer;
 
   &:before {
     position: absolute;
+    z-index: 1;
     right: 0;
     width: 2rem;
     height: 2rem;
-    background-color: white;
+    background-color: #fff;
     content: "";
     border-radius: 50%;
-    transition: 0.2s;
+    transition: 200ms ease;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3);
 
     ${Checkbox}:checked ~ & {
       transform: translateX(-2rem);
