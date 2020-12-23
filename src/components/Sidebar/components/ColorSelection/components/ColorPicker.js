@@ -27,12 +27,12 @@ const ColorInput = styled.input`
     width: 100%;
     box-sizing: border-box;
     border: 1px solid #555;
-    border-radius: 4px;
+    border-radius: ${(props) => props.theme.borderRadius};
   }
 
   &::-moz-color-swatch {
     border: 1px solid #555;
-    border-radius: 4px;
+    border-radius: ${(props) => props.theme.borderRadius};
   }
 `;
 

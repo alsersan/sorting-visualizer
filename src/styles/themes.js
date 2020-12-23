@@ -27,5 +27,5 @@ export const main = {
   gray: "#858b8c",
   fontFamily: "Ubuntu, sans-serif",
   spacing: "0.6rem",
-  borderRadius: "4px",
+  borderRadius: "5px",
 };

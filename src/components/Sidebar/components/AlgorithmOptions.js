@@ -29,7 +29,7 @@ const Button = styled.button`
   align-items: center;
   justify-content: center;
   border: none;
-  border-radius: 4px;
+  border-radius: ${(props) => props.theme.borderRadius};
   outline: none;
   font-size: 1rem;
   font-family: inherit;
