@@ -6,8 +6,11 @@ export const lightTheme = {
   button: {
     boxShadow: "0 0 0.5rem rgba(0, 0, 0, 0.3)",
     disabledBoxShadow: "0 0 0.5rem rgba(0, 0, 0, 0.1)",
+    activeBackground: "rgba(30, 141, 229)",
+    activeBoxShadow: "0 0 0.5rem #1e8de5, 0 0 0.5rem rgba(0, 0, 0, 0.1)",
+    activeText: "#fff",
   },
-  color: "black",
+  color: "#000",
 };
 
 export const darkTheme = {
@@ -18,8 +21,11 @@ export const darkTheme = {
   button: {
     boxShadow: "0 0 0.5rem rgba(255, 255, 255, 0.6)",
     disabledBoxShadow: "0 0 0.5rem rgba(255, 255, 255, 0.2)",
+    activeBackground: "rgba(30, 141, 229)",
+    activeBoxShadow: "0 0 0.5rem #1e8de5, 0 0 0.5rem rgba(255, 255, 255, 0.6)",
+    activeText: "#fff",
   },
-  color: "white",
+  color: "#fff",
 };
 
 export const main = {
