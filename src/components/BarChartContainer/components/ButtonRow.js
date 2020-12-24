@@ -20,6 +20,8 @@ import {
   selectionSortStop,
 } from "../../../algorithms/recursiveSelectionSort";
 
+import { recursiveInsertionSort } from "../../../algorithms/recursiveInsertionSort";
+
 import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
 import { useAlgorithmContext } from "../../../contexts/AlgorithmContext";
 
@@ -163,6 +165,8 @@ const ButtonRow = () => {
                   color2,
                   color3
                 );
+              } else if (activeOption === 2) {
+                recursiveInsertionSort(speed, speed, setIsSorted);
               }
             }
           }}

@@ -61,7 +61,7 @@ const AlgorithmOptions = () => {
         {[
           "Bubble Sort",
           "Selection Sort",
-          "option3",
+          "Insertion Sort",
           "option4",
           "option5",
           "option6",

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 
 import { selectionSortGetArray } from "../algorithms/recursiveSelectionSort";
 import { bubbleSortGetArray } from "../algorithms/recursiveBubbleSort";
+import { insertionSortGetArray } from "../algorithms/recursiveInsertionSort";
 
 const SortingOptionsContext = React.createContext();
 
@@ -33,6 +34,8 @@ const SortingOptionsProvider = ({ children }) => {
       bubbleSortGetArray(array);
     } else if (activeOption === 1) {
       selectionSortGetArray(array);
+    } else if (activeOption === 2) {
+      insertionSortGetArray(array);
     }
   }, [array, activeOption]);
 
