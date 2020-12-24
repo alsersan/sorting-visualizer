@@ -53,7 +53,7 @@ const ThemeToggler = () => {
         name="switch-button"
         onChange={() => setTheme(theme === "light" ? "dark" : "light")}
       />
-      <StyledLabel for="switch-button" />
+      <StyledLabel htmlFor="switch-button" />
       <FaSun
         style={{
           position: "absolute",
