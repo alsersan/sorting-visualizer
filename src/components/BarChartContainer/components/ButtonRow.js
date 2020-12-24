@@ -20,7 +20,11 @@ import {
   selectionSortStop,
 } from "../../../algorithms/recursiveSelectionSort";
 
-import { recursiveInsertionSort } from "../../../algorithms/recursiveInsertionSort";
+import {
+  recursiveInsertionSort,
+  insertionSortStop,
+  insertionSortStepForward,
+} from "../../../algorithms/recursiveInsertionSort";
 
 import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
 import { useAlgorithmContext } from "../../../contexts/AlgorithmContext";
@@ -98,6 +102,9 @@ const ButtonRow = () => {
             color2,
             color3
           );
+        } else if (activeOption === 2) {
+          insertionSortStop();
+          recursiveInsertionSort(speed, speed, setIsSorted);
         }
       }, 150);
     }
@@ -130,8 +137,9 @@ const ButtonRow = () => {
               bubbleSortStop();
             } else if (activeOption === 1) {
               selectionSortStop();
+            } else if (activeOption === 2) {
+              insertionSortStop();
             }
-
             setIsRunning(false);
           }}
         >
@@ -201,6 +209,8 @@ const ButtonRow = () => {
                 color2,
                 color3
               );
+            } else if (activeOption === 2) {
+              insertionSortStepForward(1, 9999999, setIsSorted);
             }
             setHasStarted(true);
           }

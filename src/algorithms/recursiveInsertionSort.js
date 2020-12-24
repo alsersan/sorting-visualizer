@@ -12,9 +12,6 @@ let selectBar = false;
 let barSwap = false;
 let unselectBars = false;
 
-let index = 0;
-let unselectBar = false;
-
 export const recursiveInsertionSort = (initialSpeed, speed, setIsSorted) => {
   const bars = document.querySelectorAll(".bar");
 
@@ -95,4 +92,9 @@ export function insertionSortStop() {
 
 export function insertionSortGetArray(newArray) {
   arr = [...newArray];
+}
+
+export function insertionSortStepForward(initialSpeed, speed, setIsSorted) {
+  insertionSortStop();
+  recursiveInsertionSort(initialSpeed, speed, setIsSorted);
 }
