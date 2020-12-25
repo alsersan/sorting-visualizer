@@ -88,20 +88,30 @@ const ButtonRow = () => {
     referenceColor,
   };
 
+  const algorithms = [
+    recursiveBubbleSort,
+    recursiveSelectionSort,
+    recursiveInsertionSort,
+  ];
+  const stepsForward = [
+    bubbleSortStepForward,
+    selectionSortStepForward,
+    insertionSortStepForward,
+  ];
+  const stepsBack = [
+    bubbleSortStepBack,
+    selectionSortStepBack,
+    insertionSortStepBack,
+  ];
+
+  const stops = [bubbleSortStop, selectionSortStop, insertionSortStop];
+
   useEffect(() => {
     let timeout;
     if (isRunning && !isSorted) {
       timeout = setTimeout(() => {
-        if (activeOption === 0) {
-          bubbleSortStop();
-          recursiveBubbleSort(args);
-        } else if (activeOption === 1) {
-          selectionSortStop();
-          recursiveSelectionSort(args);
-        } else if (activeOption === 2) {
-          insertionSortStop();
-          recursiveInsertionSort(args);
-        }
+        stops[activeOption]();
+        algorithms[activeOption](args);
       }, 150);
     }
     return () => clearTimeout(timeout);
@@ -115,13 +125,7 @@ const ButtonRow = () => {
         disabled={isRunning || !hasStarted}
         onClick={() => {
           setIsSorted(false);
-          if (activeOption === 0) {
-            bubbleSortStepBack(args);
-          } else if (activeOption === 1) {
-            selectionSortStepBack(args);
-          } else if (activeOption === 2) {
-            insertionSortStepBack(args);
-          }
+          stepsBack[activeOption](args);
         }}
       >
         <RippleEffect disabled={isRunning || !hasStarted} />
@@ -131,13 +135,7 @@ const ButtonRow = () => {
         <Button
           hasStarted={hasStarted}
           onClick={() => {
-            if (activeOption === 0) {
-              bubbleSortStop();
-            } else if (activeOption === 1) {
-              selectionSortStop();
-            } else if (activeOption === 2) {
-              insertionSortStop();
-            }
+            stops[activeOption]();
             setIsRunning(false);
           }}
         >
@@ -149,17 +147,9 @@ const ButtonRow = () => {
           hasStarted={hasStarted}
           disabled={isSorted}
           onClick={() => {
-            if (!isSorted) {
-              setHasStarted(true);
-              setIsRunning(true);
-              if (activeOption === 0) {
-                recursiveBubbleSort(args);
-              } else if (activeOption === 1) {
-                recursiveSelectionSort(args);
-              } else if (activeOption === 2) {
-                recursiveInsertionSort(args);
-              }
-            }
+            setHasStarted(true);
+            setIsRunning(true);
+            algorithms[activeOption](args);
           }}
         >
           <RippleEffect disabled={isSorted} />
@@ -171,16 +161,8 @@ const ButtonRow = () => {
         isRunning={isRunning}
         disabled={isRunning || isSorted}
         onClick={() => {
-          if (!isSorted) {
-            if (activeOption === 0) {
-              bubbleSortStepForward({ ...args, speed: 1 });
-            } else if (activeOption === 1) {
-              selectionSortStepForward({ ...args, speed: 1 });
-            } else if (activeOption === 2) {
-              insertionSortStepForward({ ...args, speed: 1 });
-            }
-            setHasStarted(true);
-          }
+          stepsForward[activeOption]({ ...args, speed: 1 });
+          setHasStarted(true);
         }}
       >
         <RippleEffect disabled={isRunning || isSorted} />
