@@ -12,7 +12,6 @@ let record = [];
 let sorted = false;
 
 export function recursiveBubbleSort(
-  initialSpeed,
   speed,
   setIsSorted,
   unsortedColor,
@@ -32,7 +31,6 @@ export function recursiveBubbleSort(
         barSwap = true;
         recursiveBubbleSort(
           speed,
-          speed,
           setIsSorted,
           unsortedColor,
           selectedColor,
@@ -44,7 +42,6 @@ export function recursiveBubbleSort(
         compareBars = false;
         unselectBars = true;
         recursiveBubbleSort(
-          speed,
           speed,
           setIsSorted,
           unsortedColor,
@@ -61,7 +58,6 @@ export function recursiveBubbleSort(
       barSwap = false;
       unselectBars = true;
       recursiveBubbleSort(
-        speed,
         speed,
         setIsSorted,
         unsortedColor,
@@ -89,7 +85,6 @@ export function recursiveBubbleSort(
       // if j < i, the cycle has not been yet completed
       recursiveBubbleSort(
         speed,
-        speed,
         setIsSorted,
         unsortedColor,
         selectedColor,
@@ -101,7 +96,6 @@ export function recursiveBubbleSort(
       j = 0;
       i--;
       recursiveBubbleSort(
-        speed,
         speed,
         setIsSorted,
         unsortedColor,
@@ -117,7 +111,7 @@ export function recursiveBubbleSort(
       setIsSorted(true);
       console.log("SORTED!!");
     }
-  }, initialSpeed);
+  }, speed);
 }
 
 export function bubbleSortStop() {
@@ -145,22 +139,20 @@ export function bubbleSortGetArray(newArray) {
 }
 
 export function bubbleSortStepForward(
-  initialSpeed,
   speed,
   setIsSorted,
   unsortedColor,
   selectedColor,
   sortedColor
 ) {
-  bubbleSortStop();
   recursiveBubbleSort(
-    initialSpeed,
     speed,
     setIsSorted,
     unsortedColor,
     selectedColor,
     sortedColor
   );
+  setTimeout(bubbleSortStop, speed);
 }
 
 export function bubbleSortStepBack(

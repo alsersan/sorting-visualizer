@@ -84,14 +84,7 @@ const ButtonRow = () => {
       timeout = setTimeout(() => {
         if (activeOption === 0) {
           bubbleSortStop();
-          recursiveBubbleSort(
-            speed,
-            speed,
-            setIsSorted,
-            color1,
-            color2,
-            color3
-          );
+          recursiveBubbleSort(speed, setIsSorted, color1, color2, color3);
         } else if (activeOption === 1) {
           selectionSortStop();
           recursiveSelectionSort(
@@ -157,14 +150,7 @@ const ButtonRow = () => {
               setHasStarted(true);
               setIsRunning(true);
               if (activeOption === 0) {
-                recursiveBubbleSort(
-                  speed,
-                  speed,
-                  setIsSorted,
-                  color1,
-                  color2,
-                  color3
-                );
+                recursiveBubbleSort(speed, setIsSorted, color1, color2, color3);
               } else if (activeOption === 1) {
                 recursiveSelectionSort(
                   speed,
@@ -192,14 +178,7 @@ const ButtonRow = () => {
           if (!isSorted) {
             // Instant first execution but delayed the following (around 3h)
             if (activeOption === 0) {
-              bubbleSortStepForward(
-                1,
-                9999999,
-                setIsSorted,
-                color1,
-                color2,
-                color3
-              );
+              bubbleSortStepForward(1, setIsSorted, color1, color2, color3);
             } else if (activeOption === 1) {
               selectionSortStepForward(
                 1,
