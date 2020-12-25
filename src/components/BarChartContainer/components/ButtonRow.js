@@ -105,7 +105,7 @@ const ButtonRow = () => {
           );
         } else if (activeOption === 2) {
           insertionSortStop();
-          recursiveInsertionSort(speed, speed, setIsSorted);
+          recursiveInsertionSort(speed, setIsSorted);
         }
       }, 150);
     }
@@ -177,7 +177,7 @@ const ButtonRow = () => {
                   color3
                 );
               } else if (activeOption === 2) {
-                recursiveInsertionSort(speed, speed, setIsSorted);
+                recursiveInsertionSort(speed, setIsSorted);
               }
             }
           }}
@@ -213,7 +213,7 @@ const ButtonRow = () => {
                 color3
               );
             } else if (activeOption === 2) {
-              insertionSortStepForward(1, 9999999, setIsSorted);
+              insertionSortStepForward(1, setIsSorted);
             }
             setHasStarted(true);
           }

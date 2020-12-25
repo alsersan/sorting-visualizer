@@ -11,7 +11,7 @@ let selectBar = false;
 let barSwap = false;
 let unselectBars = false;
 
-export const recursiveInsertionSort = (initialSpeed, speed, setIsSorted) => {
+export const recursiveInsertionSort = (speed, setIsSorted) => {
   const bars = document.querySelectorAll(".bar");
 
   timer = setTimeout(() => {
@@ -22,7 +22,7 @@ export const recursiveInsertionSort = (initialSpeed, speed, setIsSorted) => {
       modifyBar("blue", "reference", bars[i]);
       referenceBar = false;
       selectBar = true;
-      recursiveInsertionSort(speed, speed, setIsSorted);
+      recursiveInsertionSort(speed, setIsSorted);
       return;
     }
 
@@ -37,12 +37,12 @@ export const recursiveInsertionSort = (initialSpeed, speed, setIsSorted) => {
       if (arr[j] > currentVal) {
         selectBar = false;
         barSwap = true;
-        recursiveInsertionSort(speed, speed, setIsSorted);
+        recursiveInsertionSort(speed, setIsSorted);
         return;
       } else {
         selectBar = false;
         unselectBars = true;
-        recursiveInsertionSort(speed, speed, setIsSorted);
+        recursiveInsertionSort(speed, setIsSorted);
         return;
       }
     }
@@ -63,7 +63,7 @@ export const recursiveInsertionSort = (initialSpeed, speed, setIsSorted) => {
         j = i - 1;
         unselectBars = false;
         referenceBar = true;
-        recursiveInsertionSort(speed, speed, setIsSorted);
+        recursiveInsertionSort(speed, setIsSorted);
         return;
       }
       // Sorting finished
@@ -76,14 +76,14 @@ export const recursiveInsertionSort = (initialSpeed, speed, setIsSorted) => {
     if (j > 0) {
       j--;
       selectBar = true;
-      recursiveInsertionSort(speed, speed, setIsSorted);
+      recursiveInsertionSort(speed, setIsSorted);
       return;
     } else {
       unselectBars = true;
-      recursiveInsertionSort(speed, speed, setIsSorted);
+      recursiveInsertionSort(speed, setIsSorted);
       return;
     }
-  }, initialSpeed);
+  }, speed);
 };
 
 export function insertionSortStop() {
@@ -94,9 +94,9 @@ export function insertionSortGetArray(newArray) {
   arr = [...newArray];
 }
 
-export function insertionSortStepForward(initialSpeed, speed, setIsSorted) {
-  insertionSortStop();
-  recursiveInsertionSort(initialSpeed, speed, setIsSorted);
+export function insertionSortStepForward(speed, setIsSorted) {
+  recursiveInsertionSort(speed, setIsSorted);
+  setTimeout(insertionSortStop, speed);
 }
 
 function saveStep() {
