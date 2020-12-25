@@ -94,13 +94,7 @@ const ButtonRow = () => {
       timeout = setTimeout(() => {
         if (activeOption === 0) {
           bubbleSortStop();
-          recursiveBubbleSort(
-            speed,
-            setIsSorted,
-            unsortedColor,
-            selectedColor,
-            sortedColor
-          );
+          recursiveBubbleSort(args);
         } else if (activeOption === 1) {
           selectionSortStop();
           recursiveSelectionSort(args);
@@ -122,7 +116,7 @@ const ButtonRow = () => {
         onClick={() => {
           setIsSorted(false);
           if (activeOption === 0) {
-            bubbleSortStepBack(setHasStarted, unsortedColor, selectedColor);
+            bubbleSortStepBack(args);
           } else if (activeOption === 1) {
             selectionSortStepBack(args);
           } else if (activeOption === 2) {
@@ -159,13 +153,7 @@ const ButtonRow = () => {
               setHasStarted(true);
               setIsRunning(true);
               if (activeOption === 0) {
-                recursiveBubbleSort(
-                  speed,
-                  setIsSorted,
-                  unsortedColor,
-                  selectedColor,
-                  sortedColor
-                );
+                recursiveBubbleSort(args);
               } else if (activeOption === 1) {
                 recursiveSelectionSort(args);
               } else if (activeOption === 2) {
@@ -184,15 +172,8 @@ const ButtonRow = () => {
         disabled={isRunning || isSorted}
         onClick={() => {
           if (!isSorted) {
-            // Instant first execution but delayed the following (around 3h)
             if (activeOption === 0) {
-              bubbleSortStepForward(
-                1,
-                setIsSorted,
-                unsortedColor,
-                selectedColor,
-                sortedColor
-              );
+              bubbleSortStepForward({ ...args, speed: 1 });
             } else if (activeOption === 1) {
               selectionSortStepForward({ ...args, speed: 1 });
             } else if (activeOption === 2) {
