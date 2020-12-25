@@ -17,7 +17,6 @@ let unselectBars = false;
 let sorted = false;
 
 export function recursiveSelectionSort(
-  initialSpeed,
   speed,
   setIsSorted,
   unsortedColor,
@@ -39,7 +38,6 @@ export function recursiveSelectionSort(
       selectBar = true;
       recursiveSelectionSort(
         speed,
-        speed,
         setIsSorted,
         unsortedColor,
         referenceColor,
@@ -58,7 +56,6 @@ export function recursiveSelectionSort(
         selectNewMin = true;
         recursiveSelectionSort(
           speed,
-          speed,
           setIsSorted,
           unsortedColor,
           referenceColor,
@@ -71,7 +68,6 @@ export function recursiveSelectionSort(
         selectBar = false;
         unselectBar = true;
         recursiveSelectionSort(
-          speed,
           speed,
           setIsSorted,
           unsortedColor,
@@ -110,7 +106,6 @@ export function recursiveSelectionSort(
       unselectBars = true;
       recursiveSelectionSort(
         speed,
-        speed,
         setIsSorted,
         unsortedColor,
         referenceColor,
@@ -136,7 +131,6 @@ export function recursiveSelectionSort(
         j = i + 1;
         recursiveSelectionSort(
           speed,
-          speed,
           setIsSorted,
           unsortedColor,
           referenceColor,
@@ -160,7 +154,6 @@ export function recursiveSelectionSort(
       selectBar = true;
       recursiveSelectionSort(
         speed,
-        speed,
         setIsSorted,
         unsortedColor,
         referenceColor,
@@ -172,7 +165,6 @@ export function recursiveSelectionSort(
         barSwap = true;
         recursiveSelectionSort(
           speed,
-          speed,
           setIsSorted,
           unsortedColor,
           referenceColor,
@@ -183,7 +175,6 @@ export function recursiveSelectionSort(
         unselectBars = true;
         recursiveSelectionSort(
           speed,
-          speed,
           setIsSorted,
           unsortedColor,
           referenceColor,
@@ -192,7 +183,7 @@ export function recursiveSelectionSort(
         );
       }
     }
-  }, initialSpeed);
+  }, speed);
 }
 
 export function selectionSortStop() {
@@ -222,7 +213,6 @@ export function selectionSortGetArray(newArray) {
 }
 
 export function selectionSortStepForward(
-  initialSpeed,
   speed,
   setIsSorted,
   unsortedColor,
@@ -230,9 +220,7 @@ export function selectionSortStepForward(
   selectedColor,
   sortedColor
 ) {
-  selectionSortStop();
   recursiveSelectionSort(
-    initialSpeed,
     speed,
     setIsSorted,
     unsortedColor,
@@ -240,6 +228,7 @@ export function selectionSortStepForward(
     selectedColor,
     sortedColor
   );
+  setTimeout(selectionSortStop, speed);
 }
 
 export function selectionSortStepBack(

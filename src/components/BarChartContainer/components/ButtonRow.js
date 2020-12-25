@@ -96,7 +96,6 @@ const ButtonRow = () => {
           selectionSortStop();
           recursiveSelectionSort(
             speed,
-            speed,
             setIsSorted,
             color1,
             color4,
@@ -169,7 +168,6 @@ const ButtonRow = () => {
               } else if (activeOption === 1) {
                 recursiveSelectionSort(
                   speed,
-                  speed,
                   setIsSorted,
                   color1,
                   color4,
@@ -205,7 +203,6 @@ const ButtonRow = () => {
             } else if (activeOption === 1) {
               selectionSortStepForward(
                 1,
-                9999999,
                 setIsSorted,
                 color1,
                 color4,
