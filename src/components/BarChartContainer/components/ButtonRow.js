@@ -81,6 +81,7 @@ const ButtonRow = () => {
   const args = {
     speed,
     setIsSorted,
+    setHasStarted,
     unsortedColor,
     selectedColor,
     sortedColor,
@@ -123,12 +124,7 @@ const ButtonRow = () => {
           if (activeOption === 0) {
             bubbleSortStepBack(setHasStarted, unsortedColor, selectedColor);
           } else if (activeOption === 1) {
-            selectionSortStepBack(
-              setHasStarted,
-              unsortedColor,
-              referenceColor,
-              selectedColor
-            );
+            selectionSortStepBack(args);
           } else if (activeOption === 2) {
             insertionSortStepBack(setHasStarted);
           }

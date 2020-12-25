@@ -159,12 +159,8 @@ export function selectionSortStepForward(args) {
   setTimeout(selectionSortStop, speed);
 }
 
-export function selectionSortStepBack(
-  setHasStarted,
-  unsortedColor,
-  referenceColor,
-  selectedColor
-) {
+export function selectionSortStepBack(args) {
+  const { setHasStarted, unsortedColor, referenceColor, selectedColor } = args;
   const lastElement = record[record.length - 1];
 
   i = lastElement.i;
