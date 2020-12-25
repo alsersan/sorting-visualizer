@@ -100,7 +100,7 @@ const ButtonRow = () => {
           recursiveSelectionSort(args);
         } else if (activeOption === 2) {
           insertionSortStop();
-          recursiveInsertionSort(speed, setIsSorted);
+          recursiveInsertionSort(args);
         }
       }, 150);
     }
@@ -120,7 +120,7 @@ const ButtonRow = () => {
           } else if (activeOption === 1) {
             selectionSortStepBack(args);
           } else if (activeOption === 2) {
-            insertionSortStepBack(setHasStarted);
+            insertionSortStepBack(args);
           }
         }}
       >
@@ -157,7 +157,7 @@ const ButtonRow = () => {
               } else if (activeOption === 1) {
                 recursiveSelectionSort(args);
               } else if (activeOption === 2) {
-                recursiveInsertionSort(speed, setIsSorted);
+                recursiveInsertionSort(args);
               }
             }
           }}
@@ -177,7 +177,7 @@ const ButtonRow = () => {
             } else if (activeOption === 1) {
               selectionSortStepForward({ ...args, speed: 1 });
             } else if (activeOption === 2) {
-              insertionSortStepForward(1, setIsSorted);
+              insertionSortStepForward({ ...args, speed: 1 });
             }
             setHasStarted(true);
           }
