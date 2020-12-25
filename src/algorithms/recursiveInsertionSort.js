@@ -6,7 +6,6 @@ let j = 0;
 let arr = [];
 let record = [];
 let currentVal = 0;
-let sorted = false;
 let referenceBar = true;
 let selectBar = false;
 let barSwap = false;
@@ -16,6 +15,8 @@ export const recursiveInsertionSort = (initialSpeed, speed, setIsSorted) => {
   const bars = document.querySelectorAll(".bar");
 
   timer = setTimeout(() => {
+    saveStep();
+
     if (referenceBar) {
       currentVal = arr[i];
       modifyBar("blue", "reference", bars[i]);
@@ -28,7 +29,7 @@ export const recursiveInsertionSort = (initialSpeed, speed, setIsSorted) => {
     if (selectBar) {
       modifyBar("green", "selected", bars[j]);
 
-      // Color the previously selected bar as 'sorted, except if that bar has an index of i+1, in which case that bar was never selected and is still unsorted
+      // Color the previously selected bar as 'sorted', except if that bar has an index of i+1, in which case that bar was never selected and is still unsorted
       if (bars[j + 2] && j + 2 !== i + 1) {
         modifyBar("orange", "sorted", bars[j + 2]);
       }
@@ -66,7 +67,6 @@ export const recursiveInsertionSort = (initialSpeed, speed, setIsSorted) => {
         return;
       }
       // Sorting finished
-      sorted = true;
       setIsSorted(true);
       console.log("SORTED");
       return;
@@ -97,4 +97,63 @@ export function insertionSortGetArray(newArray) {
 export function insertionSortStepForward(initialSpeed, speed, setIsSorted) {
   insertionSortStop();
   recursiveInsertionSort(initialSpeed, speed, setIsSorted);
+}
+
+function saveStep() {
+  const step = {
+    i,
+    j,
+    currentVal,
+    referenceBar,
+    selectBar,
+    barSwap,
+    unselectBars,
+    arr: [...arr],
+  };
+  record.push(step);
+}
+
+export function insertionSortStepBack(setHasStarted) {
+  const lastElement = record[record.length - 1];
+
+  i = lastElement.i;
+  j = lastElement.j;
+  currentVal = lastElement.currentVal;
+  referenceBar = lastElement.referenceBar;
+  selectBar = lastElement.selectBar;
+  barSwap = lastElement.barSwap;
+  unselectBars = lastElement.unselectBars;
+  arr = [...lastElement.arr];
+
+  record.pop();
+  visualInsertionSort();
+
+  if (record.length === 0) {
+    setHasStarted(false);
+  }
+}
+
+// only DOM changes. All the real data comes from the record
+function visualInsertionSort() {
+  const bars = document.querySelectorAll(".bar");
+
+  if (referenceBar) {
+    modifyBar("red", "unsorted", bars[i]);
+  } else if (selectBar) {
+    if (i === 1) {
+      modifyBar("red", "unsorted", bars[j]);
+    } else {
+      modifyBar("orange", "sorted", bars[j]);
+    }
+    if (bars[j + 2] && j + 2 !== i + 1) {
+      modifyBar("green", "selected", bars[j + 2]);
+    }
+  } else if (barSwap) {
+    modifyBar("blue", "reference", bars[j + 1]);
+    modifyBar("green", "selected", bars[j]);
+    swapBars(bars[j], bars[j + 1]);
+  } else if (unselectBars) {
+    modifyBar("green", "selected", bars[j]);
+    modifyBar("blue", "reference", bars[j + 1]);
+  }
 }

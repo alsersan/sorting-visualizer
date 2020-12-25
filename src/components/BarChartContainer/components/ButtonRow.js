@@ -24,6 +24,7 @@ import {
   recursiveInsertionSort,
   insertionSortStop,
   insertionSortStepForward,
+  insertionSortStepBack,
 } from "../../../algorithms/recursiveInsertionSort";
 
 import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
@@ -123,6 +124,8 @@ const ButtonRow = () => {
             bubbleSortStepBack(setHasStarted, color1, color2);
           } else if (activeOption === 1) {
             selectionSortStepBack(setHasStarted, color1, color4, color2);
+          } else if (activeOption === 2) {
+            insertionSortStepBack(setHasStarted);
           }
         }}
       >
