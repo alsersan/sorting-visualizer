@@ -78,6 +78,15 @@ const ButtonRow = () => {
     setHasStarted,
   } = useAlgorithmContext();
 
+  const args = {
+    speed,
+    setIsSorted,
+    unsortedColor,
+    selectedColor,
+    sortedColor,
+    referenceColor,
+  };
+
   useEffect(() => {
     let timeout;
     if (isRunning && !isSorted) {
@@ -93,14 +102,7 @@ const ButtonRow = () => {
           );
         } else if (activeOption === 1) {
           selectionSortStop();
-          recursiveSelectionSort(
-            speed,
-            setIsSorted,
-            unsortedColor,
-            referenceColor,
-            selectedColor,
-            sortedColor
-          );
+          recursiveSelectionSort(args);
         } else if (activeOption === 2) {
           insertionSortStop();
           recursiveInsertionSort(speed, setIsSorted);
@@ -169,14 +171,7 @@ const ButtonRow = () => {
                   sortedColor
                 );
               } else if (activeOption === 1) {
-                recursiveSelectionSort(
-                  speed,
-                  setIsSorted,
-                  unsortedColor,
-                  referenceColor,
-                  selectedColor,
-                  sortedColor
-                );
+                recursiveSelectionSort(args);
               } else if (activeOption === 2) {
                 recursiveInsertionSort(speed, setIsSorted);
               }
@@ -203,14 +198,7 @@ const ButtonRow = () => {
                 sortedColor
               );
             } else if (activeOption === 1) {
-              selectionSortStepForward(
-                1,
-                setIsSorted,
-                unsortedColor,
-                referenceColor,
-                selectedColor,
-                sortedColor
-              );
+              selectionSortStepForward({ ...args, speed: 1 });
             } else if (activeOption === 2) {
               insertionSortStepForward(1, setIsSorted);
             }
