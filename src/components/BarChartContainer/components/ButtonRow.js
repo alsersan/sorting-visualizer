@@ -63,10 +63,10 @@ const Button = styled.button`
 const ButtonRow = () => {
   const {
     speed,
-    color1,
-    color2,
-    color3,
-    color4,
+    unsortedColor,
+    selectedColor,
+    sortedColor,
+    referenceColor,
     activeOption,
   } = useSortingOptionsContext();
   const {
@@ -84,16 +84,22 @@ const ButtonRow = () => {
       timeout = setTimeout(() => {
         if (activeOption === 0) {
           bubbleSortStop();
-          recursiveBubbleSort(speed, setIsSorted, color1, color2, color3);
+          recursiveBubbleSort(
+            speed,
+            setIsSorted,
+            unsortedColor,
+            selectedColor,
+            sortedColor
+          );
         } else if (activeOption === 1) {
           selectionSortStop();
           recursiveSelectionSort(
             speed,
             setIsSorted,
-            color1,
-            color4,
-            color2,
-            color3
+            unsortedColor,
+            referenceColor,
+            selectedColor,
+            sortedColor
           );
         } else if (activeOption === 2) {
           insertionSortStop();
@@ -113,9 +119,14 @@ const ButtonRow = () => {
         onClick={() => {
           setIsSorted(false);
           if (activeOption === 0) {
-            bubbleSortStepBack(setHasStarted, color1, color2);
+            bubbleSortStepBack(setHasStarted, unsortedColor, selectedColor);
           } else if (activeOption === 1) {
-            selectionSortStepBack(setHasStarted, color1, color4, color2);
+            selectionSortStepBack(
+              setHasStarted,
+              unsortedColor,
+              referenceColor,
+              selectedColor
+            );
           } else if (activeOption === 2) {
             insertionSortStepBack(setHasStarted);
           }
@@ -150,15 +161,21 @@ const ButtonRow = () => {
               setHasStarted(true);
               setIsRunning(true);
               if (activeOption === 0) {
-                recursiveBubbleSort(speed, setIsSorted, color1, color2, color3);
+                recursiveBubbleSort(
+                  speed,
+                  setIsSorted,
+                  unsortedColor,
+                  selectedColor,
+                  sortedColor
+                );
               } else if (activeOption === 1) {
                 recursiveSelectionSort(
                   speed,
                   setIsSorted,
-                  color1,
-                  color4,
-                  color2,
-                  color3
+                  unsortedColor,
+                  referenceColor,
+                  selectedColor,
+                  sortedColor
                 );
               } else if (activeOption === 2) {
                 recursiveInsertionSort(speed, setIsSorted);
@@ -178,15 +195,21 @@ const ButtonRow = () => {
           if (!isSorted) {
             // Instant first execution but delayed the following (around 3h)
             if (activeOption === 0) {
-              bubbleSortStepForward(1, setIsSorted, color1, color2, color3);
+              bubbleSortStepForward(
+                1,
+                setIsSorted,
+                unsortedColor,
+                selectedColor,
+                sortedColor
+              );
             } else if (activeOption === 1) {
               selectionSortStepForward(
                 1,
                 setIsSorted,
-                color1,
-                color4,
-                color2,
-                color3
+                unsortedColor,
+                referenceColor,
+                selectedColor,
+                sortedColor
               );
             } else if (activeOption === 2) {
               insertionSortStepForward(1, setIsSorted);

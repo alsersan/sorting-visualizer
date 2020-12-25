@@ -28,18 +28,24 @@ const Text = styled.span`
 
 const Bar = (props) => {
   const barEl = useRef();
-  const { size, color1, color2, color3, color4 } = useSortingOptionsContext();
+  const {
+    size,
+    unsortedColor,
+    selectedColor,
+    sortedColor,
+    referenceColor,
+  } = useSortingOptionsContext();
   const [isMounted, setIsMounted] = useState(false);
 
   const checkClassName = (classList) => {
     if (classList.contains("unsorted")) {
-      return color1;
+      return unsortedColor;
     } else if (classList.contains("selected")) {
-      return color2;
+      return selectedColor;
     } else if (classList.contains("sorted")) {
-      return color3;
+      return sortedColor;
     } else if (classList.contains("reference")) {
-      return color4;
+      return referenceColor;
     }
   };
 
@@ -57,7 +63,7 @@ const Bar = (props) => {
         height: `${props.number}%`,
         backgroundColor: isMounted
           ? checkClassName(barEl.current.classList)
-          : color1,
+          : unsortedColor,
       }}
     >
       <Text>{props.number}</Text>

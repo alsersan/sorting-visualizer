@@ -7,10 +7,10 @@ import { insertionSortGetArray } from "../algorithms/recursiveInsertionSort";
 const SortingOptionsContext = React.createContext();
 
 const SortingOptionsProvider = ({ children }) => {
-  const [color1, setColor1] = useState("#ec3232");
-  const [color2, setColor2] = useState("#3226df");
-  const [color3, setColor3] = useState("#216e3c");
-  const [color4, setColor4] = useState("#d6ec32");
+  const [unsortedColor, setUnsortedColor] = useState("#ec3232");
+  const [selectedColor, setSelectedColor] = useState("#3226df");
+  const [sortedColor, setSortedColor] = useState("#216e3c");
+  const [referenceColor, setReferenceColor] = useState("#d6ec32");
 
   const [speed, setSpeed] = useState(500);
   const [size, setSize] = useState(10);
@@ -42,14 +42,14 @@ const SortingOptionsProvider = ({ children }) => {
   return (
     <SortingOptionsContext.Provider
       value={{
-        color1,
-        setColor1,
-        color2,
-        setColor2,
-        color3,
-        setColor3,
-        color4,
-        setColor4,
+        unsortedColor,
+        setUnsortedColor,
+        selectedColor,
+        setSelectedColor,
+        sortedColor,
+        setSortedColor,
+        referenceColor,
+        setReferenceColor,
         speed,
         setSpeed,
         size,

@@ -27,14 +27,14 @@ const FlexWrapper = styled.div`
 
 const ColorSelection = () => {
   const {
-    color1,
-    setColor1,
-    color2,
-    setColor2,
-    color3,
-    setColor3,
-    color4,
-    setColor4,
+    unsortedColor,
+    setUnsortedColor,
+    selectedColor,
+    setSelectedColor,
+    sortedColor,
+    setSortedColor,
+    referenceColor,
+    setReferenceColor,
   } = useSortingOptionsContext();
   const { isRunning } = useAlgorithmContext();
 
@@ -43,23 +43,23 @@ const ColorSelection = () => {
       <Title>Color Picker</Title>
       <FlexWrapper>
         <ColorPicker
-          value={color1}
-          onChange={(e) => setColor1(e.target.value)}
+          value={unsortedColor}
+          onChange={(e) => setUnsortedColor(e.target.value)}
           description="Unsorted"
         />
         <ColorPicker
-          value={color2}
-          onChange={(e) => setColor2(e.target.value)}
+          value={selectedColor}
+          onChange={(e) => setSelectedColor(e.target.value)}
           description="Selected"
         />
         <ColorPicker
-          value={color4}
-          onChange={(e) => setColor4(e.target.value)}
+          value={referenceColor}
+          onChange={(e) => setReferenceColor(e.target.value)}
           description="Reference"
         />
         <ColorPicker
-          value={color3}
-          onChange={(e) => setColor3(e.target.value)}
+          value={sortedColor}
+          onChange={(e) => setSortedColor(e.target.value)}
           description="Sorted"
         />
       </FlexWrapper>
