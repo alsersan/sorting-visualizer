@@ -56,7 +56,8 @@ const ColorPicker = ({ description, className, initialValue, setColor }) => {
         type="color"
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        onMouseLeave={() => setColor(value)}
+        // Only set color in BarColorContext when the ColorPicker loses focus
+        onBlur={() => setColor(value)}
       />
       <Description>{description}</Description>
     </Container>
