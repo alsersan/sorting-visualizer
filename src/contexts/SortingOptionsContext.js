@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useLayoutEffect, useContext } from "react";
 
 import { selectionSortGetArray } from "../algorithms/recursiveSelectionSort";
 import { bubbleSortGetArray } from "../algorithms/recursiveBubbleSort";
@@ -18,7 +18,7 @@ const SortingOptionsProvider = ({ children }) => {
 
   const [activeOption, setActiveOption] = useState(0);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const arr = [];
     const max = 100;
     const min = 5;
