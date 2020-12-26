@@ -9,6 +9,7 @@ import StyledThemeProvider from "./styles/StyledThemeProvider";
 import { SortingOptionsProvider } from "./contexts/SortingOptionsContext";
 import { AlgorithmProvider } from "./contexts/AlgorithmContext";
 import { ThemeTogglerProvider } from "./contexts/ThemeTogglerContext";
+import { BarColorProvider } from "./contexts/BarColorContext";
 
 const MainContainer = styled.div`
   height: 100vh;
@@ -27,11 +28,13 @@ const App = () => {
           <GlobalStyle />
           <AlgorithmProvider>
             <SortingOptionsProvider>
-              <MainContainer>
-                {console.log("MAIN CONTAINER")}
-                <BarChartContainer />
-                <Sidebar />
-              </MainContainer>
+              <BarColorProvider>
+                <MainContainer>
+                  {console.log("MAIN CONTAINER")}
+                  <BarChartContainer />
+                  <Sidebar />
+                </MainContainer>
+              </BarColorProvider>
             </SortingOptionsProvider>
           </AlgorithmProvider>
         </StyledThemeProvider>

@@ -29,6 +29,7 @@ import {
 
 import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
 import { useAlgorithmContext } from "../../../contexts/AlgorithmContext";
+import { useBarColorContext } from "../../../contexts/BarColorContext";
 
 const StyledButtonRow = styled.div`
   margin-top: 2rem;
@@ -61,14 +62,13 @@ const Button = styled.button`
 `;
 
 const ButtonRow = () => {
+  const { speed, activeOption } = useSortingOptionsContext();
   const {
-    speed,
     unsortedColor,
     selectedColor,
     sortedColor,
     referenceColor,
-    activeOption,
-  } = useSortingOptionsContext();
+  } = useBarColorContext();
   const {
     isRunning,
     setIsRunning,

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import ColorPicker from "./components/ColorPicker";
 
-import { useSortingOptionsContext } from "../../../../contexts/SortingOptionsContext";
+import { useBarColorContext } from "../../../../contexts/BarColorContext";
 import { useAlgorithmContext } from "../../../../contexts/AlgorithmContext";
 
 const Container = styled.div`
@@ -35,11 +35,12 @@ const ColorSelection = () => {
     setSortedColor,
     referenceColor,
     setReferenceColor,
-  } = useSortingOptionsContext();
+  } = useBarColorContext();
   const { isRunning } = useAlgorithmContext();
 
   return (
     <Container isRunning={isRunning}>
+      {console.log("COLOR SELECTION")}
       <Title>Color Picker</Title>
       <FlexWrapper>
         <ColorPicker

@@ -2,6 +2,7 @@ import React, { useRef, useLayoutEffect } from "react";
 import styled from "styled-components";
 
 import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
+import { useBarColorContext } from "../../../contexts/BarColorContext";
 
 const StyledBar = styled.div`
   margin: ${({ size }) => {
@@ -28,13 +29,13 @@ const Text = styled.span`
 
 const Bar = (props) => {
   const barEl = useRef();
+  const { size } = useSortingOptionsContext();
   const {
-    size,
     unsortedColor,
     selectedColor,
     sortedColor,
     referenceColor,
-  } = useSortingOptionsContext();
+  } = useBarColorContext();
 
   const colors = [unsortedColor, selectedColor, referenceColor, sortedColor];
 
