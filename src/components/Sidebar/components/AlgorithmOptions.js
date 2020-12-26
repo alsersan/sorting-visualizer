@@ -56,6 +56,7 @@ const AlgorithmOptions = () => {
 
   return (
     <Container hasStarted={hasStarted}>
+      {console.log("ALGORITHM OPTIONS")}
       <Title>Sorting Algorithm</Title>
       <FlexWrapper>
         {[

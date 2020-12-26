@@ -43,23 +43,27 @@ const ColorSelection = () => {
       <Title>Color Picker</Title>
       <FlexWrapper>
         <ColorPicker
-          value={unsortedColor}
-          onChange={(e) => setUnsortedColor(e.target.value)}
+          initialValue={unsortedColor}
+          setColor={setUnsortedColor}
+          className=".unsorted"
           description="Unsorted"
         />
         <ColorPicker
-          value={selectedColor}
-          onChange={(e) => setSelectedColor(e.target.value)}
+          initialValue={selectedColor}
+          setColor={setSelectedColor}
+          className=".selected"
           description="Selected"
         />
         <ColorPicker
-          value={referenceColor}
-          onChange={(e) => setReferenceColor(e.target.value)}
+          initialValue={referenceColor}
+          setColor={setReferenceColor}
+          className=".reference"
           description="Reference"
         />
         <ColorPicker
-          value={sortedColor}
-          onChange={(e) => setSortedColor(e.target.value)}
+          initialValue={sortedColor}
+          setColor={setSortedColor}
+          className=".sorted"
           description="Sorted"
         />
       </FlexWrapper>

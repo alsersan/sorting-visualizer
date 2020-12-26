@@ -21,12 +21,14 @@ const MainContainer = styled.div`
 const App = () => {
   return (
     <React.Fragment>
+      {console.log("RERENDER APP")}
       <ThemeTogglerProvider>
         <StyledThemeProvider>
           <GlobalStyle />
           <AlgorithmProvider>
             <SortingOptionsProvider>
               <MainContainer>
+                {console.log("MAIN CONTAINER")}
                 <BarChartContainer />
                 <Sidebar />
               </MainContainer>

@@ -20,6 +20,7 @@ const BarChart = () => {
 
   return (
     <Container>
+      {console.log("RERENDER BAR CHART")}
       {array.map((number, index) => (
         <Bar number={number} key={index} className="bar unsorted" />
       ))}

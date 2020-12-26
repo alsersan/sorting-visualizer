@@ -119,6 +119,7 @@ const ButtonRow = () => {
 
   return (
     <StyledButtonRow>
+      {console.log("BUTTON ROW")}
       <Button
         hasStarted={hasStarted}
         isRunning={isRunning}

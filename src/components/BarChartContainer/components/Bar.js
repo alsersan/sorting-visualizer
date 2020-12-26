@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useLayoutEffect } from "react";
 import styled from "styled-components";
 
 import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
@@ -35,24 +35,30 @@ const Bar = (props) => {
     sortedColor,
     referenceColor,
   } = useSortingOptionsContext();
-  const [isMounted, setIsMounted] = useState(false);
 
-  const checkClassName = (classList) => {
-    if (classList.contains("unsorted")) {
-      return unsortedColor;
-    } else if (classList.contains("selected")) {
-      return selectedColor;
-    } else if (classList.contains("sorted")) {
-      return sortedColor;
-    } else if (classList.contains("reference")) {
-      return referenceColor;
-    }
-  };
+  const colors = [unsortedColor, selectedColor, referenceColor, sortedColor];
 
-  useEffect(() => {
+  // const checkClassName = (classList) => {
+  //   if (classList.contains("unsorted")) {
+  //     return unsortedColor;
+  //   } else if (classList.contains("selected")) {
+  //     return selectedColor;
+  //   } else if (classList.contains("sorted")) {
+  //     return sortedColor;
+  //   } else if (classList.contains("reference")) {
+  //     return referenceColor;
+  //   }
+  // };
+
+  useLayoutEffect(() => {
+    const currentBar = barEl.current;
+    ["unsorted", "selected", "reference", "sorted"].forEach((el, index) => {
+      if (currentBar.classList.contains(el)) {
+        currentBar.style.backgroundColor = colors[index];
+      }
+    });
     console.log(barEl);
-    setIsMounted(true);
-  }, [isMounted]);
+  });
 
   return (
     <StyledBar
@@ -61,9 +67,6 @@ const Bar = (props) => {
       size={size}
       style={{
         height: `${props.number}%`,
-        backgroundColor: isMounted
-          ? checkClassName(barEl.current.classList)
-          : unsortedColor,
       }}
     >
       <Text>{props.number}</Text>

@@ -21,6 +21,7 @@ const Container = styled.div`
 const BarChartContainer = () => {
   return (
     <Container>
+      {console.log("BAR CHART CONTAINER")}
       <Logo />
       <BarChart />
       <ButtonRow />

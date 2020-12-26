@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect, useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -40,10 +40,24 @@ const Description = styled.span`
   margin-left: 0.5rem;
 `;
 
-const ColorPicker = ({ description, value, onChange }) => {
+const ColorPicker = ({ description, className, initialValue, setColor }) => {
+  const [value, setValue] = useState(initialValue);
+  const bars = document.querySelectorAll(className);
+  useLayoutEffect(() => {
+    bars.forEach((bar) => {
+      bar.style.background = value;
+    });
+  });
+
   return (
     <Container>
-      <ColorInput type="color" value={value} onChange={onChange} />
+      {console.log("RERENDER COLOR PICKER")}
+      <ColorInput
+        type="color"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        onMouseLeave={() => setColor(value)}
+      />
       <Description>{description}</Description>
     </Container>
   );

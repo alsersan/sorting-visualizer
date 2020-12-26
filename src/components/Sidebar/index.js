@@ -22,6 +22,7 @@ const StyledSidebar = styled.div`
 const Sidebar = () => {
   return (
     <StyledSidebar>
+      {console.log("SIDEBAR")}
       <ThemeToggler />
       <AlgorithmOptions />
       <SizeSelector />
