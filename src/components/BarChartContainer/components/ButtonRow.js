@@ -107,14 +107,10 @@ const ButtonRow = () => {
   const stops = [bubbleSortStop, selectionSortStop, insertionSortStop];
 
   useEffect(() => {
-    let timeout;
     if (isRunning && !isSorted) {
-      timeout = setTimeout(() => {
-        stops[activeOption]();
-        algorithms[activeOption](args);
-      }, 150);
+      stops[activeOption]();
+      algorithms[activeOption](args);
     }
-    return () => clearTimeout(timeout);
   });
 
   return (
