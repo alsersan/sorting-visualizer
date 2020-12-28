@@ -1,9 +1,4 @@
-import {
-  swapBars,
-  swapArrayElements,
-  modifyBar,
-  array,
-} from "./generalUseFunctions";
+import { swapBars, swapArrayElements, modifyBar, array } from "./utils";
 
 let timer;
 let i = 1;

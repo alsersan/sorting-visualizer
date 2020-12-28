@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect, useContext } from "react";
 
-import { getArray } from "../algorithms/generalUseFunctions";
+import { getArray } from "../algorithms/utils";
 
 const SortingOptionsContext = React.createContext();
 
