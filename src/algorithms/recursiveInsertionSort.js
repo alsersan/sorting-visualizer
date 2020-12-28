@@ -1,6 +1,12 @@
-import { swapBars, swapArrayElements, modifyBar, array } from "./utils";
+import {
+  algorithmTimeout,
+  stopAlgorithm,
+  swapBars,
+  swapArrayElements,
+  modifyBar,
+  array,
+} from "./utils";
 
-let timer;
 let i = 1;
 let j = 0;
 let record = [];
@@ -14,7 +20,7 @@ export const recursiveInsertionSort = (args) => {
   const { speed, setIsSorted } = args;
   const bars = document.querySelectorAll(".bar");
 
-  timer = setTimeout(() => {
+  algorithmTimeout(() => {
     saveStep();
 
     if (referenceBar) {
@@ -85,14 +91,10 @@ export const recursiveInsertionSort = (args) => {
   }, speed);
 };
 
-export function insertionSortStop() {
-  clearTimeout(timer);
-}
-
 export function insertionSortStepForward(args) {
   const { speed } = args;
   recursiveInsertionSort(args);
-  setTimeout(insertionSortStop, speed);
+  setTimeout(stopAlgorithm, speed);
 }
 
 function saveStep() {

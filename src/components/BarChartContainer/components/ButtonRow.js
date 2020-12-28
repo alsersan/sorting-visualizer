@@ -8,7 +8,6 @@ import { FaStepBackward } from "react-icons/fa";
 import RippleEffect from "../../RippleEffect";
 import {
   recursiveBubbleSort,
-  bubbleSortStop,
   bubbleSortStepBack,
   bubbleSortStepForward,
 } from "../../../algorithms/recursiveBubbleSort";
@@ -17,15 +16,15 @@ import {
   recursiveSelectionSort,
   selectionSortStepForward,
   selectionSortStepBack,
-  selectionSortStop,
 } from "../../../algorithms/recursiveSelectionSort";
 
 import {
   recursiveInsertionSort,
-  insertionSortStop,
   insertionSortStepForward,
   insertionSortStepBack,
 } from "../../../algorithms/recursiveInsertionSort";
+
+import { stopAlgorithm } from "../../../algorithms/utils";
 
 import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
 import { useAlgorithmContext } from "../../../contexts/AlgorithmContext";
@@ -104,11 +103,9 @@ const ButtonRow = () => {
     insertionSortStepBack,
   ];
 
-  const stops = [bubbleSortStop, selectionSortStop, insertionSortStop];
-
   useEffect(() => {
     if (isRunning && !isSorted) {
-      stops[activeOption]();
+      stopAlgorithm();
       algorithms[activeOption](args);
     }
   });
@@ -132,7 +129,7 @@ const ButtonRow = () => {
         <Button
           hasStarted={hasStarted}
           onClick={() => {
-            stops[activeOption]();
+            stopAlgorithm();
             setIsRunning(false);
           }}
         >

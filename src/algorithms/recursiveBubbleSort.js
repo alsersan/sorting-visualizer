@@ -1,6 +1,12 @@
-import { swapBars, swapArrayElements, modifyBar, array } from "./utils";
+import {
+  algorithmTimeout,
+  stopAlgorithm,
+  swapBars,
+  swapArrayElements,
+  modifyBar,
+  array,
+} from "./utils";
 
-let timer;
 let i = 0;
 let j = 0;
 let barSwap = false;
@@ -20,7 +26,8 @@ export function recursiveBubbleSort(args) {
   } = args;
   const bars = document.querySelectorAll(".bar");
   if (record.length === 0) i = array.length - 1;
-  timer = setTimeout(() => {
+
+  algorithmTimeout(() => {
     saveStep();
     if (compareBars) {
       modifyBar(selectedColor, "selected", bars[j], bars[j + 1]);
@@ -80,10 +87,6 @@ export function recursiveBubbleSort(args) {
   }, speed);
 }
 
-export function bubbleSortStop() {
-  clearTimeout(timer);
-}
-
 // save all variables of each step in an array, to be able to go back in time
 function saveStep() {
   const step = {
@@ -100,12 +103,11 @@ function saveStep() {
 export function bubbleSortStepForward(args) {
   const { speed } = args;
   recursiveBubbleSort(args);
-  setTimeout(bubbleSortStop, speed);
+  setTimeout(stopAlgorithm, speed);
 }
 
 export function bubbleSortStepBack(args) {
   const { setHasStarted, unsortedColor, selectedColor } = args;
-  bubbleSortStop();
   const lastElement = record[record.length - 1];
 
   i = lastElement.i;
