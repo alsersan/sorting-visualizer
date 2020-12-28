@@ -1,9 +1,14 @@
-let timer;
+// ARRAY
+
 export let array = [];
 
 export const getArray = (arr) => {
   array = [...arr];
 };
+
+// TIMEOUT AND CLEAR TIMEOUT
+
+let timer;
 
 export const algorithmTimeout = (callback, timeout) => {
   timer = setTimeout(callback, timeout);
@@ -12,6 +17,8 @@ export const algorithmTimeout = (callback, timeout) => {
 export const stopAlgorithm = () => {
   clearTimeout(timer);
 };
+
+// SWAP ELEMENTS
 
 export const swapArrayElements = (index1, index2) => {
   [array[index1], array[index2]] = [array[index2], array[index1]];

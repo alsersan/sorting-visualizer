@@ -30,17 +30,14 @@ export function recursiveSelectionSort(args) {
 
     if (referenceBar) {
       modifyBar("reference", bars[i]);
-
       minValue = array[i];
       referenceBar = false;
       selectBar = true;
       recursiveSelectionSort(args);
       return;
     }
-
     if (selectBar) {
       modifyBar("selected", bars[j]);
-
       if (array[j] < minValue) {
         // Only execute if the bar has the smallest value so far (stored in minValue)
         selectBar = false;
@@ -55,7 +52,6 @@ export function recursiveSelectionSort(args) {
         return;
       }
     }
-
     if (selectNewMin) {
       if (index !== 0) {
         modifyBar("unsorted", bars[index]);
@@ -66,12 +62,10 @@ export function recursiveSelectionSort(args) {
       selectNewMin = false;
       modifyBar("reference", bars[j]);
     }
-
     if (unselectBar) {
       modifyBar("unsorted", bars[j]);
       unselectBar = false;
     }
-
     if (barSwap) {
       swapArrayElements(i, index);
       swapBars(bars[i], bars[index]);
@@ -80,7 +74,6 @@ export function recursiveSelectionSort(args) {
       recursiveSelectionSort(args);
       return;
     }
-
     if (unselectBars) {
       // only execute if the current value of i makes a new iteration possible. If i is already the previous to last value in the array, then it's already sorted, so color both bars orange.
       if (i < array.length - 2) {
@@ -97,6 +90,7 @@ export function recursiveSelectionSort(args) {
         recursiveSelectionSort(args);
         return;
       } else {
+        // Sorting finished
         modifyBar("sorted", bars[i], bars[i + 1]);
         setIsSorted(true);
         sorted = true;
@@ -148,7 +142,6 @@ export function selectionSortStepForward(args) {
 export function selectionSortStepBack(args) {
   const { setHasStarted } = args;
   const lastElement = record[record.length - 1];
-
   i = lastElement.i;
   j = lastElement.j;
   index = lastElement.index;
@@ -160,26 +153,21 @@ export function selectionSortStepBack(args) {
   unselectBar = lastElement.unselectBar;
   barSwap = lastElement.barSwap;
   unselectBars = lastElement.unselectBars;
-
   record.pop();
-  visualSelectionSort();
-
+  reverseSelectionSort();
   if (record.length === 0) {
     setHasStarted(false);
   }
 }
 
-// only DOM changes. All the real data comes from the record
-function visualSelectionSort() {
+function reverseSelectionSort() {
   const bars = document.querySelectorAll(".bar");
-
   if (sorted) {
     for (let x = array.length - 1; x >= i; x--) {
       modifyBar("unsorted", bars[x]);
     }
     sorted = false;
   }
-
   if (referenceBar) {
     modifyBar("unsorted", bars[i]);
   } else if (selectBar) {
@@ -196,7 +184,6 @@ function visualSelectionSort() {
     swapBars(bars[i], bars[index]);
   } else if (unselectBars) {
     modifyBar("reference", bars[i]);
-
     if (index !== 0) {
       modifyBar("reference", bars[index]);
     }

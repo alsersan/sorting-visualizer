@@ -31,15 +31,12 @@ export const recursiveInsertionSort = (args) => {
       recursiveInsertionSort(args);
       return;
     }
-
     if (selectBar) {
       modifyBar("selected", bars[j]);
-
       // Color the previously selected bar as 'sorted', except if that bar has an index of i+1, in which case that bar was never selected and is still unsorted
       if (bars[j + 2] && j + 2 !== i + 1) {
         modifyBar("sorted", bars[j + 2]);
       }
-
       if (array[j] > currentVal) {
         selectBar = false;
         barSwap = true;
@@ -52,7 +49,6 @@ export const recursiveInsertionSort = (args) => {
         return;
       }
     }
-
     if (barSwap) {
       modifyBar("selected", bars[j + 1]);
       modifyBar("reference", bars[j]);
@@ -60,7 +56,6 @@ export const recursiveInsertionSort = (args) => {
       swapBars(bars[j], bars[j + 1]);
       barSwap = false;
     }
-
     if (unselectBars) {
       i++;
       modifyBar("sorted", bars[j], bars[j + 1]);
@@ -76,7 +71,6 @@ export const recursiveInsertionSort = (args) => {
       console.log("SORTED");
       return;
     }
-
     // only decrease j if that index exists in the array
     if (j > 0) {
       j--;
@@ -113,7 +107,6 @@ function saveStep() {
 export function insertionSortStepBack(args) {
   const { setHasStarted } = args;
   const lastElement = record[record.length - 1];
-
   i = lastElement.i;
   j = lastElement.j;
   currentVal = lastElement.currentVal;
@@ -121,19 +114,15 @@ export function insertionSortStepBack(args) {
   selectBar = lastElement.selectBar;
   barSwap = lastElement.barSwap;
   unselectBars = lastElement.unselectBars;
-
   record.pop();
-  visualInsertionSort();
-
+  reverseInsertionSort();
   if (record.length === 0) {
     setHasStarted(false);
   }
 }
 
-// only DOM changes. All the real data comes from the record
-function visualInsertionSort() {
+function reverseInsertionSort() {
   const bars = document.querySelectorAll(".bar");
-
   if (referenceBar) {
     modifyBar("unsorted", bars[i]);
   } else if (selectBar) {

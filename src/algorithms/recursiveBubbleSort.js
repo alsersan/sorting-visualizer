@@ -23,9 +23,9 @@ export function recursiveBubbleSort(args) {
 
   algorithmTimeout(() => {
     saveStep();
+
     if (compareBars) {
       modifyBar("selected", bars[j], bars[j + 1]);
-
       if (array[j] > array[j + 1]) {
         compareBars = false;
         barSwap = true;
@@ -37,7 +37,8 @@ export function recursiveBubbleSort(args) {
         recursiveBubbleSort(args);
         return;
       }
-    } else if (barSwap) {
+    }
+    if (barSwap) {
       swapArrayElements(j, j + 1);
       swapBars(bars[j], bars[j + 1]);
       noSwap = false;
@@ -45,13 +46,13 @@ export function recursiveBubbleSort(args) {
       unselectBars = true;
       recursiveBubbleSort(args);
       return;
-    } else if (unselectBars) {
+    }
+    if (unselectBars) {
       if (j + 1 === i) {
-        // If the last bar is sorted, color it with sortedColor
+        // If condition is true, then j+1 is the last bar, and it's sorted
         modifyBar("unsorted", bars[j]);
         modifyBar("sorted", bars[j + 1]);
       } else {
-        // If the last bar is not sorted, after checking and/or swapping the bars, color them with unsortedColor
         modifyBar("unsorted", bars[j], bars[j + 1]);
       }
       unselectBars = false;
@@ -70,7 +71,7 @@ export function recursiveBubbleSort(args) {
       i--;
       recursiveBubbleSort(args);
     } else {
-      // if the conditions above are not met, then the array is sorted
+      // Sorting finished
       bars.forEach((bar) => {
         modifyBar("sorted", bar);
       });
@@ -81,7 +82,6 @@ export function recursiveBubbleSort(args) {
   }, speed);
 }
 
-// save all variables of each step in an array, to be able to go back in time
 function saveStep() {
   const step = {
     i,
@@ -103,24 +103,20 @@ export function bubbleSortStepForward(args) {
 export function bubbleSortStepBack(args) {
   const { setHasStarted } = args;
   const lastElement = record[record.length - 1];
-
   i = lastElement.i;
   j = lastElement.j;
   barSwap = lastElement.barSwap;
   unselectBars = lastElement.unselectBars;
   compareBars = lastElement.compareBars;
   noSwap = lastElement.noSwap;
-
   record.pop();
-  visualBubbleSort();
-
+  reverseBubbleSort();
   if (record.length === 0) {
     setHasStarted(false);
   }
 }
 
-// only DOM changes. All the real data comes from the record
-function visualBubbleSort() {
+function reverseBubbleSort() {
   // If the array was already sorted, all the bars that were colored with sortedColor in the last step are colored with unsortedColor
   const bars = document.querySelectorAll(".bar");
   if (sorted) {
