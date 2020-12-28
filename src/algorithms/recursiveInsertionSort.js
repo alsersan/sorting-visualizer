@@ -1,9 +1,13 @@
-import { swapBars, modifyBar } from "./generalUseFunctions";
+import {
+  swapBars,
+  swapArrayElements,
+  modifyBar,
+  array,
+} from "./generalUseFunctions";
 
 let timer;
 let i = 1;
 let j = 0;
-let arr = [];
 let record = [];
 let currentVal = 0;
 let referenceBar = true;
@@ -19,7 +23,7 @@ export const recursiveInsertionSort = (args) => {
     saveStep();
 
     if (referenceBar) {
-      currentVal = arr[i];
+      currentVal = array[i];
       modifyBar("blue", "reference", bars[i]);
       referenceBar = false;
       selectBar = true;
@@ -35,7 +39,7 @@ export const recursiveInsertionSort = (args) => {
         modifyBar("orange", "sorted", bars[j + 2]);
       }
 
-      if (arr[j] > currentVal) {
+      if (array[j] > currentVal) {
         selectBar = false;
         barSwap = true;
         recursiveInsertionSort(args);
@@ -51,16 +55,15 @@ export const recursiveInsertionSort = (args) => {
     if (barSwap) {
       modifyBar("green", "selected", bars[j + 1]);
       modifyBar("blue", "reference", bars[j]);
+      swapArrayElements(j, j + 1);
       swapBars(bars[j], bars[j + 1]);
-
-      [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
       barSwap = false;
     }
 
     if (unselectBars) {
       i++;
       modifyBar("orange", "sorted", bars[j], bars[j + 1]);
-      if (i < arr.length) {
+      if (i < array.length) {
         j = i - 1;
         unselectBars = false;
         referenceBar = true;
@@ -91,10 +94,6 @@ export function insertionSortStop() {
   clearTimeout(timer);
 }
 
-export function insertionSortGetArray(newArray) {
-  arr = [...newArray];
-}
-
 export function insertionSortStepForward(args) {
   const { speed } = args;
   recursiveInsertionSort(args);
@@ -110,7 +109,6 @@ function saveStep() {
     selectBar,
     barSwap,
     unselectBars,
-    arr: [...arr],
   };
   record.push(step);
 }
@@ -126,7 +124,6 @@ export function insertionSortStepBack(args) {
   selectBar = lastElement.selectBar;
   barSwap = lastElement.barSwap;
   unselectBars = lastElement.unselectBars;
-  arr = [...lastElement.arr];
 
   record.pop();
   visualInsertionSort();
@@ -154,6 +151,7 @@ function visualInsertionSort() {
   } else if (barSwap) {
     modifyBar("blue", "reference", bars[j + 1]);
     modifyBar("green", "selected", bars[j]);
+    swapArrayElements(j, j + 1);
     swapBars(bars[j], bars[j + 1]);
   } else if (unselectBars) {
     modifyBar("green", "selected", bars[j]);
