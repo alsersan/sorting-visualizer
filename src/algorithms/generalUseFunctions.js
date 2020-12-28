@@ -1,3 +1,13 @@
+export let array = [];
+
+export const getArray = (arr) => {
+  array = [...arr];
+};
+
+export const swapArrayElements = (index1, index2) => {
+  [array[index1], array[index2]] = [array[index2], array[index1]];
+};
+
 export const swapBars = (a, b) => {
   a.style.height = `${b.firstElementChild.textContent}%`;
   b.style.height = `${a.firstElementChild.textContent}%`;
