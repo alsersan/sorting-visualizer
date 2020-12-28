@@ -8,6 +8,7 @@ import StyledThemeProvider from "./styles/StyledThemeProvider";
 
 import { SortingOptionsProvider } from "./contexts/SortingOptionsContext";
 import { AlgorithmProvider } from "./contexts/AlgorithmContext";
+import { ArraySizeProvider } from "./contexts/ArraySizeContext";
 import { ThemeTogglerProvider } from "./contexts/ThemeTogglerContext";
 import { BarColorProvider } from "./contexts/BarColorContext";
 
@@ -27,15 +28,17 @@ const App = () => {
         <StyledThemeProvider>
           <GlobalStyle />
           <AlgorithmProvider>
-            <SortingOptionsProvider>
-              <BarColorProvider>
-                <MainContainer>
-                  {console.log("MAIN CONTAINER")}
-                  <BarChartContainer />
-                  <Sidebar />
-                </MainContainer>
-              </BarColorProvider>
-            </SortingOptionsProvider>
+            <ArraySizeProvider>
+              <SortingOptionsProvider>
+                <BarColorProvider>
+                  <MainContainer>
+                    {console.log("MAIN CONTAINER")}
+                    <BarChartContainer />
+                    <Sidebar />
+                  </MainContainer>
+                </BarColorProvider>
+              </SortingOptionsProvider>
+            </ArraySizeProvider>
           </AlgorithmProvider>
         </StyledThemeProvider>
       </ThemeTogglerProvider>

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Bar from "./Bar";
 
-import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
+import { useArraySizeContext } from "../../../contexts/ArraySizeContext";
 
 const Container = styled.div`
   height: 70%;
@@ -16,7 +16,7 @@ const Container = styled.div`
 `;
 
 const BarChart = () => {
-  const { array } = useSortingOptionsContext();
+  const { array } = useArraySizeContext();
 
   return (
     <Container>

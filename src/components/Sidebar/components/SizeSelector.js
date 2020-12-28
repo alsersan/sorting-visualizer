@@ -2,11 +2,11 @@ import React from "react";
 
 import Selector from "./Selector";
 
-import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
+import { useArraySizeContext } from "../../../contexts/ArraySizeContext";
 import { useAlgorithmContext } from "../../../contexts/AlgorithmContext";
 
 const SizeSelector = () => {
-  const { size, setSize } = useSortingOptionsContext();
+  const { size, setSize } = useArraySizeContext();
   const { hasStarted } = useAlgorithmContext();
 
   return (
