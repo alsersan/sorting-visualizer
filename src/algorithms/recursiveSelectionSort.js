@@ -1,4 +1,9 @@
-import { swapBars, modifyBar } from "./generalUseFunctions";
+import {
+  swapBars,
+  swapArrayElements,
+  modifyBar,
+  array,
+} from "./generalUseFunctions";
 
 let timer;
 let i = 0;
@@ -6,7 +11,6 @@ let j = 1;
 let index = 0;
 let minValue = 0;
 let noSwap = true;
-let arr = [];
 let record = [];
 let referenceBar = true;
 let selectBar = false;
@@ -29,12 +33,11 @@ export function recursiveSelectionSort(args) {
 
   timer = setTimeout(() => {
     saveStep();
-    console.log(record);
 
     if (referenceBar) {
       modifyBar(referenceColor, "reference", bars[i]);
 
-      minValue = arr[i];
+      minValue = array[i];
       referenceBar = false;
       selectBar = true;
       recursiveSelectionSort(args);
@@ -44,7 +47,7 @@ export function recursiveSelectionSort(args) {
     if (selectBar) {
       modifyBar(selectedColor, "selected", bars[j]);
 
-      if (arr[j] < minValue) {
+      if (array[j] < minValue) {
         // Only execute if the bar has the smallest value so far (stored in minValue)
         selectBar = false;
         selectNewMin = true;
@@ -60,25 +63,23 @@ export function recursiveSelectionSort(args) {
     }
 
     if (selectNewMin) {
-      // color the newMin bar blue and color the previous minBar red
       if (index !== 0) {
         modifyBar(unsortedColor, "unsorted", bars[index]);
       }
       index = j;
-      minValue = arr[j];
+      minValue = array[j];
       noSwap = false;
       selectNewMin = false;
       modifyBar(referenceColor, "reference", bars[j]);
     }
 
     if (unselectBar) {
-      // Unselect the bar coloring it red again
       modifyBar(unsortedColor, "unsorted", bars[j]);
       unselectBar = false;
     }
 
     if (barSwap) {
-      [arr[i], arr[index]] = [arr[index], arr[i]];
+      swapArrayElements(i, index);
       swapBars(bars[i], bars[index]);
       barSwap = false;
       unselectBars = true;
@@ -88,7 +89,7 @@ export function recursiveSelectionSort(args) {
 
     if (unselectBars) {
       // only execute if the current value of i makes a new iteration possible. If i is already the previous to last value in the array, then it's already sorted, so color both bars orange.
-      if (i < arr.length - 2) {
+      if (i < array.length - 2) {
         modifyBar(sortedColor, "sorted", bars[i]);
         if (index !== 0) {
           modifyBar(unsortedColor, "unsorted", bars[index]);
@@ -112,7 +113,7 @@ export function recursiveSelectionSort(args) {
 
     j++;
 
-    if (j < arr.length) {
+    if (j < array.length) {
       selectBar = true;
       recursiveSelectionSort(args);
     } else {
@@ -144,13 +145,8 @@ function saveStep() {
     unselectBar,
     barSwap,
     unselectBars,
-    arr: [...arr],
   };
   record.push(step);
-}
-
-export function selectionSortGetArray(newArray) {
-  arr = [...newArray];
 }
 
 export function selectionSortStepForward(args) {
@@ -174,7 +170,6 @@ export function selectionSortStepBack(args) {
   unselectBar = lastElement.unselectBar;
   barSwap = lastElement.barSwap;
   unselectBars = lastElement.unselectBars;
-  arr = [...lastElement.arr];
 
   record.pop();
   visualSelectionSort(unsortedColor, referenceColor, selectedColor);
@@ -189,7 +184,7 @@ function visualSelectionSort(unsortedColor, referenceColor, selectedColor) {
   const bars = document.querySelectorAll(".bar");
 
   if (sorted) {
-    for (let x = arr.length - 1; x >= i; x--) {
+    for (let x = array.length - 1; x >= i; x--) {
       modifyBar(unsortedColor, "unsorted", bars[x]);
     }
     sorted = false;
@@ -207,6 +202,7 @@ function visualSelectionSort(unsortedColor, referenceColor, selectedColor) {
   } else if (unselectBar) {
     modifyBar(selectedColor, "selected", bars[j]);
   } else if (barSwap) {
+    swapArrayElements(i, index);
     swapBars(bars[i], bars[index]);
   } else if (unselectBars) {
     modifyBar(referenceColor, "reference", bars[i]);
