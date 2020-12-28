@@ -26,19 +26,19 @@ const SortingOptionsProvider = ({ children }) => {
     getArray(array);
   }, [array]);
 
+  const value = {
+    speed,
+    setSpeed,
+    size,
+    setSize,
+    array,
+    setArray,
+    activeOption,
+    setActiveOption,
+  };
+
   return (
-    <SortingOptionsContext.Provider
-      value={{
-        speed,
-        setSpeed,
-        size,
-        setSize,
-        array,
-        setArray,
-        activeOption,
-        setActiveOption,
-      }}
-    >
+    <SortingOptionsContext.Provider value={value}>
       {children}
     </SortingOptionsContext.Provider>
   );

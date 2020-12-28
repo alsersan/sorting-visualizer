@@ -5,8 +5,10 @@ const ThemeTogglerContext = React.createContext();
 const ThemeTogglerProvider = ({ children }) => {
   const [theme, setTheme] = useState("light");
 
+  const value = { theme, setTheme };
+
   return (
-    <ThemeTogglerContext.Provider value={{ theme, setTheme }}>
+    <ThemeTogglerContext.Provider value={value}>
       {children}
     </ThemeTogglerContext.Provider>
   );

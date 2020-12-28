@@ -15,19 +15,19 @@ const BarColorProvider = ({ children }) => {
     getColors(colors);
   });
 
+  const value = {
+    unsortedColor,
+    setUnsortedColor,
+    selectedColor,
+    setSelectedColor,
+    sortedColor,
+    setSortedColor,
+    referenceColor,
+    setReferenceColor,
+  };
+
   return (
-    <BarColorContext.Provider
-      value={{
-        unsortedColor,
-        setUnsortedColor,
-        selectedColor,
-        setSelectedColor,
-        sortedColor,
-        setSortedColor,
-        referenceColor,
-        setReferenceColor,
-      }}
-    >
+    <BarColorContext.Provider value={value}>
       {children}
     </BarColorContext.Provider>
   );

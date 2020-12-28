@@ -13,17 +13,17 @@ const AlgorithmProvider = ({ children }) => {
     }
   }, [isSorted]);
 
+  const value = {
+    isRunning,
+    setIsRunning,
+    isSorted,
+    setIsSorted,
+    hasStarted,
+    setHasStarted,
+  };
+
   return (
-    <AlgorithmContext.Provider
-      value={{
-        isRunning,
-        setIsRunning,
-        isSorted,
-        setIsSorted,
-        hasStarted,
-        setHasStarted,
-      }}
-    >
+    <AlgorithmContext.Provider value={value}>
       {children}
     </AlgorithmContext.Provider>
   );
