@@ -1,4 +1,9 @@
-import { swapBars, modifyBar } from "./generalUseFunctions";
+import {
+  swapBars,
+  swapArrayElements,
+  modifyBar,
+  array,
+} from "./generalUseFunctions";
 
 let timer;
 let i = 0;
@@ -7,7 +12,6 @@ let barSwap = false;
 let unselectBars = false;
 let compareBars = true;
 let noSwap = true;
-let arr = [];
 let record = [];
 let sorted = false;
 
@@ -20,28 +24,25 @@ export function recursiveBubbleSort(args) {
     sortedColor,
   } = args;
   const bars = document.querySelectorAll(".bar");
-
+  if (record.length === 0) i = array.length - 1;
   timer = setTimeout(() => {
     saveStep();
     if (compareBars) {
       modifyBar(selectedColor, "selected", bars[j], bars[j + 1]);
 
-      if (arr[j] > arr[j + 1]) {
-        // If first bar is bigger than second bar, swap them
+      if (array[j] > array[j + 1]) {
         compareBars = false;
         barSwap = true;
         recursiveBubbleSort(args);
         return;
       } else {
-        // If not, execute unselectBars to color them again with unselectedColor
         compareBars = false;
         unselectBars = true;
         recursiveBubbleSort(args);
         return;
       }
     } else if (barSwap) {
-      // Swap the bars
-      [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      swapArrayElements(j, j + 1);
       swapBars(bars[j], bars[j + 1]);
       noSwap = false;
       barSwap = false;
@@ -61,7 +62,6 @@ export function recursiveBubbleSort(args) {
       compareBars = true;
     }
 
-    // Each time, increase the value of j one unit and check if the function has to be executed again
     j++;
 
     if (j < i) {
@@ -98,15 +98,8 @@ function saveStep() {
     unselectBars,
     compareBars,
     noSwap,
-    arr: [...arr],
   };
   record.push(step);
-}
-
-// get the size of the array every time the size slider changes its value (imported in SortingOptionsContext)
-export function bubbleSortGetArray(newArray) {
-  arr = [...newArray];
-  i = newArray.length - 1;
 }
 
 export function bubbleSortStepForward(args) {
@@ -126,7 +119,6 @@ export function bubbleSortStepBack(args) {
   unselectBars = lastElement.unselectBars;
   compareBars = lastElement.compareBars;
   noSwap = lastElement.noSwap;
-  arr = [...lastElement.arr];
 
   record.pop();
   visualBubbleSort(unsortedColor, selectedColor);
@@ -149,6 +141,7 @@ function visualBubbleSort(unsortedColor, selectedColor) {
   if (compareBars) {
     modifyBar(unsortedColor, "unsorted", bars[j], bars[j + 1]);
   } else if (barSwap) {
+    swapArrayElements(j, j + 1);
     swapBars(bars[j], bars[j + 1]);
   } else if (unselectBars) {
     modifyBar(selectedColor, "selected", bars[j], bars[j + 1]);
