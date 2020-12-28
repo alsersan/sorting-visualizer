@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect, useContext } from "react";
 
-import { selectionSortGetArray } from "../algorithms/recursiveSelectionSort";
-import { bubbleSortGetArray } from "../algorithms/recursiveBubbleSort";
-import { insertionSortGetArray } from "../algorithms/recursiveInsertionSort";
+import { getArray } from "../algorithms/generalUseFunctions";
 
 const SortingOptionsContext = React.createContext();
 
@@ -24,14 +22,9 @@ const SortingOptionsProvider = ({ children }) => {
   }, [size]);
 
   useEffect(() => {
-    if (activeOption === 0) {
-      bubbleSortGetArray(array);
-    } else if (activeOption === 1) {
-      selectionSortGetArray(array);
-    } else if (activeOption === 2) {
-      insertionSortGetArray(array);
-    }
-  }, [array, activeOption]);
+    console.log(`CONTEXT: ${array}`);
+    getArray(array);
+  }, [array]);
 
   return (
     <SortingOptionsContext.Provider
