@@ -17,20 +17,14 @@ let record = [];
 let sorted = false;
 
 export function recursiveBubbleSort(args) {
-  const {
-    speed,
-    setIsSorted,
-    unsortedColor,
-    selectedColor,
-    sortedColor,
-  } = args;
+  const { speed, setIsSorted } = args;
   const bars = document.querySelectorAll(".bar");
   if (record.length === 0) i = array.length - 1;
 
   algorithmTimeout(() => {
     saveStep();
     if (compareBars) {
-      modifyBar(selectedColor, "selected", bars[j], bars[j + 1]);
+      modifyBar("selected", bars[j], bars[j + 1]);
 
       if (array[j] > array[j + 1]) {
         compareBars = false;
@@ -54,11 +48,11 @@ export function recursiveBubbleSort(args) {
     } else if (unselectBars) {
       if (j + 1 === i) {
         // If the last bar is sorted, color it with sortedColor
-        modifyBar(unsortedColor, "unsorted", bars[j]);
-        modifyBar(sortedColor, "sorted", bars[j + 1]);
+        modifyBar("unsorted", bars[j]);
+        modifyBar("sorted", bars[j + 1]);
       } else {
         // If the last bar is not sorted, after checking and/or swapping the bars, color them with unsortedColor
-        modifyBar(unsortedColor, "unsorted", bars[j], bars[j + 1]);
+        modifyBar("unsorted", bars[j], bars[j + 1]);
       }
       unselectBars = false;
       compareBars = true;
@@ -78,7 +72,7 @@ export function recursiveBubbleSort(args) {
     } else {
       // if the conditions above are not met, then the array is sorted
       bars.forEach((bar) => {
-        modifyBar(sortedColor, "sorted", bar);
+        modifyBar("sorted", bar);
       });
       sorted = true;
       setIsSorted(true);
@@ -107,7 +101,7 @@ export function bubbleSortStepForward(args) {
 }
 
 export function bubbleSortStepBack(args) {
-  const { setHasStarted, unsortedColor, selectedColor } = args;
+  const { setHasStarted } = args;
   const lastElement = record[record.length - 1];
 
   i = lastElement.i;
@@ -118,7 +112,7 @@ export function bubbleSortStepBack(args) {
   noSwap = lastElement.noSwap;
 
   record.pop();
-  visualBubbleSort(unsortedColor, selectedColor);
+  visualBubbleSort();
 
   if (record.length === 0) {
     setHasStarted(false);
@@ -126,21 +120,21 @@ export function bubbleSortStepBack(args) {
 }
 
 // only DOM changes. All the real data comes from the record
-function visualBubbleSort(unsortedColor, selectedColor) {
+function visualBubbleSort() {
   // If the array was already sorted, all the bars that were colored with sortedColor in the last step are colored with unsortedColor
   const bars = document.querySelectorAll(".bar");
   if (sorted) {
     for (let x = 0; x <= i; x++) {
-      modifyBar(unsortedColor, "unsorted", bars[x]);
+      modifyBar("unsorted", bars[x]);
     }
     sorted = false;
   }
   if (compareBars) {
-    modifyBar(unsortedColor, "unsorted", bars[j], bars[j + 1]);
+    modifyBar("unsorted", bars[j], bars[j + 1]);
   } else if (barSwap) {
     swapArrayElements(j, j + 1);
     swapBars(bars[j], bars[j + 1]);
   } else if (unselectBars) {
-    modifyBar(selectedColor, "selected", bars[j], bars[j + 1]);
+    modifyBar("selected", bars[j], bars[j + 1]);
   }
 }

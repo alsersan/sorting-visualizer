@@ -26,27 +26,36 @@ export const swapBars = (a, b) => {
   ];
 };
 
-const changeBarColor = (color, element) => {
-  element.style.background = color;
+// MODIFY COLOR AND CLASS OF BARS
+// colors and classes arrays must have the same order of elements, in order to compare the elements in each index
+
+const classes = ["unsorted", "selected", "reference", "sorted"];
+let colors = [];
+
+export const getColors = (colorsArray) => {
+  colors = colorsArray;
 };
 
-const changeClass = (classAdd, element) => {
-  if (element.classList.contains("unsorted")) {
-    element.classList.remove("unsorted");
-  } else if (element.classList.contains("reference")) {
-    element.classList.remove("reference");
-  } else if (element.classList.contains("selected")) {
-    element.classList.remove("selected");
-  } else if (element.classList.contains("sorted")) {
-    element.classList.remove("sorted");
-  }
-
+const changeClass = (element, classAdd) => {
+  classes.forEach((el) => {
+    if (element.classList.contains(el)) {
+      element.classList.remove(el);
+    }
+  });
   element.classList.add(classAdd);
 };
 
-export const modifyBar = (color, classAdd, ...elements) => {
+const changeBarColor = (element) => {
+  classes.forEach((el, index) => {
+    if (element.classList.contains(el)) {
+      element.style.background = colors[index];
+    }
+  });
+};
+
+export const modifyBar = (classAdd, ...elements) => {
   elements.forEach((element) => {
-    changeBarColor(color, element);
-    changeClass(classAdd, element);
+    changeClass(element, classAdd);
+    changeBarColor(element);
   });
 };

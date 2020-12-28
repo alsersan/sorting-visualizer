@@ -25,7 +25,7 @@ export const recursiveInsertionSort = (args) => {
 
     if (referenceBar) {
       currentVal = array[i];
-      modifyBar("blue", "reference", bars[i]);
+      modifyBar("reference", bars[i]);
       referenceBar = false;
       selectBar = true;
       recursiveInsertionSort(args);
@@ -33,11 +33,11 @@ export const recursiveInsertionSort = (args) => {
     }
 
     if (selectBar) {
-      modifyBar("green", "selected", bars[j]);
+      modifyBar("selected", bars[j]);
 
       // Color the previously selected bar as 'sorted', except if that bar has an index of i+1, in which case that bar was never selected and is still unsorted
       if (bars[j + 2] && j + 2 !== i + 1) {
-        modifyBar("orange", "sorted", bars[j + 2]);
+        modifyBar("sorted", bars[j + 2]);
       }
 
       if (array[j] > currentVal) {
@@ -54,8 +54,8 @@ export const recursiveInsertionSort = (args) => {
     }
 
     if (barSwap) {
-      modifyBar("green", "selected", bars[j + 1]);
-      modifyBar("blue", "reference", bars[j]);
+      modifyBar("selected", bars[j + 1]);
+      modifyBar("reference", bars[j]);
       swapArrayElements(j, j + 1);
       swapBars(bars[j], bars[j + 1]);
       barSwap = false;
@@ -63,7 +63,7 @@ export const recursiveInsertionSort = (args) => {
 
     if (unselectBars) {
       i++;
-      modifyBar("orange", "sorted", bars[j], bars[j + 1]);
+      modifyBar("sorted", bars[j], bars[j + 1]);
       if (i < array.length) {
         j = i - 1;
         unselectBars = false;
@@ -135,23 +135,23 @@ function visualInsertionSort() {
   const bars = document.querySelectorAll(".bar");
 
   if (referenceBar) {
-    modifyBar("red", "unsorted", bars[i]);
+    modifyBar("unsorted", bars[i]);
   } else if (selectBar) {
     if (i === 1) {
-      modifyBar("red", "unsorted", bars[j]);
+      modifyBar("unsorted", bars[j]);
     } else {
-      modifyBar("orange", "sorted", bars[j]);
+      modifyBar("sorted", bars[j]);
     }
     if (bars[j + 2] && j + 2 !== i + 1) {
-      modifyBar("green", "selected", bars[j + 2]);
+      modifyBar("selected", bars[j + 2]);
     }
   } else if (barSwap) {
-    modifyBar("blue", "reference", bars[j + 1]);
-    modifyBar("green", "selected", bars[j]);
+    modifyBar("reference", bars[j + 1]);
+    modifyBar("selected", bars[j]);
     swapArrayElements(j, j + 1);
     swapBars(bars[j], bars[j + 1]);
   } else if (unselectBars) {
-    modifyBar("green", "selected", bars[j]);
-    modifyBar("blue", "reference", bars[j + 1]);
+    modifyBar("selected", bars[j]);
+    modifyBar("reference", bars[j + 1]);
   }
 }
