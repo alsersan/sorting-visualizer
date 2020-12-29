@@ -6,24 +6,9 @@ import { FaStepForward } from "react-icons/fa";
 import { FaStepBackward } from "react-icons/fa";
 
 import RippleEffect from "../../RippleEffect";
-import {
-  recursiveBubbleSort,
-  bubbleSortStepBack,
-  bubbleSortStepForward,
-} from "../../../algorithms/recursiveBubbleSort";
-
-import {
-  recursiveSelectionSort,
-  selectionSortStepForward,
-  selectionSortStepBack,
-} from "../../../algorithms/recursiveSelectionSort";
-
-import {
-  recursiveInsertionSort,
-  insertionSortStepForward,
-  insertionSortStepBack,
-} from "../../../algorithms/recursiveInsertionSort";
-
+import * as bubble from "../../../algorithms/recursiveBubbleSort";
+import * as selection from "../../../algorithms/recursiveSelectionSort";
+import * as insertion from "../../../algorithms/recursiveInsertionSort";
 import { stopAlgorithm } from "../../../algorithms/utils";
 import { useAlgorithmContext } from "../../../contexts/AlgorithmContext";
 
@@ -69,19 +54,19 @@ const ButtonRow = () => {
   } = useAlgorithmContext();
 
   const algorithms = [
-    recursiveBubbleSort,
-    recursiveSelectionSort,
-    recursiveInsertionSort,
+    bubble.recursiveBubbleSort,
+    selection.recursiveSelectionSort,
+    insertion.recursiveInsertionSort,
   ];
   const stepsForward = [
-    bubbleSortStepForward,
-    selectionSortStepForward,
-    insertionSortStepForward,
+    bubble.bubbleSortStepForward,
+    selection.selectionSortStepForward,
+    insertion.insertionSortStepForward,
   ];
   const stepsBack = [
-    bubbleSortStepBack,
-    selectionSortStepBack,
-    insertionSortStepBack,
+    bubble.bubbleSortStepBack,
+    selection.selectionSortStepBack,
+    insertion.insertionSortStepBack,
   ];
 
   return (
