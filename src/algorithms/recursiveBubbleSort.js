@@ -17,8 +17,7 @@ let noSwap = true;
 let record = [];
 let sorted = false;
 
-export function recursiveBubbleSort(args) {
-  const { setIsSorted } = args;
+export function recursiveBubbleSort(setIsSorted, delay = timeout) {
   const bars = document.querySelectorAll(".bar");
   if (record.length === 0) i = array.length - 1;
 
@@ -30,12 +29,12 @@ export function recursiveBubbleSort(args) {
       if (array[j] > array[j + 1]) {
         compareBars = false;
         barSwap = true;
-        recursiveBubbleSort(args);
+        recursiveBubbleSort(setIsSorted);
         return;
       } else {
         compareBars = false;
         unselectBars = true;
-        recursiveBubbleSort(args);
+        recursiveBubbleSort(setIsSorted);
         return;
       }
     }
@@ -45,7 +44,7 @@ export function recursiveBubbleSort(args) {
       noSwap = false;
       barSwap = false;
       unselectBars = true;
-      recursiveBubbleSort(args);
+      recursiveBubbleSort(setIsSorted);
       return;
     }
     if (unselectBars) {
@@ -64,13 +63,13 @@ export function recursiveBubbleSort(args) {
 
     if (j < i) {
       // if j < i, the cycle has not been yet completed
-      recursiveBubbleSort(args);
+      recursiveBubbleSort(setIsSorted);
     } else if (j === i && i > 1 && !noSwap) {
       // if j === i, the cycle  has been completed, but only execute again if there have been swaps in this cycle (otherwise the array is already sorted) and if i > 1 (making the last possible value of i 1)
       noSwap = true;
       j = 0;
       i--;
-      recursiveBubbleSort(args);
+      recursiveBubbleSort(setIsSorted);
     } else {
       // Sorting finished
       bars.forEach((bar) => {
@@ -80,7 +79,7 @@ export function recursiveBubbleSort(args) {
       setIsSorted(true);
       console.log("SORTED!!");
     }
-  }, timeout);
+  }, delay);
 }
 
 function saveStep() {
@@ -95,14 +94,12 @@ function saveStep() {
   record.push(step);
 }
 
-export function bubbleSortStepForward(args) {
-  const { speed } = args;
-  recursiveBubbleSort(args);
-  setTimeout(stopAlgorithm, speed);
+export function bubbleSortStepForward(setIsSorted, delay) {
+  recursiveBubbleSort(setIsSorted, delay);
+  setTimeout(stopAlgorithm, delay);
 }
 
-export function bubbleSortStepBack(args) {
-  const { setHasStarted } = args;
+export function bubbleSortStepBack(setHasStarted) {
   const lastElement = record[record.length - 1];
   i = lastElement.i;
   j = lastElement.j;

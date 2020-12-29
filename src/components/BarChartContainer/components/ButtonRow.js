@@ -28,7 +28,6 @@ import { stopAlgorithm } from "../../../algorithms/utils";
 
 import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
 import { useAlgorithmContext } from "../../../contexts/AlgorithmContext";
-import { useBarColorContext } from "../../../contexts/BarColorContext";
 
 const StyledButtonRow = styled.div`
   margin-top: 2rem;
@@ -63,12 +62,6 @@ const Button = styled.button`
 const ButtonRow = () => {
   const { activeOption } = useSortingOptionsContext();
   const {
-    unsortedColor,
-    selectedColor,
-    sortedColor,
-    referenceColor,
-  } = useBarColorContext();
-  const {
     isRunning,
     setIsRunning,
     isSorted,
@@ -76,15 +69,6 @@ const ButtonRow = () => {
     hasStarted,
     setHasStarted,
   } = useAlgorithmContext();
-
-  const args = {
-    setIsSorted,
-    setHasStarted,
-    unsortedColor,
-    selectedColor,
-    sortedColor,
-    referenceColor,
-  };
 
   const algorithms = [
     recursiveBubbleSort,
@@ -111,7 +95,7 @@ const ButtonRow = () => {
         disabled={isRunning || !hasStarted}
         onClick={() => {
           setIsSorted(false);
-          stepsBack[activeOption](args);
+          stepsBack[activeOption](setHasStarted);
         }}
       >
         <RippleEffect disabled={isRunning || !hasStarted} />
@@ -135,7 +119,7 @@ const ButtonRow = () => {
           onClick={() => {
             setHasStarted(true);
             setIsRunning(true);
-            algorithms[activeOption](args);
+            algorithms[activeOption](setIsSorted);
           }}
         >
           <RippleEffect disabled={isSorted} />
@@ -147,7 +131,7 @@ const ButtonRow = () => {
         isRunning={isRunning}
         disabled={isRunning || isSorted}
         onClick={() => {
-          stepsForward[activeOption]({ ...args, speed: 1 });
+          stepsForward[activeOption](setIsSorted, 1);
           setHasStarted(true);
         }}
       >

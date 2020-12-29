@@ -17,8 +17,7 @@ let selectBar = false;
 let barSwap = false;
 let unselectBars = false;
 
-export const recursiveInsertionSort = (args) => {
-  const { setIsSorted } = args;
+export const recursiveInsertionSort = (setIsSorted, delay = timeout) => {
   const bars = document.querySelectorAll(".bar");
 
   algorithmTimeout(() => {
@@ -29,7 +28,7 @@ export const recursiveInsertionSort = (args) => {
       modifyBar("reference", bars[i]);
       referenceBar = false;
       selectBar = true;
-      recursiveInsertionSort(args);
+      recursiveInsertionSort(setIsSorted);
       return;
     }
     if (selectBar) {
@@ -41,12 +40,12 @@ export const recursiveInsertionSort = (args) => {
       if (array[j] > currentVal) {
         selectBar = false;
         barSwap = true;
-        recursiveInsertionSort(args);
+        recursiveInsertionSort(setIsSorted);
         return;
       } else {
         selectBar = false;
         unselectBars = true;
-        recursiveInsertionSort(args);
+        recursiveInsertionSort(setIsSorted);
         return;
       }
     }
@@ -64,7 +63,7 @@ export const recursiveInsertionSort = (args) => {
         j = i - 1;
         unselectBars = false;
         referenceBar = true;
-        recursiveInsertionSort(args);
+        recursiveInsertionSort(setIsSorted);
         return;
       }
       // Sorting finished
@@ -76,20 +75,19 @@ export const recursiveInsertionSort = (args) => {
     if (j > 0) {
       j--;
       selectBar = true;
-      recursiveInsertionSort(args);
+      recursiveInsertionSort(setIsSorted);
       return;
     } else {
       unselectBars = true;
-      recursiveInsertionSort(args);
+      recursiveInsertionSort(setIsSorted);
       return;
     }
-  }, timeout);
+  }, delay);
 };
 
-export function insertionSortStepForward(args) {
-  const { speed } = args;
-  recursiveInsertionSort(args);
-  setTimeout(stopAlgorithm, speed);
+export function insertionSortStepForward(setIsSorted, delay) {
+  recursiveInsertionSort(setIsSorted, delay);
+  setTimeout(stopAlgorithm, delay);
 }
 
 function saveStep() {
@@ -105,8 +103,7 @@ function saveStep() {
   record.push(step);
 }
 
-export function insertionSortStepBack(args) {
-  const { setHasStarted } = args;
+export function insertionSortStepBack(setHasStarted) {
   const lastElement = record[record.length - 1];
   i = lastElement.i;
   j = lastElement.j;
