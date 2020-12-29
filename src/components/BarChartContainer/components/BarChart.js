@@ -16,13 +16,13 @@ const Container = styled.div`
 `;
 
 const BarChart = () => {
-  const { array } = useArraySizeContext();
+  const { array, size } = useArraySizeContext();
 
   return (
     <Container>
       {console.log("RERENDER BAR CHART")}
       {array.map((number, index) => (
-        <Bar number={number} key={index} className="bar unsorted" />
+        <Bar number={number} key={index} size={size} className="bar unsorted" />
       ))}
     </Container>
   );

@@ -1,7 +1,6 @@
 import React, { useRef, useLayoutEffect } from "react";
 import styled from "styled-components";
 
-import { useArraySizeContext } from "../../../contexts/ArraySizeContext";
 import { useBarColorContext } from "../../../contexts/BarColorContext";
 
 const StyledBar = styled.div`
@@ -29,7 +28,6 @@ const Text = styled.span`
 
 const Bar = (props) => {
   const barEl = useRef();
-  const { size } = useArraySizeContext();
   const {
     unsortedColor,
     selectedColor,
@@ -39,18 +37,6 @@ const Bar = (props) => {
 
   const colors = [unsortedColor, selectedColor, referenceColor, sortedColor];
 
-  // const checkClassName = (classList) => {
-  //   if (classList.contains("unsorted")) {
-  //     return unsortedColor;
-  //   } else if (classList.contains("selected")) {
-  //     return selectedColor;
-  //   } else if (classList.contains("sorted")) {
-  //     return sortedColor;
-  //   } else if (classList.contains("reference")) {
-  //     return referenceColor;
-  //   }
-  // };
-
   useLayoutEffect(() => {
     const currentBar = barEl.current;
     ["unsorted", "selected", "reference", "sorted"].forEach((el, index) => {
@@ -59,17 +45,18 @@ const Bar = (props) => {
       }
     });
     console.log(barEl);
-  });
+  }, []);
 
   return (
     <StyledBar
       ref={barEl}
       className={props.className}
-      size={size}
+      size={props.size}
       style={{
         height: `${props.number}%`,
       }}
     >
+      {console.log("RENDER BARS")}
       <Text>{props.number}</Text>
     </StyledBar>
   );
