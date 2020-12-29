@@ -6,6 +6,7 @@ const AlgorithmProvider = ({ children }) => {
   const [isRunning, setIsRunning] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
+  const [activeOption, setActiveOption] = useState(0);
 
   useEffect(() => {
     if (isSorted) {
@@ -20,6 +21,8 @@ const AlgorithmProvider = ({ children }) => {
     setIsSorted,
     hasStarted,
     setHasStarted,
+    activeOption,
+    setActiveOption,
   };
 
   return (

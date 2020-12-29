@@ -6,7 +6,6 @@ import Sidebar from "./components/Sidebar";
 import BarChartContainer from "./components/BarChartContainer";
 import StyledThemeProvider from "./styles/StyledThemeProvider";
 
-import { SortingOptionsProvider } from "./contexts/SortingOptionsContext";
 import { AlgorithmProvider } from "./contexts/AlgorithmContext";
 import { ArraySizeProvider } from "./contexts/ArraySizeContext";
 import { ThemeTogglerProvider } from "./contexts/ThemeTogglerContext";
@@ -29,15 +28,13 @@ const App = () => {
           <GlobalStyle />
           <AlgorithmProvider>
             <ArraySizeProvider>
-              <SortingOptionsProvider>
-                <BarColorProvider>
-                  <MainContainer>
-                    {console.log("MAIN CONTAINER")}
-                    <BarChartContainer />
-                    <Sidebar />
-                  </MainContainer>
-                </BarColorProvider>
-              </SortingOptionsProvider>
+              <BarColorProvider>
+                <MainContainer>
+                  {console.log("MAIN CONTAINER")}
+                  <BarChartContainer />
+                  <Sidebar />
+                </MainContainer>
+              </BarColorProvider>
             </ArraySizeProvider>
           </AlgorithmProvider>
         </StyledThemeProvider>

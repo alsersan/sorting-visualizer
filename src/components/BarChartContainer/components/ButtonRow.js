@@ -25,8 +25,6 @@ import {
 } from "../../../algorithms/recursiveInsertionSort";
 
 import { stopAlgorithm } from "../../../algorithms/utils";
-
-import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
 import { useAlgorithmContext } from "../../../contexts/AlgorithmContext";
 
 const StyledButtonRow = styled.div`
@@ -60,7 +58,6 @@ const Button = styled.button`
 `;
 
 const ButtonRow = () => {
-  const { activeOption } = useSortingOptionsContext();
   const {
     isRunning,
     setIsRunning,
@@ -68,6 +65,7 @@ const ButtonRow = () => {
     setIsSorted,
     hasStarted,
     setHasStarted,
+    activeOption,
   } = useAlgorithmContext();
 
   const algorithms = [

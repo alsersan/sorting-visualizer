@@ -1,7 +1,7 @@
 import React, { useRef, useLayoutEffect } from "react";
 import styled from "styled-components";
 
-import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
+import { useArraySizeContext } from "../../../contexts/ArraySizeContext";
 import { useBarColorContext } from "../../../contexts/BarColorContext";
 
 const StyledBar = styled.div`
@@ -29,7 +29,7 @@ const Text = styled.span`
 
 const Bar = (props) => {
   const barEl = useRef();
-  const { size } = useSortingOptionsContext();
+  const { size } = useArraySizeContext();
   const {
     unsortedColor,
     selectedColor,

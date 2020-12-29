@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
 import { useAlgorithmContext } from "../../../contexts/AlgorithmContext";
 
 const Container = styled.div`
@@ -51,8 +50,7 @@ const Button = styled.button`
 `;
 
 const AlgorithmOptions = () => {
-  const { activeOption, setActiveOption } = useSortingOptionsContext();
-  const { hasStarted } = useAlgorithmContext();
+  const { hasStarted, activeOption, setActiveOption } = useAlgorithmContext();
 
   return (
     <Container hasStarted={hasStarted}>
