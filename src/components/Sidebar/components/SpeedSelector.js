@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 
 import Selector from "./Selector";
 
-import { useSortingOptionsContext } from "../../../contexts/SortingOptionsContext";
+import { getTimeout } from "../../../algorithms/utils";
 
 const SpeedSelector = () => {
-  const { speed, setSpeed } = useSortingOptionsContext();
-  const [value, setValue] = useState(speed);
+  const [value, setValue] = useState(500);
   const maxDelay = 700;
 
   const speedPercentageCalculator = (min, max) => {
@@ -23,7 +22,7 @@ const SpeedSelector = () => {
   useEffect(() => {
     let timeout;
     timeout = setTimeout(() => {
-      setSpeed(value);
+      getTimeout(value);
     }, 200);
     return () => clearTimeout(timeout);
   });

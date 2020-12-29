@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
@@ -61,7 +61,7 @@ const Button = styled.button`
 `;
 
 const ButtonRow = () => {
-  const { speed, activeOption } = useSortingOptionsContext();
+  const { activeOption } = useSortingOptionsContext();
   const {
     unsortedColor,
     selectedColor,
@@ -78,7 +78,6 @@ const ButtonRow = () => {
   } = useAlgorithmContext();
 
   const args = {
-    speed,
     setIsSorted,
     setHasStarted,
     unsortedColor,
@@ -102,13 +101,6 @@ const ButtonRow = () => {
     selectionSortStepBack,
     insertionSortStepBack,
   ];
-
-  useEffect(() => {
-    if (isRunning && !isSorted) {
-      stopAlgorithm();
-      algorithms[activeOption](args);
-    }
-  });
 
   return (
     <StyledButtonRow>

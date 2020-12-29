@@ -5,6 +5,7 @@ import {
   swapArrayElements,
   modifyBar,
   array,
+  timeout,
 } from "./utils";
 
 let i = 0;
@@ -17,7 +18,7 @@ let record = [];
 let sorted = false;
 
 export function recursiveBubbleSort(args) {
-  const { speed, setIsSorted } = args;
+  const { setIsSorted } = args;
   const bars = document.querySelectorAll(".bar");
   if (record.length === 0) i = array.length - 1;
 
@@ -79,7 +80,7 @@ export function recursiveBubbleSort(args) {
       setIsSorted(true);
       console.log("SORTED!!");
     }
-  }, speed);
+  }, timeout);
 }
 
 function saveStep() {

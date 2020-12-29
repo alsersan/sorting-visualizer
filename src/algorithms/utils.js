@@ -8,6 +8,13 @@ export const getArray = (arr) => {
 
 // TIMEOUT AND CLEAR TIMEOUT
 
+export let timeout = 0;
+
+export const getTimeout = (value) => {
+  timeout = value;
+  console.log(timeout);
+};
+
 let timer;
 
 export const algorithmTimeout = (callback, timeout) => {
