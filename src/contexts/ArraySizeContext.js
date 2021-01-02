@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 
 import { getArray } from "../algorithms/utils";
 
@@ -6,9 +6,11 @@ const ArraySizeContext = React.createContext();
 
 const ArraySizeProvider = ({ children }) => {
   const [size, setSize] = useState(10);
-  const [array, setArray] = useState([]);
 
-  useLayoutEffect(() => {
+  const array = calculateRandomArray();
+  getArray(array);
+
+  function calculateRandomArray() {
     const arr = [];
     const max = 100;
     const min = 5;
@@ -16,19 +18,13 @@ const ArraySizeProvider = ({ children }) => {
       const num = Math.floor(Math.random() * (max - min + 1) + min);
       arr.push(num);
     }
-    setArray(arr);
-  }, [size]);
-
-  useEffect(() => {
-    console.log(`CONTEXT: ${array}`);
-    getArray(array);
-  }, [array]);
+    return arr;
+  }
 
   const value = {
     size,
     setSize,
     array,
-    setArray,
   };
 
   return (
