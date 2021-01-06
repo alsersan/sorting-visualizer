@@ -61,7 +61,7 @@ const AlgorithmOptions = () => {
           "Bubble Sort",
           "Selection Sort",
           "Insertion Sort",
-          "option4",
+          "Merge Sort",
           "option5",
           "option6",
         ].map((option, index) => (

@@ -40,6 +40,11 @@ export const swapBars = (a, b) => {
   ];
 };
 
+export const mutateBar = (bar, number) => {
+  bar.style.height = `${number}%`;
+  bar.firstElementChild.textContent = `${number}`;
+};
+
 // MODIFY COLOR AND CLASS OF BARS
 // colors and classes arrays must have the same order of elements, in order to compare the elements in each index
 

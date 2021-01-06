@@ -9,6 +9,7 @@ import RippleEffect from "../../RippleEffect";
 import * as bubble from "../../../algorithms/recursiveBubbleSort";
 import * as selection from "../../../algorithms/recursiveSelectionSort";
 import * as insertion from "../../../algorithms/recursiveInsertionSort";
+import * as merge from "../../../algorithms/mergeSort";
 import { stopAlgorithm } from "../../../algorithms/utils";
 import { useAlgorithmContext } from "../../../contexts/AlgorithmContext";
 
@@ -57,6 +58,7 @@ const ButtonRow = () => {
     bubble.recursiveBubbleSort,
     selection.recursiveSelectionSort,
     insertion.recursiveInsertionSort,
+    merge.merge2,
   ];
   const stepsForward = [
     bubble.bubbleSortStepForward,
@@ -102,7 +104,8 @@ const ButtonRow = () => {
           onClick={() => {
             setHasStarted(true);
             setIsRunning(true);
-            algorithms[activeOption](setIsSorted);
+            // algorithms[activeOption](setIsSorted);
+            algorithms[activeOption]();
           }}
         >
           <RippleEffect disabled={isSorted} />
