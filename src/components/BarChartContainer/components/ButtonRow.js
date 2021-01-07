@@ -104,8 +104,7 @@ const ButtonRow = () => {
           onClick={() => {
             setHasStarted(true);
             setIsRunning(true);
-            // algorithms[activeOption](setIsSorted);
-            algorithms[activeOption]();
+            algorithms[activeOption](setIsSorted);
           }}
         >
           <RippleEffect disabled={isSorted} />
