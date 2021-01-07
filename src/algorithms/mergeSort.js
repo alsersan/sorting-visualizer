@@ -21,37 +21,36 @@ let prev = null;
 let overwriteIdx = 0;
 
 export function mergeSort(setIsSorted, delay = timeout, arr = array) {
-  if (getIndex) delay = 0;
-
   const bars = document.querySelectorAll(".bar");
 
-  algorithmTimeout(() => {
-    if (getIndex) {
-      if (len < arr.length) {
-        if (idx < arr.length) {
-          i = idx;
-          j = idx + len - 1;
-          i2 = idx + len;
-          j2 = idx + 2 * len - 1;
+  if (getIndex) {
+    // It's necessary to pass the delay to the mergeSort calls inside this if, so that the delay of 1 ms is applied on StepForward
+    if (len < arr.length) {
+      if (idx < arr.length) {
+        i = idx;
+        j = idx + len - 1;
+        i2 = idx + len;
+        j2 = idx + 2 * len - 1;
 
-          if (i2 >= arr.length) {
-            len = len * 2;
-            idx = 0;
-            mergeSort(setIsSorted);
-            return;
-          }
-          if (j2 >= arr.length) j2 = arr.length - 1;
-          getIndex = false;
-          compareBars = true;
-        } else {
+        if (i2 >= arr.length) {
           len = len * 2;
           idx = 0;
+          mergeSort(setIsSorted, delay);
+          return;
         }
-        mergeSort(setIsSorted);
-        return;
+        if (j2 >= arr.length) j2 = arr.length - 1;
+        getIndex = false;
+        compareBars = true;
+      } else {
+        len = len * 2;
+        idx = 0;
       }
+      mergeSort(setIsSorted, delay);
+      return;
     }
+  }
 
+  algorithmTimeout(() => {
     if (compareBars) {
       if (i > i2 && j > j2) {
         modifyBar("unsorted", bars[i], bars[i2]);
@@ -79,11 +78,9 @@ export function mergeSort(setIsSorted, delay = timeout, arr = array) {
         prev = null;
         compareBars = false;
         overwriteBars = true;
-
         mergeSort(setIsSorted);
         return;
       }
-
       mergeSort(setIsSorted);
       return;
     }
@@ -105,11 +102,15 @@ export function mergeSort(setIsSorted, delay = timeout, arr = array) {
       overwriteBars = false;
       getIndex = true;
       idx = idx + 2 * len;
-
       mergeSort(setIsSorted);
       return;
     }
     setIsSorted(true);
     console.log("SORTED!");
   }, delay);
+}
+
+export function mergeSortStepForward(setIsSorted, delay) {
+  mergeSort(setIsSorted, delay);
+  setTimeout(stopAlgorithm, delay);
 }

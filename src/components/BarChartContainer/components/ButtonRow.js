@@ -64,6 +64,7 @@ const ButtonRow = () => {
     bubble.bubbleSortStepForward,
     selection.selectionSortStepForward,
     insertion.insertionSortStepForward,
+    merge.mergeSortStepForward,
   ];
   const stepsBack = [
     bubble.bubbleSortStepBack,
