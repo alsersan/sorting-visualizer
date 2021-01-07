@@ -20,7 +20,7 @@ let overwriteBars = false;
 let prev = null;
 let overwriteIdx = 0;
 
-export function merge2(setIsSorted, delay = timeout, arr = array) {
+export function mergeSort(setIsSorted, delay = timeout, arr = array) {
   if (getIndex) delay = 0;
 
   const bars = document.querySelectorAll(".bar");
@@ -37,7 +37,7 @@ export function merge2(setIsSorted, delay = timeout, arr = array) {
           if (i2 >= arr.length) {
             len = len * 2;
             idx = 0;
-            merge2(setIsSorted);
+            mergeSort(setIsSorted);
             return;
           }
           if (j2 >= arr.length) j2 = arr.length - 1;
@@ -47,7 +47,7 @@ export function merge2(setIsSorted, delay = timeout, arr = array) {
           len = len * 2;
           idx = 0;
         }
-        merge2(setIsSorted);
+        mergeSort(setIsSorted);
         return;
       }
     }
@@ -80,11 +80,11 @@ export function merge2(setIsSorted, delay = timeout, arr = array) {
         compareBars = false;
         overwriteBars = true;
 
-        merge2(setIsSorted);
+        mergeSort(setIsSorted);
         return;
       }
 
-      merge2(setIsSorted);
+      mergeSort(setIsSorted);
       return;
     }
 
@@ -97,7 +97,7 @@ export function merge2(setIsSorted, delay = timeout, arr = array) {
         mutateBar(bars[idx + overwriteIdx], temp[overwriteIdx]);
         arr[idx + overwriteIdx] = temp[overwriteIdx];
         overwriteIdx++;
-        merge2(setIsSorted);
+        mergeSort(setIsSorted);
         return;
       }
       overwriteIdx = 0;
@@ -106,7 +106,7 @@ export function merge2(setIsSorted, delay = timeout, arr = array) {
       getIndex = true;
       idx = idx + 2 * len;
 
-      merge2(setIsSorted);
+      mergeSort(setIsSorted);
       return;
     }
     setIsSorted(true);

@@ -58,7 +58,7 @@ const ButtonRow = () => {
     bubble.recursiveBubbleSort,
     selection.recursiveSelectionSort,
     insertion.recursiveInsertionSort,
-    merge.merge2,
+    merge.mergeSort,
   ];
   const stepsForward = [
     bubble.bubbleSortStepForward,
