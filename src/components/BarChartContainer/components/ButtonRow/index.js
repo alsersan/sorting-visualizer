@@ -5,42 +5,18 @@ import { FaPause } from "react-icons/fa";
 import { FaStepForward } from "react-icons/fa";
 import { FaStepBackward } from "react-icons/fa";
 
-import RippleEffect from "../../RippleEffect";
-import * as bubble from "../../../algorithms/recursiveBubbleSort";
-import * as selection from "../../../algorithms/recursiveSelectionSort";
-import * as insertion from "../../../algorithms/recursiveInsertionSort";
-import * as merge from "../../../algorithms/mergeSort";
-import { stopAlgorithm } from "../../../algorithms/utils";
-import { useAlgorithmContext } from "../../../contexts/AlgorithmContext";
+import Button from "./components/Button";
+import * as bubble from "../../../../algorithms/recursiveBubbleSort";
+import * as selection from "../../../../algorithms/recursiveSelectionSort";
+import * as insertion from "../../../../algorithms/recursiveInsertionSort";
+import * as merge from "../../../../algorithms/mergeSort";
+import { stopAlgorithm } from "../../../../algorithms/utils";
+import { useAlgorithmContext } from "../../../../contexts/AlgorithmContext";
 
 const StyledButtonRow = styled.div`
   margin-top: 2rem;
   display: flex;
   justify-content: center;
-`;
-
-const Button = styled.button`
-  position: relative;
-  overflow: hidden;
-  padding: 1rem;
-  border-radius: 50%;
-  cursor: ${(props) => (props.disabled ? "auto" : "pointer")};
-  border: none;
-  outline: none;
-  box-shadow: ${(props) =>
-    props.disabled
-      ? props.theme.button.disabledBoxShadow
-      : props.theme.button.boxShadow};
-  background-color: transparent;
-  margin: 0 0.5rem;
-  animation: ${({ hasStarted, disabled }) =>
-    !hasStarted && !disabled ? "bounce 0.8s ease 0.5s infinite" : "none"};
-
-  @keyframes bounce {
-    50% {
-      transform: scale(0.9, 1.1) translateY(-0.8rem);
-    }
-  }
 `;
 
 const ButtonRow = () => {
@@ -85,7 +61,6 @@ const ButtonRow = () => {
           stepsBack[activeOption](setHasStarted);
         }}
       >
-        <RippleEffect disabled={isRunning || !hasStarted} />
         <FaStepBackward size={30} />
       </Button>
       {isRunning ? (
@@ -96,7 +71,6 @@ const ButtonRow = () => {
             setIsRunning(false);
           }}
         >
-          <RippleEffect />
           <FaPause size={30} />
         </Button>
       ) : (
@@ -109,7 +83,6 @@ const ButtonRow = () => {
             algorithms[activeOption](setIsSorted);
           }}
         >
-          <RippleEffect disabled={isSorted} />
           <FaPlay size={30} />
         </Button>
       )}
@@ -122,7 +95,6 @@ const ButtonRow = () => {
           setHasStarted(true);
         }}
       >
-        <RippleEffect disabled={isRunning || isSorted} />
         <FaStepForward size={30} />
       </Button>
     </StyledButtonRow>
