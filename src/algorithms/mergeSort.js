@@ -52,6 +52,7 @@ export function mergeSort(setIsSorted, delay = timeout) {
     }
     setIsSorted(true);
     console.log("SORTED!");
+    return;
   }
 
   algorithmTimeout(() => {
