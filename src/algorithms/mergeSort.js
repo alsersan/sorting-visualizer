@@ -25,6 +25,7 @@ let copyArray = [];
 export function mergeSort(setIsSorted, delay = timeout) {
   const bars = document.querySelectorAll(".bar");
 
+  // getIndex outside of algorithTimeout so that this step is executed immediately and does not delay the animation (since nothing visual is happening)
   if (getIndex) {
     // It's necessary to pass the delay to the mergeSort calls inside this if, so that the delay of 1 ms is applied on stepForward
     if (len < array.length) {
@@ -49,6 +50,8 @@ export function mergeSort(setIsSorted, delay = timeout) {
       mergeSort(setIsSorted, delay);
       return;
     }
+    setIsSorted(true);
+    console.log("SORTED!");
   }
 
   algorithmTimeout(() => {
@@ -68,8 +71,6 @@ export function mergeSort(setIsSorted, delay = timeout) {
         } else {
           modifyBar("selected", bars[i2]);
         }
-
-        // modifyBar("selected", bars[i], bars[i2]);
         if (array[i] <= array[i2]) {
           prev = i;
           temp.push(array[i++]);
@@ -98,7 +99,11 @@ export function mergeSort(setIsSorted, delay = timeout) {
 
     if (overwriteBars) {
       if (overwriteIdx - 1 >= 0) {
-        modifyBar("unsorted", bars[idx + overwriteIdx - 1]);
+        if (temp.length === array.length) {
+          modifyBar("sorted", bars[idx + overwriteIdx - 1]);
+        } else {
+          modifyBar("unsorted", bars[idx + overwriteIdx - 1]);
+        }
       }
       if (overwriteIdx < temp.length) {
         modifyBar("reference", bars[idx + overwriteIdx]);
@@ -116,8 +121,6 @@ export function mergeSort(setIsSorted, delay = timeout) {
       mergeSort(setIsSorted);
       return;
     }
-    setIsSorted(true);
-    console.log("SORTED!");
   }, delay);
 }
 
@@ -148,7 +151,6 @@ export function mergeSortStepForward(setIsSorted, delay) {
 
 export function mergeSortStepBack(setHasStarted) {
   const lastElement = record[record.length - 1];
-
   i = lastElement.i;
   j = lastElement.j;
   i2 = lastElement.i2;
@@ -162,7 +164,6 @@ export function mergeSortStepBack(setHasStarted) {
   prev = lastElement.prev;
   overwriteIdx = lastElement.overwriteIdx;
   copyArray = lastElement.copyArray;
-
   record.pop();
   reverseMergeSort();
   if (record.length === 0) {
