@@ -70,6 +70,7 @@ const ButtonRow = () => {
     bubble.bubbleSortStepBack,
     selection.selectionSortStepBack,
     insertion.insertionSortStepBack,
+    merge.mergeSortStepBack,
   ];
 
   return (

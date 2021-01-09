@@ -19,26 +19,27 @@ let compareBars = false;
 let overwriteBars = false;
 let prev = null;
 let overwriteIdx = 0;
+let record = [];
+let copyArray = [];
 
-export function mergeSort(setIsSorted, delay = timeout, arr = array) {
+export function mergeSort(setIsSorted, delay = timeout) {
   const bars = document.querySelectorAll(".bar");
 
   if (getIndex) {
-    // It's necessary to pass the delay to the mergeSort calls inside this if, so that the delay of 1 ms is applied on StepForward
-    if (len < arr.length) {
-      if (idx < arr.length) {
+    // It's necessary to pass the delay to the mergeSort calls inside this if, so that the delay of 1 ms is applied on stepForward
+    if (len < array.length) {
+      if (idx < array.length) {
         i = idx;
         j = idx + len - 1;
         i2 = idx + len;
         j2 = idx + 2 * len - 1;
-
-        if (i2 >= arr.length) {
+        if (i2 >= array.length) {
           len = len * 2;
           idx = 0;
           mergeSort(setIsSorted, delay);
           return;
         }
-        if (j2 >= arr.length) j2 = arr.length - 1;
+        if (j2 >= array.length) j2 = array.length - 1;
         getIndex = false;
         compareBars = true;
       } else {
@@ -51,29 +52,39 @@ export function mergeSort(setIsSorted, delay = timeout, arr = array) {
   }
 
   algorithmTimeout(() => {
+    saveStep();
+
     if (compareBars) {
-      if (i > i2 && j > j2) {
-        modifyBar("unsorted", bars[i], bars[i2]);
+      if (prev === null) {
+        modifyBar("selected", bars[i], bars[i2]);
+      } else {
+        modifyBar("unsorted", bars[prev]);
       }
-      if (prev !== null) modifyBar("unsorted", bars[prev]);
 
       if (i <= j && i2 <= j2) {
-        modifyBar("selected", bars[i], bars[i2]);
-        if (arr[i] <= arr[i2]) {
+        // check which index (i or i2) has to be colored
+        if (prev <= j) {
+          modifyBar("selected", bars[i]);
+        } else {
+          modifyBar("selected", bars[i2]);
+        }
+
+        // modifyBar("selected", bars[i], bars[i2]);
+        if (array[i] <= array[i2]) {
           prev = i;
-          temp.push(arr[i++]);
+          temp.push(array[i++]);
         } else {
           prev = i2;
-          temp.push(arr[i2++]);
+          temp.push(array[i2++]);
         }
       } else if (i <= j) {
         modifyBar("selected", bars[i]);
         prev = i;
-        temp.push(arr[i++]);
+        temp.push(array[i++]);
       } else if (i2 <= j2) {
         modifyBar("selected", bars[i2]);
         prev = i2;
-        temp.push(arr[i2++]);
+        temp.push(array[i2++]);
       } else {
         prev = null;
         compareBars = false;
@@ -92,7 +103,7 @@ export function mergeSort(setIsSorted, delay = timeout, arr = array) {
       if (overwriteIdx < temp.length) {
         modifyBar("reference", bars[idx + overwriteIdx]);
         mutateBar(bars[idx + overwriteIdx], temp[overwriteIdx]);
-        arr[idx + overwriteIdx] = temp[overwriteIdx];
+        array[idx + overwriteIdx] = temp[overwriteIdx];
         overwriteIdx++;
         mergeSort(setIsSorted);
         return;
@@ -110,7 +121,79 @@ export function mergeSort(setIsSorted, delay = timeout, arr = array) {
   }, delay);
 }
 
+function saveStep() {
+  const step = {
+    i,
+    j,
+    i2,
+    j2,
+    temp: [...temp],
+    len,
+    idx,
+    getIndex,
+    compareBars,
+    overwriteBars,
+    prev,
+    overwriteIdx,
+    // copyArray needed to go back, or we wouldn't be able to restore the bar to it's previous value, since the array has been mutated with the new value.
+    copyArray: [...array],
+  };
+  record.push(step);
+}
+
 export function mergeSortStepForward(setIsSorted, delay) {
   mergeSort(setIsSorted, delay);
   setTimeout(stopAlgorithm, delay);
+}
+
+export function mergeSortStepBack(setHasStarted) {
+  const lastElement = record[record.length - 1];
+
+  i = lastElement.i;
+  j = lastElement.j;
+  i2 = lastElement.i2;
+  j2 = lastElement.j2;
+  temp = lastElement.temp;
+  len = lastElement.len;
+  idx = lastElement.idx;
+  getIndex = lastElement.getIndex;
+  compareBars = lastElement.compareBars;
+  overwriteBars = lastElement.overwriteBars;
+  prev = lastElement.prev;
+  overwriteIdx = lastElement.overwriteIdx;
+  copyArray = lastElement.copyArray;
+
+  record.pop();
+  reverseMergeSort();
+  if (record.length === 0) {
+    setHasStarted(false);
+  }
+}
+
+function reverseMergeSort() {
+  const bars = document.querySelectorAll(".bar");
+
+  if (compareBars) {
+    if (prev === null) {
+      modifyBar("unsorted", bars[i], bars[i2]);
+    } else {
+      modifyBar("selected", bars[prev]);
+    }
+    // Check if the selected bar has to be unselected, or can stay as it is
+    if (prev <= j && i <= j) {
+      modifyBar("unsorted", bars[i]);
+    }
+    if (prev > j && i2 <= j2) {
+      modifyBar("unsorted", bars[i2]);
+    }
+  } else if (overwriteBars) {
+    if (overwriteIdx - 1 >= 0) {
+      modifyBar("reference", bars[idx + overwriteIdx - 1]);
+    }
+    if (overwriteIdx < temp.length) {
+      modifyBar("unsorted", bars[idx + overwriteIdx]);
+      mutateBar(bars[idx + overwriteIdx], copyArray[idx + overwriteIdx]);
+      array[idx + overwriteIdx] = copyArray[idx + overwriteIdx];
+    }
+  }
 }
