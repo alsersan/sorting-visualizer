@@ -62,7 +62,7 @@ const AlgorithmOptions = () => {
           "Selection Sort",
           "Insertion Sort",
           "Merge Sort",
-          "option5",
+          "Quick Sort",
           "option6",
         ].map((option, index) => (
           <Button

@@ -10,6 +10,7 @@ import * as bubble from "../../../../algorithms/recursiveBubbleSort";
 import * as selection from "../../../../algorithms/recursiveSelectionSort";
 import * as insertion from "../../../../algorithms/recursiveInsertionSort";
 import * as merge from "../../../../algorithms/mergeSort";
+import * as quick from "../../../../algorithms/quickSort";
 import { stopAlgorithm } from "../../../../algorithms/utils";
 import { useAlgorithmContext } from "../../../../contexts/AlgorithmContext";
 
@@ -35,12 +36,14 @@ const ButtonRow = () => {
     selection.recursiveSelectionSort,
     insertion.recursiveInsertionSort,
     merge.mergeSort,
+    quick.quickSort,
   ];
   const stepsForward = [
     bubble.bubbleSortStepForward,
     selection.selectionSortStepForward,
     insertion.insertionSortStepForward,
     merge.mergeSortStepForward,
+    quick.quickSortStepForward,
   ];
   const stepsBack = [
     bubble.bubbleSortStepBack,
