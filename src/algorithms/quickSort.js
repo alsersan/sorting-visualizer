@@ -79,11 +79,9 @@ export function quickSort(setIsSorted, delay = timeout) {
           quickSort(setIsSorted);
           return;
         } else {
-          console.log("else", j);
           prev = j;
           j--;
         }
-        console.log("holi", j);
         quickSort(setIsSorted);
         return;
       } else if (i === j) {
