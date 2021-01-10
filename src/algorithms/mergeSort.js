@@ -19,7 +19,7 @@ let compareBars = false;
 let overwriteBars = false;
 let prev = null;
 let overwriteIdx = 0;
-let record = [];
+const record = [];
 let copyArray = [];
 
 export function mergeSort(setIsSorted, delay = timeout) {

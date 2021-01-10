@@ -14,7 +14,7 @@ let barSwap = false;
 let unselectBars = false;
 let compareBars = true;
 let noSwap = true;
-let record = [];
+const record = [];
 let sorted = false;
 
 export function recursiveBubbleSort(setIsSorted, delay = timeout) {

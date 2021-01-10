@@ -10,7 +10,7 @@ import {
 
 let i = 1;
 let j = 0;
-let record = [];
+const record = [];
 let currentVal = 0;
 let referenceBar = true;
 let selectBar = false;
