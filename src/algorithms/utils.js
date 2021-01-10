@@ -6,6 +6,14 @@ export const getArray = (arr) => {
   array = [...arr];
 };
 
+// SET IS SORTED
+
+export let setIsSorted;
+
+export const getSetIsSorted = (callback) => {
+  setIsSorted = callback;
+};
+
 // TIMEOUT AND CLEAR TIMEOUT
 
 export let timeout = 0;

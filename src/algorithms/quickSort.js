@@ -6,6 +6,7 @@ import {
   modifyBar,
   array,
   timeout,
+  setIsSorted,
 } from "./utils";
 
 let pivot = 0;
@@ -23,7 +24,7 @@ let unselectBars = false;
 let stack = [];
 const record = [];
 
-export function quickSort(setIsSorted, delay = timeout) {
+export function quickSort(delay = timeout) {
   const bars = document.querySelectorAll(".bar");
 
   if (record.length === 0) j = endIdx = array.length - 1;
@@ -36,7 +37,7 @@ export function quickSort(setIsSorted, delay = timeout) {
       prev = null;
       getIndex = false;
       selectPivot = true;
-      quickSort(setIsSorted);
+      quickSort();
     } else {
       setIsSorted(true);
       console.log("SORTED!");
@@ -58,7 +59,7 @@ export function quickSort(setIsSorted, delay = timeout) {
         i++;
         compareBars = true;
       }
-      quickSort(setIsSorted);
+      quickSort();
       return;
     }
 
@@ -76,20 +77,20 @@ export function quickSort(setIsSorted, delay = timeout) {
         } else if (array[j] < array[pivot]) {
           compareBars = false;
           barSwap = true;
-          quickSort(setIsSorted);
+          quickSort();
           return;
         } else {
           prev = j;
           j--;
         }
-        quickSort(setIsSorted);
+        quickSort();
         return;
       } else if (i === j) {
         modifyBar("selected", bars[j]);
         if (array[j] >= array[pivot]) {
           prev = j;
           j--;
-          quickSort(setIsSorted);
+          quickSort();
           return;
         }
       } else if (j === pivot) {
@@ -97,13 +98,13 @@ export function quickSort(setIsSorted, delay = timeout) {
         modifyBar("selected", bars[j]);
         compareBars = false;
         unselectBars = true;
-        quickSort(setIsSorted);
+        quickSort();
         return;
       }
       modifyBar("selected", bars[j]);
       compareBars = false;
       swapPivot = true;
-      quickSort(setIsSorted);
+      quickSort();
       return;
     }
 
@@ -115,7 +116,7 @@ export function quickSort(setIsSorted, delay = timeout) {
       prev = -1;
       barSwap = false;
       compareBars = true;
-      quickSort(setIsSorted);
+      quickSort();
       return;
     }
 
@@ -127,7 +128,7 @@ export function quickSort(setIsSorted, delay = timeout) {
       modifyBar("selected", bars[pivot]);
       swapPivot = false;
       unselectBars = true;
-      quickSort(setIsSorted);
+      quickSort();
       return;
     }
 
@@ -139,7 +140,7 @@ export function quickSort(setIsSorted, delay = timeout) {
       if (j - 1 >= startIdx) stack.push([startIdx, j - 1]);
       unselectBars = false;
       getIndex = true;
-      quickSort(setIsSorted);
+      quickSort();
       return;
     }
   }, delay);
@@ -164,7 +165,7 @@ function saveStep() {
   record.push(step);
 }
 
-export function quickSortStepForward(setIsSorted, delay) {
-  quickSort(setIsSorted, delay);
+export function quickSortStepForward(delay) {
+  quickSort(delay);
   setTimeout(stopAlgorithm, delay);
 }

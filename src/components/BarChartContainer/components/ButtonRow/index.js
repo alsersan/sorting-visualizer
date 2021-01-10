@@ -25,7 +25,6 @@ const ButtonRow = () => {
     isRunning,
     setIsRunning,
     isSorted,
-    setIsSorted,
     hasStarted,
     setHasStarted,
     activeOption,
@@ -59,10 +58,7 @@ const ButtonRow = () => {
         hasStarted={hasStarted}
         isRunning={isRunning}
         disabled={isRunning || !hasStarted}
-        onClick={() => {
-          setIsSorted(false);
-          stepsBack[activeOption](setHasStarted);
-        }}
+        onClick={() => stepsBack[activeOption](setHasStarted)}
       >
         <FaStepBackward size={30} />
       </Button>
@@ -83,7 +79,7 @@ const ButtonRow = () => {
           onClick={() => {
             setHasStarted(true);
             setIsRunning(true);
-            algorithms[activeOption](setIsSorted);
+            algorithms[activeOption]();
           }}
         >
           <FaPlay size={30} />
@@ -94,7 +90,7 @@ const ButtonRow = () => {
         isRunning={isRunning}
         disabled={isRunning || isSorted}
         onClick={() => {
-          stepsForward[activeOption](setIsSorted, 1);
+          stepsForward[activeOption](1);
           setHasStarted(true);
         }}
       >

@@ -6,6 +6,7 @@ import {
   modifyBar,
   array,
   timeout,
+  setIsSorted,
 } from "./utils";
 
 let i = 0;
@@ -22,7 +23,7 @@ let barSwap = false;
 let unselectBars = false;
 let sorted = false;
 
-export function recursiveSelectionSort(setIsSorted, delay = timeout) {
+export function recursiveSelectionSort(delay = timeout) {
   const bars = document.querySelectorAll(".bar");
 
   algorithmTimeout(() => {
@@ -33,7 +34,7 @@ export function recursiveSelectionSort(setIsSorted, delay = timeout) {
       minValue = array[i];
       referenceBar = false;
       selectBar = true;
-      recursiveSelectionSort(setIsSorted);
+      recursiveSelectionSort();
       return;
     }
     if (selectBar) {
@@ -42,13 +43,13 @@ export function recursiveSelectionSort(setIsSorted, delay = timeout) {
         // Only execute if the bar has the smallest value so far (stored in minValue)
         selectBar = false;
         selectNewMin = true;
-        recursiveSelectionSort(setIsSorted);
+        recursiveSelectionSort();
         return;
       } else {
         // else, just go to unselectBar
         selectBar = false;
         unselectBar = true;
-        recursiveSelectionSort(setIsSorted);
+        recursiveSelectionSort();
         return;
       }
     }
@@ -71,7 +72,7 @@ export function recursiveSelectionSort(setIsSorted, delay = timeout) {
       swapBars(bars[i], bars[index]);
       barSwap = false;
       unselectBars = true;
-      recursiveSelectionSort(setIsSorted);
+      recursiveSelectionSort();
       return;
     }
     if (unselectBars) {
@@ -87,7 +88,7 @@ export function recursiveSelectionSort(setIsSorted, delay = timeout) {
         index = 0;
         noSwap = true;
         j = i + 1;
-        recursiveSelectionSort(setIsSorted);
+        recursiveSelectionSort();
         return;
       } else {
         // Sorting finished
@@ -103,14 +104,14 @@ export function recursiveSelectionSort(setIsSorted, delay = timeout) {
 
     if (j < array.length) {
       selectBar = true;
-      recursiveSelectionSort(setIsSorted);
+      recursiveSelectionSort();
     } else {
       if (!noSwap) {
         barSwap = true;
-        recursiveSelectionSort(setIsSorted);
+        recursiveSelectionSort();
       } else {
         unselectBars = true;
-        recursiveSelectionSort(setIsSorted);
+        recursiveSelectionSort();
       }
     }
   }, delay);
@@ -133,12 +134,13 @@ function saveStep() {
   record.push(step);
 }
 
-export function selectionSortStepForward(setIsSorted, delay) {
-  recursiveSelectionSort(setIsSorted, delay);
+export function selectionSortStepForward(delay) {
+  recursiveSelectionSort(delay);
   setTimeout(stopAlgorithm, delay);
 }
 
 export function selectionSortStepBack(setHasStarted) {
+  setIsSorted(false);
   const lastElement = record[record.length - 1];
   i = lastElement.i;
   j = lastElement.j;

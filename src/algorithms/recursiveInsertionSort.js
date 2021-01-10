@@ -6,6 +6,7 @@ import {
   modifyBar,
   array,
   timeout,
+  setIsSorted,
 } from "./utils";
 
 let i = 1;
@@ -17,7 +18,7 @@ let selectBar = false;
 let barSwap = false;
 let unselectBars = false;
 
-export const recursiveInsertionSort = (setIsSorted, delay = timeout) => {
+export const recursiveInsertionSort = (delay = timeout) => {
   const bars = document.querySelectorAll(".bar");
 
   algorithmTimeout(() => {
@@ -28,7 +29,7 @@ export const recursiveInsertionSort = (setIsSorted, delay = timeout) => {
       modifyBar("reference", bars[i]);
       referenceBar = false;
       selectBar = true;
-      recursiveInsertionSort(setIsSorted);
+      recursiveInsertionSort();
       return;
     }
     if (selectBar) {
@@ -40,12 +41,12 @@ export const recursiveInsertionSort = (setIsSorted, delay = timeout) => {
       if (array[j] > currentVal) {
         selectBar = false;
         barSwap = true;
-        recursiveInsertionSort(setIsSorted);
+        recursiveInsertionSort();
         return;
       } else {
         selectBar = false;
         unselectBars = true;
-        recursiveInsertionSort(setIsSorted);
+        recursiveInsertionSort();
         return;
       }
     }
@@ -63,7 +64,7 @@ export const recursiveInsertionSort = (setIsSorted, delay = timeout) => {
         j = i - 1;
         unselectBars = false;
         referenceBar = true;
-        recursiveInsertionSort(setIsSorted);
+        recursiveInsertionSort();
         return;
       }
       // Sorting finished
@@ -75,18 +76,18 @@ export const recursiveInsertionSort = (setIsSorted, delay = timeout) => {
     if (j > 0) {
       j--;
       selectBar = true;
-      recursiveInsertionSort(setIsSorted);
+      recursiveInsertionSort();
       return;
     } else {
       unselectBars = true;
-      recursiveInsertionSort(setIsSorted);
+      recursiveInsertionSort();
       return;
     }
   }, delay);
 };
 
-export function insertionSortStepForward(setIsSorted, delay) {
-  recursiveInsertionSort(setIsSorted, delay);
+export function insertionSortStepForward(delay) {
+  recursiveInsertionSort(delay);
   setTimeout(stopAlgorithm, delay);
 }
 
@@ -104,6 +105,7 @@ function saveStep() {
 }
 
 export function insertionSortStepBack(setHasStarted) {
+  setIsSorted(false);
   const lastElement = record[record.length - 1];
   i = lastElement.i;
   j = lastElement.j;

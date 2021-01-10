@@ -5,6 +5,7 @@ import {
   modifyBar,
   array,
   timeout,
+  setIsSorted,
 } from "./utils";
 
 let i = 0;
@@ -22,7 +23,7 @@ let overwriteIdx = 0;
 const record = [];
 let copyArray = [];
 
-export function mergeSort(setIsSorted, delay = timeout) {
+export function mergeSort(delay = timeout) {
   const bars = document.querySelectorAll(".bar");
 
   // getIndex outside of algorithTimeout so that this step is executed immediately and does not delay the animation (since nothing visual is happening)
@@ -37,7 +38,7 @@ export function mergeSort(setIsSorted, delay = timeout) {
         if (i2 >= array.length) {
           len = len * 2;
           idx = 0;
-          mergeSort(setIsSorted, delay);
+          mergeSort(delay);
           return;
         }
         if (j2 >= array.length) j2 = array.length - 1;
@@ -47,7 +48,7 @@ export function mergeSort(setIsSorted, delay = timeout) {
         len = len * 2;
         idx = 0;
       }
-      mergeSort(setIsSorted, delay);
+      mergeSort(delay);
       return;
     }
     setIsSorted(true);
@@ -91,10 +92,10 @@ export function mergeSort(setIsSorted, delay = timeout) {
         prev = null;
         compareBars = false;
         overwriteBars = true;
-        mergeSort(setIsSorted);
+        mergeSort();
         return;
       }
-      mergeSort(setIsSorted);
+      mergeSort();
       return;
     }
 
@@ -111,7 +112,7 @@ export function mergeSort(setIsSorted, delay = timeout) {
         mutateBar(bars[idx + overwriteIdx], temp[overwriteIdx]);
         array[idx + overwriteIdx] = temp[overwriteIdx];
         overwriteIdx++;
-        mergeSort(setIsSorted);
+        mergeSort();
         return;
       }
       overwriteIdx = 0;
@@ -119,7 +120,7 @@ export function mergeSort(setIsSorted, delay = timeout) {
       overwriteBars = false;
       getIndex = true;
       idx = idx + 2 * len;
-      mergeSort(setIsSorted);
+      mergeSort();
       return;
     }
   }, delay);
@@ -145,12 +146,13 @@ function saveStep() {
   record.push(step);
 }
 
-export function mergeSortStepForward(setIsSorted, delay) {
-  mergeSort(setIsSorted, delay);
+export function mergeSortStepForward(delay) {
+  mergeSort(delay);
   setTimeout(stopAlgorithm, delay);
 }
 
 export function mergeSortStepBack(setHasStarted) {
+  setIsSorted(false);
   const lastElement = record[record.length - 1];
   i = lastElement.i;
   j = lastElement.j;

@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 
+import { getSetIsSorted } from "../algorithms/utils";
+
 const AlgorithmContext = React.createContext();
 
 const AlgorithmProvider = ({ children }) => {
@@ -7,6 +9,10 @@ const AlgorithmProvider = ({ children }) => {
   const [isSorted, setIsSorted] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
   const [activeOption, setActiveOption] = useState(0);
+
+  useEffect(() => {
+    getSetIsSorted(setIsSorted);
+  }, []);
 
   useEffect(() => {
     if (isSorted) {
