@@ -21,7 +21,6 @@ let selectNewMin = false;
 let unselectBar = false;
 let barSwap = false;
 let unselectBars = false;
-let sorted = false;
 
 export function recursiveSelectionSort(delay = timeout) {
   const bars = document.querySelectorAll(".bar");
@@ -38,6 +37,11 @@ export function recursiveSelectionSort(delay = timeout) {
       return;
     }
     if (selectBar) {
+      console.log(j);
+      // Color the previous bar unsorted again (only if it's not the min value)
+      if (j - 1 > i && j - 1 !== index) {
+        modifyBar("unsorted", bars[j - 1]);
+      }
       modifyBar("selected", bars[j]);
       if (array[j] < minValue) {
         // Only execute if the bar has the smallest value so far (stored in minValue)
@@ -45,13 +49,8 @@ export function recursiveSelectionSort(delay = timeout) {
         selectNewMin = true;
         recursiveSelectionSort();
         return;
-      } else {
-        // else, just go to unselectBar
-        selectBar = false;
-        unselectBar = true;
-        recursiveSelectionSort();
-        return;
       }
+      selectBar = false;
     }
     if (selectNewMin) {
       if (index !== 0) {
@@ -64,7 +63,7 @@ export function recursiveSelectionSort(delay = timeout) {
       modifyBar("reference", bars[j]);
     }
     if (unselectBar) {
-      modifyBar("unsorted", bars[j]);
+      modifyBar("unsorted", bars[j - 1]);
       unselectBar = false;
     }
     if (barSwap) {
@@ -89,31 +88,29 @@ export function recursiveSelectionSort(delay = timeout) {
         noSwap = true;
         j = i + 1;
         recursiveSelectionSort();
-        return;
       } else {
         // Sorting finished
         modifyBar("sorted", bars[i], bars[i + 1]);
         setIsSorted(true);
-        sorted = true;
         console.log("SORTED");
-        return;
       }
+      return;
     }
 
     j++;
 
     if (j < array.length) {
       selectBar = true;
-      recursiveSelectionSort();
+    } else if (j === array.length && j - 1 !== index) {
+      unselectBar = true;
     } else {
       if (!noSwap) {
         barSwap = true;
-        recursiveSelectionSort();
       } else {
         unselectBars = true;
-        recursiveSelectionSort();
       }
     }
+    recursiveSelectionSort();
   }, delay);
 }
 
@@ -162,15 +159,12 @@ export function selectionSortStepBack(setHasStarted) {
 
 function reverseSelectionSort() {
   const bars = document.querySelectorAll(".bar");
-  if (sorted) {
-    for (let x = array.length - 1; x >= i; x--) {
-      modifyBar("unsorted", bars[x]);
-    }
-    sorted = false;
-  }
   if (referenceBar) {
     modifyBar("unsorted", bars[i]);
   } else if (selectBar) {
+    if (j - 1 > i && j - 1 !== index) {
+      modifyBar("selected", bars[j - 1]);
+    }
     modifyBar("unsorted", bars[j]);
   } else if (selectNewMin) {
     if (index !== 0) {
@@ -178,12 +172,13 @@ function reverseSelectionSort() {
     }
     modifyBar("selected", bars[j]);
   } else if (unselectBar) {
-    modifyBar("selected", bars[j]);
+    modifyBar("selected", bars[j - 1]);
   } else if (barSwap) {
     swapArrayElements(i, index);
     swapBars(bars[i], bars[index]);
   } else if (unselectBars) {
     modifyBar("reference", bars[i]);
+    modifyBar("unsorted", bars[i + 1]);
     if (index !== 0) {
       modifyBar("reference", bars[index]);
     }
