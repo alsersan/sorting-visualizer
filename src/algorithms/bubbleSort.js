@@ -14,9 +14,9 @@ let j = 0;
 let barSwap = false;
 let unselectBars = false;
 let compareBars = true;
+let sortBars = false;
 let noSwap = true;
 const record = [];
-let sorted = false;
 
 export function bubbleSort(delay = timeout) {
   const bars = document.querySelectorAll(".bar");
@@ -26,60 +26,56 @@ export function bubbleSort(delay = timeout) {
     saveStep();
 
     if (compareBars) {
+      if (j - 1 >= 0) modifyBar("unsorted", bars[j - 1]);
       modifyBar("selected", bars[j], bars[j + 1]);
       if (array[j] > array[j + 1]) {
         compareBars = false;
         barSwap = true;
         bubbleSort();
         return;
-      } else {
-        compareBars = false;
-        unselectBars = true;
-        bubbleSort();
-        return;
       }
+      compareBars = false;
     }
     if (barSwap) {
       swapArrayElements(j, j + 1);
       swapBars(bars[j], bars[j + 1]);
       noSwap = false;
       barSwap = false;
-      unselectBars = true;
+    }
+    if (unselectBars) {
+      modifyBar("unsorted", bars[j - 1]);
+      modifyBar("sorted", bars[j]);
+      noSwap = true;
+      j = 0;
+      i--;
+      unselectBars = false;
+      compareBars = true;
       bubbleSort();
       return;
     }
-    if (unselectBars) {
-      if (j + 1 === i) {
-        // If condition is true, then j+1 is the last bar, and it's sorted
-        modifyBar("unsorted", bars[j]);
-        modifyBar("sorted", bars[j + 1]);
-      } else {
-        modifyBar("unsorted", bars[j], bars[j + 1]);
+    if (sortBars) {
+      // Sorting finished
+      for (let x = 0; x <= i; x++) {
+        modifyBar("sorted", bars[x]);
       }
-      unselectBars = false;
-      compareBars = true;
+      setIsSorted(true);
+      console.log("SORTED!!");
+      return;
     }
 
     j++;
 
     if (j < i) {
       // if j < i, the cycle has not been yet completed
-      bubbleSort();
+      compareBars = true;
     } else if (j === i && i > 1 && !noSwap) {
       // if j === i, the cycle  has been completed, but only execute again if there have been swaps in this cycle (otherwise the array is already sorted) and if i > 1 (making the last possible value of i 1)
-      noSwap = true;
-      j = 0;
-      i--;
-      bubbleSort();
+      unselectBars = true;
     } else {
-      // Sorting finished
-      bars.forEach((bar) => {
-        modifyBar("sorted", bar);
-      });
-      sorted = true;
-      setIsSorted(true);
-      console.log("SORTED!!");
+      // color the remaining bars as sorted
+      sortBars = true;
     }
+    bubbleSort();
   }, delay);
 }
 
@@ -90,6 +86,7 @@ function saveStep() {
     barSwap,
     unselectBars,
     compareBars,
+    sortBars,
     noSwap,
   };
   record.push(step);
@@ -108,6 +105,7 @@ export function bubbleSortStepBack(setHasStarted) {
   barSwap = lastElement.barSwap;
   unselectBars = lastElement.unselectBars;
   compareBars = lastElement.compareBars;
+  sortBars = lastElement.sortBars;
   noSwap = lastElement.noSwap;
   record.pop();
   reverseBubbleSort();
@@ -119,18 +117,19 @@ export function bubbleSortStepBack(setHasStarted) {
 function reverseBubbleSort() {
   // If the array was already sorted, all the bars that were colored with sortedColor in the last step are colored with unsortedColor
   const bars = document.querySelectorAll(".bar");
-  if (sorted) {
+  if (sortBars) {
     for (let x = 0; x <= i; x++) {
       modifyBar("unsorted", bars[x]);
     }
-    sorted = false;
+    modifyBar("selected", bars[j], bars[j - 1]);
   }
   if (compareBars) {
     modifyBar("unsorted", bars[j], bars[j + 1]);
+    if (j - 1 >= 0) modifyBar("selected", bars[j], bars[j - 1]);
   } else if (barSwap) {
     swapArrayElements(j, j + 1);
     swapBars(bars[j], bars[j + 1]);
   } else if (unselectBars) {
-    modifyBar("selected", bars[j], bars[j + 1]);
+    modifyBar("selected", bars[j], bars[j - 1]);
   }
 }
