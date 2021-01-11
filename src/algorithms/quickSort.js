@@ -39,6 +39,7 @@ export function quickSort(delay = timeout) {
       selectPivot = true;
       quickSort();
     } else {
+      // Sorting finished
       setIsSorted(true);
       console.log("SORTED!");
     }

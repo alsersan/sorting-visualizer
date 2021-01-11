@@ -51,6 +51,7 @@ export function mergeSort(delay = timeout) {
       mergeSort(delay);
       return;
     }
+    // Sorting finished
     setIsSorted(true);
     console.log("SORTED!");
     return;
