@@ -18,7 +18,7 @@ let noSwap = true;
 const record = [];
 let sorted = false;
 
-export function recursiveBubbleSort(delay = timeout) {
+export function bubbleSort(delay = timeout) {
   const bars = document.querySelectorAll(".bar");
   if (record.length === 0) i = array.length - 1;
 
@@ -30,12 +30,12 @@ export function recursiveBubbleSort(delay = timeout) {
       if (array[j] > array[j + 1]) {
         compareBars = false;
         barSwap = true;
-        recursiveBubbleSort();
+        bubbleSort();
         return;
       } else {
         compareBars = false;
         unselectBars = true;
-        recursiveBubbleSort();
+        bubbleSort();
         return;
       }
     }
@@ -45,7 +45,7 @@ export function recursiveBubbleSort(delay = timeout) {
       noSwap = false;
       barSwap = false;
       unselectBars = true;
-      recursiveBubbleSort();
+      bubbleSort();
       return;
     }
     if (unselectBars) {
@@ -64,13 +64,13 @@ export function recursiveBubbleSort(delay = timeout) {
 
     if (j < i) {
       // if j < i, the cycle has not been yet completed
-      recursiveBubbleSort();
+      bubbleSort();
     } else if (j === i && i > 1 && !noSwap) {
       // if j === i, the cycle  has been completed, but only execute again if there have been swaps in this cycle (otherwise the array is already sorted) and if i > 1 (making the last possible value of i 1)
       noSwap = true;
       j = 0;
       i--;
-      recursiveBubbleSort();
+      bubbleSort();
     } else {
       // Sorting finished
       bars.forEach((bar) => {
@@ -96,7 +96,7 @@ function saveStep() {
 }
 
 export function bubbleSortStepForward(delay) {
-  recursiveBubbleSort(delay);
+  bubbleSort(delay);
   setTimeout(stopAlgorithm, delay);
 }
 

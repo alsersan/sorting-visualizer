@@ -18,7 +18,7 @@ let selectBar = false;
 let barSwap = false;
 let unselectBars = false;
 
-export const recursiveInsertionSort = (delay = timeout) => {
+export const insertionSort = (delay = timeout) => {
   const bars = document.querySelectorAll(".bar");
 
   algorithmTimeout(() => {
@@ -29,7 +29,7 @@ export const recursiveInsertionSort = (delay = timeout) => {
       modifyBar("reference", bars[i]);
       referenceBar = false;
       selectBar = true;
-      recursiveInsertionSort();
+      insertionSort();
       return;
     }
     if (selectBar) {
@@ -41,12 +41,12 @@ export const recursiveInsertionSort = (delay = timeout) => {
       if (array[j] > currentVal) {
         selectBar = false;
         barSwap = true;
-        recursiveInsertionSort();
+        insertionSort();
         return;
       } else {
         selectBar = false;
         unselectBars = true;
-        recursiveInsertionSort();
+        insertionSort();
         return;
       }
     }
@@ -64,7 +64,7 @@ export const recursiveInsertionSort = (delay = timeout) => {
         j = i - 1;
         unselectBars = false;
         referenceBar = true;
-        recursiveInsertionSort();
+        insertionSort();
         return;
       }
       // Sorting finished
@@ -76,18 +76,18 @@ export const recursiveInsertionSort = (delay = timeout) => {
     if (j > 0) {
       j--;
       selectBar = true;
-      recursiveInsertionSort();
+      insertionSort();
       return;
     } else {
       unselectBars = true;
-      recursiveInsertionSort();
+      insertionSort();
       return;
     }
   }, delay);
 };
 
 export function insertionSortStepForward(delay) {
-  recursiveInsertionSort(delay);
+  insertionSort(delay);
   setTimeout(stopAlgorithm, delay);
 }
 

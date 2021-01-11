@@ -6,9 +6,9 @@ import { FaStepForward } from "react-icons/fa";
 import { FaStepBackward } from "react-icons/fa";
 
 import Button from "./components/Button";
-import * as bubble from "../../../../algorithms/recursiveBubbleSort";
-import * as selection from "../../../../algorithms/recursiveSelectionSort";
-import * as insertion from "../../../../algorithms/recursiveInsertionSort";
+import * as bubble from "../../../../algorithms/bubbleSort";
+import * as selection from "../../../../algorithms/selectionSort";
+import * as insertion from "../../../../algorithms/insertionSort";
 import * as merge from "../../../../algorithms/mergeSort";
 import * as quick from "../../../../algorithms/quickSort";
 import { stopAlgorithm } from "../../../../algorithms/utils";
@@ -31,9 +31,9 @@ const ButtonRow = () => {
   } = useAlgorithmContext();
 
   const algorithms = [
-    bubble.recursiveBubbleSort,
-    selection.recursiveSelectionSort,
-    insertion.recursiveInsertionSort,
+    bubble.bubbleSort,
+    selection.selectionSort,
+    insertion.insertionSort,
     merge.mergeSort,
     quick.quickSort,
   ];

@@ -22,7 +22,7 @@ let unselectBar = false;
 let barSwap = false;
 let unselectBars = false;
 
-export function recursiveSelectionSort(delay = timeout) {
+export function selectionSort(delay = timeout) {
   const bars = document.querySelectorAll(".bar");
 
   algorithmTimeout(() => {
@@ -33,7 +33,7 @@ export function recursiveSelectionSort(delay = timeout) {
       minValue = array[i];
       referenceBar = false;
       selectBar = true;
-      recursiveSelectionSort();
+      selectionSort();
       return;
     }
     if (selectBar) {
@@ -47,7 +47,7 @@ export function recursiveSelectionSort(delay = timeout) {
         // Only execute if the bar has the smallest value so far (stored in minValue)
         selectBar = false;
         selectNewMin = true;
-        recursiveSelectionSort();
+        selectionSort();
         return;
       }
       selectBar = false;
@@ -71,7 +71,7 @@ export function recursiveSelectionSort(delay = timeout) {
       swapBars(bars[i], bars[index]);
       barSwap = false;
       unselectBars = true;
-      recursiveSelectionSort();
+      selectionSort();
       return;
     }
     if (unselectBars) {
@@ -87,7 +87,7 @@ export function recursiveSelectionSort(delay = timeout) {
         index = 0;
         noSwap = true;
         j = i + 1;
-        recursiveSelectionSort();
+        selectionSort();
       } else {
         // Sorting finished
         modifyBar("sorted", bars[i], bars[i + 1]);
@@ -110,7 +110,7 @@ export function recursiveSelectionSort(delay = timeout) {
         unselectBars = true;
       }
     }
-    recursiveSelectionSort();
+    selectionSort();
   }, delay);
 }
 
@@ -132,7 +132,7 @@ function saveStep() {
 }
 
 export function selectionSortStepForward(delay) {
-  recursiveSelectionSort(delay);
+  selectionSort(delay);
   setTimeout(stopAlgorithm, delay);
 }
 
