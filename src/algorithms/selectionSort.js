@@ -37,7 +37,6 @@ export function selectionSort(delay = timeout) {
       return;
     }
     if (selectBar) {
-      console.log(j);
       // Color the previous bar unsorted again (only if it's not the min value)
       if (j - 1 > i && j - 1 !== index) {
         modifyBar("unsorted", bars[j - 1]);
