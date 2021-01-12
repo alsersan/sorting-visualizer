@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+import Button from "../Button";
 import { useAlgorithmContext } from "../../../../contexts/AlgorithmContext";
 
 const Container = styled.div`
@@ -19,24 +20,11 @@ const FlexWrapper = styled.div`
   justify-content: center;
 `;
 
-const Button = styled.button`
-  display: flex;
-  flex-grow: 1;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  border-radius: 3rem;
-  outline: none;
-  font-size: 1rem;
-  font-family: inherit;
-  color: inherit;
-  box-shadow: ${(props) => props.theme.button.boxShadow};
+const StyledButton = styled(Button)`
   height: 2rem;
   width: 8rem;
   max-width: 8rem;
   margin: 0.5rem;
-  background-color: ${(props) => props.theme.backgroundColor.secondary};
-  cursor: pointer;
 `;
 
 const Options = () => {
@@ -47,11 +35,29 @@ const Options = () => {
       {console.log("OPTIONS")}
       <Title>Options</Title>
       <FlexWrapper>
-        <Button>Reset Array</Button>
-        <Button>Reset Defaults</Button>
+        <StyledButton>Reset Array</StyledButton>
+        <StyledButton>Reset Defaults</StyledButton>
       </FlexWrapper>
     </Container>
   );
 };
 
 export default Options;
+
+// display: flex;
+//   flex-grow: 1;
+//   align-items: center;
+//   justify-content: center;
+//   border: none;
+//   border-radius: 3rem;
+//   outline: none;
+//   font-size: 1rem;
+//   font-family: inherit;
+//   color: inherit;
+//   box-shadow: ${(props) => props.theme.button.boxShadow};
+//   height: 2rem;
+//   width: 8rem;
+//   max-width: 8rem;
+//   margin: 0.5rem;
+//   background-color: ${(props) => props.theme.backgroundColor.secondary};
+//   cursor: pointer;
