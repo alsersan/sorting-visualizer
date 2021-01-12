@@ -6,6 +6,7 @@ import SpeedSelector from "./components/SpeedSelector";
 import AlgorithmOptions from "./components/AlgorithmOptions";
 import ColorSelection from "./components/ColorSelection";
 import ThemeToggler from "./components/ThemeToggler";
+import Options from "./components/Options";
 
 const StyledSidebar = styled.div`
   height: 100%;
@@ -28,6 +29,7 @@ const Sidebar = () => {
       <SizeSelector />
       <SpeedSelector />
       <ColorSelection />
+      <Options />
     </StyledSidebar>
   );
 };
