@@ -6,9 +6,15 @@ const ArraySizeContext = React.createContext();
 
 const ArraySizeProvider = ({ children }) => {
   const [size, setSize] = useState(10);
+  const [update, setUpdate] = useState(false);
+
+  const handleUpdate = () => {
+    setUpdate(!update);
+  };
 
   const array = calculateRandomArray();
   getArray(array);
+  console.log(`array from state: ${array}`);
 
   function calculateRandomArray() {
     const arr = [];
@@ -25,6 +31,7 @@ const ArraySizeProvider = ({ children }) => {
     size,
     setSize,
     array,
+    handleUpdate,
   };
 
   return (

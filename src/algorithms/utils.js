@@ -1,3 +1,5 @@
+import { bubbleSetInitialState } from "./bubbleSort";
+
 // ARRAY
 
 export let array = [];
@@ -85,4 +87,14 @@ export const modifyBar = (classAdd, ...elements) => {
     changeClass(element, classAdd);
     changeBarColor(element);
   });
+};
+
+// INITIAL STATE
+
+export const resetInitialState = () => {
+  stopAlgorithm();
+  document
+    .querySelectorAll(".bar")
+    .forEach((bar) => changeClass(bar, "unsorted"));
+  bubbleSetInitialState();
 };

@@ -9,14 +9,18 @@ import {
   setIsSorted,
 } from "./utils";
 
-let i = 0;
-let j = 0;
-let barSwap = false;
-let unselectBars = false;
-let compareBars = true;
-let sortBars = false;
-let noSwap = true;
-const record = [];
+const initialState = getInitialState();
+
+let {
+  i,
+  j,
+  barSwap,
+  unselectBars,
+  compareBars,
+  sortBars,
+  noSwap,
+  record,
+} = initialState;
 
 export function bubbleSort(delay = timeout) {
   const bars = document.querySelectorAll(".bar");
@@ -77,6 +81,30 @@ export function bubbleSort(delay = timeout) {
     }
     bubbleSort();
   }, delay);
+}
+
+function getInitialState() {
+  return {
+    i: 0,
+    j: 0,
+    barSwap: false,
+    unselectBars: false,
+    compareBars: true,
+    sortBars: false,
+    noSwap: true,
+    record: [],
+  };
+}
+
+export function bubbleSetInitialState() {
+  i = initialState.i;
+  j = initialState.j;
+  barSwap = initialState.barSwap;
+  unselectBars = initialState.unselectBars;
+  compareBars = initialState.compareBars;
+  sortBars = initialState.sortBars;
+  noSwap = initialState.noSwap;
+  record = [];
 }
 
 function saveStep() {

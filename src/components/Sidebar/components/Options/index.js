@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 import Button from "../Button";
+import { resetInitialState } from "../../../../algorithms/utils";
 import { useAlgorithmContext } from "../../../../contexts/AlgorithmContext";
+import { useArraySizeContext } from "../../../../contexts/ArraySizeContext";
 
 const Container = styled.div`
   width: 100%;
@@ -28,14 +30,26 @@ const StyledButton = styled(Button)`
 `;
 
 const Options = () => {
-  const { hasStarted, activeOption, setActiveOption } = useAlgorithmContext();
+  const {
+    hasStarted,
+    activeOption,
+    setActiveOption,
+    reset,
+  } = useAlgorithmContext();
+  const { handleUpdate } = useArraySizeContext();
+
+  const handleClick = () => {
+    resetInitialState();
+    reset();
+    handleUpdate();
+  };
 
   return (
     <Container hasStarted={hasStarted}>
       {console.log("OPTIONS")}
       <Title>Options</Title>
       <FlexWrapper>
-        <StyledButton>Reset Array</StyledButton>
+        <StyledButton onClick={handleClick}>Reset Array</StyledButton>
         <StyledButton>Reset Defaults</StyledButton>
       </FlexWrapper>
     </Container>
@@ -43,21 +57,3 @@ const Options = () => {
 };
 
 export default Options;
-
-// display: flex;
-//   flex-grow: 1;
-//   align-items: center;
-//   justify-content: center;
-//   border: none;
-//   border-radius: 3rem;
-//   outline: none;
-//   font-size: 1rem;
-//   font-family: inherit;
-//   color: inherit;
-//   box-shadow: ${(props) => props.theme.button.boxShadow};
-//   height: 2rem;
-//   width: 8rem;
-//   max-width: 8rem;
-//   margin: 0.5rem;
-//   background-color: ${(props) => props.theme.backgroundColor.secondary};
-//   cursor: pointer;

@@ -20,6 +20,12 @@ const AlgorithmProvider = ({ children }) => {
     }
   }, [isSorted]);
 
+  const reset = () => {
+    setIsRunning(false);
+    setIsSorted(false);
+    setHasStarted(false);
+  };
+
   const value = {
     isRunning,
     setIsRunning,
@@ -29,6 +35,7 @@ const AlgorithmProvider = ({ children }) => {
     setHasStarted,
     activeOption,
     setActiveOption,
+    reset,
   };
 
   return (

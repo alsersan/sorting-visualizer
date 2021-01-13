@@ -45,7 +45,7 @@ const Bar = (props) => {
       }
     });
     console.log(barEl);
-  }, []);
+  });
 
   return (
     <StyledBar

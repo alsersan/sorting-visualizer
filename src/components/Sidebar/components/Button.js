@@ -18,7 +18,9 @@ const StyledButton = styled.button`
 
 const Button = (props) => {
   return (
-    <StyledButton className={props.className}>{props.children}</StyledButton>
+    <StyledButton className={props.className} {...props}>
+      {props.children}
+    </StyledButton>
   );
 };
 
