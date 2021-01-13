@@ -9,18 +9,22 @@ import {
   setIsSorted,
 } from "./utils";
 
-let i = 0;
-let j = 1;
-let index = 0;
-let minValue = 0;
-let noSwap = true;
-const record = [];
-let referenceBar = true;
-let selectBar = false;
-let selectNewMin = false;
-let unselectBar = false;
-let barSwap = false;
-let unselectBars = false;
+const initialState = getInitialState();
+
+let {
+  i,
+  j,
+  index,
+  minValue,
+  noSwap,
+  record,
+  referenceBar,
+  selectBar,
+  selectNewMin,
+  unselectBar,
+  barSwap,
+  unselectBars,
+} = initialState;
 
 export function selectionSort(delay = timeout) {
   const bars = document.querySelectorAll(".bar");
@@ -111,6 +115,38 @@ export function selectionSort(delay = timeout) {
     }
     selectionSort();
   }, delay);
+}
+
+function getInitialState() {
+  return {
+    i: 0,
+    j: 1,
+    index: 0,
+    minValue: 0,
+    noSwap: true,
+    record: [],
+    referenceBar: true,
+    selectBar: false,
+    selectNewMin: false,
+    unselectBar: false,
+    barSwap: false,
+    unselectBars: false,
+  };
+}
+
+export function selectionSetInitialState() {
+  i = initialState.i;
+  j = initialState.j;
+  index = initialState.index;
+  minValue = initialState.minValue;
+  noSwap = initialState.noSwap;
+  record = [];
+  referenceBar = initialState.referenceBar;
+  selectBar = initialState.selectBar;
+  selectNewMin = initialState.selectNewMin;
+  unselectBar = initialState.unselectBar;
+  barSwap = initialState.barSwap;
+  unselectBars = initialState.unselectBars;
 }
 
 function saveStep() {
