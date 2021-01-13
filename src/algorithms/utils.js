@@ -1,5 +1,6 @@
 import { bubbleSetInitialState } from "./bubbleSort";
 import { selectionSetInitialState } from "./selectionSort";
+import { insertionSetInitialState } from "./insertionSort";
 
 // ARRAY
 
@@ -99,4 +100,5 @@ export const resetInitialState = () => {
     .forEach((bar) => changeClass(bar, "unsorted"));
   bubbleSetInitialState();
   selectionSetInitialState();
+  insertionSetInitialState();
 };

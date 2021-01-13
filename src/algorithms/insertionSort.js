@@ -9,14 +9,18 @@ import {
   setIsSorted,
 } from "./utils";
 
-let i = 1;
-let j = 0;
-const record = [];
-let currentVal = 0;
-let referenceBar = true;
-let selectBar = false;
-let barSwap = false;
-let unselectBars = false;
+const initialState = getInitialState();
+
+let {
+  i,
+  j,
+  record,
+  currentVal,
+  referenceBar,
+  selectBar,
+  barSwap,
+  unselectBars,
+} = initialState;
 
 export const insertionSort = (delay = timeout) => {
   const bars = document.querySelectorAll(".bar");
@@ -85,6 +89,30 @@ export const insertionSort = (delay = timeout) => {
     }
   }, delay);
 };
+
+function getInitialState() {
+  return {
+    i: 1,
+    j: 0,
+    record: [],
+    currentVal: 0,
+    referenceBar: true,
+    selectBar: false,
+    barSwap: false,
+    unselectBars: false,
+  };
+}
+
+export function insertionSetInitialState() {
+  i = initialState.i;
+  j = initialState.j;
+  record = [];
+  currentVal = initialState.currentVal;
+  referenceBar = initialState.referenceBar;
+  selectBar = initialState.selectBar;
+  barSwap = initialState.barSwap;
+  unselectBars = initialState.unselectBars;
+}
 
 export function insertionSortStepForward(delay) {
   insertionSort(delay);
