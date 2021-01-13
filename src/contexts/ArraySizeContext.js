@@ -6,6 +6,7 @@ const ArraySizeContext = React.createContext();
 
 const ArraySizeProvider = ({ children }) => {
   const [size, setSize] = useState(10);
+  // boolean value to toggle the re-render
   const [update, setUpdate] = useState(false);
 
   const handleUpdate = () => {

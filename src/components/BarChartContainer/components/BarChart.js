@@ -22,7 +22,12 @@ const BarChart = () => {
     <Container>
       {console.log("RERENDER BAR CHART")}
       {array.map((number, index) => (
-        <Bar number={number} key={index} size={size} className="bar unsorted" />
+        <Bar
+          number={number}
+          key={`${array} ${index}`}
+          size={size}
+          className="bar unsorted"
+        />
       ))}
     </Container>
   );
