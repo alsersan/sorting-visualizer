@@ -1,20 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import ComponentContainer from "./ComponentContainer";
 import { useAlgorithmContext } from "../../../contexts/AlgorithmContext";
-
-const Container = styled.div`
-  width: 100%;
-  margin: 0 0 2rem;
-  opacity: ${(props) => (props.hasStarted ? "0.4" : "1")};
-  pointer-events: ${(props) => (props.hasStarted ? "none" : "auto")};
-`;
-
-const Title = styled.div`
-  font-weight: 500;
-  font-size: 1.2rem;
-  margin-bottom: 0.8rem;
-`;
 
 const FlexWrapper = styled.div`
   display: flex;
@@ -53,9 +41,8 @@ const AlgorithmOptions = () => {
   const { hasStarted, activeOption, setActiveOption } = useAlgorithmContext();
 
   return (
-    <Container hasStarted={hasStarted}>
+    <ComponentContainer title="Sorting Algorithm" hasStarted={hasStarted}>
       {console.log("ALGORITHM OPTIONS")}
-      <Title>Sorting Algorithm</Title>
       <FlexWrapper>
         {[
           "Bubble Sort",
@@ -74,7 +61,7 @@ const AlgorithmOptions = () => {
           </Button>
         ))}
       </FlexWrapper>
-    </Container>
+    </ComponentContainer>
   );
 };
 

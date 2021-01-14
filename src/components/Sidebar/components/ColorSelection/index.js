@@ -2,22 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 import ColorPicker from "./components/ColorPicker";
+import ComponentContainer from "../ComponentContainer";
 
 import { useBarColorContext } from "../../../../contexts/BarColorContext";
 import { useAlgorithmContext } from "../../../../contexts/AlgorithmContext";
-
-const Container = styled.div`
-  width: 100%;
-  margin: 2rem 0;
-  opacity: ${(props) => (props.isRunning ? "0.4" : "1")};
-  pointer-events: ${(props) => (props.isRunning ? "none" : "auto")};
-`;
-
-const Title = styled.div`
-  font-weight: 500;
-  font-size: 1.2rem;
-  margin-bottom: 0.8rem;
-`;
 
 const FlexWrapper = styled.div`
   display: flex;
@@ -39,9 +27,8 @@ const ColorSelection = () => {
   const { isRunning } = useAlgorithmContext();
 
   return (
-    <Container isRunning={isRunning}>
+    <ComponentContainer title="Color Picker" isRunning={isRunning}>
       {console.log("COLOR SELECTION")}
-      <Title>Color Picker</Title>
       <FlexWrapper>
         <ColorPicker
           initialValue={unsortedColor}
@@ -68,7 +55,7 @@ const ColorSelection = () => {
           description="Sorted"
         />
       </FlexWrapper>
-    </Container>
+    </ComponentContainer>
   );
 };
 
