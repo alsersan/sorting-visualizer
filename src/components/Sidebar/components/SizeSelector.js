@@ -14,7 +14,7 @@ const SizeSelector = () => {
       hasStarted={hasStarted}
       mainText="Size"
       secondaryText={size}
-      max="25"
+      max="60"
       min="5"
       value={size}
       step="1"

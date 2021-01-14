@@ -7,7 +7,7 @@ const StyledBar = styled.div`
   margin: ${({ size }) => {
     if (size < 10) {
       return "0 3px";
-    } else if (size > 19) {
+    } else if (size > 25) {
       return "0 1px";
     } else {
       return "0 2px";
@@ -23,10 +23,10 @@ const StyledBar = styled.div`
 const Text = styled.span`
   position: absolute;
   margin-top: -1.5rem;
-  display: block;
+  display: ${({ size }) => (size > 25 ? "none" : "block")};
 `;
 
-const Bar = (props) => {
+const Bar = ({ className, size, number }) => {
   const barEl = useRef();
   const {
     unsortedColor,
@@ -50,14 +50,14 @@ const Bar = (props) => {
   return (
     <StyledBar
       ref={barEl}
-      className={props.className}
-      size={props.size}
+      className={className}
+      size={size}
       style={{
-        height: `${props.number}%`,
+        height: `${number}%`,
       }}
     >
       {console.log("RENDER BARS")}
-      <Text>{props.number}</Text>
+      <Text size={size}>{number}</Text>
     </StyledBar>
   );
 };
