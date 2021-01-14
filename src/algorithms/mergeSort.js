@@ -8,20 +8,39 @@ import {
   setIsSorted,
 } from "./utils";
 
-let i = 0;
-let j = 0;
-let i2 = 0;
-let j2 = 0;
-let temp = [];
-let len = 1;
-let idx = 0;
-let getIndex = true;
-let compareBars = false;
-let overwriteBars = false;
-let prev = null;
-let overwriteIdx = 0;
-const record = [];
-let copyArray = [];
+const initialState = getInitialState();
+
+let {
+  i,
+  j,
+  i2,
+  j2,
+  temp,
+  len,
+  idx,
+  getIndex,
+  compareBars,
+  overwriteBars,
+  prev,
+  overwriteIdx,
+  record,
+  copyArray,
+} = initialState;
+
+// let i = 0;
+// let j = 0;
+// let i2 = 0;
+// let j2 = 0;
+// let temp = [];
+// let len = 1;
+// let idx = 0;
+// let getIndex = true;
+// let compareBars = false;
+// let overwriteBars = false;
+// let prev = null;
+// let overwriteIdx = 0;
+// const record = [];
+// let copyArray = [];
 
 export function mergeSort(delay = timeout) {
   const bars = document.querySelectorAll(".bar");
@@ -125,6 +144,42 @@ export function mergeSort(delay = timeout) {
       return;
     }
   }, delay);
+}
+
+function getInitialState() {
+  return {
+    i: 0,
+    j: 0,
+    i2: 0,
+    j2: 0,
+    temp: [],
+    len: 1,
+    idx: 0,
+    getIndex: true,
+    compareBars: false,
+    overwriteBars: false,
+    prev: null,
+    overwriteIdx: 0,
+    record: [],
+    copyArray: [],
+  };
+}
+
+export function mergeSetInitialState() {
+  i = initialState.i;
+  j = initialState.j;
+  i2 = initialState.i2;
+  j2 = initialState.j2;
+  temp = [];
+  len = initialState.len;
+  idx = initialState.idx;
+  getIndex = initialState.getIndex;
+  compareBars = initialState.compareBars;
+  overwriteBars = initialState.overwriteBars;
+  prev = initialState.prev;
+  overwriteIdx = initialState.overwriteIdx;
+  record = [];
+  copyArray = [];
 }
 
 function saveStep() {

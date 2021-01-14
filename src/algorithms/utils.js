@@ -1,6 +1,7 @@
 import { bubbleSetInitialState } from "./bubbleSort";
 import { selectionSetInitialState } from "./selectionSort";
 import { insertionSetInitialState } from "./insertionSort";
+import { mergeSetInitialState } from "./mergeSort";
 
 // ARRAY
 
@@ -101,4 +102,5 @@ export const resetInitialState = () => {
   bubbleSetInitialState();
   selectionSetInitialState();
   insertionSetInitialState();
+  mergeSetInitialState();
 };
