@@ -14,8 +14,18 @@ import * as quick from "../../../../algorithms/quickSort";
 import { stopAlgorithm } from "../../../../algorithms/utils";
 import { useAlgorithmContext } from "../../../../contexts/AlgorithmContext";
 
-const StyledButtonRow = styled.div`
-  margin-top: 2rem;
+const Container = styled.div`
+  width: 100%;
+  margin: 2rem 0;
+`;
+
+const Title = styled.div`
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+`;
+
+const FlexWrapper = styled.div`
   display: flex;
   justify-content: center;
 `;
@@ -52,51 +62,54 @@ const ButtonRow = () => {
   ];
 
   return (
-    <StyledButtonRow>
+    <Container>
       {console.log("BUTTON ROW")}
-      <Button
-        hasStarted={hasStarted}
-        isRunning={isRunning}
-        disabled={isRunning || !hasStarted}
-        onClick={() => stepsBack[activeOption](setHasStarted)}
-      >
-        <FaStepBackward size={30} />
-      </Button>
-      {isRunning ? (
+      <Title>Controls</Title>
+      <FlexWrapper>
         <Button
           hasStarted={hasStarted}
-          onClick={() => {
-            stopAlgorithm();
-            setIsRunning(false);
-          }}
+          isRunning={isRunning}
+          disabled={isRunning || !hasStarted}
+          onClick={() => stepsBack[activeOption](setHasStarted)}
         >
-          <FaPause size={30} />
+          <FaStepBackward size={30} />
         </Button>
-      ) : (
+        {isRunning ? (
+          <Button
+            hasStarted={hasStarted}
+            onClick={() => {
+              stopAlgorithm();
+              setIsRunning(false);
+            }}
+          >
+            <FaPause size={30} />
+          </Button>
+        ) : (
+          <Button
+            hasStarted={hasStarted}
+            disabled={isSorted}
+            onClick={() => {
+              setHasStarted(true);
+              setIsRunning(true);
+              algorithms[activeOption]();
+            }}
+          >
+            <FaPlay size={30} />
+          </Button>
+        )}
         <Button
           hasStarted={hasStarted}
-          disabled={isSorted}
+          isRunning={isRunning}
+          disabled={isRunning || isSorted}
           onClick={() => {
+            stepsForward[activeOption](1);
             setHasStarted(true);
-            setIsRunning(true);
-            algorithms[activeOption]();
           }}
         >
-          <FaPlay size={30} />
+          <FaStepForward size={30} />
         </Button>
-      )}
-      <Button
-        hasStarted={hasStarted}
-        isRunning={isRunning}
-        disabled={isRunning || isSorted}
-        onClick={() => {
-          stepsForward[activeOption](1);
-          setHasStarted(true);
-        }}
-      >
-        <FaStepForward size={30} />
-      </Button>
-    </StyledButtonRow>
+      </FlexWrapper>
+    </Container>
   );
 };
 

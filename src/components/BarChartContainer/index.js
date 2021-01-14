@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 import BarChart from "./components/BarChart";
-import ButtonRow from "./components/ButtonRow";
 import Logo from "./components/Logo";
 
 const Container = styled.div`
@@ -24,7 +23,6 @@ const BarChartContainer = () => {
       {console.log("BAR CHART CONTAINER")}
       <Logo />
       <BarChart />
-      <ButtonRow />
     </Container>
   );
 };
