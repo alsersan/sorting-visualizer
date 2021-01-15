@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Button from "../Button";
 import ComponentContainer from "../ComponentContainer";
+import ThemeToggler from "./components/ThemeToggler";
 import { resetInitialState } from "../../../../algorithms/utils";
 import { useAlgorithmContext } from "../../../../contexts/AlgorithmContext";
 import { useArraySizeContext } from "../../../../contexts/ArraySizeContext";
@@ -35,6 +36,7 @@ const Options = () => {
       <FlexWrapper>
         <StyledButton onClick={handleClick}>Reset Array</StyledButton>
         <StyledButton>Reset Defaults</StyledButton>
+        <ThemeToggler />
       </FlexWrapper>
     </ComponentContainer>
   );

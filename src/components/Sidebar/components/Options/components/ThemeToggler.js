@@ -1,15 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-import { useThemeTogglerContext } from "../../../contexts/ThemeTogglerContext";
+import { useThemeTogglerContext } from "../../../../../contexts/ThemeTogglerContext";
 import { FaSun, FaMoon } from "react-icons/fa";
 
 const Wrapper = styled.div`
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  position: relative;
   display: flex;
   align-items: center;
+  margin: 0.5rem;
 `;
 
 const Checkbox = styled.input`

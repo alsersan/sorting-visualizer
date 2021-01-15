@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 import Logo from "./components/Logo";
-import ThemeToggler from "./components/ThemeToggler";
 import MainContainer from "./components/MainContainer";
 
 const StyledSidebar = styled.div`
@@ -14,7 +13,6 @@ const StyledSidebar = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
 `;
 
 const Sidebar = () => {
@@ -22,7 +20,6 @@ const Sidebar = () => {
     <StyledSidebar>
       {console.log("SIDEBAR")}
       <Logo />
-      <ThemeToggler />
       <MainContainer />
     </StyledSidebar>
   );
