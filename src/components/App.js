@@ -1,15 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { GlobalStyle } from "./styles/GlobalStyle";
 
-import Sidebar from "./components/Sidebar";
-import BarChartContainer from "./components/BarChartContainer";
-import StyledThemeProvider from "./styles/StyledThemeProvider";
-
-import { AlgorithmProvider } from "./contexts/AlgorithmContext";
-import { ArraySizeProvider } from "./contexts/ArraySizeContext";
-import { ThemeTogglerProvider } from "./contexts/ThemeTogglerContext";
-import { BarColorProvider } from "./contexts/BarColorContext";
+import Sidebar from "./Sidebar";
+import BarChart from "./BarChart";
+import StyledThemeProvider from "../styles/StyledThemeProvider";
+import { GlobalStyle } from "../styles/GlobalStyle";
+import { AlgorithmProvider } from "../contexts/AlgorithmContext";
+import { ArraySizeProvider } from "../contexts/ArraySizeContext";
+import { ThemeTogglerProvider } from "../contexts/ThemeTogglerContext";
+import { BarColorProvider } from "../contexts/BarColorContext";
 
 const MainContainer = styled.div`
   height: 100vh;
@@ -31,7 +30,7 @@ const App = () => {
               <BarColorProvider>
                 <MainContainer>
                   {console.log("MAIN CONTAINER")}
-                  <BarChartContainer />
+                  <BarChart />
                   <Sidebar />
                 </MainContainer>
               </BarColorProvider>

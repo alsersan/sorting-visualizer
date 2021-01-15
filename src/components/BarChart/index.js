@@ -1,15 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import Bar from "./Bar";
 
-import { useArraySizeContext } from "../../../contexts/ArraySizeContext";
+import Bar from "./components/Bar";
+
+import { useArraySizeContext } from "../../contexts/ArraySizeContext";
 
 const Container = styled.div`
-  height: 88%;
-  width: 100%;
-  padding: 1%;
-
   display: flex;
+  flex-grow: 1;
+  height: 100%;
+  width: 70rem;
+  background-color: ${(props) => props.theme.backgroundColor.secondary};
+  margin-right: ${(props) => props.theme.spacing};
+  border-radius: ${(props) => props.theme.borderRadius};
+  padding: 1%;
   justify-content: space-around;
   align-items: flex-end;
 `;
@@ -33,6 +37,3 @@ const BarChart = () => {
 };
 
 export default BarChart;
-
-// max-width: 60rem;
-// max-height: 35rem;

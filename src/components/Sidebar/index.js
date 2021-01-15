@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+import Logo from "./components/Logo";
 import SizeSelector from "./components/SizeSelector";
 import SpeedSelector from "./components/SpeedSelector";
 import AlgorithmOptions from "./components/AlgorithmOptions";
@@ -25,6 +26,7 @@ const Sidebar = () => {
   return (
     <StyledSidebar>
       {console.log("SIDEBAR")}
+      <Logo />
       <ThemeToggler />
       <AlgorithmOptions />
       <SizeSelector />
