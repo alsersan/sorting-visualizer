@@ -7,7 +7,14 @@ import { useThemeTogglerContext } from "../../../contexts/ThemeTogglerContext";
 
 const Container = styled.div`
   display: flex;
-  margin-bottom: 2rem;
+  align-items: center;
+  justify-content: center;
+  height: 12%;
+  padding: 1%;
+`;
+
+const StyledLogo = styled.img`
+  height: 100%;
 `;
 
 const Logo = () => {
@@ -15,11 +22,7 @@ const Logo = () => {
 
   return (
     <Container>
-      <img
-        src={theme === "light" ? logoLight : logoDark}
-        alt="logo"
-        style={{ height: "6rem" }}
-      />
+      <StyledLogo src={theme === "light" ? logoLight : logoDark} alt="logo" />
     </Container>
   );
 };

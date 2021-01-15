@@ -5,11 +5,10 @@ import Bar from "./Bar";
 import { useArraySizeContext } from "../../../contexts/ArraySizeContext";
 
 const Container = styled.div`
-  height: 70%;
-  max-height: 35rem;
-  width: 90%;
-  max-width: 60rem;
-  background-color: #ccc;
+  height: 88%;
+  width: 100%;
+  padding: 1%;
+
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
@@ -34,3 +33,6 @@ const BarChart = () => {
 };
 
 export default BarChart;
+
+// max-width: 60rem;
+// max-height: 35rem;
