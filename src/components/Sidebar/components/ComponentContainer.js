@@ -18,7 +18,7 @@ const Title = styled.div`
 const ComponentContainer = (props) => {
   return (
     <Container {...props}>
-      <Title>{props.title}</Title>
+      {props.title && <Title>{props.title}</Title>}
       {props.children}
     </Container>
   );
