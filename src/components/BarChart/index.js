@@ -9,7 +9,6 @@ const Container = styled.div`
   display: flex;
   flex-grow: 1;
   height: 100%;
-  width: 70rem;
   background-color: ${(props) => props.theme.backgroundColor.secondary};
   margin-right: ${(props) => props.theme.spacing};
   border-radius: ${(props) => props.theme.borderRadius};

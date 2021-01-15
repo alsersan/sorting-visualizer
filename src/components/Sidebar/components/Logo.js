@@ -9,8 +9,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 12%;
-  padding: 1%;
+  height: 5.5rem;
 `;
 
 const StyledLogo = styled.img`

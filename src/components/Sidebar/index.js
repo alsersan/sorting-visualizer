@@ -2,18 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 import Logo from "./components/Logo";
-import SizeSelector from "./components/SizeSelector";
-import SpeedSelector from "./components/SpeedSelector";
-import AlgorithmOptions from "./components/AlgorithmOptions";
-import ColorSelection from "./components/ColorSelection";
 import ThemeToggler from "./components/ThemeToggler";
-import Options from "./components/Options";
-import ButtonRow from "./components/ButtonRow";
+import MainContainer from "./components/MainContainer";
 
 const StyledSidebar = styled.div`
   height: 100%;
-  width: 35rem;
-  padding: 2rem;
+  width: 30rem;
+  padding: 1.5rem 0;
   background-color: ${(props) => props.theme.backgroundColor.secondary};
   border-radius: ${(props) => props.theme.borderRadius};
   display: flex;
@@ -28,12 +23,7 @@ const Sidebar = () => {
       {console.log("SIDEBAR")}
       <Logo />
       <ThemeToggler />
-      <AlgorithmOptions />
-      <SizeSelector />
-      <SpeedSelector />
-      <ButtonRow />
-      <Options />
-      <ColorSelection />
+      <MainContainer />
     </StyledSidebar>
   );
 };
