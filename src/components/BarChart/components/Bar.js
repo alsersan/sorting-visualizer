@@ -38,6 +38,7 @@ const Bar = ({ className, size, number }) => {
   const colors = [unsortedColor, selectedColor, referenceColor, sortedColor];
 
   useLayoutEffect(() => {
+    console.log(unsortedColor);
     const currentBar = barEl.current;
     ["unsorted", "selected", "reference", "sorted"].forEach((el, index) => {
       if (currentBar.classList.contains(el)) {

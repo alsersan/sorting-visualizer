@@ -7,6 +7,7 @@ import ThemeToggler from "./components/ThemeToggler";
 import { resetInitialState } from "../../../../algorithms/utils";
 import { useAlgorithmContext } from "../../../../contexts/AlgorithmContext";
 import { useArraySizeContext } from "../../../../contexts/ArraySizeContext";
+import { useBarColorContext } from "../../../../contexts/BarColorContext";
 
 const FlexWrapper = styled.div`
   display: flex;
@@ -23,6 +24,7 @@ const StyledButton = styled(Button)`
 const Options = () => {
   const { reset } = useAlgorithmContext();
   const { handleUpdate } = useArraySizeContext();
+  const { resetDefaultColors } = useBarColorContext();
 
   const handleClick = () => {
     resetInitialState();
@@ -30,12 +32,18 @@ const Options = () => {
     handleUpdate();
   };
 
+  const handleResetDefaults = () => {
+    resetDefaultColors();
+  };
+
   return (
     <ComponentContainer title="Options">
       {console.log("OPTIONS")}
       <FlexWrapper>
         <StyledButton onClick={handleClick}>Reset Array</StyledButton>
-        <StyledButton>Reset Defaults</StyledButton>
+        <StyledButton onClick={handleResetDefaults}>
+          Reset Defaults
+        </StyledButton>
         <ThemeToggler />
       </FlexWrapper>
     </ComponentContainer>

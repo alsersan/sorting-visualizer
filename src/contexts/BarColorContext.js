@@ -6,21 +6,26 @@ import { getColors } from "../algorithms/utils";
 const BarColorContext = React.createContext();
 
 const BarColorProvider = ({ children }) => {
+  const defaultUnsortedColor = "#ec3232";
+  const defaultSelectedColor = "#3226df";
+  const defaultReferenceColor = "#d6ec32";
+  const defaultSortedColor = "#216e3c";
+
   const [unsortedColor, setUnsortedColor] = useLocalStorageState(
     "SortingVisualizer_unsortedColor",
-    "#ec3232"
+    defaultUnsortedColor
   );
   const [selectedColor, setSelectedColor] = useLocalStorageState(
     "SortingVisualizer_selectedColor",
-    "#3226df"
-  );
-  const [sortedColor, setSortedColor] = useLocalStorageState(
-    "SortingVisualizer_sortedColor",
-    "#216e3c"
+    defaultSelectedColor
   );
   const [referenceColor, setReferenceColor] = useLocalStorageState(
     "SortingVisualizer_referenceColor",
-    "#d6ec32"
+    defaultReferenceColor
+  );
+  const [sortedColor, setSortedColor] = useLocalStorageState(
+    "SortingVisualizer_sortedColor",
+    defaultSortedColor
   );
 
   useEffect(() => {
@@ -28,15 +33,23 @@ const BarColorProvider = ({ children }) => {
     getColors(colors);
   });
 
+  const resetDefaultColors = () => {
+    setUnsortedColor(defaultUnsortedColor);
+    setSelectedColor(defaultSelectedColor);
+    setReferenceColor(defaultReferenceColor);
+    setSortedColor(defaultSortedColor);
+  };
+
   const value = {
     unsortedColor,
     setUnsortedColor,
     selectedColor,
     setSelectedColor,
-    sortedColor,
-    setSortedColor,
     referenceColor,
     setReferenceColor,
+    sortedColor,
+    setSortedColor,
+    resetDefaultColors,
   };
 
   return (

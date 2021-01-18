@@ -40,14 +40,19 @@ const Description = styled.span`
   margin-left: 0.5rem;
 `;
 
-const ColorPicker = ({ description, className, initialValue, setColor }) => {
-  const [value, setValue] = useState(initialValue);
-  const bars = document.querySelectorAll(className);
+const ColorPicker = ({ description, className, color, setColor }) => {
+  const [value, setValue] = useState(color);
+
   useLayoutEffect(() => {
+    const bars = document.querySelectorAll(className);
     bars.forEach((bar) => {
       bar.style.background = value;
     });
-  });
+  }, [value, className]);
+
+  useLayoutEffect(() => {
+    setValue(color);
+  }, [color]);
 
   return (
     <Container>

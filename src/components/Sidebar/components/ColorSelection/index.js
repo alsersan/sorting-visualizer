@@ -31,25 +31,25 @@ const ColorSelection = () => {
       {console.log("COLOR SELECTION")}
       <FlexWrapper>
         <ColorPicker
-          initialValue={unsortedColor}
+          color={unsortedColor}
           setColor={setUnsortedColor}
           className=".unsorted"
           description="Unsorted"
         />
         <ColorPicker
-          initialValue={selectedColor}
+          color={selectedColor}
           setColor={setSelectedColor}
           className=".selected"
           description="Selected"
         />
         <ColorPicker
-          initialValue={referenceColor}
+          color={referenceColor}
           setColor={setReferenceColor}
           className=".reference"
           description="Reference"
         />
         <ColorPicker
-          initialValue={sortedColor}
+          color={sortedColor}
           setColor={setSortedColor}
           className=".sorted"
           description="Sorted"
