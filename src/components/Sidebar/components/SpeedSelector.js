@@ -3,10 +3,15 @@ import React, { useEffect, useState } from "react";
 import Selector from "./Selector";
 import ComponentContainer from "./ComponentContainer";
 
+import useLocalStorageState from "../../../hooks/useLocalStorageState";
 import { getTimeout } from "../../../algorithms/utils";
 
 const SpeedSelector = () => {
-  const [value, setValue] = useState(500);
+  // const [value, setValue] = useState(500);
+  const [value, setValue] = useLocalStorageState(
+    "SortingVisualizer_timeout",
+    500
+  );
   const maxDelay = 700;
 
   const speedPercentageCalculator = (min, max) => {
