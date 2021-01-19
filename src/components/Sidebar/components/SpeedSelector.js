@@ -22,15 +22,21 @@ const SpeedSelector = () => {
   )}%`;
 
   useEffect(() => {
+    // reset the value to the default speed
+    setValue(speed);
+  }, [speed]);
+
+  useEffect(() => {
     let timeout;
     timeout = setTimeout(() => {
       setSpeed(value);
     }, 200);
     return () => clearTimeout(timeout);
-  });
+  }, [value, setSpeed]);
 
   return (
     <ComponentContainer>
+      {console.log("selectoraso")}
       <Selector
         mainText="Speed"
         secondaryText={speedPercentage}

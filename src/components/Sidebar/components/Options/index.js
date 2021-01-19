@@ -7,6 +7,7 @@ import ThemeToggler from "./components/ThemeToggler";
 import { resetInitialState } from "../../../../algorithms/utils";
 import { useAlgorithmContext } from "../../../../contexts/AlgorithmContext";
 import { useArraySizeContext } from "../../../../contexts/ArraySizeContext";
+import { useSpeedContext } from "../../../../contexts/SpeedContext";
 import { useBarColorContext } from "../../../../contexts/BarColorContext";
 
 const FlexWrapper = styled.div`
@@ -25,6 +26,7 @@ const Options = () => {
   const { reset } = useAlgorithmContext();
   const { handleUpdate } = useArraySizeContext();
   const { resetDefaultColors } = useBarColorContext();
+  const { resetSpeed } = useSpeedContext();
 
   const handleClick = () => {
     resetInitialState();
@@ -34,6 +36,7 @@ const Options = () => {
 
   const handleResetDefaults = () => {
     resetDefaultColors();
+    resetSpeed();
   };
 
   return (

@@ -6,18 +6,24 @@ import { getTimeout } from "../algorithms/utils";
 const SpeedContext = React.createContext();
 
 const SpeedProvider = ({ children }) => {
+  const defaultSpeed = 500;
   const [speed, setSpeed] = useLocalStorageState(
     "SortingVisualizer_timeout",
-    500
+    defaultSpeed
   );
 
   useEffect(() => {
     getTimeout(speed);
   }, [speed]);
 
+  const resetSpeed = () => {
+    setSpeed(defaultSpeed);
+  };
+
   const value = {
     speed,
     setSpeed,
+    resetSpeed,
   };
 
   return (
