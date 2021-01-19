@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Button from "../Button";
 import ComponentContainer from "../ComponentContainer";
 import ThemeToggler from "./components/ThemeToggler";
-import { resetInitialState } from "../../../../algorithms/utils";
+import { resetAlgorithmInitialState } from "../../../../algorithms/utils";
 import { useAlgorithmContext } from "../../../../contexts/AlgorithmContext";
 import { useArraySizeContext } from "../../../../contexts/ArraySizeContext";
 import { useSpeedContext } from "../../../../contexts/SpeedContext";
@@ -24,19 +24,22 @@ const StyledButton = styled(Button)`
 
 const Options = () => {
   const { reset } = useAlgorithmContext();
-  const { handleUpdate } = useArraySizeContext();
+  const { handleUpdate, resetArraySize } = useArraySizeContext();
   const { resetDefaultColors } = useBarColorContext();
   const { resetSpeed } = useSpeedContext();
 
   const handleClick = () => {
-    resetInitialState();
+    resetAlgorithmInitialState();
     reset();
     handleUpdate();
   };
 
   const handleResetDefaults = () => {
+    resetAlgorithmInitialState();
+    reset();
     resetDefaultColors();
     resetSpeed();
+    resetArraySize();
   };
 
   return (

@@ -6,15 +6,20 @@ import { getArray } from "../algorithms/utils";
 const ArraySizeContext = React.createContext();
 
 const ArraySizeProvider = ({ children }) => {
+  const defaultArraySize = 10;
   const [size, setSize] = useLocalStorageState(
     "SortingVisualizer_arraySize",
-    10
+    defaultArraySize
   );
-  // boolean value to toggle the re-render
+  // boolean value to toggle the re-render (when only reseting array)
   const [update, setUpdate] = useState(false);
 
   const handleUpdate = () => {
     setUpdate(!update);
+  };
+
+  const resetArraySize = () => {
+    setSize(defaultArraySize);
   };
 
   const array = calculateRandomArray();
@@ -37,6 +42,7 @@ const ArraySizeProvider = ({ children }) => {
     setSize,
     array,
     handleUpdate,
+    resetArraySize,
   };
 
   return (

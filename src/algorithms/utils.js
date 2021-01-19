@@ -95,7 +95,7 @@ export const modifyBar = (classAdd, ...elements) => {
 
 // INITIAL STATE
 
-export const resetInitialState = () => {
+export const resetAlgorithmInitialState = () => {
   stopAlgorithm();
   document
     .querySelectorAll(".bar")
