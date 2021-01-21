@@ -20,6 +20,7 @@ const ArraySizeProvider = ({ children }) => {
 
   const resetArraySize = () => {
     setSize(defaultArraySize);
+    setUpdate(!update);
   };
 
   const array = calculateRandomArray();
