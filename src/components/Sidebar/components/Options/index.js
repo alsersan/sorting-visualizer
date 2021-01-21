@@ -23,7 +23,7 @@ const StyledButton = styled(Button)`
 `;
 
 const Options = () => {
-  const { reset } = useAlgorithmContext();
+  const { reset, resetDefaults } = useAlgorithmContext();
   const { handleUpdate, resetArraySize } = useArraySizeContext();
   const { resetDefaultColors } = useBarColorContext();
   const { resetSpeed } = useSpeedContext();
@@ -36,7 +36,7 @@ const Options = () => {
 
   const handleResetDefaults = () => {
     resetAlgorithmInitialState();
-    reset();
+    resetDefaults();
     resetDefaultColors();
     resetSpeed();
     resetArraySize();

@@ -6,12 +6,13 @@ import { getSetIsSorted } from "../algorithms/utils";
 const AlgorithmContext = React.createContext();
 
 const AlgorithmProvider = ({ children }) => {
+  const defaultOption = 0;
   const [isRunning, setIsRunning] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
   const [activeOption, setActiveOption] = useLocalStorageState(
     "SortingVisualizer_sortingAlgorithm",
-    0
+    defaultOption
   );
 
   useEffect(() => {
@@ -30,6 +31,13 @@ const AlgorithmProvider = ({ children }) => {
     setHasStarted(false);
   };
 
+  const resetDefaults = () => {
+    setIsRunning(false);
+    setIsSorted(false);
+    setHasStarted(false);
+    setActiveOption(defaultOption);
+  };
+
   const value = {
     isRunning,
     setIsRunning,
@@ -40,6 +48,7 @@ const AlgorithmProvider = ({ children }) => {
     activeOption,
     setActiveOption,
     reset,
+    resetDefaults,
   };
 
   return (
