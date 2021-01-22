@@ -12,7 +12,7 @@ const Container = styled.div`
   background-color: ${(props) => props.theme.backgroundColor.secondary};
   margin-right: ${(props) => props.theme.spacing};
   border-radius: ${(props) => props.theme.borderRadius};
-  padding: 1%;
+  padding: 1.5rem 0.4% 0.4% 0.4%;
   justify-content: space-around;
   align-items: flex-end;
 `;

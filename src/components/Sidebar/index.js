@@ -6,7 +6,7 @@ import MainContainer from "./components/MainContainer";
 
 const StyledSidebar = styled.div`
   height: 100%;
-  width: 30rem;
+  width: 32rem;
   padding: 1.5rem 0;
   background-color: ${(props) => props.theme.backgroundColor.secondary};
   border-radius: ${(props) => props.theme.borderRadius};
