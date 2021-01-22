@@ -16,9 +16,14 @@ const SpeedProvider = ({ children }) => {
     getTimeout(speed);
   }, [speed]);
 
+  const resetSpeed = () => {
+    setSpeed(defaultSpeed);
+  };
+
   const value = {
     speed,
     setSpeed,
+    resetSpeed,
   };
 
   return (
