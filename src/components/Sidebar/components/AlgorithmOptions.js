@@ -10,7 +10,11 @@ const FlexWrapper = styled.div`
   justify-content: center;
 `;
 
-const Button = styled.button`
+const Radio = styled.input`
+  display: none;
+`;
+
+const StyledLabel = styled.label`
   display: flex;
   flex-grow: 1;
   align-items: center;
@@ -20,21 +24,19 @@ const Button = styled.button`
   outline: none;
   font-size: 1rem;
   font-family: inherit;
-  color: ${(props) =>
-    props.active ? props.theme.button.activeText : "inherit"};
-  box-shadow: ${(props) =>
-    props.active
-      ? props.theme.button.activeBoxShadow
-      : props.theme.button.boxShadow};
+  color: inherit;
+  box-shadow: ${({ theme }) => theme.button.boxShadow};
   height: 2rem;
   width: 8rem;
   max-width: 8rem;
   margin: 0.5rem;
-  background-color: ${(props) =>
-    props.active
-      ? props.theme.button.activeBackground
-      : props.theme.backgroundColor.secondary};
+  background-color: ${({ theme }) => theme.backgroundColor.secondary};
   cursor: pointer;
+
+  ${Radio}:checked + & {
+    color: ${({ theme }) => theme.button.activeText};
+    background-color: ${({ theme }) => theme.button.activeBackground};
+    box-shadow: ${({ theme }) => theme.button.activeBoxShadow}
 `;
 
 const AlgorithmOptions = () => {
@@ -50,15 +52,22 @@ const AlgorithmOptions = () => {
           "Insertion Sort",
           "Merge Sort",
           "Quick Sort",
-          "option6",
+          "HeapSort",
         ].map((option, index) => (
-          <Button
-            key={index}
-            active={index === activeOption}
-            onClick={() => setActiveOption(index)}
-          >
-            {option}
-          </Button>
+          <React.Fragment key={index}>
+            <Radio
+              type="radio"
+              checked={index === activeOption}
+              name="sorting-algorithm"
+              id={`${option} button`.toLowerCase().replace(/ /g, "-")}
+              onChange={() => setActiveOption(index)}
+            />
+            <StyledLabel
+              htmlFor={`${option} button`.toLowerCase().replace(/ /g, "-")}
+            >
+              {option}
+            </StyledLabel>
+          </React.Fragment>
         ))}
       </FlexWrapper>
     </ComponentContainer>
