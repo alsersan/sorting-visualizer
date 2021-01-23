@@ -15,13 +15,38 @@ const Container = styled.div`
   padding: 0 1.5rem 1rem 1.5rem;
 `;
 
+const IconLink = styled.a`
+  margin-left: 1rem;
+  cursor: pointer;
+  opacity: 75%;
+  color: black;
+
+  &:hover {
+    opacity: 100%;
+  }
+`;
+
 const Footer = () => {
   return (
     <Container>
-      <span>&copy; 2020 Álvaro Serrano</span>
+      <span>&copy; 2021 Álvaro Serrano</span>
       <div>
-        <FaGithub size={25} style={{ marginLeft: "0.5rem" }} />
-        <FaTwitter size={25} style={{ marginLeft: "0.5rem" }} />
+        <IconLink
+          title="GitHub repository"
+          href="https://github.com/alsersan/sorting-visualizer"
+          target="_blank"
+          rel="noopener noreferer"
+        >
+          <FaGithub size={25} />
+        </IconLink>
+        <IconLink
+          title="Twitter profile"
+          href="https://twitter.com/alsersan"
+          target="_blank"
+          rel="noopener noreferer"
+        >
+          <FaTwitter size={25} />
+        </IconLink>
       </div>
     </Container>
   );
