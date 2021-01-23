@@ -3,8 +3,10 @@ import styled from "styled-components";
 
 import Logo from "./components/Logo";
 import MainContainer from "./components/MainContainer";
+import Footer from "./components/Footer";
 
 const StyledSidebar = styled.div`
+  position: relative;
   height: 100%;
   width: 32rem;
   padding: 1.5rem 0;
@@ -21,6 +23,7 @@ const Sidebar = () => {
       {console.log("SIDEBAR")}
       <Logo />
       <MainContainer />
+      <Footer />
     </StyledSidebar>
   );
 };
