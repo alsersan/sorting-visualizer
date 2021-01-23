@@ -11,7 +11,6 @@ import ColorSelection from "./ColorSelection";
 const Container = styled.div`
   width: 100%;
   overflow-y: auto;
-  padding: 0 1.5rem;
   margin-top: 1rem;
 `;
 

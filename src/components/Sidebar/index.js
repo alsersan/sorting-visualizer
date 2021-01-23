@@ -9,7 +9,7 @@ const StyledSidebar = styled.div`
   position: relative;
   height: 100%;
   width: 32rem;
-  padding: 1.5rem 0;
+  padding: 1rem 1.5rem 3.5rem;
   background-color: ${(props) => props.theme.backgroundColor.secondary};
   border-radius: ${(props) => props.theme.borderRadius};
   display: flex;

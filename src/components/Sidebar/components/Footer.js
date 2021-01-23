@@ -12,7 +12,7 @@ const Container = styled.div`
   align-items: center;
   bottom: 0;
   left: 0;
-  padding: 10px;
+  padding: 0 1.5rem 1rem 1.5rem;
 `;
 
 const Footer = () => {
