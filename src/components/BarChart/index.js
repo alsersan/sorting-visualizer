@@ -2,19 +2,25 @@ import React from "react";
 import styled from "styled-components";
 
 import Bar from "./components/Bar";
+import { devices } from "../../styles/deviceSizes";
 
 import { useArraySizeContext } from "../../contexts/ArraySizeContext";
 
 const Container = styled.div`
   display: flex;
   flex-grow: 1;
-  height: 100%;
+  height: 20rem;
   background-color: ${(props) => props.theme.backgroundColor.secondary};
-  margin-right: ${(props) => props.theme.spacing};
+  margin-bottom: ${(props) => props.theme.spacing};
   border-radius: ${(props) => props.theme.borderRadius};
   padding: 1.5rem 0.4% 0.4% 0.4%;
   justify-content: space-around;
   align-items: flex-end;
+
+  @media ${devices.tablet} {
+    height: 100%;
+    margin-right: ${(props) => props.theme.spacing};
+  }
 `;
 
 const BarChart = () => {

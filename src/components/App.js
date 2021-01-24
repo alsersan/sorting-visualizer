@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Sidebar from "./Sidebar";
 import BarChart from "./BarChart";
+import { devices } from "../styles/deviceSizes";
 import StyledThemeProvider from "../styles/StyledThemeProvider";
 import { GlobalStyle } from "../styles/GlobalStyle";
 import { AlgorithmProvider } from "../contexts/AlgorithmContext";
@@ -12,11 +13,18 @@ import { BarColorProvider } from "../contexts/BarColorContext";
 import { SpeedProvider } from "../contexts/SpeedContext";
 
 const MainContainer = styled.div`
-  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
   background-color: ${(props) => props.theme.backgroundColor.primary};
   padding: ${(props) => props.theme.spacing};
   display: flex;
+  flex-direction: column;
   justify-content: center;
+
+  @media ${devices.tablet} {
+    height: 100vh;
+    flex-direction: row;
+  }
 `;
 
 const App = () => {
