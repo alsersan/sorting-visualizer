@@ -12,6 +12,25 @@ const Container = styled.div`
   width: 100%;
   overflow-y: auto;
   margin-top: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: ${(props) => props.theme.blue} #ccc;
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #f5f5f5;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${(props) => props.theme.blue};
+    border-radius: 10px;
+  }
 `;
 
 const MainContainer = () => {
