@@ -36,11 +36,11 @@ const StyledSlider = styled.input`
     border: 2px solid #555;
 
     &:hover {
-      border: 2px solid #1e88e5;
+      border: 2px solid ${(props) => props.theme.blue};
     }
 
     &:active {
-      background-color: #1e88e5;
+      background-color: ${(props) => props.theme.blue};
     }
   }
 `;
