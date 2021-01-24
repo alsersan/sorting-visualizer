@@ -6,6 +6,7 @@ export const lightTheme = {
   button: {
     boxShadow: "0 0 0.5rem rgba(0, 0, 0, 0.3)",
     disabledBoxShadow: "0 0 0.5rem rgba(0, 0, 0, 0.1)",
+    disabledOpacity: "0.4",
     activeBackground: "rgba(30, 141, 229)",
     activeBoxShadow: "0 0 0.5rem #1e8de5, 0 0 0.5rem rgba(0, 0, 0, 0.1)",
     activeText: "#fff",
@@ -21,6 +22,7 @@ export const darkTheme = {
   button: {
     boxShadow: "0 0 0.5rem rgba(255, 255, 255, 0.6)",
     disabledBoxShadow: "0 0 0.5rem rgba(255, 255, 255, 0.2)",
+    disabledOpacity: "0.4",
     activeBackground: "rgba(30, 141, 229)",
     activeBoxShadow: "0 0 0.5rem #1e8de5, 0 0 0.5rem rgba(255, 255, 255, 0.6)",
     activeText: "#fff",

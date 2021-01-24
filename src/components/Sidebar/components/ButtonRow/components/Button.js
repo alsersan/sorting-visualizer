@@ -5,6 +5,9 @@ import RippleEffect from "./RippleEffect";
 
 const StyledButton = styled.button`
   position: relative;
+  color: inherit;
+  opacity: ${(props) =>
+    props.disabled ? props.theme.button.disabledOpacity : "1"};
   overflow: hidden;
   padding: 1rem;
   border-radius: 50%;
