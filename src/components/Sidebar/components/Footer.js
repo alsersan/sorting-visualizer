@@ -19,7 +19,7 @@ const IconLink = styled.a`
   margin-left: 1rem;
   cursor: pointer;
   opacity: 75%;
-  color: black;
+  color: inherit;
 
   &:hover {
     opacity: 100%;
