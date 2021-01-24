@@ -21,11 +21,10 @@ const SpeedSelector = () => {
   )}%`;
 
   return (
-    <ComponentContainer>
+    <ComponentContainer title="Speed">
       {console.log("selectoraso")}
       <Selector
-        mainText="Speed"
-        secondaryText={speedPercentage}
+        text={speedPercentage}
         max={maxDelay}
         min="0"
         // maxDelay - speed to get the correct position of the slider
