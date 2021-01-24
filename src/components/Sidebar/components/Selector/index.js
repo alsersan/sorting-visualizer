@@ -3,25 +3,27 @@ import styled from "styled-components";
 
 import Slider from "./components/Slider";
 
-const FlexWrapper = styled.div`
+const TextWrapper = styled.div`
+  margin-bottom: 0.8rem;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 0 0.5rem;
 `;
 
 const Text = styled.span`
-font-size 0.9rem;
-width: 3.2rem;
-text-align: center;
-  
+  font-weight: ${(props) => (props.mainText ? "500" : "inherit")};
+  font-size: ${(props) => (props.mainText ? "1.2rem" : "0.9rem")};
 `;
 
 const Selector = (props) => {
   return (
-    <FlexWrapper>
+    <>
+      <TextWrapper>
+        <Text mainText>{props.mainText}</Text>
+        <Text secondaryText>{props.secondaryText}</Text>
+      </TextWrapper>
       <Slider {...props} />
-      <Text>{props.text}</Text>
-    </FlexWrapper>
+    </>
   );
 };
 

@@ -11,9 +11,10 @@ const SizeSelector = () => {
   const { hasStarted } = useAlgorithmContext();
 
   return (
-    <ComponentContainer title="Size" hasStarted={hasStarted}>
+    <ComponentContainer hasStarted={hasStarted}>
       <Selector
-        text={size}
+        mainText="Size"
+        secondaryText={size}
         max="60"
         min="5"
         value={size}
