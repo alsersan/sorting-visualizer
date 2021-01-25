@@ -50,6 +50,7 @@ const ButtonRow = () => {
     selection.selectionSortStepBack,
     insertion.insertionSortStepBack,
     merge.mergeSortStepBack,
+    quick.quickSortStepBack,
   ];
 
   return (
