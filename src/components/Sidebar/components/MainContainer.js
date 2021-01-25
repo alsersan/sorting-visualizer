@@ -13,7 +13,6 @@ const Container = styled.div`
   width: 100%;
   overflow-y: auto;
   padding: 0 1rem;
-  margin-top: 1rem;
   scrollbar-width: thin;
   scrollbar-color: ${(props) => props.theme.blue} #ccc;
 
@@ -32,6 +31,10 @@ const Container = styled.div`
   &::-webkit-scrollbar-thumb {
     background-color: ${(props) => props.theme.blue};
     border-radius: 10px;
+  }
+
+  @media ${devices.tablet} {
+    margin-top: 1rem;
   }
 
   @media ${devices.laptopL} {

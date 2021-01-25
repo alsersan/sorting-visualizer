@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Sidebar from "./Sidebar";
-import BarChart from "./BarChart";
+import BarChartContainer from "./BarChartContainer";
 import { devices } from "../styles/deviceSizes";
 import StyledThemeProvider from "../styles/StyledThemeProvider";
 import { GlobalStyle } from "../styles/GlobalStyle";
@@ -42,7 +42,7 @@ const App = () => {
                 <BarColorProvider>
                   <MainContainer>
                     {console.log("MAIN CONTAINER")}
-                    <BarChart />
+                    <BarChartContainer />
                     <Sidebar />
                   </MainContainer>
                 </BarColorProvider>

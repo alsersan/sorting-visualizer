@@ -1,25 +1,26 @@
 import React from "react";
 import styled from "styled-components";
 
-import Bar from "./components/Bar";
 import { devices } from "../../styles/deviceSizes";
-
-import { useArraySizeContext } from "../../contexts/ArraySizeContext";
+import BarChart from "./BarChart";
+import Logo from "../Logo";
 
 const Container = styled.div`
-  display: flex;
-  min-height: 15rem;
+  min-height: 20rem;
   background-color: ${(props) => props.theme.backgroundColor.secondary};
   margin-bottom: ${(props) => props.theme.spacingSmall};
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   border-radius: ${(props) => props.theme.borderRadius};
-  padding: 1.5rem 0.4% 0.4% 0.4%;
-  justify-content: space-around;
-  align-items: flex-end;
 
   @media ${devices.tablet} {
     height: 100%;
     flex-grow: 1;
     margin-right: ${(props) => props.theme.spacingSmall};
+    padding-top: 0;
     margin-bottom: 0;
   }
 
@@ -28,22 +29,23 @@ const Container = styled.div`
   }
 `;
 
-const BarChart = () => {
-  const { array, size } = useArraySizeContext();
+const StyledLogo = styled(Logo)`
+  display: flex;
+  margin-bottom: 1rem;
 
+  @media ${devices.tablet} {
+    display: none;
+  }
+`;
+
+const BarChartContainer = () => {
   return (
     <Container>
-      {console.log("RERENDER BAR CHART")}
-      {array.map((number, index) => (
-        <Bar
-          number={number}
-          key={`${array} ${index}`}
-          size={size}
-          className="bar unsorted"
-        />
-      ))}
+      {console.log("BAR CHART CONTAINER")}
+      <StyledLogo />
+      <BarChart />
     </Container>
   );
 };
 
-export default BarChart;
+export default BarChartContainer;

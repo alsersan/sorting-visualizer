@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import Logo from "./components/Logo";
+import Logo from "../Logo";
 import MainContainer from "./components/MainContainer";
 import Footer from "./components/Footer";
 import { devices } from "../../styles/deviceSizes";
@@ -30,11 +30,19 @@ const StyledSidebar = styled.div`
   }
 `;
 
+const StyledLogo = styled(Logo)`
+  display: none;
+
+  @media ${devices.tablet} {
+    display: flex;
+  }
+`;
+
 const Sidebar = () => {
   return (
     <StyledSidebar>
       {console.log("SIDEBAR")}
-      <Logo />
+      <StyledLogo />
       <MainContainer />
       <Footer />
     </StyledSidebar>
