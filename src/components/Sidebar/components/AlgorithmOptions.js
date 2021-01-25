@@ -33,7 +33,6 @@ const AlgorithmOptions = () => {
 
   return (
     <ComponentContainer title="Sorting Algorithm" hasStarted={hasStarted}>
-      {console.log("ALGORITHM OPTIONS")}
       <FlexWrapper>
         {[
           "Bubble Sort",

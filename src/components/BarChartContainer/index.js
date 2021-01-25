@@ -41,7 +41,6 @@ const StyledLogo = styled(Logo)`
 const BarChartContainer = () => {
   return (
     <Container>
-      {console.log("BAR CHART CONTAINER")}
       <StyledLogo />
       <BarChart />
     </Container>

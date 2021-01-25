@@ -41,7 +41,6 @@ const StyledLogo = styled(Logo)`
 const Sidebar = () => {
   return (
     <StyledSidebar>
-      {console.log("SIDEBAR")}
       <StyledLogo />
       <MainContainer />
       <Footer />

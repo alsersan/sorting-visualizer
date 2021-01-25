@@ -25,7 +25,6 @@ const ArraySizeProvider = ({ children }) => {
 
   const array = calculateRandomArray();
   getArray(array);
-  console.log(`array from state: ${array}`);
 
   function calculateRandomArray() {
     const arr = [];

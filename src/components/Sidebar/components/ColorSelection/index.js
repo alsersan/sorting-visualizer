@@ -28,7 +28,6 @@ const ColorSelection = () => {
 
   return (
     <ComponentContainer title="Color Picker" isRunning={isRunning}>
-      {console.log("COLOR SELECTION")}
       <FlexWrapper>
         <ColorPicker
           color={unsortedColor}

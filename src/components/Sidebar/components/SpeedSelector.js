@@ -22,7 +22,6 @@ const SpeedSelector = () => {
 
   return (
     <ComponentContainer>
-      {console.log("selectoraso")}
       <Selector
         mainText="Speed"
         secondaryText={speedPercentage}

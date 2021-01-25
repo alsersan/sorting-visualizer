@@ -56,7 +56,6 @@ const ColorPicker = ({ description, className, color, setColor }) => {
 
   return (
     <Container>
-      {console.log("RERENDER COLOR PICKER")}
       <ColorInput
         type="color"
         value={value}

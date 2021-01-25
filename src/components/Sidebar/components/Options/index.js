@@ -14,7 +14,6 @@ const FlexWrapper = styled.div`
 const Options = () => {
   return (
     <ComponentContainer title="Options">
-      {console.log("OPTIONS")}
       <FlexWrapper>
         <ResetArrayButton />
         <ResetDefaultsButton />
