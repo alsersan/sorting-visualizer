@@ -6,12 +6,13 @@ import SizeSelector from "./SizeSelector";
 import SpeedSelector from "./SpeedSelector";
 import ButtonRow from "./ButtonRow";
 import Options from "./Options";
+import { devices } from "../../../styles/deviceSizes";
 import ColorSelection from "./ColorSelection";
 
 const Container = styled.div`
   width: 100%;
   overflow-y: auto;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   margin-top: 1rem;
   scrollbar-width: thin;
   scrollbar-color: ${(props) => props.theme.blue} #ccc;
@@ -31,6 +32,10 @@ const Container = styled.div`
   &::-webkit-scrollbar-thumb {
     background-color: ${(props) => props.theme.blue};
     border-radius: 10px;
+  }
+
+  @media ${devices.laptopL} {
+    padding: 0 1.5rem;
   }
 `;
 

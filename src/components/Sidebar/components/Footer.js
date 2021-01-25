@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+import { devices } from "../../../styles/deviceSizes";
 import { FaGithub } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 
@@ -12,7 +13,11 @@ const Container = styled.div`
   align-items: center;
   bottom: 0;
   left: 0;
-  padding: 0 1.5rem 1rem 1.5rem;
+  padding: 0 1rem 0.3rem 1rem;
+
+  @media ${devices.laptopL} {
+    padding: 0 1.5rem 1rem 1.5rem;
+  }
 `;
 
 const IconLink = styled.a`

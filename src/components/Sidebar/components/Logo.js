@@ -9,11 +9,12 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 5.5rem;
+  width: 100%;
 `;
 
 const StyledLogo = styled.img`
-  height: 100%;
+  width: 80%;
+  max-width: 22rem;
 `;
 
 const Logo = () => {

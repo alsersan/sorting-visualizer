@@ -14,16 +14,18 @@ import { SpeedProvider } from "../contexts/SpeedContext";
 
 const MainContainer = styled.div`
   width: 100vw;
+  height: 100vh;
   overflow: hidden;
   background-color: ${(props) => props.theme.backgroundColor.primary};
-  padding: ${(props) => props.theme.spacing};
+  padding: ${(props) => props.theme.spacingSmall};
   display: flex;
   flex-direction: column;
-  justify-content: center;
 
   @media ${devices.tablet} {
-    height: 100vh;
     flex-direction: row;
+  }
+  @media ${devices.laptop} {
+    padding: ${(props) => props.theme.spacingBig};
   }
 `;
 

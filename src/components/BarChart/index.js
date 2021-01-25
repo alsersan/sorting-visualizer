@@ -8,10 +8,9 @@ import { useArraySizeContext } from "../../contexts/ArraySizeContext";
 
 const Container = styled.div`
   display: flex;
-  flex-grow: 1;
-  height: 20rem;
+  min-height: 15rem;
   background-color: ${(props) => props.theme.backgroundColor.secondary};
-  margin-bottom: ${(props) => props.theme.spacing};
+  margin-bottom: ${(props) => props.theme.spacingSmall};
   border-radius: ${(props) => props.theme.borderRadius};
   padding: 1.5rem 0.4% 0.4% 0.4%;
   justify-content: space-around;
@@ -19,7 +18,13 @@ const Container = styled.div`
 
   @media ${devices.tablet} {
     height: 100%;
-    margin-right: ${(props) => props.theme.spacing};
+    flex-grow: 1;
+    margin-right: ${(props) => props.theme.spacingSmall};
+    margin-bottom: 0;
+  }
+
+  @media ${devices.laptop} {
+    margin-right: ${(props) => props.theme.spacingBig};
   }
 `;
 
