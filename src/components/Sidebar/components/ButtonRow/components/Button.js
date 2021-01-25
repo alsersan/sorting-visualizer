@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import RippleEffect from "./RippleEffect";
+import RippleEffect from "../../RippleEffect";
 
 const StyledButton = styled.button`
   position: relative;
