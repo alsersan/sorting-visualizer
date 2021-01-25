@@ -55,7 +55,6 @@ const ButtonRow = () => {
 
   return (
     <ComponentContainer title="Controls">
-      {console.log("BUTTON ROW")}
       <FlexWrapper>
         <Button
           hasStarted={hasStarted}
