@@ -7,7 +7,7 @@ import {
   array,
   timeout,
   setIsSorted,
-} from "./utils";
+} from './utils';
 
 const initialState = getInitialState();
 
@@ -23,24 +23,24 @@ let {
 } = initialState;
 
 export const insertionSort = (delay = timeout) => {
-  const bars = document.querySelectorAll(".bar");
+  const bars = document.querySelectorAll('.bar');
 
   algorithmTimeout(() => {
     saveStep();
 
     if (referenceBar) {
       currentVal = array[i];
-      modifyBar("reference", bars[i]);
+      modifyBar('reference', bars[i]);
       referenceBar = false;
       selectBar = true;
       insertionSort();
       return;
     }
     if (selectBar) {
-      modifyBar("selected", bars[j]);
+      modifyBar('selected', bars[j]);
       // Color the previously selected bar as 'sorted', except if that bar has an index of i+1, in which case that bar was never selected and is still unsorted
       if (bars[j + 2] && j + 2 !== i + 1) {
-        modifyBar("sorted", bars[j + 2]);
+        modifyBar('sorted', bars[j + 2]);
       }
       if (array[j] > currentVal) {
         selectBar = false;
@@ -55,15 +55,15 @@ export const insertionSort = (delay = timeout) => {
       }
     }
     if (barSwap) {
-      modifyBar("selected", bars[j + 1]);
-      modifyBar("reference", bars[j]);
+      modifyBar('selected', bars[j + 1]);
+      modifyBar('reference', bars[j]);
       swapArrayElements(j, j + 1);
       swapBars(bars[j], bars[j + 1]);
       barSwap = false;
     }
     if (unselectBars) {
       i++;
-      modifyBar("sorted", bars[j], bars[j + 1]);
+      modifyBar('sorted', bars[j], bars[j + 1]);
       if (i < array.length) {
         j = i - 1;
         unselectBars = false;
@@ -73,7 +73,7 @@ export const insertionSort = (delay = timeout) => {
       }
       // Sorting finished
       setIsSorted(true);
-      console.log("SORTED");
+      console.log('SORTED');
       return;
     }
     // only decrease j if that index exists in the array
@@ -150,25 +150,25 @@ export function insertionSortStepBack(setHasStarted) {
 }
 
 function reverseInsertionSort() {
-  const bars = document.querySelectorAll(".bar");
+  const bars = document.querySelectorAll('.bar');
   if (referenceBar) {
-    modifyBar("unsorted", bars[i]);
+    modifyBar('unsorted', bars[i]);
   } else if (selectBar) {
     if (i === 1) {
-      modifyBar("unsorted", bars[j]);
+      modifyBar('unsorted', bars[j]);
     } else {
-      modifyBar("sorted", bars[j]);
+      modifyBar('sorted', bars[j]);
     }
     if (bars[j + 2] && j + 2 !== i + 1) {
-      modifyBar("selected", bars[j + 2]);
+      modifyBar('selected', bars[j + 2]);
     }
   } else if (barSwap) {
-    modifyBar("reference", bars[j + 1]);
-    modifyBar("selected", bars[j]);
+    modifyBar('reference', bars[j + 1]);
+    modifyBar('selected', bars[j]);
     swapArrayElements(j, j + 1);
     swapBars(bars[j], bars[j + 1]);
   } else if (unselectBars) {
-    modifyBar("selected", bars[j]);
-    modifyBar("reference", bars[j + 1]);
+    modifyBar('selected', bars[j]);
+    modifyBar('reference', bars[j + 1]);
   }
 }

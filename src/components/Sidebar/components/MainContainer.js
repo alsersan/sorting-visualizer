@@ -1,13 +1,13 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import AlgorithmOptions from "./AlgorithmOptions";
-import SizeSelector from "./SizeSelector";
-import SpeedSelector from "./SpeedSelector";
-import ButtonRow from "./ButtonRow";
-import Options from "./Options";
-import { devices } from "../../../styles/deviceSizes";
-import ColorSelection from "./ColorSelection";
+import AlgorithmOptions from './AlgorithmOptions';
+import SizeSelector from './SizeSelector';
+import SpeedSelector from './SpeedSelector';
+import ButtonRow from './ButtonRow';
+import Options from './Options';
+import { devices } from '../../../styles/deviceSizes';
+import ColorSelection from './ColorSelection';
 
 const Container = styled.div`
   width: 100%;

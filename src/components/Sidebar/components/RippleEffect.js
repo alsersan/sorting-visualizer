@@ -1,5 +1,5 @@
-import React, { useState, useLayoutEffect } from "react";
-import styled from "styled-components";
+import React, { useState, useLayoutEffect } from 'react';
+import styled from 'styled-components';
 
 const RippleContainer = styled.div`
   position: absolute;
@@ -38,7 +38,7 @@ const useDebouncedRippleCleanUp = (rippleCount, duration, cleanUpFunction) => {
   }, [rippleCount, duration, cleanUpFunction]);
 };
 
-const RippleEffect = ({ duration = 850, color = "#e5e5e5", disabled }) => {
+const RippleEffect = ({ duration = 850, color = '#e5e5e5', disabled }) => {
   const [rippleArray, setRippleArray] = useState([]);
 
   useDebouncedRippleCleanUp(rippleArray.length, duration, () => {
@@ -73,7 +73,7 @@ const RippleEffect = ({ duration = 850, color = "#e5e5e5", disabled }) => {
         rippleArray.map((ripple, index) => {
           return (
             <span
-              key={"ripple_" + index}
+              key={'ripple_' + index}
               style={{
                 top: ripple.y,
                 left: ripple.x,

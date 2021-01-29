@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { useThemeTogglerContext } from "../../../../../contexts/ThemeTogglerContext";
-import { FaSun, FaMoon } from "react-icons/fa";
+import { useThemeTogglerContext } from '../../../../../contexts/ThemeTogglerContext';
+import { FaSun, FaMoon } from 'react-icons/fa';
 
 const Wrapper = styled.div`
   position: relative;
@@ -31,7 +31,7 @@ const StyledLabel = styled.label`
     width: 2rem;
     height: 2rem;
     background-color: #fff;
-    content: "";
+    content: '';
     border-radius: 50%;
     transition: 200ms ease;
     box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3);
@@ -50,23 +50,23 @@ const ThemeToggler = () => {
         type="checkbox"
         id="switch-button"
         name="switch-button"
-        onChange={() => setTheme(theme === "light" ? "dark" : "light")}
+        onChange={() => setTheme(theme === 'light' ? 'dark' : 'light')}
       />
       <StyledLabel htmlFor="switch-button" />
       <FaSun
         style={{
-          position: "absolute",
-          right: "10px",
-          color: "white",
-          pointerEvents: "none",
+          position: 'absolute',
+          right: '10px',
+          color: 'white',
+          pointerEvents: 'none',
         }}
       />
       <FaMoon
         style={{
-          position: "absolute",
-          left: "10px",
-          color: "white",
-          pointerEvents: "none",
+          position: 'absolute',
+          left: '10px',
+          color: 'white',
+          pointerEvents: 'none',
         }}
       />
     </Wrapper>

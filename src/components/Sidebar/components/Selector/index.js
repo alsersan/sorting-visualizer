@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import Slider from "./components/Slider";
+import Slider from './components/Slider';
 
 const TextWrapper = styled.div`
   margin-bottom: 0.8rem;
@@ -11,8 +11,8 @@ const TextWrapper = styled.div`
 `;
 
 const Text = styled.span`
-  font-weight: ${(props) => (props.mainText ? "500" : "inherit")};
-  font-size: ${(props) => (props.mainText ? "1.2rem" : "0.9rem")};
+  font-weight: ${(props) => (props.mainText ? '500' : 'inherit')};
+  font-size: ${(props) => (props.mainText ? '1.2rem' : '0.9rem')};
 `;
 
 const Selector = (props) => {

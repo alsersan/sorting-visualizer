@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { devices } from "../../../styles/deviceSizes";
-import { FaGithub } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
+import { devices } from '../../../styles/deviceSizes';
+import { FaGithub } from 'react-icons/fa';
+import { FaTwitter } from 'react-icons/fa';
 
 const Container = styled.div`
   position: absolute;

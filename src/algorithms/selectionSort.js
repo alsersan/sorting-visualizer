@@ -7,7 +7,7 @@ import {
   array,
   timeout,
   setIsSorted,
-} from "./utils";
+} from './utils';
 
 const initialState = getInitialState();
 
@@ -27,13 +27,13 @@ let {
 } = initialState;
 
 export function selectionSort(delay = timeout) {
-  const bars = document.querySelectorAll(".bar");
+  const bars = document.querySelectorAll('.bar');
 
   algorithmTimeout(() => {
     saveStep();
 
     if (referenceBar) {
-      modifyBar("reference", bars[i]);
+      modifyBar('reference', bars[i]);
       minValue = array[i];
       referenceBar = false;
       selectBar = true;
@@ -43,9 +43,9 @@ export function selectionSort(delay = timeout) {
     if (selectBar) {
       // Color the previous bar unsorted again (only if it's not the min value)
       if (j - 1 > i && j - 1 !== index) {
-        modifyBar("unsorted", bars[j - 1]);
+        modifyBar('unsorted', bars[j - 1]);
       }
-      modifyBar("selected", bars[j]);
+      modifyBar('selected', bars[j]);
       if (array[j] < minValue) {
         // Only execute if the bar has the smallest value so far (stored in minValue)
         selectBar = false;
@@ -57,16 +57,16 @@ export function selectionSort(delay = timeout) {
     }
     if (selectNewMin) {
       if (index !== 0) {
-        modifyBar("unsorted", bars[index]);
+        modifyBar('unsorted', bars[index]);
       }
       index = j;
       minValue = array[j];
       noSwap = false;
       selectNewMin = false;
-      modifyBar("reference", bars[j]);
+      modifyBar('reference', bars[j]);
     }
     if (unselectBar) {
-      modifyBar("unsorted", bars[j - 1]);
+      modifyBar('unsorted', bars[j - 1]);
       unselectBar = false;
     }
     if (barSwap) {
@@ -80,9 +80,9 @@ export function selectionSort(delay = timeout) {
     if (unselectBars) {
       // only execute if the current value of i makes a new iteration possible. If i is already the previous to last value in the array, then it's already sorted, so color both bars orange.
       if (i < array.length - 2) {
-        modifyBar("sorted", bars[i]);
+        modifyBar('sorted', bars[i]);
         if (index !== 0) {
-          modifyBar("unsorted", bars[index]);
+          modifyBar('unsorted', bars[index]);
         }
         unselectBars = false;
         referenceBar = true;
@@ -93,9 +93,9 @@ export function selectionSort(delay = timeout) {
         selectionSort();
       } else {
         // Sorting finished
-        modifyBar("sorted", bars[i], bars[i + 1]);
+        modifyBar('sorted', bars[i], bars[i + 1]);
         setIsSorted(true);
-        console.log("SORTED");
+        console.log('SORTED');
       }
       return;
     }
@@ -193,29 +193,29 @@ export function selectionSortStepBack(setHasStarted) {
 }
 
 function reverseSelectionSort() {
-  const bars = document.querySelectorAll(".bar");
+  const bars = document.querySelectorAll('.bar');
   if (referenceBar) {
-    modifyBar("unsorted", bars[i]);
+    modifyBar('unsorted', bars[i]);
   } else if (selectBar) {
     if (j - 1 > i && j - 1 !== index) {
-      modifyBar("selected", bars[j - 1]);
+      modifyBar('selected', bars[j - 1]);
     }
-    modifyBar("unsorted", bars[j]);
+    modifyBar('unsorted', bars[j]);
   } else if (selectNewMin) {
     if (index !== 0) {
-      modifyBar("reference", bars[index]);
+      modifyBar('reference', bars[index]);
     }
-    modifyBar("selected", bars[j]);
+    modifyBar('selected', bars[j]);
   } else if (unselectBar) {
-    modifyBar("selected", bars[j - 1]);
+    modifyBar('selected', bars[j - 1]);
   } else if (barSwap) {
     swapArrayElements(i, index);
     swapBars(bars[i], bars[index]);
   } else if (unselectBars) {
-    modifyBar("reference", bars[i]);
-    modifyBar("unsorted", bars[i + 1]);
+    modifyBar('reference', bars[i]);
+    modifyBar('unsorted', bars[i + 1]);
     if (index !== 0) {
-      modifyBar("reference", bars[index]);
+      modifyBar('reference', bars[index]);
     }
   }
 }

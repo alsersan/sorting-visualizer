@@ -1,8 +1,8 @@
-import { bubbleSetInitialState } from "./bubbleSort";
-import { selectionSetInitialState } from "./selectionSort";
-import { insertionSetInitialState } from "./insertionSort";
-import { mergeSetInitialState } from "./mergeSort";
-import { quickSetInitialState } from "./quickSort";
+import { bubbleSetInitialState } from './bubbleSort';
+import { selectionSetInitialState } from './selectionSort';
+import { insertionSetInitialState } from './insertionSort';
+import { mergeSetInitialState } from './mergeSort';
+import { quickSetInitialState } from './quickSort';
 
 // ARRAY
 
@@ -61,7 +61,7 @@ export const mutateBar = (bar, number) => {
 // MODIFY COLOR AND CLASS OF BARS
 // colors and classes arrays must have the same order of elements, in order to compare the elements in each index
 
-const classes = ["unsorted", "selected", "reference", "sorted"];
+const classes = ['unsorted', 'selected', 'reference', 'sorted'];
 let colors = [];
 
 export const getColors = (colorsArray) => {
@@ -97,8 +97,8 @@ export const modifyBar = (classAdd, ...elements) => {
 export const resetAlgorithmInitialState = () => {
   stopAlgorithm();
   document
-    .querySelectorAll(".bar")
-    .forEach((bar) => changeClass(bar, "unsorted"));
+    .querySelectorAll('.bar')
+    .forEach((bar) => changeClass(bar, 'unsorted'));
   bubbleSetInitialState();
   selectionSetInitialState();
   insertionSetInitialState();

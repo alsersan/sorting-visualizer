@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import Bar from "./components/Bar";
-import { devices } from "../../../styles/deviceSizes";
+import Bar from './components/Bar';
+import { devices } from '../../../styles/deviceSizes';
 
-import { useArraySizeContext } from "../../../contexts/ArraySizeContext";
+import { useArraySizeContext } from '../../../contexts/ArraySizeContext';
 
 const Container = styled.div`
   width: 100%;

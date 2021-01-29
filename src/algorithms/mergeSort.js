@@ -6,7 +6,7 @@ import {
   array,
   timeout,
   setIsSorted,
-} from "./utils";
+} from './utils';
 
 const initialState = getInitialState();
 
@@ -43,7 +43,7 @@ let {
 // let copyArray = [];
 
 export function mergeSort(delay = timeout) {
-  const bars = document.querySelectorAll(".bar");
+  const bars = document.querySelectorAll('.bar');
 
   // getIndex outside of algorithTimeout so that this step is executed immediately and does not delay the animation (since nothing visual is happening)
   if (getIndex) {
@@ -72,7 +72,7 @@ export function mergeSort(delay = timeout) {
     }
     // Sorting finished
     setIsSorted(true);
-    console.log("SORTED!");
+    console.log('SORTED!');
     return;
   }
 
@@ -81,17 +81,17 @@ export function mergeSort(delay = timeout) {
 
     if (compareBars) {
       if (prev === null) {
-        modifyBar("selected", bars[i], bars[i2]);
+        modifyBar('selected', bars[i], bars[i2]);
       } else {
-        modifyBar("unsorted", bars[prev]);
+        modifyBar('unsorted', bars[prev]);
       }
 
       if (i <= j && i2 <= j2) {
         // check which index (i or i2) has to be colored
         if (prev <= j) {
-          modifyBar("selected", bars[i]);
+          modifyBar('selected', bars[i]);
         } else {
-          modifyBar("selected", bars[i2]);
+          modifyBar('selected', bars[i2]);
         }
         if (array[i] <= array[i2]) {
           prev = i;
@@ -101,11 +101,11 @@ export function mergeSort(delay = timeout) {
           temp.push(array[i2++]);
         }
       } else if (i <= j) {
-        modifyBar("selected", bars[i]);
+        modifyBar('selected', bars[i]);
         prev = i;
         temp.push(array[i++]);
       } else if (i2 <= j2) {
-        modifyBar("selected", bars[i2]);
+        modifyBar('selected', bars[i2]);
         prev = i2;
         temp.push(array[i2++]);
       } else {
@@ -122,13 +122,13 @@ export function mergeSort(delay = timeout) {
     if (overwriteBars) {
       if (overwriteIdx - 1 >= 0) {
         if (temp.length === array.length) {
-          modifyBar("sorted", bars[idx + overwriteIdx - 1]);
+          modifyBar('sorted', bars[idx + overwriteIdx - 1]);
         } else {
-          modifyBar("unsorted", bars[idx + overwriteIdx - 1]);
+          modifyBar('unsorted', bars[idx + overwriteIdx - 1]);
         }
       }
       if (overwriteIdx < temp.length) {
-        modifyBar("reference", bars[idx + overwriteIdx]);
+        modifyBar('reference', bars[idx + overwriteIdx]);
         mutateBar(bars[idx + overwriteIdx], temp[overwriteIdx]);
         array[idx + overwriteIdx] = temp[overwriteIdx];
         overwriteIdx++;
@@ -231,27 +231,27 @@ export function mergeSortStepBack(setHasStarted) {
 }
 
 function reverseMergeSort() {
-  const bars = document.querySelectorAll(".bar");
+  const bars = document.querySelectorAll('.bar');
 
   if (compareBars) {
     if (prev === null) {
-      modifyBar("unsorted", bars[i], bars[i2]);
+      modifyBar('unsorted', bars[i], bars[i2]);
     } else {
-      modifyBar("selected", bars[prev]);
+      modifyBar('selected', bars[prev]);
     }
     // Check if the selected bar has to be unselected, or can stay as it is
     if (prev <= j && i <= j) {
-      modifyBar("unsorted", bars[i]);
+      modifyBar('unsorted', bars[i]);
     }
     if (prev > j && i2 <= j2) {
-      modifyBar("unsorted", bars[i2]);
+      modifyBar('unsorted', bars[i2]);
     }
   } else if (overwriteBars) {
     if (overwriteIdx - 1 >= 0) {
-      modifyBar("reference", bars[idx + overwriteIdx - 1]);
+      modifyBar('reference', bars[idx + overwriteIdx - 1]);
     }
     if (overwriteIdx < temp.length) {
-      modifyBar("unsorted", bars[idx + overwriteIdx]);
+      modifyBar('unsorted', bars[idx + overwriteIdx]);
       mutateBar(bars[idx + overwriteIdx], copyArray[idx + overwriteIdx]);
       array[idx + overwriteIdx] = copyArray[idx + overwriteIdx];
     }

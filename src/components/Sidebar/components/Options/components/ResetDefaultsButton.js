@@ -1,13 +1,13 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import Button from "../../Button";
+import Button from '../../Button';
 
-import { resetAlgorithmInitialState } from "../../../../../algorithms/utils";
-import { useAlgorithmContext } from "../../../../../contexts/AlgorithmContext";
-import { useArraySizeContext } from "../../../../../contexts/ArraySizeContext";
-import { useSpeedContext } from "../../../../../contexts/SpeedContext";
-import { useBarColorContext } from "../../../../../contexts/BarColorContext";
+import { resetAlgorithmInitialState } from '../../../../../algorithms/utils';
+import { useAlgorithmContext } from '../../../../../contexts/AlgorithmContext';
+import { useArraySizeContext } from '../../../../../contexts/ArraySizeContext';
+import { useSpeedContext } from '../../../../../contexts/SpeedContext';
+import { useBarColorContext } from '../../../../../contexts/BarColorContext';
 
 const StyledButton = styled(Button)`
   height: 2rem;

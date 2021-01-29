@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import Logo from "../Logo";
-import MainContainer from "./components/MainContainer";
-import Footer from "./components/Footer";
-import { devices } from "../../styles/deviceSizes";
+import Logo from '../Logo';
+import MainContainer from './components/MainContainer';
+import Footer from './components/Footer';
+import { devices } from '../../styles/deviceSizes';
 
 const StyledSidebar = styled.div`
   position: relative;

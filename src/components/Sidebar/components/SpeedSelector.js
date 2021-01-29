@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import Selector from "./Selector";
-import ComponentContainer from "./ComponentContainer";
+import Selector from './Selector';
+import ComponentContainer from './ComponentContainer';
 
-import { useSpeedContext } from "../../../contexts/SpeedContext";
+import { useSpeedContext } from '../../../contexts/SpeedContext';
 
 const SpeedSelector = () => {
   const { speed, setSpeed } = useSpeedContext();

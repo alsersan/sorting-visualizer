@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { devices } from "../../styles/deviceSizes";
-import BarChart from "./BarChart";
-import Logo from "../Logo";
+import { devices } from '../../styles/deviceSizes';
+import BarChart from './BarChart';
+import Logo from '../Logo';
 
 const Container = styled.div`
   min-height: 20rem;

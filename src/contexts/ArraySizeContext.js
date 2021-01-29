@@ -1,14 +1,14 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext } from 'react';
 
-import useLocalStorageState from "../hooks/useLocalStorageState";
-import { getArray } from "../algorithms/utils";
+import useLocalStorageState from '../hooks/useLocalStorageState';
+import { getArray } from '../algorithms/utils';
 
 const ArraySizeContext = React.createContext();
 
 const ArraySizeProvider = ({ children }) => {
   const defaultArraySize = 10;
   const [size, setSize] = useLocalStorageState(
-    "SortingVisualizer_arraySize",
+    'SortingVisualizer_arraySize',
     defaultArraySize
   );
   // boolean value to toggle the re-render (when only reseting array)

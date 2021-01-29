@@ -1,11 +1,11 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import ColorPicker from "./components/ColorPicker";
-import ComponentContainer from "../ComponentContainer";
+import ColorPicker from './components/ColorPicker';
+import ComponentContainer from '../ComponentContainer';
 
-import { useBarColorContext } from "../../../../contexts/BarColorContext";
-import { useAlgorithmContext } from "../../../../contexts/AlgorithmContext";
+import { useBarColorContext } from '../../../../contexts/BarColorContext';
+import { useAlgorithmContext } from '../../../../contexts/AlgorithmContext';
 
 const FlexWrapper = styled.div`
   display: flex;

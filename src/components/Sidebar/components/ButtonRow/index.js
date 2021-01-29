@@ -1,20 +1,20 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { FaPlay } from "react-icons/fa";
-import { FaPause } from "react-icons/fa";
-import { FaStepForward } from "react-icons/fa";
-import { FaStepBackward } from "react-icons/fa";
+import { FaPlay } from 'react-icons/fa';
+import { FaPause } from 'react-icons/fa';
+import { FaStepForward } from 'react-icons/fa';
+import { FaStepBackward } from 'react-icons/fa';
 
-import Button from "./components/Button";
-import ComponentContainer from "../ComponentContainer";
-import * as bubble from "../../../../algorithms/bubbleSort";
-import * as selection from "../../../../algorithms/selectionSort";
-import * as insertion from "../../../../algorithms/insertionSort";
-import * as merge from "../../../../algorithms/mergeSort";
-import * as quick from "../../../../algorithms/quickSort";
-import { stopAlgorithm } from "../../../../algorithms/utils";
-import { useAlgorithmContext } from "../../../../contexts/AlgorithmContext";
+import Button from './components/Button';
+import ComponentContainer from '../ComponentContainer';
+import * as bubble from '../../../../algorithms/bubbleSort';
+import * as selection from '../../../../algorithms/selectionSort';
+import * as insertion from '../../../../algorithms/insertionSort';
+import * as merge from '../../../../algorithms/mergeSort';
+import * as quick from '../../../../algorithms/quickSort';
+import { stopAlgorithm } from '../../../../algorithms/utils';
+import { useAlgorithmContext } from '../../../../contexts/AlgorithmContext';
 
 const FlexWrapper = styled.div`
   display: flex;

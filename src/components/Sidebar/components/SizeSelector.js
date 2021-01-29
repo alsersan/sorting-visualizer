@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import Selector from "./Selector";
-import ComponentContainer from "./ComponentContainer";
+import Selector from './Selector';
+import ComponentContainer from './ComponentContainer';
 
-import { useArraySizeContext } from "../../../contexts/ArraySizeContext";
-import { useAlgorithmContext } from "../../../contexts/AlgorithmContext";
+import { useArraySizeContext } from '../../../contexts/ArraySizeContext';
+import { useAlgorithmContext } from '../../../contexts/AlgorithmContext';
 
 const SizeSelector = () => {
   const { size, setSize } = useArraySizeContext();

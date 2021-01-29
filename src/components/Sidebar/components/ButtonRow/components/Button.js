@@ -1,17 +1,17 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import RippleEffect from "../../RippleEffect";
+import RippleEffect from '../../RippleEffect';
 
 const StyledButton = styled.button`
   position: relative;
   color: inherit;
   opacity: ${(props) =>
-    props.disabled ? props.theme.button.disabledOpacity : "1"};
+    props.disabled ? props.theme.button.disabledOpacity : '1'};
   overflow: hidden;
   padding: 1rem;
   border-radius: 50%;
-  cursor: ${(props) => (props.disabled ? "auto" : "pointer")};
+  cursor: ${(props) => (props.disabled ? 'auto' : 'pointer')};
   border: none;
   outline: none;
   box-shadow: ${(props) =>
@@ -21,7 +21,7 @@ const StyledButton = styled.button`
   background-color: transparent;
   margin: 0 0.5rem;
   animation: ${({ hasStarted, disabled }) =>
-    !hasStarted && !disabled ? "bounce 0.8s ease 0.5s infinite" : "none"};
+    !hasStarted && !disabled ? 'bounce 0.8s ease 0.5s infinite' : 'none'};
 
   @keyframes bounce {
     50% {

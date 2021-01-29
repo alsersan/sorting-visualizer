@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import Button from "./Button";
-import ComponentContainer from "./ComponentContainer";
-import { useAlgorithmContext } from "../../../contexts/AlgorithmContext";
+import Button from './Button';
+import ComponentContainer from './ComponentContainer';
+import { useAlgorithmContext } from '../../../contexts/AlgorithmContext';
 
 const FlexWrapper = styled.div`
   display: flex;
@@ -35,24 +35,24 @@ const AlgorithmOptions = () => {
     <ComponentContainer title="Sorting Algorithm" hasStarted={hasStarted}>
       <FlexWrapper>
         {[
-          "Bubble Sort",
-          "Selection Sort",
-          "Insertion Sort",
-          "Merge Sort",
-          "Quick Sort",
-          "HeapSort",
+          'Bubble Sort',
+          'Selection Sort',
+          'Insertion Sort',
+          'Merge Sort',
+          'Quick Sort',
+          'HeapSort',
         ].map((option, index) => (
           <React.Fragment key={index}>
             <Radio
               type="radio"
               checked={index === activeOption}
               name="sorting-algorithm"
-              id={`${option} button`.toLowerCase().replace(/ /g, "-")}
+              id={`${option} button`.toLowerCase().replace(/ /g, '-')}
               onChange={() => setActiveOption(index)}
             />
             <StyledLabel
               forwardedAs="label"
-              htmlFor={`${option} button`.toLowerCase().replace(/ /g, "-")}
+              htmlFor={`${option} button`.toLowerCase().replace(/ /g, '-')}
             >
               {option}
             </StyledLabel>

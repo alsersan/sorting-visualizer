@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react';
 
-import useLocalStorageState from "../hooks/useLocalStorageState";
+import useLocalStorageState from '../hooks/useLocalStorageState';
 
 const ThemeTogglerContext = React.createContext();
 
 const ThemeTogglerProvider = ({ children }) => {
   const [theme, setTheme] = useLocalStorageState(
-    "SortingVisualizer_theme",
-    "light"
+    'SortingVisualizer_theme',
+    'light'
   );
 
   const value = { theme, setTheme };

@@ -7,7 +7,7 @@ import {
   array,
   timeout,
   setIsSorted,
-} from "./utils";
+} from './utils';
 
 const initialState = getInitialState();
 
@@ -23,15 +23,15 @@ let {
 } = initialState;
 
 export function bubbleSort(delay = timeout) {
-  const bars = document.querySelectorAll(".bar");
+  const bars = document.querySelectorAll('.bar');
   if (record.length === 0) i = array.length - 1;
 
   algorithmTimeout(() => {
     saveStep();
 
     if (compareBars) {
-      if (j - 1 >= 0) modifyBar("unsorted", bars[j - 1]);
-      modifyBar("selected", bars[j], bars[j + 1]);
+      if (j - 1 >= 0) modifyBar('unsorted', bars[j - 1]);
+      modifyBar('selected', bars[j], bars[j + 1]);
       if (array[j] > array[j + 1]) {
         compareBars = false;
         barSwap = true;
@@ -47,8 +47,8 @@ export function bubbleSort(delay = timeout) {
       barSwap = false;
     }
     if (unselectBars) {
-      modifyBar("unsorted", bars[j - 1]);
-      modifyBar("sorted", bars[j]);
+      modifyBar('unsorted', bars[j - 1]);
+      modifyBar('sorted', bars[j]);
       noSwap = true;
       j = 0;
       i--;
@@ -60,10 +60,10 @@ export function bubbleSort(delay = timeout) {
     if (sortBars) {
       // Sorting finished
       for (let x = 0; x <= i; x++) {
-        modifyBar("sorted", bars[x]);
+        modifyBar('sorted', bars[x]);
       }
       setIsSorted(true);
-      console.log("SORTED!!");
+      console.log('SORTED!!');
       return;
     }
 
@@ -144,20 +144,20 @@ export function bubbleSortStepBack(setHasStarted) {
 
 function reverseBubbleSort() {
   // If the array was already sorted, all the bars that were colored with sortedColor in the last step are colored with unsortedColor
-  const bars = document.querySelectorAll(".bar");
+  const bars = document.querySelectorAll('.bar');
   if (sortBars) {
     for (let x = 0; x <= i; x++) {
-      modifyBar("unsorted", bars[x]);
+      modifyBar('unsorted', bars[x]);
     }
-    modifyBar("selected", bars[j], bars[j - 1]);
+    modifyBar('selected', bars[j], bars[j - 1]);
   }
   if (compareBars) {
-    modifyBar("unsorted", bars[j], bars[j + 1]);
-    if (j - 1 >= 0) modifyBar("selected", bars[j], bars[j - 1]);
+    modifyBar('unsorted', bars[j], bars[j + 1]);
+    if (j - 1 >= 0) modifyBar('selected', bars[j], bars[j - 1]);
   } else if (barSwap) {
     swapArrayElements(j, j + 1);
     swapBars(bars[j], bars[j + 1]);
   } else if (unselectBars) {
-    modifyBar("selected", bars[j], bars[j - 1]);
+    modifyBar('selected', bars[j], bars[j - 1]);
   }
 }

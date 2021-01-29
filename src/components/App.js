@@ -1,16 +1,16 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import Sidebar from "./Sidebar";
-import BarChartContainer from "./BarChartContainer";
-import { devices } from "../styles/deviceSizes";
-import StyledThemeProvider from "../styles/StyledThemeProvider";
-import { GlobalStyle } from "../styles/GlobalStyle";
-import { AlgorithmProvider } from "../contexts/AlgorithmContext";
-import { ArraySizeProvider } from "../contexts/ArraySizeContext";
-import { ThemeTogglerProvider } from "../contexts/ThemeTogglerContext";
-import { BarColorProvider } from "../contexts/BarColorContext";
-import { SpeedProvider } from "../contexts/SpeedContext";
+import Sidebar from './Sidebar';
+import BarChartContainer from './BarChartContainer';
+import { devices } from '../styles/deviceSizes';
+import StyledThemeProvider from '../styles/StyledThemeProvider';
+import { GlobalStyle } from '../styles/GlobalStyle';
+import { AlgorithmProvider } from '../contexts/AlgorithmContext';
+import { ArraySizeProvider } from '../contexts/ArraySizeContext';
+import { ThemeTogglerProvider } from '../contexts/ThemeTogglerContext';
+import { BarColorProvider } from '../contexts/BarColorContext';
+import { SpeedProvider } from '../contexts/SpeedContext';
 
 const MainContainer = styled.div`
   width: 100vw;

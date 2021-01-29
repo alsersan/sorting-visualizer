@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from 'react';
 
-import useLocalStorageState from "../hooks/useLocalStorageState";
-import { getSetIsSorted } from "../algorithms/utils";
+import useLocalStorageState from '../hooks/useLocalStorageState';
+import { getSetIsSorted } from '../algorithms/utils';
 
 const AlgorithmContext = React.createContext();
 
@@ -11,7 +11,7 @@ const AlgorithmProvider = ({ children }) => {
   const [isSorted, setIsSorted] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
   const [activeOption, setActiveOption] = useLocalStorageState(
-    "SortingVisualizer_sortingAlgorithm",
+    'SortingVisualizer_sortingAlgorithm',
     defaultOption
   );
 
