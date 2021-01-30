@@ -8,6 +8,7 @@ import ResetArrayButton from './components/ResetArrayButton';
 
 const FlexWrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 `;
 
