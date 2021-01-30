@@ -7,7 +7,7 @@ import Logo from '../Logo';
 
 const Container = styled.div`
   min-height: 20rem;
-  background-color: ${(props) => props.theme.backgroundColor.secondary};
+  background-color: ${(props) => props.theme.backgroundColor.primary};
   margin-bottom: ${(props) => props.theme.spacingSmall};
   padding-top: 1rem;
   display: flex;

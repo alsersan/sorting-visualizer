@@ -11,7 +11,7 @@ const StyledButton = styled.button`
   font-size: 1rem;
   font-family: inherit;
   cursor: pointer;
-  background-color: ${(props) => props.theme.backgroundColor.secondary};
+  background-color: transparent;
   color: inherit;
   box-shadow: ${(props) => props.theme.button.boxShadow};
 `;

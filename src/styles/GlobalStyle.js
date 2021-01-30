@@ -9,6 +9,6 @@ export const GlobalStyle = createGlobalStyle`
 
 body {
 font-family: ${(props) => props.theme.fontFamily};
-color: ${(props) => props.theme.color}
+color: ${(props) => props.theme.textColor}
 }
 `;

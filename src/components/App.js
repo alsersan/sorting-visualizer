@@ -16,7 +16,7 @@ const MainContainer = styled.div`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-color: ${(props) => props.theme.backgroundColor.primary};
+  background-color: ${(props) => props.theme.backgroundColor.secondary};
   padding: ${(props) => props.theme.spacingSmall};
   display: flex;
   flex-direction: column;

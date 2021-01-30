@@ -1,7 +1,7 @@
 export const lightTheme = {
   backgroundColor: {
-    primary: '#d1cfc7',
-    secondary: '#f6f6f6',
+    primary: '#f6f6f6',
+    secondary: '#d1cfc7',
   },
   button: {
     boxShadow: '0 0 0.5rem rgba(0, 0, 0, 0.3)',
@@ -11,13 +11,17 @@ export const lightTheme = {
     activeBoxShadow: '0 0 0.5rem #1e8de5, 0 0 0.5rem rgba(0, 0, 0, 0.1)',
     activeText: '#fff',
   },
-  color: '#000',
+  scrollbar: {
+    background: '#f6f6f6',
+    shadow: '#0d0d0d',
+  },
+  textColor: '#000',
 };
 
 export const darkTheme = {
   backgroundColor: {
-    primary: '#262626',
-    secondary: '#0d0d0d',
+    primary: '#0d0d0d',
+    secondary: '#262626',
   },
   button: {
     boxShadow: '0 0 0.5rem rgba(255, 255, 255, 0.6)',
@@ -27,7 +31,11 @@ export const darkTheme = {
     activeBoxShadow: '0 0 0.5rem #1e8de5, 0 0 0.5rem rgba(255, 255, 255, 0.6)',
     activeText: '#fff',
   },
-  color: '#fff',
+  scrollbar: {
+    background: '#0d0d0d',
+    shadow: '#d1cfc7',
+  },
+  textColor: '#f6f6f6',
 };
 
 export const main = {

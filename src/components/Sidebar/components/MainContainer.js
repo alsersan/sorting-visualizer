@@ -17,14 +17,14 @@ const Container = styled.div`
   scrollbar-color: ${(props) => props.theme.blue} #ccc;
 
   &::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background-color: #f5f5f5;
+    box-shadow: inset 0 0 1px ${(props) => props.theme.scrollbar.shadow};
+    background-color: ${(props) => props.theme.scrollbar.background};
     border-radius: 10px;
   }
 
   &::-webkit-scrollbar {
     width: 6px;
-    background-color: #f5f5f5;
+    background-color: ${(props) => props.theme.scrollbar.background};
     border-radius: 10px;
   }
 
@@ -35,6 +35,10 @@ const Container = styled.div`
 
   @media ${devices.tablet} {
     margin-top: 1rem;
+
+    &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 2px ${(props) => props.theme.scrollbar.shadow};
+    }
   }
 
   @media ${devices.laptopL} {
