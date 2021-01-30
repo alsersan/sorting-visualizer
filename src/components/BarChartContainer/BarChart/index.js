@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useLayoutEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 
 import Bar from './components/Bar';
-import { devices } from '../../../styles/deviceSizes';
 
 import { useArraySizeContext } from '../../../contexts/ArraySizeContext';
 
@@ -16,11 +15,21 @@ const Container = styled.div`
 
 const BarChart = () => {
   const { array, size } = useArraySizeContext();
+  const [textDisplay, setTextDisplay] = useState('none');
+  const chartRef = useRef();
+
+  useLayoutEffect(() => {
+    const chartWidth = chartRef.current.clientWidth;
+    // 30 is the value which makes the bar wide enough to fit the number 100
+    chartWidth / size > 30 ? setTextDisplay('block') : setTextDisplay('none');
+  }, [size]);
 
   return (
-    <Container>
+    <Container ref={chartRef}>
       {array.map((number, index) => (
         <Bar
+          chart={chartRef}
+          textDisplay={textDisplay}
           number={number}
           key={`${array} ${index}`}
           size={size}

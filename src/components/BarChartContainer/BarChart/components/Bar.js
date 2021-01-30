@@ -23,11 +23,11 @@ const StyledBar = styled.div`
 const Text = styled.span`
   position: absolute;
   margin-top: -1.5rem;
-  display: ${({ size }) => (size > 25 ? 'none' : 'block')};
 `;
 
-const Bar = ({ className, size, number }) => {
-  const barEl = useRef();
+const Bar = ({ className, size, number, textDisplay }) => {
+  const barRef = useRef();
+  const textRef = useRef();
   const {
     unsortedColor,
     selectedColor,
@@ -38,7 +38,7 @@ const Bar = ({ className, size, number }) => {
   const colors = [unsortedColor, selectedColor, referenceColor, sortedColor];
 
   useLayoutEffect(() => {
-    const currentBar = barEl.current;
+    const currentBar = barRef.current;
     ['unsorted', 'selected', 'reference', 'sorted'].forEach((el, index) => {
       if (currentBar.classList.contains(el)) {
         currentBar.style.backgroundColor = colors[index];
@@ -48,14 +48,16 @@ const Bar = ({ className, size, number }) => {
 
   return (
     <StyledBar
-      ref={barEl}
+      ref={barRef}
       className={className}
       size={size}
       style={{
         height: `${number}%`,
       }}
     >
-      <Text size={size}>{number}</Text>
+      <Text ref={textRef} size={size} style={{ display: textDisplay }}>
+        {number}
+      </Text>
     </StyledBar>
   );
 };
