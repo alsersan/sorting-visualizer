@@ -7,7 +7,7 @@ import {
   array,
   timeout,
   setIsSorted,
-} from "./utils";
+} from './utils';
 
 const initialState = getInitialState();
 
@@ -28,29 +28,16 @@ let {
   record,
 } = initialState;
 
-// let pivot = 0;
-// let i = 0;
-// let j = 0;
-// let startIdx = 0;
-// let endIdx = 0;
-// let prev = 1;
-// let getIndex = false;
-// let selectPivot = true;
-// let compareBars = false;
-// let barSwap = false;
-// let swapPivot = false;
-// let unselectBars = false;
-// let stack = [];
-// const record = [];
-
 export function quickSort(delay = timeout) {
-  const bars = document.querySelectorAll(".bar");
+  const bars = document.querySelectorAll('.bar');
+
   if (record.length === 0) j = endIdx = array.length - 1;
   if (getIndex) {
     if (stack.length > 0) {
       const [iTemp, jTemp] = stack.pop();
       startIdx = i = iTemp;
       endIdx = j = jTemp;
+      pivot = i;
       prev = null;
       getIndex = false;
       selectPivot = true;
@@ -58,15 +45,14 @@ export function quickSort(delay = timeout) {
     } else {
       // Sorting finished
       setIsSorted(true);
-      console.log("SORTED!");
+      console.log('SORTED!');
     }
     return;
   }
   algorithmTimeout(() => {
     saveStep();
     if (selectPivot) {
-      pivot = i;
-      modifyBar("reference", bars[pivot]);
+      modifyBar('reference', bars[pivot]);
       selectPivot = false;
       if (i === j) {
         // if the "subarray" just consists of 1 element, then it's sorted
@@ -80,20 +66,18 @@ export function quickSort(delay = timeout) {
     }
     if (compareBars) {
       if (prev === -1) {
-        modifyBar("unsorted", bars[i - 1], bars[j + 1]);
+        modifyBar('unsorted', bars[i - 1], bars[j + 1]);
       } else if (prev !== null) {
-        modifyBar("unsorted", bars[prev]);
+        modifyBar('unsorted', bars[prev]);
       }
       if (i < j) {
-        modifyBar("selected", bars[i], bars[j]);
+        modifyBar('selected', bars[i], bars[j]);
         if (array[i] < array[pivot]) {
           prev = i;
           i++;
         } else if (array[j] < array[pivot]) {
           compareBars = false;
           barSwap = true;
-          quickSort();
-          return;
         } else {
           prev = j;
           j--;
@@ -101,7 +85,7 @@ export function quickSort(delay = timeout) {
         quickSort();
         return;
       } else if (i === j) {
-        modifyBar("selected", bars[j]);
+        modifyBar('selected', bars[j]);
         if (array[j] >= array[pivot]) {
           prev = j;
           j--;
@@ -110,13 +94,13 @@ export function quickSort(delay = timeout) {
         }
       } else if (j === pivot) {
         // no need to go to swapPivot, since it's the same element
-        modifyBar("selected", bars[j]);
+        modifyBar('selected', bars[j]);
         compareBars = false;
         unselectBars = true;
         quickSort();
         return;
       }
-      modifyBar("selected", bars[j]);
+      modifyBar('selected', bars[j]);
       compareBars = false;
       swapPivot = true;
       quickSort();
@@ -137,8 +121,8 @@ export function quickSort(delay = timeout) {
       swapBars(bars[pivot], bars[j]);
       swapArrayElements(pivot, j);
       // now j is the position of pivot bar
-      modifyBar("reference", bars[j]);
-      modifyBar("selected", bars[pivot]);
+      modifyBar('reference', bars[j]);
+      modifyBar('selected', bars[pivot]);
       swapPivot = false;
       unselectBars = true;
       quickSort();
@@ -146,8 +130,8 @@ export function quickSort(delay = timeout) {
     }
     if (unselectBars) {
       // now j is the position of pivot bar
-      modifyBar("unsorted", bars[pivot]);
-      modifyBar("sorted", bars[j]);
+      modifyBar('unsorted', bars[pivot]);
+      modifyBar('sorted', bars[j]);
       if (j + 1 <= endIdx) stack.push([j + 1, endIdx]);
       if (j - 1 >= startIdx) stack.push([startIdx, j - 1]);
       unselectBars = false;
@@ -216,4 +200,75 @@ function saveStep() {
 export function quickSortStepForward(delay) {
   quickSort(delay);
   setTimeout(stopAlgorithm, delay);
+}
+
+export function quickSortStepBack(setHasStarted) {
+  setIsSorted(false);
+  const lastElement = record[record.length - 1];
+  pivot = lastElement.pivot;
+  i = lastElement.i;
+  j = lastElement.j;
+  startIdx = lastElement.startIdx;
+  endIdx = lastElement.endIdx;
+  prev = lastElement.prev;
+  getIndex = lastElement.getIndex;
+  selectPivot = lastElement.selectPivot;
+  compareBars = lastElement.compareBars;
+  barSwap = lastElement.barSwap;
+  swapPivot = lastElement.swapPivot;
+  unselectBars = lastElement.unselectBars;
+  stack = lastElement.stack;
+  record.pop();
+  reverseQuickSort();
+  if (record.length === 0) {
+    setHasStarted(false);
+  }
+}
+
+function reverseQuickSort() {
+  const bars = document.querySelectorAll('.bar');
+
+  if (selectPivot) {
+    modifyBar('unsorted', bars[pivot]);
+  } else if (compareBars) {
+    if (prev === -1) {
+      modifyBar('selected', bars[i - 1], bars[j + 1]);
+    } else if (prev !== null) {
+      modifyBar('selected', bars[prev]);
+    }
+    if (i < j) {
+      if (prev === j + 1) {
+        modifyBar('unsorted', bars[j]);
+      } else if (prev === i - 1) {
+        modifyBar('unsorted', bars[i]);
+      } else {
+        modifyBar('unsorted', bars[i], bars[j]);
+      }
+    } else if (i === j) {
+      if (prev === -1 || prev === null) {
+        modifyBar('unsorted', bars[j]);
+      }
+    } else if (j === pivot) {
+      modifyBar('reference', bars[j]);
+    } else {
+      if (prev !== -1) modifyBar('unsorted', bars[j]);
+    }
+  } else if (barSwap) {
+    swapBars(bars[i], bars[j]);
+    swapArrayElements(i, j);
+  } else if (swapPivot) {
+    swapBars(bars[pivot], bars[j]);
+    swapArrayElements(pivot, j);
+    modifyBar('reference', bars[pivot]);
+    modifyBar('selected', bars[j]);
+  } else if (unselectBars) {
+    if (i === j && i === pivot) {
+      modifyBar('reference', bars[j]);
+    } else if (j === pivot) {
+      modifyBar('selected', bars[j]);
+    } else {
+      modifyBar('selected', bars[pivot]);
+      modifyBar('reference', bars[j]);
+    }
+  }
 }
