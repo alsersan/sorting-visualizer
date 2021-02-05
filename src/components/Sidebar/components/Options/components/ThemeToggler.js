@@ -27,7 +27,7 @@ const StyledLabel = styled.label`
   &:before {
     position: absolute;
     z-index: 1;
-    right: 0;
+    left: 0;
     width: 2rem;
     height: 2rem;
     background-color: #fff;
@@ -37,7 +37,7 @@ const StyledLabel = styled.label`
     box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3);
 
     ${Checkbox}:checked ~ & {
-      transform: translateX(-2rem);
+      transform: translateX(2rem);
     }
   }
 `;
