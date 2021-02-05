@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Button from '../../Button';
+import RippleEffect from '../../RippleEffect';
 
 import { resetAlgorithmInitialState } from '../../../../../algorithms/utils';
 import { useAlgorithmContext } from '../../../../../contexts/AlgorithmContext';
@@ -10,6 +11,8 @@ import { useSpeedContext } from '../../../../../contexts/SpeedContext';
 import { useBarColorContext } from '../../../../../contexts/BarColorContext';
 
 const StyledButton = styled(Button)`
+  position: relative;
+  overflow: hidden;
   height: 2rem;
   width: 8rem;
   max-width: 8rem;
@@ -31,7 +34,10 @@ const ResetDefaultsButton = () => {
   };
 
   return (
-    <StyledButton onClick={handleResetDefaults}>Reset Defaults</StyledButton>
+    <StyledButton onClick={handleResetDefaults}>
+      Reset Defaults
+      <RippleEffect />
+    </StyledButton>
   );
 };
 
