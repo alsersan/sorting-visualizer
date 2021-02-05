@@ -8,8 +8,7 @@ const useLocalStorageState = (key, defaultValue = '') => {
   });
 
   useEffect(() => {
-    let timeout;
-    timeout = setTimeout(() => {
+    let timeout = setTimeout(() => {
       localStorage.setItem(key, JSON.stringify(state));
     }, 150);
     return () => clearTimeout(timeout);
