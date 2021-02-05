@@ -6,10 +6,15 @@ import SizeSelector from './SizeSelector';
 import SpeedSelector from './SpeedSelector';
 import ButtonRow from './ButtonRow';
 import Options from './Options';
-import { devices } from '../../../styles/deviceSizes';
 import ColorSelection from './ColorSelection';
+import Footer from './Footer';
+import { devices } from '../../../styles/deviceSizes';
 
 const Container = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   width: 100%;
   overflow-y: auto;
   padding: 0 1rem;
@@ -55,6 +60,7 @@ const MainContainer = () => {
       <ButtonRow />
       <Options />
       <ColorSelection />
+      <Footer />
     </Container>
   );
 };
