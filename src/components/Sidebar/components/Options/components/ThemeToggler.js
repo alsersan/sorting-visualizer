@@ -50,6 +50,7 @@ const ThemeToggler = () => {
         type="checkbox"
         id="switch-button"
         name="switch-button"
+        checked={theme === 'light'}
         onChange={() => setTheme(theme === 'light' ? 'dark' : 'light')}
       />
       <StyledLabel htmlFor="switch-button" />
