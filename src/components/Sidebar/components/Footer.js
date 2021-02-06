@@ -17,11 +17,10 @@ const Container = styled.div`
 const IconLink = styled.a`
   margin-left: 1rem;
   cursor: pointer;
-  opacity: 75%;
   color: inherit;
 
   &:hover {
-    opacity: 100%;
+    color: ${({ theme }) => theme.blue};
   }
 `;
 

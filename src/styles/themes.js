@@ -7,15 +7,15 @@ export const lightTheme = {
     boxShadow: '0 0 0.5rem rgba(0, 0, 0, 0.3)',
     disabledBoxShadow: '0 0 0.5rem rgba(0, 0, 0, 0.1)',
     disabledOpacity: '0.4',
-    activeBackground: 'rgba(30, 141, 229)',
-    activeBoxShadow: '0 0 0.5rem #1e8de5, 0 0 0.5rem rgba(0, 0, 0, 0.1)',
-    activeText: '#fff',
+    activeBackground: '#1d87e5',
+    activeBoxShadow: '0 0 0.5rem #1d87e5, 0 0 0.5rem rgba(0, 0, 0, 0.1)',
+    activeText: '#f6f6f6',
   },
   scrollbar: {
     background: '#f6f6f6',
     shadow: '#0d0d0d',
   },
-  textColor: '#000',
+  textColor: '#191919',
 };
 
 export const darkTheme = {
@@ -27,9 +27,9 @@ export const darkTheme = {
     boxShadow: '0 0 0.5rem rgba(255, 255, 255, 0.6)',
     disabledBoxShadow: '0 0 0.5rem rgba(255, 255, 255, 0.2)',
     disabledOpacity: '0.4',
-    activeBackground: 'rgba(30, 141, 229)',
-    activeBoxShadow: '0 0 0.5rem #1e8de5, 0 0 0.5rem rgba(255, 255, 255, 0.6)',
-    activeText: '#fff',
+    activeBackground: '#1d87e5',
+    activeBoxShadow: '0 0 0.5rem #1d87e5, 0 0 0.5rem rgba(255, 255, 255, 0.6)',
+    activeText: '#f6f6f6',
   },
   scrollbar: {
     background: '#0d0d0d',
@@ -39,7 +39,7 @@ export const darkTheme = {
 };
 
 export const main = {
-  blue: '#1e8de5',
+  blue: '#1d87e5',
   gray: '#858b8c',
   fontFamily: 'Ubuntu, sans-serif',
   spacingSmall: '0.4rem',
