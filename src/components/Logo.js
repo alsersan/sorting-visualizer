@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import logoLight from '../images/logoLight.png';
-import logoDark from '../images/logoDark.png';
+import logoLight from '../images/logoLight.svg';
+import logoDark from '../images/logoDark.svg';
 import { useThemeTogglerContext } from '../contexts/ThemeTogglerContext';
 
 const Container = styled.div`
