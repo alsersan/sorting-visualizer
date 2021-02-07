@@ -1,19 +1,23 @@
 {
   "files": {
-    "main.js": "/sorting-visualizer/static/js/main.1321b40a.chunk.js",
-    "main.js.map": "/sorting-visualizer/static/js/main.1321b40a.chunk.js.map",
+    "main.js": "/sorting-visualizer/static/js/main.8f492edf.chunk.js",
+    "main.js.map": "/sorting-visualizer/static/js/main.8f492edf.chunk.js.map",
     "runtime-main.js": "/sorting-visualizer/static/js/runtime-main.be65b83b.js",
     "runtime-main.js.map": "/sorting-visualizer/static/js/runtime-main.be65b83b.js.map",
     "static/js/2.b69b55b1.chunk.js": "/sorting-visualizer/static/js/2.b69b55b1.chunk.js",
     "static/js/2.b69b55b1.chunk.js.map": "/sorting-visualizer/static/js/2.b69b55b1.chunk.js.map",
     "index.html": "/sorting-visualizer/index.html",
     "static/js/2.b69b55b1.chunk.js.LICENSE.txt": "/sorting-visualizer/static/js/2.b69b55b1.chunk.js.LICENSE.txt",
+    "static/media/Ubuntu.2570bb36.woff": "/sorting-visualizer/static/media/Ubuntu.2570bb36.woff",
+    "static/media/Ubuntu.b5f5b278.woff2": "/sorting-visualizer/static/media/Ubuntu.b5f5b278.woff2",
+    "static/media/UbuntuMedium.71b2b69c.woff": "/sorting-visualizer/static/media/UbuntuMedium.71b2b69c.woff",
+    "static/media/UbuntuMedium.fe96475a.woff2": "/sorting-visualizer/static/media/UbuntuMedium.fe96475a.woff2",
     "static/media/logoDark.f63e05b7.svg": "/sorting-visualizer/static/media/logoDark.f63e05b7.svg",
     "static/media/logoLight.8c73cb9d.svg": "/sorting-visualizer/static/media/logoLight.8c73cb9d.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.be65b83b.js",
     "static/js/2.b69b55b1.chunk.js",
-    "static/js/main.1321b40a.chunk.js"
+    "static/js/main.8f492edf.chunk.js"
   ]
 }
