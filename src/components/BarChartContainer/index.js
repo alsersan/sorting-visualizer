@@ -31,7 +31,6 @@ const Container = styled.div`
 
 const StyledLogo = styled(Logo)`
   display: flex;
-  margin-bottom: 1rem;
 
   @media ${devices.tablet} {
     display: none;
