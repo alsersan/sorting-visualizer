@@ -41,6 +41,7 @@ export const darkTheme = {
 export const main = {
   blue: '#1d87e5',
   gray: '#858b8c',
+  fontFamily: "'Ubuntu', sans-serif",
   spacingSmall: '0.4rem',
   spacingBig: '0.6rem',
   borderRadius: '5px',
