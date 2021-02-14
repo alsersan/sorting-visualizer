@@ -45,7 +45,6 @@ export function quickSort(delay = timeout) {
     } else {
       // Sorting finished
       setIsSorted(true);
-      console.log('SORTED!');
     }
     return;
   }

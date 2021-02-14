@@ -63,7 +63,6 @@ export function bubbleSort(delay = timeout) {
         modifyBar('sorted', bars[x]);
       }
       setIsSorted(true);
-      console.log('SORTED!!');
       return;
     }
 

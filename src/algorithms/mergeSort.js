@@ -27,21 +27,6 @@ let {
   copyArray,
 } = initialState;
 
-// let i = 0;
-// let j = 0;
-// let i2 = 0;
-// let j2 = 0;
-// let temp = [];
-// let len = 1;
-// let idx = 0;
-// let getIndex = true;
-// let compareBars = false;
-// let overwriteBars = false;
-// let prev = null;
-// let overwriteIdx = 0;
-// const record = [];
-// let copyArray = [];
-
 export function mergeSort(delay = timeout) {
   const bars = document.querySelectorAll('.bar');
 
@@ -72,7 +57,6 @@ export function mergeSort(delay = timeout) {
     }
     // Sorting finished
     setIsSorted(true);
-    console.log('SORTED!');
     return;
   }
 

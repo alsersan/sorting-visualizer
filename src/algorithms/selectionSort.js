@@ -95,7 +95,6 @@ export function selectionSort(delay = timeout) {
         // Sorting finished
         modifyBar('sorted', bars[i], bars[i + 1]);
         setIsSorted(true);
-        console.log('SORTED');
       }
       return;
     }

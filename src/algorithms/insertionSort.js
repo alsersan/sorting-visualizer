@@ -73,7 +73,6 @@ export const insertionSort = (delay = timeout) => {
       }
       // Sorting finished
       setIsSorted(true);
-      console.log('SORTED');
       return;
     }
     // only decrease j if that index exists in the array
