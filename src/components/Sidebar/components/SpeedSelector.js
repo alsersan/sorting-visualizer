@@ -7,7 +7,7 @@ import { useSpeedContext } from 'contexts/SpeedContext';
 
 const SpeedSelector = () => {
   const { speed, setSpeed } = useSpeedContext();
-  const maxDelay = 700;
+  const maxDelay = 1000;
 
   const speedPercentageCalculator = (min, max) => {
     // maxDelay - speed to get the correct position of the slider

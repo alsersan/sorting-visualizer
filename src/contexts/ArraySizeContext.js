@@ -6,7 +6,7 @@ import { getArray } from 'algorithms/utils';
 const ArraySizeContext = React.createContext();
 
 const ArraySizeProvider = ({ children }) => {
-  const defaultArraySize = 10;
+  const defaultArraySize = 20;
   const [size, setSize] = useLocalStorageState(
     'SortingVisualizer_arraySize',
     defaultArraySize
