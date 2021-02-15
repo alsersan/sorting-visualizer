@@ -36,7 +36,7 @@ export const heapSort = (delay = timeout) => {
     parentIdx = Math.floor((array.length - 2) / 2);
     endIdx = array.length - 1;
   }
-
+  // It's necessary to pass the delay to the mergeSort calls inside this if, so that the delay of 1 ms is applied on stepForward
   if (findChildren) {
     if (endIdx > 0) {
       if (currentIdx === null) currentIdx = parentIdx;
@@ -71,7 +71,7 @@ export const heapSort = (delay = timeout) => {
           selectSorted = true;
         }
       }
-      heapSort();
+      heapSort(delay);
     } else {
       setIsSorted(true);
       console.log('sorting finished');
@@ -203,4 +203,9 @@ function saveStep() {
     unselectSorted,
   };
   record.push(step);
+}
+
+export function heapSortStepForward(delay) {
+  heapSort(delay);
+  setTimeout(stopAlgorithm, delay);
 }

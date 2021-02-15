@@ -46,6 +46,7 @@ const ButtonRow = () => {
     insertion.insertionSortStepForward,
     merge.mergeSortStepForward,
     quick.quickSortStepForward,
+    heap.heapSortStepForward,
   ];
   const stepsBack = [
     bubble.bubbleSortStepBack,
