@@ -54,6 +54,7 @@ const ButtonRow = () => {
     insertion.insertionSortStepBack,
     merge.mergeSortStepBack,
     quick.quickSortStepBack,
+    heap.heapSortStepBack,
   ];
 
   return (

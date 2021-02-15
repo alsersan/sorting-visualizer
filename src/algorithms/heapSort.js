@@ -23,6 +23,7 @@ let {
   selectBars,
   selectSorted,
   barSwap,
+  noSwap,
   swapSorted,
   unselectBars,
   unselectSorted,
@@ -81,6 +82,7 @@ export const heapSort = (delay = timeout) => {
 
   algorithmTimeout(() => {
     saveStep();
+    console.log(record);
 
     if (selectBars) {
       modifyBar('reference', bars[currentIdx]);
@@ -95,29 +97,28 @@ export const heapSort = (delay = timeout) => {
       heapSort();
       return;
     }
-
     if (barSwap) {
       swapBars(bars[currentIdx], bars[idxToSwap]);
       swapArrayElements(currentIdx, idxToSwap);
       modifyBar('selected', bars[currentIdx]);
       modifyBar('reference', bars[idxToSwap]);
+      noSwap = false;
       barSwap = false;
       unselectBars = true;
       heapSort();
       return;
     }
-
     if (unselectBars) {
       modifyBar('unsorted', bars[currentIdx], bars[childOneIdx]);
       if (childTwoIdx !== -1) modifyBar('unsorted', bars[childTwoIdx]);
       currentIdx = idxToSwap;
       childOneIdx = currentIdx * 2 + 1;
+      noSwap = true;
       unselectBars = false;
       findChildren = true;
       heapSort();
       return;
     }
-
     if (selectSorted) {
       modifyBar('selected', bars[0], bars[endIdx]);
       selectSorted = false;
@@ -125,7 +126,6 @@ export const heapSort = (delay = timeout) => {
       heapSort();
       return;
     }
-
     if (swapSorted) {
       swapBars(bars[0], bars[endIdx]);
       swapArrayElements(0, endIdx);
@@ -134,7 +134,6 @@ export const heapSort = (delay = timeout) => {
       heapSort();
       return;
     }
-
     if (unselectSorted) {
       modifyBar('sorted', bars[endIdx]);
       endIdx === 1
@@ -162,6 +161,7 @@ function getInitialState() {
     selectBars: false,
     selectSorted: false,
     barSwap: false,
+    noSwap: true,
     swapSorted: false,
     unselectBars: false,
     unselectSorted: false,
@@ -181,6 +181,7 @@ export function heapSetInitialState() {
   selectBars = initialState.selectBars;
   selectSorted = initialState.selectSorted;
   barSwap = initialState.barSwap;
+  noSwap = initialState.noSwap;
   swapSorted = initialState.swapSorted;
   unselectBars = initialState.unselectBars;
   unselectSorted = initialState.unselectSorted;
@@ -196,8 +197,11 @@ function saveStep() {
     childTwoIdx,
     idxToSwap,
     findChildren,
+    isMaxHeapBuilt,
     selectBars,
+    selectSorted,
     barSwap,
+    noSwap,
     swapSorted,
     unselectBars,
     unselectSorted,
@@ -208,4 +212,57 @@ function saveStep() {
 export function heapSortStepForward(delay) {
   heapSort(delay);
   setTimeout(stopAlgorithm, delay);
+}
+
+export function heapSortStepBack(setHasStarted) {
+  setIsSorted(false);
+  const lastElement = record[record.length - 1];
+  parentIdx = lastElement.parentIdx;
+  currentIdx = lastElement.currentIdx;
+  endIdx = lastElement.endIdx;
+  childOneIdx = lastElement.childOneIdx;
+  childTwoIdx = lastElement.childTwoIdx;
+  idxToSwap = lastElement.idxToSwap;
+  findChildren = lastElement.findChildren;
+  isMaxHeapBuilt = lastElement.isMaxHeapBuilt;
+  selectBars = lastElement.selectBars;
+  selectSorted = lastElement.selectSorted;
+  barSwap = lastElement.barSwap;
+  noSwap = lastElement.noSwap;
+  swapSorted = lastElement.swapSorted;
+  unselectBars = lastElement.unselectBars;
+  unselectSorted = lastElement.unselectSorted;
+  record.pop();
+  reverseHeapSort();
+  if (record.length === 0) {
+    setHasStarted(false);
+  }
+}
+
+function reverseHeapSort() {
+  console.log(record);
+  const bars = document.querySelectorAll('.bar');
+  if (selectBars) {
+    modifyBar('unsorted', bars[currentIdx], bars[childOneIdx]);
+    if (childTwoIdx !== -1) modifyBar('unsorted', bars[childTwoIdx]);
+  } else if (barSwap) {
+    swapBars(bars[currentIdx], bars[idxToSwap]);
+    swapArrayElements(currentIdx, idxToSwap);
+    modifyBar('reference', bars[currentIdx]);
+    modifyBar('selected', bars[idxToSwap]);
+  } else if (unselectBars) {
+    // tengo que comprobar que barra era la 'reference'
+    modifyBar('selected', bars[currentIdx], bars[childOneIdx]);
+    if (childTwoIdx !== -1) modifyBar('selected', bars[childTwoIdx]);
+    noSwap
+      ? modifyBar('reference', bars[currentIdx])
+      : modifyBar('reference', bars[idxToSwap]);
+  } else if (selectSorted) {
+    modifyBar('unsorted', bars[0], bars[endIdx]);
+  } else if (swapSorted) {
+    swapBars(bars[0], bars[endIdx]);
+    swapArrayElements(0, endIdx);
+  } else if (unselectSorted) {
+    modifyBar('selected', bars[0], bars[endIdx]);
+  }
 }
