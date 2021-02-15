@@ -65,7 +65,6 @@ export const heapSort = (delay = timeout) => {
             isMaxHeapBuilt = true;
             findChildren = false;
             selectSorted = true;
-            console.log('maxHeapFormed');
           }
         } else {
           findChildren = false;
@@ -75,7 +74,6 @@ export const heapSort = (delay = timeout) => {
       heapSort(delay);
     } else {
       setIsSorted(true);
-      console.log('sorting finished');
     }
     return;
   }
@@ -251,7 +249,6 @@ function reverseHeapSort() {
     modifyBar('reference', bars[currentIdx]);
     modifyBar('selected', bars[idxToSwap]);
   } else if (unselectBars) {
-    // tengo que comprobar que barra era la 'reference'
     modifyBar('selected', bars[currentIdx], bars[childOneIdx]);
     if (childTwoIdx !== -1) modifyBar('selected', bars[childTwoIdx]);
     noSwap
