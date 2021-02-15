@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { FaGithub } from 'react-icons/fa';
-import { FaTwitter } from 'react-icons/fa';
 
 const Container = styled.div`
   width: 100%;
