@@ -3,6 +3,7 @@ import { selectionSetInitialState } from './selectionSort';
 import { insertionSetInitialState } from './insertionSort';
 import { mergeSetInitialState } from './mergeSort';
 import { quickSetInitialState } from './quickSort';
+import { heapSetInitialState } from './heapSort';
 
 // ARRAY
 
@@ -104,4 +105,5 @@ export const resetAlgorithmInitialState = () => {
   insertionSetInitialState();
   mergeSetInitialState();
   quickSetInitialState();
+  heapSetInitialState();
 };

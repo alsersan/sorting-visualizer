@@ -13,6 +13,7 @@ import * as selection from 'algorithms/selectionSort';
 import * as insertion from 'algorithms/insertionSort';
 import * as merge from 'algorithms/mergeSort';
 import * as quick from 'algorithms/quickSort';
+import * as heap from 'algorithms/heapSort';
 import { stopAlgorithm } from 'algorithms/utils';
 import { useAlgorithmContext } from 'contexts/AlgorithmContext';
 
@@ -37,6 +38,7 @@ const ButtonRow = () => {
     insertion.insertionSort,
     merge.mergeSort,
     quick.quickSort,
+    heap.heapSort,
   ];
   const stepsForward = [
     bubble.bubbleSortStepForward,
