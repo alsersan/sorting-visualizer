@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { devices } from '../styles/deviceSizes';
-import logoLight from '../images/logoLight.svg';
-import logoDark from '../images/logoDark.svg';
-import { useThemeTogglerContext } from '../contexts/ThemeTogglerContext';
+import { devices } from 'styles/deviceSizes';
+import logoLight from 'images/logoLight.svg';
+import logoDark from 'images/logoDark.svg';
+import { useThemeTogglerContext } from 'contexts/ThemeTogglerContext';
 
 const Container = styled.div`
   display: flex;

@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 
-import useLocalStorageState from '../hooks/useLocalStorageState';
-import { getTimeout } from '../algorithms/utils';
+import useLocalStorageState from 'hooks/useLocalStorageState';
+import { getTimeout } from 'algorithms/utils';
 
 const SpeedContext = React.createContext();
 

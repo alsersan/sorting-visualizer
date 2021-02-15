@@ -1,7 +1,7 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import styled from 'styled-components';
 
-import { useBarColorContext } from '../../../../contexts/BarColorContext';
+import { useBarColorContext } from 'contexts/BarColorContext';
 
 const StyledBar = styled.div`
   margin: ${({ size }) => {

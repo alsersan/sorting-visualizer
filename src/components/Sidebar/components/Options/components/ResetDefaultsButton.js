@@ -4,11 +4,11 @@ import styled from 'styled-components';
 import Button from '../../Button';
 import RippleEffect from '../../RippleEffect';
 
-import { resetAlgorithmInitialState } from '../../../../../algorithms/utils';
-import { useAlgorithmContext } from '../../../../../contexts/AlgorithmContext';
-import { useArraySizeContext } from '../../../../../contexts/ArraySizeContext';
-import { useSpeedContext } from '../../../../../contexts/SpeedContext';
-import { useBarColorContext } from '../../../../../contexts/BarColorContext';
+import { resetAlgorithmInitialState } from 'algorithms/utils';
+import { useAlgorithmContext } from 'contexts/AlgorithmContext';
+import { useArraySizeContext } from 'contexts/ArraySizeContext';
+import { useSpeedContext } from 'contexts/SpeedContext';
+import { useBarColorContext } from 'contexts/BarColorContext';
 
 const StyledButton = styled(Button)`
   position: relative;

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import useLocalStorageState from '../hooks/useLocalStorageState';
+import useLocalStorageState from 'hooks/useLocalStorageState';
 
 const ThemeTogglerContext = React.createContext();
 

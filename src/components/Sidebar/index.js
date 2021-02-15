@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Logo from '../Logo';
 import MainContainer from './components/MainContainer';
-import { devices } from '../../styles/deviceSizes';
+import { devices } from 'styles/deviceSizes';
 
 const StyledSidebar = styled.div`
   position: relative;

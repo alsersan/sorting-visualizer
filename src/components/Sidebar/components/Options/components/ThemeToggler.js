@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { useThemeTogglerContext } from '../../../../../contexts/ThemeTogglerContext';
+import { useThemeTogglerContext } from 'contexts/ThemeTogglerContext';
 import { FaSun, FaMoon } from 'react-icons/fa';
 
 const Wrapper = styled.div`

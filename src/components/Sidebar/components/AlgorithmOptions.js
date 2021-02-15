@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Button from './Button';
 import ComponentContainer from './ComponentContainer';
-import { useAlgorithmContext } from '../../../contexts/AlgorithmContext';
+import { useAlgorithmContext } from 'contexts/AlgorithmContext';
 
 const FlexWrapper = styled.div`
   display: flex;

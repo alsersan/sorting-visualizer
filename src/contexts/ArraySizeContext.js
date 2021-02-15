@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 
-import useLocalStorageState from '../hooks/useLocalStorageState';
-import { getArray } from '../algorithms/utils';
+import useLocalStorageState from 'hooks/useLocalStorageState';
+import { getArray } from 'algorithms/utils';
 
 const ArraySizeContext = React.createContext();
 

@@ -8,7 +8,7 @@ import ButtonRow from './ButtonRow';
 import Options from './Options';
 import ColorSelection from './ColorSelection';
 import Footer from './Footer';
-import { devices } from '../../../styles/deviceSizes';
+import { devices } from 'styles/deviceSizes';
 
 const Container = styled.div`
   position: relative;

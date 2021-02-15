@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 
-import useLocalStorageState from '../hooks/useLocalStorageState';
-import { getColors } from '../algorithms/utils';
+import useLocalStorageState from 'hooks/useLocalStorageState';
+import { getColors } from 'algorithms/utils';
 
 const BarColorContext = React.createContext();
 
