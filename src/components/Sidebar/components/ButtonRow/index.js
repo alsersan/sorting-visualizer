@@ -65,6 +65,7 @@ const ButtonRow = () => {
           isRunning={isRunning}
           disabled={isRunning || !hasStarted}
           onClick={() => stepsBack[activeOption](setHasStarted)}
+          aria-label="Step Back"
         >
           <FaStepBackward size={30} />
         </Button>
@@ -75,6 +76,7 @@ const ButtonRow = () => {
               stopAlgorithm();
               setIsRunning(false);
             }}
+            aria-label="Pause"
           >
             <FaPause size={30} />
           </Button>
@@ -87,6 +89,7 @@ const ButtonRow = () => {
               setIsRunning(true);
               algorithms[activeOption]();
             }}
+            aria-label="Play"
           >
             <FaPlay size={30} />
           </Button>
@@ -99,6 +102,7 @@ const ButtonRow = () => {
             stepsForward[activeOption](1);
             setHasStarted(true);
           }}
+          aria-label="Step Forward"
         >
           <FaStepForward size={30} />
         </Button>
