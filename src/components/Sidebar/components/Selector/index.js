@@ -10,19 +10,24 @@ const TextWrapper = styled.div`
   align-items: center;
 `;
 
-const Text = styled.span`
-  font-weight: ${(props) => (props.mainText ? '500' : 'inherit')};
-  font-size: ${(props) => (props.mainText ? '1.2rem' : '0.9rem')};
+const SecondaryText = styled.span`
+  font-weight: inherit;
+  font-size: 0.9rem;
+`;
+
+const MainText = styled.label`
+  font-weight: 500;
+  font-size: 1.2rem;
 `;
 
 const Selector = (props) => {
   return (
     <>
       <TextWrapper>
-        <Text mainText>{props.mainText}</Text>
-        <Text secondaryText>{props.secondaryText}</Text>
+        <MainText htmlFor={props.mainText}>{props.mainText}</MainText>
+        <SecondaryText>{props.secondaryText}</SecondaryText>
       </TextWrapper>
-      <Slider {...props} />
+      <Slider id={props.mainText} {...props} />
     </>
   );
 };
