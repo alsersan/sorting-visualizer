@@ -36,7 +36,7 @@ const ColorInput = styled.input`
   }
 `;
 
-const Description = styled.span`
+const Description = styled.label`
   margin-left: 0.5rem;
 `;
 
@@ -57,13 +57,14 @@ const ColorPicker = ({ description, className, color, setColor }) => {
   return (
     <Container>
       <ColorInput
+        id={description}
         type="color"
         value={value}
         onChange={(e) => setValue(e.target.value)}
         // Only set color in BarColorContext when the ColorPicker loses focus
         onBlur={() => setColor(value)}
       />
-      <Description>{description}</Description>
+      <Description htmlFor={description}>{description}</Description>
     </Container>
   );
 };
