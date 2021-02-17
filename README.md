@@ -1,68 +1,41 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Sorting Visualizer
+I built this visualization tool because I wanted to see sorting algorithms in action. I also wanted to be able to stop the animation and go back/forward. The initial idea for this project was much simpler, and has been evolving overtime, adding new complex features way over my skill level at that moment. Facing these difficult challenges and working my way through them is what has allowed me to improve my coding and problem-solving abilities. 
 
-## Available Scripts
+The tech stack consists of React as a Javascript framework and styled-components to add the CSS.
 
-In the project directory, you can run:
+### Sorting Algorithms
+- Bubble sort
+- Insertion sort
+- Selection sort
+- Merge Sort
+- Quick sort
+- Heap sort
 
-### `npm start`
+### Options
+ - **Sorting Algorithm:** select from one of the available algorithms. 
+ - **Size:** from 5 to 60.
+ - **Speed:** from 100% (1 ms delay between steps) to 1% (1000 ms delay between steps). The speed can be modified while the sorting is ongoing.
+ - **Controls:** play or pause the sorting. When it's paused you can also move one step back/forward.
+ - **Options**: 
+   - **Reset Array:** stop the sorting and generate a new array.
+   - **Reset Defaults:** stop the sorting and reset everything to its default values (including local storage).
+   - **Theme Toggler:** switch between light/dark theme.
+- **Color Picker:** change the color of the bars when the sorting is paused.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The sorting algorithm selection and the size slider are disabled once the sorting has started (for obvious reasons). If you want to modify them, either go all the way back until the beginning or reset the array.
+### Dependencies
+- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- [Styled-components](https://styled-components.com/)
+- [React-icons](https://react-icons.github.io/react-icons/)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### What I Learned
+- Sorting Algorithms: I had to dive deep into them and understand them really well in order to animate each step and handle all the edge cases.
+- State management: I learned a lot about the pros/cons of the Context API. I also had to do a fair ammount of optimization to solve performance issues. I believe that a global store like Redux would have been a better choice, specially to get access to the store from outside a component.
+- Styling with styled components: css, animations, media queries, nesting, props, theming, extending styles...
+- UI/UX: I'm not at all a designer, so coming up with a reasonably well-structured layout was quite challenging. I also tried to have a consistent color scheme, good contrast and a pleasing and intuitive user experience.
+- Responsive design: the app adapts nicely to all screen sizes.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Acknowledgements
+- The ripple effect in the buttons was implemented following [this article](https://dev.to/rohanfaiyazkhan/recreating-the-material-design-ripple-effect-in-react-54p).
+- The iterative versions of merge sort and quick sort were inspired by [this](https://www.baeldung.com/cs/non-recursive-merge-sort) and [this](https://www.techiedelight.com/iterative-implementation-of-quicksort/) articles, respectively.
+- Last but not least, many thanks to [Clément Mihailescu](http://www.clementmihailescu.com/) for being an inspiration to create this project.
