@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   margin: 0.5rem;
-  display: flex;
+  display: ${(props) => (props.show ? 'flex' : 'none')};
   flex-grow: 1;
   width: 8rem;
   max-width: 8rem;
@@ -40,7 +40,13 @@ const Description = styled.label`
   margin-left: 0.5rem;
 `;
 
-const ColorPicker = ({ description, className, color, setColor }) => {
+const ColorPicker = ({
+  description,
+  className,
+  color,
+  setColor,
+  show = true,
+}) => {
   const [value, setValue] = useState(color);
 
   useLayoutEffect(() => {
@@ -55,7 +61,7 @@ const ColorPicker = ({ description, className, color, setColor }) => {
   }, [color]);
 
   return (
-    <Container>
+    <Container show={show}>
       <ColorInput
         id={description}
         type="color"

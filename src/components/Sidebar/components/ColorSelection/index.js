@@ -24,7 +24,7 @@ const ColorSelection = () => {
     referenceColor,
     setReferenceColor,
   } = useBarColorContext();
-  const { isRunning } = useAlgorithmContext();
+  const { isRunning, activeOption } = useAlgorithmContext();
 
   return (
     <ComponentContainer title="Color Picker" isRunning={isRunning}>
@@ -46,6 +46,7 @@ const ColorSelection = () => {
           setColor={setReferenceColor}
           className=".reference"
           description="Reference"
+          show={activeOption === 0 ? false : true}
         />
         <ColorPicker
           color={sortedColor}
