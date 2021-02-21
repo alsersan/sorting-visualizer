@@ -25,7 +25,7 @@ const IconLink = styled.a`
 const Footer = () => {
   return (
     <Container>
-      <span>&copy; 2021 Álvaro Serrano</span>
+      <span>Developed by Álvaro Serrano</span>
       <IconLink
         title="GitHub repository"
         href="https://github.com/alsersan/sorting-visualizer"
